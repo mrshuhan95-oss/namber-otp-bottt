@@ -306,12 +306,12 @@ def migrate_old_settings(settings):
             if settings[site_key].get("check_interval", 5) == 7:
                 settings[site_key]["check_interval"] = 5
                 migrated = True
-                print(f"✅ تحديث سرعة {site_key} من 7 إلى 5 ثواني")
+                print(f"✅ স্পিড আপডেট {site_key} 7 থেকে 5 সেকেন্ডে")
     
     if "iVASMS" not in settings:
         settings["iVASMS"] = DEFAULT_SETTINGS["iVASMS"].copy()
         migrated = True
-        print("✅ تم إضافة موقع iVASMS للإعدادات")
+        print("✅ সাইট যোগ করা হয়েছে iVASMS সেটিংসে")
     
     if "MSI" not in settings:
         settings["MSI"] = DEFAULT_SETTINGS["MSI"].copy()
@@ -389,7 +389,7 @@ def delete_account(site_key, account_id):
         stop_key = f"{site_key}_{account_id}"
         if stop_key in account_stop_events:
             account_stop_events[stop_key].set()
-            print(f"🛑 تم إيقاف مراقبة الحساب: {stop_key}")
+            print(f"🛑 অ্যাকাউন্টের মনিটরিং বন্ধ করা হয়েছে: {stop_key}")
             del account_stop_events[stop_key]
         
         cookies_file = f"cookies_{site_key}_{account_id}.pkl"
@@ -400,9 +400,9 @@ def delete_account(site_key, account_id):
             if os.path.exists(file_path):
                 try:
                     os.remove(file_path)
-                    print(f"🗑️ تم حذف ملف: {file_path}")
+                    print(f"🗑️ ফাইল মুছে ফেলা হয়েছে: {file_path}")
                 except Exception as e:
-                    print(f"⚠️ خطأ في حذف {file_path}: {e}")
+                    print(f"⚠️ মুছতে ত্রুটি: {file_path}: {e}")
         
         if stop_key in account_sessions:
             del account_sessions[stop_key]
@@ -696,7 +696,7 @@ NUMBERS_ADMINS_FILE = "numbers_admins.json"
 COUNTRIES = {}
 CHANNELS = []
 USERS = {}
-ADMINS = [7325261765,8598137047]
+ADMINS = []
 BANNED = []
 OTP_GROUP = -1003852565392
 GROUPS = [-1003852565392]
@@ -729,7 +729,7 @@ DEFAULT_REFERRAL_SETTINGS = {
 }
 
 DEFAULT_WELCOME_MESSAGES = {
-    "ar": "🌐 <b>مرحباً بك في بوت الأرقام المؤقتة!</b>\n\n📱 احصل على رقم مؤقت فوراً\n🔒 آمن وسريع\n💰 اكسب من الإحالات والأكواد\n\nاختر من القائمة:",
+    "ar": "🌐 <b>অস্থায়ী নম্বর বটে স্বাগতম!</b>\n\n📱 সাথে সাথে অস্থায়ী নম্বর নিন\n🔒 নিরাপদ ও দ্রুত\n💰 রেফারেল ও কোড থেকে আয় করুন\n\nমেনু থেকে বেছে নিন:",
     "en": "🌐 <b>Welcome to Temporary Numbers Bot!</b>\n\n📱 Get a temporary number instantly\n🔒 Secure and fast\n💰 Earn from referrals and codes\n\nChoose from the menu:"
 }
 
@@ -808,128 +808,128 @@ broadcast_state = {}
 
 TEXTS = {
     "ar": {
-        "welcome": "🌐 <b>مرحباً بك في بوت الأرقام!</b>",
-        "instructions": "📖 <b>دليل البوت</b>\n\n<b>📱 استلام الأكواد:</b>\n1️⃣ اضغط Get Number\n2️⃣ اختر الدولة والرقم\n3️⃣ استخدم الرقم للتسجيل\n4️⃣ الكود يصلك تلقائياً\n\n<b>💰 الأرباح:</b>\n• بونص عن كل كود\n• بونص إحالة الأصدقاء\n\n<b>💵 السحب:</b>\nفودافون كاش - USDT - Binance",
-        "subscription_locked": "🔒 <b>الوصول مقفل. انضم للقنوات ثم تحقق.</b>",
-        "subscription_verified": "✅ <b>تم التحقق من الاشتراك!</b>\n\n🌐 <b>مرحباً بك في بوت الأرقام!</b>",
-        "subscription_not_verified": "❌ لم تنضم لجميع القنوات بعد!",
+        "welcome": "🌐 <b>নম্বর বটে স্বাগতম!</b>",
+        "instructions": "📖 <b>বট গাইড</b>\n\n<b>📱 কোড গ্রহণ:</b>\n1️⃣ চাপুন Get Number\n2️⃣ দেশ ও নম্বর বেছে নিন\n3️⃣ রেজিস্ট্রেশনে নম্বরটি ব্যবহার করুন\n4️⃣ কোড স্বয়ংক্রিয়ভাবে আসবে\n\n<b>💰 আয়:</b>\n• প্রতিটি কোডের বোনাস\n• বন্ধু রেফারেল বোনাস\n\n<b>💵 উত্তোলন:</b>\nভোডাফোন ক্যাশ - USDT - Binance",
+        "subscription_locked": "🔒 <b>প্রবেশ বন্ধ। চ্যানেলে জয়েন করে যাচাই করুন।</b>",
+        "subscription_verified": "✅ <b>সাবস্ক্রিপশন যাচাই হয়েছে!</b>\n\n🌐 <b>নম্বর বটে স্বাগতম!</b>",
+        "subscription_not_verified": "❌ আপনি এখনো সব চ্যানেলে জয়েন করেননি!",
         "choose_country": "📲 𝗚𝗲𝘁 𝗡𝘂𝗺𝗯𝗲𝗿",
         "my_account": "👤 𝗠𝘆 𝗔𝗰𝗰𝗼𝘂𝗻𝘁",
-        "admin_panel": "🎛 لوحة الإدارة",
-        "help": "❓ مساعدة",
-        "verify_subscription": "✅ تحقق من الاشتراك",
-        "banned": "🚫 أنت محظور من استخدام هذا البوت.",
-        "unauthorized": "❌ غير مصرح لك!",
-        "select_country": "📱 <b>اختر المنصة:</b>",
-        "back": "🔙 رجوع",
-        "select_number": "📞 <b>اختر رقم لـ {country}:</b>",
-        "number_locked": "⚠️ هذا الرقم مستخدم حالياً من شخص آخر. اختر رقم آخر.",
-        "your_number": "📞 <b>رقمك لـ {country}:</b>\n<code>+{number}</code>\n\n⏳ <b>في انتظار الكود...</b> 📱\n\n💬 سيتم إرسال الكود هنا مباشرة!",
-        "change_number": "🔄 تغيير الرقم",
-        "change_country": "🌍 تغيير الدولة",
-        "account_info": "👤 <b>معلومات حسابك:</b>\n\n🆔 <b>معرفك:</b> <code>{user_id_value}</code>\n📅 <b>تاريخ الانضمام:</b> {join_date}\n📊 <b>الأكواد المستلمة:</b> {activations}\n🌐 <b>اللغة:</b> {language}\n\n💡 <b>حالة رقمك:</b>\n{number_status}",
-        "no_number": "❌ لا يوجد رقم حالياً",
-        "has_number": "✅ رقم نشط لـ {country}",
-        "change_language": "🌐 تغيير اللغة",
-        "language_changed": "✅ تم تغيير اللغة إلى العربية",
-        "add_channel": "➕ إضافة قناة اشتراك",
-        "remove_channel": "🗑 حذف قناة",
-        "statistics": "📊 الإحصائيات",
-        "broadcast": "📣 إذاعة",
-        "add_admin": "🔧 إضافة مشرف",
-        "remove_admin": "🗑 حذف مشرف",
-        "ban_user": "🚫 حظر مستخدم",
-        "unban_user": "✅ إلغاء حظر",
-        "set_otp_group": "📱 تعيين مجموعة OTP",
-        "close": "❌ إغلاق",
-        "new_code": "🔔 <b>كود جديد!</b>\n\n📞 <b>الرقم:</b> <code>+{number}</code>\n💬 <b>الكود:</b> <code>{code}</code>\n\n⏰ <b>الوقت:</b> {time}",
-        "no_countries_available": "❌ لا توجد دول متاحة حالياً!",
-        "country_not_available": "❌ دولة غير متاحة!",
-        "no_numbers_available": "❌ لا توجد أرقام متاحة!",
-        "number_reserved": "❌ هذا الرقم محجوز حالياً!",
-        "select_country_first": "❌ اختر المنصة أولاً!",
-        "number_changed": "✅ تم تغيير الرقم!",
-        "admin_panel_title": "🎛 <b>لوحة الإدارة</b>",
-        "statistics_title": "📊 <b>إحصائيات البوت</b>\n\n👥 <b>إجمالي المستخدمين:</b> {users_count}\n🔢 <b>إجمالي الأكواد:</b> {total_codes}\n\n📅 <b>أكواد اليوم:</b> {codes_today}\n📆 <b>أكواد هذا الأسبوع:</b> {codes_this_week}\n📊 <b>أكواد هذا الشهر:</b> {codes_this_month}",
-        "broadcast_prompt": "📣 <b>إذاعة رسالة</b>\n\nأرسل الرسالة التي تريد إذاعتها لجميع المستخدمين:",
-        "broadcast_sent": "✅ <b>تم الإرسال!</b>\n\n📤 نجح: {success}\n❌ فشل: {failed}",
-        "set_otp_group_prompt": "📱 <b>تعيين مجموعة OTP</b>\n\nأرسل معرف المجموعة (Group ID) التي تريد إرسال الأكواد إليها:",
-        "otp_group_set": "✅ <b>تم تعيين مجموعة OTP!</b>\n\n🆔 Group ID: <code>{group_id}</code>",
-        "invalid_id": "❌ معرف غير صحيح! أرسل رقم ID صحيح",
-        "add_channel_id_prompt": "➕ <b>إضافة قناة اشتراك إجباري</b>\n\n⚠️ يقبل فقط القنوات (لا مجموعات)\n\nأرسل معرف أو رابط القناة:\n• @channel_name\n• https://t.me/channel_name",
+        "admin_panel": "🎛 অ্যাডমিন প্যানেল",
+        "help": "❓ সাহায্য",
+        "verify_subscription": "✅ সাবস্ক্রিপশন যাচাই করুন",
+        "banned": "🚫 আপনাকে এই বট ব্যবহারে ব্যান করা হয়েছে।",
+        "unauthorized": "❌ আপনার অনুমতি নেই!",
+        "select_country": "📱 <b>প্ল্যাটফর্ম বেছে নিন:</b>",
+        "back": "🔙 ফিরে যান",
+        "select_number": "📞 <b>নম্বর বেছে নিন: {country}:</b>",
+        "number_locked": "⚠️ এই নম্বরটি এখন অন্য কেউ ব্যবহার করছে। অন্য নম্বর বেছে নিন।",
+        "your_number": "📞 <b>আপনার নম্বর: {country}:</b>\n<code>+{number}</code>\n\n⏳ <b>কোডের অপেক্ষায়...</b> 📱\n\n💬 কোড সরাসরি এখানে পাঠানো হবে!",
+        "change_number": "🔄 নম্বর পরিবর্তন",
+        "change_country": "🌍 দেশ পরিবর্তন",
+        "account_info": "👤 <b>আপনার অ্যাকাউন্টের তথ্য:</b>\n\n🆔 <b>আপনার আইডি:</b> <code>{user_id_value}</code>\n📅 <b>যোগদানের তারিখ:</b> {join_date}\n📊 <b>প্রাপ্ত কোড:</b> {activations}\n🌐 <b>ভাষা:</b> {language}\n\n💡 <b>আপনার নম্বরের অবস্থা:</b>\n{number_status}",
+        "no_number": "❌ এখন কোনো নম্বর নেই",
+        "has_number": "✅ সক্রিয় নম্বর: {country}",
+        "change_language": "🌐 ভাষা পরিবর্তন",
+        "language_changed": "✅ ভাষা বাংলায় পরিবর্তন করা হয়েছে",
+        "add_channel": "➕ সাবস্ক্রিপশন চ্যানেল যোগ",
+        "remove_channel": "🗑 চ্যানেল মুছুন",
+        "statistics": "📊 পরিসংখ্যান",
+        "broadcast": "📣 ব্রডকাস্ট",
+        "add_admin": "🔧 অ্যাডমিন যোগ করুন",
+        "remove_admin": "🗑 অ্যাডমিন মুছুন",
+        "ban_user": "🚫 ইউজার ব্যান",
+        "unban_user": "✅ আনব্যান",
+        "set_otp_group": "📱 গ্রুপ সেট করুন OTP",
+        "close": "❌ বন্ধ করুন",
+        "new_code": "🔔 <b>নতুন কোড!</b>\n\n📞 <b>নম্বর:</b> <code>+{number}</code>\n💬 <b>কোড:</b> <code>{code}</code>\n\n⏰ <b>সময়:</b> {time}",
+        "no_countries_available": "❌ এখন কোনো দেশ উপলব্ধ নেই!",
+        "country_not_available": "❌ দেশটি উপলব্ধ নয়!",
+        "no_numbers_available": "❌ কোনো নম্বর উপলব্ধ নেই!",
+        "number_reserved": "❌ এই নম্বরটি এখন সংরক্ষিত!",
+        "select_country_first": "❌ আগে প্ল্যাটফর্ম বেছে নিন!",
+        "number_changed": "✅ নম্বর পরিবর্তন হয়েছে!",
+        "admin_panel_title": "🎛 <b>অ্যাডমিন প্যানেল</b>",
+        "statistics_title": "📊 <b>বটের পরিসংখ্যান</b>\n\n👥 <b>মোট ইউজার:</b> {users_count}\n🔢 <b>মোট কোড:</b> {total_codes}\n\n📅 <b>আজকের কোড:</b> {codes_today}\n📆 <b>এই সপ্তাহের কোড:</b> {codes_this_week}\n📊 <b>এই মাসের কোড:</b> {codes_this_month}",
+        "broadcast_prompt": "📣 <b>মেসেজ ব্রডকাস্ট</b>\n\nসব ইউজারকে যে মেসেজ ব্রডকাস্ট করতে চান তা পাঠান:",
+        "broadcast_sent": "✅ <b>পাঠানো হয়েছে!</b>\n\n📤 সফল: {success}\n❌ ব্যর্থ: {failed}",
+        "set_otp_group_prompt": "📱 <b>গ্রুপ সেট করুন OTP</b>\n\nগ্রুপের আইডি পাঠান (Group ID) যেখানে কোড পাঠাতে চান:",
+        "otp_group_set": "✅ <b>গ্রুপ সেট করা হয়েছে OTP!</b>\n\n🆔 Group ID: <code>{group_id}</code>",
+        "invalid_id": "❌ আইডি ভুল! সংখ্যা পাঠান ID সঠিক",
+        "add_channel_id_prompt": "➕ <b>বাধ্যতামূলক সাবস্ক্রিপশন চ্যানেল যোগ</b>\n\n⚠️ শুধু চ্যানেল গ্রহণযোগ্য (গ্রুপ নয়)\n\nচ্যানেলের আইডি বা লিংক পাঠান:\n• @channel_name\n• https://t.me/channel_name",
         "add_channel_name_prompt": "",
         "add_channel_url_prompt": "",
-        "channel_added": "✅ <b>تم إضافة القناة!</b>\n\n📢 القناة: {channel_name}\n🔗 الرابط: {channel_url}",
-        "user_banned": "✅ <b>تم حظر المستخدم!</b>\n\n🆔 User ID: <code>{target_user_id}</code>",
-        "user_unbanned": "✅ <b>تم إلغاء حظر المستخدم!</b>\n\n🆔 User ID: <code>{target_user_id}</code>",
-        "admin_added": "✅ <b>تم إضافة المشرف!</b>\n\n🆔 User ID: <code>{target_user_id}</code>",
-        "admin_removed": "✅ <b>تم حذف المشرف!</b>\n\n🆔 User ID: <code>{target_user_id}</code>",
-        "channel_removed": "✅ <b>تم حذف القناة!</b>\n\n📢 القناة: {channel_name}",
-        "no_channels": "⚠️ لا توجد قنوات!",
-        "no_banned_users": "⚠️ لا يوجد مستخدمون محظورون!",
-        "no_admins": "⚠️ لا يوجد مشرفون!",
-        "owner_only": "❌ هذه الميزة للمالك فقط!",
-        "ban_user_prompt": "🚫 <b>حظر مستخدم</b>\n\nأرسل معرف المستخدم (User ID) الذي تريد حظره:",
-        "unban_user_prompt": "✅ <b>إلغاء حظر مستخدم</b>\n\n📋 <b>المستخدمون المحظورون:</b>\n{banned_list}\n\nأرسل معرف المستخدم لإلغاء حظره:",
-        "add_moderator_prompt": "🔧 <b>إضافة مشرف</b>\n\nأرسل معرف المستخدم (User ID) الذي تريد جعله مشرفاً:",
-        "remove_moderator_prompt": "🗑 <b>حذف مشرف</b>\n\n📋 <b>المشرفون الحاليون:</b>\n{admins_list}\n\nأرسل معرف المشرف لحذفه:",
-        "remove_channel_prompt": "🗑 <b>حذف قناة</b>\n\n📋 <b>القنوات الحالية:</b>\n{channels_list}\n\nأرسل رقم القناة أو معرفها لحذفها:",
-        "channel_not_found": "❌ قناة غير موجودة!",
-        "otp_group_status": "📱 <b>مجموعة الأكواد:</b>\n{status}",
-        "otp_group_set_status": "✅ مجموعة محددة: <code>{group_id}</code>",
-        "otp_group_not_set": "❌ لم يتم تحديد مجموعة",
-        "delete_otp_group": "🗑 حذف المجموعة",
-        "otp_group_deleted": "✅ تم حذف مجموعة الأكواد!",
-        "top_users": "👥 أفضل 10 مستخدمين",
-        "top_users_title": "👥 <b>أفضل 10 مستخدمين</b>\n<i>حسب عدد الأكواد المستلمة</i>\n\n",
-        "no_users_yet": "⚠️ لا يوجد مستخدمون بعد!",
-        "user_joined": "🎉 <b>انضم مستخدم جديد!</b>\n\n👤 الاسم: {name}\n🆔 ID: <code>{user_id}</code>\n📅 الوقت: {time}",
-        "edit_button_labels_ar": "🇸🇦 تعديل الأزرار بالعربية",
-        "edit_button_labels_en": "🇬🇧 تعديل الأزرار بالإنجليزية",
-        "edit_button_labels_lang": "🏷️ <b>تعديل أسماء الأزرار</b>\n\nاختر اللغة:",
-        "edit_labels_ar_menu": "🇸🇦 <b>تعديل الأزرار بالعربية</b>\n\nاختر الزر الذي تريد تعديله:",
+        "channel_added": "✅ <b>চ্যানেল যোগ হয়েছে!</b>\n\n📢 চ্যানেল: {channel_name}\n🔗 লিংক: {channel_url}",
+        "user_banned": "✅ <b>ইউজারকে ব্যান করা হয়েছে!</b>\n\n🆔 User ID: <code>{target_user_id}</code>",
+        "user_unbanned": "✅ <b>ইউজার আনব্যান করা হয়েছে!</b>\n\n🆔 User ID: <code>{target_user_id}</code>",
+        "admin_added": "✅ <b>অ্যাডমিন যোগ হয়েছে!</b>\n\n🆔 User ID: <code>{target_user_id}</code>",
+        "admin_removed": "✅ <b>অ্যাডমিন মুছে ফেলা হয়েছে!</b>\n\n🆔 User ID: <code>{target_user_id}</code>",
+        "channel_removed": "✅ <b>চ্যানেল মুছে ফেলা হয়েছে!</b>\n\n📢 চ্যানেল: {channel_name}",
+        "no_channels": "⚠️ কোনো চ্যানেল নেই!",
+        "no_banned_users": "⚠️ কোনো ব্যান করা ইউজার নেই!",
+        "no_admins": "⚠️ কোনো অ্যাডমিন নেই!",
+        "owner_only": "❌ এই ফিচার শুধু মালিকের জন্য!",
+        "ban_user_prompt": "🚫 <b>ইউজার ব্যান</b>\n\nইউজারের আইডি পাঠান (User ID) যাকে ব্যান করতে চান:",
+        "unban_user_prompt": "✅ <b>ইউজার আনব্যান</b>\n\n📋 <b>ব্যান করা ইউজার:</b>\n{banned_list}\n\nআনব্যান করতে ইউজারের আইডি পাঠান:",
+        "add_moderator_prompt": "🔧 <b>অ্যাডমিন যোগ করুন</b>\n\nইউজারের আইডি পাঠান (User ID) যাকে অ্যাডমিন বানাতে চান:",
+        "remove_moderator_prompt": "🗑 <b>অ্যাডমিন মুছুন</b>\n\n📋 <b>বর্তমান অ্যাডমিনরা:</b>\n{admins_list}\n\nমুছতে অ্যাডমিনের আইডি পাঠান:",
+        "remove_channel_prompt": "🗑 <b>চ্যানেল মুছুন</b>\n\n📋 <b>বর্তমান চ্যানেল:</b>\n{channels_list}\n\nমুছতে চ্যানেলের নম্বর বা আইডি পাঠান:",
+        "channel_not_found": "❌ চ্যানেল পাওয়া যায়নি!",
+        "otp_group_status": "📱 <b>কোড গ্রুপ:</b>\n{status}",
+        "otp_group_set_status": "✅ নির্ধারিত গ্রুপ: <code>{group_id}</code>",
+        "otp_group_not_set": "❌ কোনো গ্রুপ নির্ধারণ করা হয়নি",
+        "delete_otp_group": "🗑 গ্রুপ মুছুন",
+        "otp_group_deleted": "✅ কোড গ্রুপ মুছে ফেলা হয়েছে!",
+        "top_users": "👥 সেরা 10 ইউজার",
+        "top_users_title": "👥 <b>সেরা 10 ইউজার</b>\n<i>প্রাপ্ত কোডের সংখ্যা অনুযায়ী</i>\n\n",
+        "no_users_yet": "⚠️ এখনো কোনো ইউজার নেই!",
+        "user_joined": "🎉 <b>নতুন ইউজার জয়েন করেছে!</b>\n\n👤 নাম: {name}\n🆔 ID: <code>{user_id}</code>\n📅 সময়: {time}",
+        "edit_button_labels_ar": "🇧🇩 বাংলা বাটন এডিট",
+        "edit_button_labels_en": "🇬🇧 ইংরেজি বাটন এডিট",
+        "edit_button_labels_lang": "🏷️ <b>বাটনের নাম এডিট</b>\n\nভাষা বেছে নিন:",
+        "edit_labels_ar_menu": "🇧🇩 <b>বাংলা বাটন এডিট</b>\n\nযে বাটন এডিট করতে চান সেটি বেছে নিন:",
         "edit_labels_en_menu": "🇬🇧 <b>Edit Button Labels (English)</b>\n\nChoose the button you want to edit:",
-        "edit_choose_country_ar": "تعديل \"اختر دولة\"",
-        "edit_my_account_ar": "تعديل \"حسابي\"",
-        "edit_help_ar": "تعديل \"𝗛𝗲𝗹𝗽❓\"",
+        "edit_choose_country_ar": "এডিট \"দেশ বেছে নিন\"",
+        "edit_my_account_ar": "এডিট \"আমার অ্যাকাউন্ট\"",
+        "edit_help_ar": "এডিট \"𝗛𝗲𝗹𝗽❓\"",
         "edit_choose_country_en": "Edit \"Choose Country\"",
         "edit_my_account_en": "Edit \"My Account\"",
         "edit_help_en": "Edit \"Help\"",
-        "send_new_label": "📝 أرسل الاسم الجديد للزر:",
-        "label_updated": "✅ تم تحديث اسم الزر بنجاح!",
-        "manage_otp_group": "📱 إدارة مجموعة الأكواد",
-        "welcome_admin": "🌐 <b>مرحباً بك في بوت OTP!</b>\n\nاختر دولة لاستقبال رقم وانتظر الأكواد.\n\nكمشرف، يمكنك أيضاً الوصول للوحة الأدمن.",
-        "choose_language": "🌍 <b>اختر اللغة / Choose Language</b>",
-        "group_hello_admin": "👋 مرحباً! أنا بوت OTP.\n\n⚠️ <b>ملاحظة:</b> لا يمكن إضافة الجروبات تلقائياً.\nيجب على المشرف إضافة هذا الجروب من لوحة الأدمن.",
-        "group_hello": "👋 مرحباً! أنا بوت OTP.\n\nللاستخدام، تواصل معي بشكل خاص.",
-        "total_users": "👥 <b>إجمالي المستخدمين:</b>",
-        "total_codes": "🔢 <b>إجمالي الأكواد:</b>",
-        "codes_today": "📅 <b>أكواد اليوم:</b>",
-        "codes_week": "📆 <b>أكواد هذا الأسبوع:</b>",
-        "codes_month": "📊 <b>أكواد هذا الشهر:</b>",
-        "users_text": "users / مستخدم",
-        "developer_btn": "🆘 المطور",
-        "verify_btn": "✅ تحقق",
-        "select_server_title": "🖥️ <b>اختر السيرفر</b>",
-        "select_server_desc": "📌 كل سيرفر يحتوي على مجموعة مختلفة من الدول والأرقام:",
-        "select_server_hint": "🔻 <i>اختر السيرفر لعرض الدول المتاحة</i>",
-        "select_platform_title": "📱 <b>اختر المنصة في {server}</b>",
-        "select_platform_hint": "🔻 <i>اختر المنصة التي تريد استقبال أكوادها</i>",
-        "no_numbers_here": "❌ <b>لا يوجد أرقام هنا</b>",
-        "no_countries_title": "❌ <b>لا توجد دول متاحة</b>",
-        "server_label": "🖥️ <b>السيرفر:</b>",
-        "platform_label": "📱 <b>المنصة:</b>",
-        "no_countries_hint": "🔻 <i>لا توجد دول متاحة لهذه المنصة في هذا السيرفر حالياً</i>",
-        "available_countries_title": "🌍 <b>الدول المتاحة</b>",
-        "select_country_hint": "🔻 <i>اختر الدولة التي تريد استقبال أكوادها</i>",
-        "number_selected_success": "✅ <b>تم اختيار الرقم بنجاح!</b>",
+        "send_new_label": "📝 বাটনের নতুন নাম পাঠান:",
+        "label_updated": "✅ বাটনের নাম সফলভাবে আপডেট হয়েছে!",
+        "manage_otp_group": "📱 কোড গ্রুপ ম্যানেজমেন্ট",
+        "welcome_admin": "🌐 <b>স্বাগতম এই বটে: OTP!</b>\n\nনম্বর পেতে একটি দেশ বেছে নিন এবং কোডের অপেক্ষা করুন।\n\nঅ্যাডমিন হিসেবে আপনি অ্যাডমিন প্যানেলেও যেতে পারবেন।",
+        "choose_language": "🌍 <b>ভাষা বেছে নিন / Choose Language</b>",
+        "group_hello_admin": "👋 হ্যালো! আমি একটি বট OTP.\n\n⚠️ <b>নোট:</b> গ্রুপ স্বয়ংক্রিয়ভাবে যোগ করা যায় না।\nঅ্যাডমিনকে অ্যাডমিন প্যানেল থেকে এই গ্রুপ যোগ করতে হবে।",
+        "group_hello": "👋 হ্যালো! আমি একটি বট OTP.\n\nব্যবহারের জন্য আমার সাথে প্রাইভেটে যোগাযোগ করুন।",
+        "total_users": "👥 <b>মোট ইউজার:</b>",
+        "total_codes": "🔢 <b>মোট কোড:</b>",
+        "codes_today": "📅 <b>আজকের কোড:</b>",
+        "codes_week": "📆 <b>এই সপ্তাহের কোড:</b>",
+        "codes_month": "📊 <b>এই মাসের কোড:</b>",
+        "users_text": "users / ইউজার",
+        "developer_btn": "🆘 ডেভেলপার",
+        "verify_btn": "✅ যাচাই",
+        "select_server_title": "🖥️ <b>সার্ভার বেছে নিন</b>",
+        "select_server_desc": "📌 প্রতিটি সার্ভারে আলাদা দেশ ও নম্বর আছে:",
+        "select_server_hint": "🔻 <i>উপলব্ধ দেশ দেখতে সার্ভার বেছে নিন</i>",
+        "select_platform_title": "📱 <b>প্ল্যাটফর্ম বেছে নিন: {server}</b>",
+        "select_platform_hint": "🔻 <i>যে প্ল্যাটফর্মের কোড পেতে চান সেটি বেছে নিন</i>",
+        "no_numbers_here": "❌ <b>এখানে কোনো নম্বর নেই</b>",
+        "no_countries_title": "❌ <b>কোনো দেশ উপলব্ধ নেই</b>",
+        "server_label": "🖥️ <b>সার্ভার:</b>",
+        "platform_label": "📱 <b>প্ল্যাটফর্ম:</b>",
+        "no_countries_hint": "🔻 <i>এই সার্ভারে এই প্ল্যাটফর্মের জন্য এখন কোনো দেশ উপলব্ধ নেই</i>",
+        "available_countries_title": "🌍 <b>উপলব্ধ দেশসমূহ</b>",
+        "select_country_hint": "🔻 <i>যে দেশের কোড পেতে চান সেটি বেছে নিন</i>",
+        "number_selected_success": "✅ <b>নম্বর সফলভাবে বাছাই হয়েছে!</b>",
         "waiting_for_code": "⏳ 𝓦𝓪𝓲𝓽𝓲𝓷𝓰 𝓯𝓸𝓻 𝓽𝓱𝓮 𝓬𝓸𝓭𝓮... 📱",
-        "code_will_be_sent": "سيتم إرسال الكود لك مباشرة عند وصوله!",
-        "change_number_btn": "🔄 تغيير الرقم",
-        "change_country_btn": "🌍 تغيير الدولة",
+        "code_will_be_sent": "কোড আসামাত্র আপনাকে সরাসরি পাঠানো হবে!",
+        "change_number_btn": "🔄 নম্বর পরিবর্তন",
+        "change_country_btn": "🌍 দেশ পরিবর্তন",
         "back_to_servers": "𝗕𝗮𝗰𝗸 𝘁𝗼 𝘀𝗲𝗿𝘃𝗲𝗿𝘀",
-        "error_msg": "❌ خطأ: {error}",
-        "referral_success": "🎉 <b>تم تسجيلك بنجاح عبر رابط الإحالة!</b>\n\nاستمتع باستخدام البوت!"
+        "error_msg": "❌ ত্রুটি: {error}",
+        "referral_success": "🎉 <b>রেফারেল লিংকের মাধ্যমে আপনি সফলভাবে নিবন্ধিত হয়েছেন!</b>\n\nবট ব্যবহার উপভোগ করুন!"
     },
     "en": {
         "welcome": "╔════✦  𝓑𝓞𝓣𝓟  ✦════╗\n\n❖  𝗚𝗿𝗮𝗯 𝗮 𝘁𝗲𝗺𝗽𝗼𝗿𝗮𝗿𝘆 𝗻𝘂𝗺𝗯𝗲𝗿 𝗶𝗻𝘀𝘁𝗮𝗻𝘁𝗹𝘆\n❖  𝗟𝗶𝗴𝗵𝘁𝗻𝗶𝗻𝗴-𝗳𝗮𝘀𝘁 & 𝗳𝘂𝗹𝗹𝘆 𝘀𝗲𝗰𝘂𝗿𝗲\n❖  𝗪𝗼𝗿𝗸𝘀 𝗳𝗼𝗿 𝗮𝗹𝗹 𝗰𝗼𝘂𝗻𝘁𝗿𝗶𝗲𝘀\n\n•  𝗦𝗲𝗹𝗲𝗰𝘁 𝘆𝗼𝘂𝗿 𝗰𝗼𝘂𝗻𝘁𝗿𝘆\n•  𝗚𝗲𝘁 𝘆𝗼𝘂𝗿 𝗻𝘂𝗺𝗯𝗲𝗿 𝗶𝗺𝗺𝗲𝗱𝗶𝗮𝘁𝗲𝗹𝘆\n\n╚════✦  𝓑𝓞𝓣𝓟  ✦════╝",
@@ -1011,11 +1011,11 @@ TEXTS = {
         "edit_button_labels_ar": "🇸🇦 Edit Arabic Buttons",
         "edit_button_labels_en": "🇬🇧 Edit English Buttons",
         "edit_button_labels_lang": "🏷️ <b>Edit Button Labels</b>\n\nChoose language:",
-        "edit_labels_ar_menu": "🇸🇦 <b>تعديل الأزرار بالعربية</b>\n\nاختر الزر الذي تريد تعديله:",
+        "edit_labels_ar_menu": "🇧🇩 <b>বাংলা বাটন এডিট</b>\n\nযে বাটন এডিট করতে চান সেটি বেছে নিন:",
         "edit_labels_en_menu": "🇬🇧 <b>Edit Button Labels (English)</b>\n\nChoose the button you want to edit:",
-        "edit_choose_country_ar": "تعديل \"اختر دولة\"",
-        "edit_my_account_ar": "تعديل \"حسابي\"",
-        "edit_help_ar": "تعديل \"𝗛𝗲𝗹𝗽❓\"",
+        "edit_choose_country_ar": "এডিট \"দেশ বেছে নিন\"",
+        "edit_my_account_ar": "এডিট \"আমার অ্যাকাউন্ট\"",
+        "edit_help_ar": "এডিট \"𝗛𝗲𝗹𝗽❓\"",
         "edit_choose_country_en": "Edit \"Choose Country\"",
         "edit_my_account_en": "Edit \"My Account\"",
         "edit_help_en": "Edit \"Help\"",
@@ -1023,7 +1023,7 @@ TEXTS = {
         "label_updated": "✅ Button label updated successfully!",
         "manage_otp_group": "📱 Manage OTP Group",
         "welcome_admin": "🌐 <b>Welcome to OTP Bot!</b>\n\nChoose a country to receive a number and wait for OTP.\n\nAs an admin, you can also access the Admin Panel.",
-        "choose_language": "🌍 <b>اختر اللغة / Choose Language</b>",
+        "choose_language": "🌍 <b>ভাষা বেছে নিন / Choose Language</b>",
         "group_hello_admin": "👋 Hello! I'm the OTP Bot.\n\n⚠️ <b>Note:</b> Groups cannot be added automatically.\nThe admin must add this group from the admin panel.",
         "group_hello": "👋 Hello! I'm the OTP Bot.\n\nTo use me, contact me privately.",
         "total_users": "👥 <b>Total Users:</b>",
@@ -1108,29 +1108,29 @@ def clear_cookies():
 def save_cookies_site3():
     cookies_dict = session3.cookies.get_dict()
     save_pickle(COOKIES_FILE_SITE3, cookies_dict)
-    print("[Site3/Number_Panel] 💾 تم حفظ الجلسة")
+    print("[Site3/Number_Panel] 💾 সেশন সেভ হয়েছে")
 
 def load_cookies_site3():
     d = load_pickle(COOKIES_FILE_SITE3)
     if isinstance(d, dict) and d:
         session3.cookies.update(d)
-        print("[Site3/Number_Panel] 📥 تم تحميل الجلسة المحفوظة")
+        print("[Site3/Number_Panel] 📥 সেভ করা সেশন লোড হয়েছে")
         return True
-    print("[Site3/Number_Panel] ⚠️ لا توجد جلسة محفوظة")
+    print("[Site3/Number_Panel] ⚠️ কোনো সেভ করা সেশন নেই")
     return False
 
 def save_cookies_site4():
     cookies_dict = session4.cookies.get_dict()
     save_pickle(COOKIES_FILE_SITE4, cookies_dict)
-    print("[Site4/Bolt] 💾 تم حفظ الجلسة")
+    print("[Site4/Bolt] 💾 সেশন সেভ হয়েছে")
 
 def load_cookies_site4():
     d = load_pickle(COOKIES_FILE_SITE4)
     if isinstance(d, dict) and d:
         session4.cookies.update(d)
-        print("[Site4/Bolt] 📥 تم تحميل الجلسة المحفوظة")
+        print("[Site4/Bolt] 📥 সেভ করা সেশন লোড হয়েছে")
         return True
-    print("[Site4/Bolt] ⚠️ لا توجد جلسة محفوظة")
+    print("[Site4/Bolt] ⚠️ কোনো সেভ করা সেশন নেই")
     return False
 
 def get_random_user_agent():
@@ -1149,21 +1149,21 @@ def login_attempt_group():
     global session1, is_logged_in_site1
     
     try:
-        print(f"[GROUP] 🔄 جلب صفحة تسجيل الدخول...")
+        print(f"[GROUP] 🔄 লগইন পেজ আনা হচ্ছে...")
         resp = session1.get(LOGIN_PAGE_URL, timeout=HTTP_TIMEOUT)
         
         if resp.status_code != 200:
-            print(f"[GROUP] ⚠️ فشل فتح صفحة الدخول: {resp.status_code}")
+            print(f"[GROUP] ⚠️ লগইন পেজ খুলতে ব্যর্থ: {resp.status_code}")
             return False
         
         match = re.search(r'What is (\d+) \+ (\d+)', resp.text)
         if not match:
-            print("[GROUP] ❌ لم يتم العثور على captcha في صفحة تسجيل الدخول")
+            print("[GROUP] ❌ খুঁজে পাওয়া যায়নি captcha লগইন পেজে")
             return False
         
         num1, num2 = int(match.group(1)), int(match.group(2))
         captcha_answer = num1 + num2
-        print(f"[GROUP] 🧮 حل captcha: {num1} + {num2} = {captcha_answer}")
+        print(f"[GROUP] 🧮 সমাধান captcha: {num1} + {num2} = {captcha_answer}")
         
         payload = {
             "username": USERNAME,
@@ -1179,73 +1179,73 @@ def login_attempt_group():
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
         }
         
-        print(f"[GROUP] 📤 إرسال طلب تسجيل الدخول لـ: {USERNAME}")
+        print(f"[GROUP] 📤 লগইন অনুরোধ পাঠানো হচ্ছে: {USERNAME}")
         
         resp = session1.post(LOGIN_POST_URL, data=payload, headers=headers, timeout=HTTP_TIMEOUT, allow_redirects=True)
         
-        print(f"[GROUP] 📊 حالة الاستجابة: {resp.status_code}")
+        print(f"[GROUP] 📊 রেসপন্স স্ট্যাটাস: {resp.status_code}")
         
         if ("dashboard" in resp.text.lower() or 
             "logout" in resp.text.lower() or 
             "agent" in resp.url.lower() or
             "/ints/agent" in resp.url or
             resp.url != LOGIN_PAGE_URL):
-            print("[GROUP] ✅ تم تسجيل الدخول بنجاح")
+            print("[GROUP] ✅ লগইন সফল হয়েছে")
             is_logged_in_site1 = True
             save_cookies()
             
-            print("[GROUP] 🔄 زيارة صفحة SMSCDRReports بعد تسجيل الدخول...")
+            print("[GROUP] 🔄 পেজ ভিজিট SMSCDRReports লগইনের পরে...")
             try:
                 session1.get(BASE_URL + "/ints/agent/SMSCDRReports", timeout=HTTP_TIMEOUT)
-                print("[GROUP] ✅ تم زيارة صفحة SMSCDRReports بنجاح")
+                print("[GROUP] ✅ পেজ ভিজিট করা হয়েছে SMSCDRReports সফলভাবে")
                 time.sleep(1)
             except Exception as e:
-                print(f"[GROUP] ⚠️ خطأ في زيارة صفحة SMSCDRReports: {e}")
+                print(f"[GROUP] ⚠️ পেজ ভিজিটে ত্রুটি SMSCDRReports: {e}")
             
             return True
         else:
-            print("[GROUP] ❌ فشل تسجيل الدخول")
+            print("[GROUP] ❌ লগইন ব্যর্থ")
             if "incorrect" in resp.text.lower() or "invalid" in resp.text.lower():
-                print("[GROUP] ⚠️ اسم المستخدم أو كلمة المرور غير صحيحة")
+                print("[GROUP] ⚠️ ইউজারনেম বা পাসওয়ার্ড ভুল")
             return False
             
     except requests.exceptions.Timeout:
-        print(f"[GROUP] ⏱️ انتهى وقت الاتصال")
+        print(f"[GROUP] ⏱️ সংযোগের সময় শেষ")
         return False
     except requests.exceptions.ConnectionError as e:
-        print(f"[GROUP] 🔌 خطأ في الاتصال: {e}")
+        print(f"[GROUP] 🔌 সংযোগে ত্রুটি: {e}")
         return False
     except Exception as e:
-        print(f"[GROUP] ❌ خطأ في تسجيل الدخول: {e}")
+        print(f"[GROUP] ❌ লগইনে ত্রুটি: {e}")
         return False
 
 def login(max_retries=10):
     
     global session1, is_logged_in_site1
-    print(f"🔐 GROUP: بدء تسجيل الدخول...")
+    print(f"🔐 GROUP: লগইন শুরু হচ্ছে...")
     
     for attempt in range(1, max_retries + 1):
         try:
-            print(f"\n🔄 GROUP: المحاولة {attempt}/{max_retries}")
+            print(f"\n🔄 GROUP: চেষ্টা {attempt}/{max_retries}")
             
             if attempt > 1:
-                print(f"🔄 GROUP: تجديد الجلسة...")
+                print(f"🔄 GROUP: সেশন নবায়ন হচ্ছে...")
                 session1 = create_session_group()
                 time.sleep(2)
             
             if login_attempt_group():
-                print(f"✅ GROUP: نجح تسجيل الدخول في المحاولة {attempt}")
+                print(f"✅ GROUP: লগইন সফল হয়েছে চেষ্টা {attempt}")
                 return True
             
             backoff_time = min(30, 5 * attempt)
-            print(f"⏳ GROUP: الانتظار {backoff_time}s قبل المحاولة التالية...")
+            print(f"⏳ GROUP: অপেক্ষা {backoff_time}s পরের চেষ্টার আগে...")
             time.sleep(backoff_time)
             
         except Exception as e:
-            print(f"❌ GROUP (محاولة {attempt}): خطأ - {str(e)}")
+            print(f"❌ GROUP (চেষ্টা {attempt}): ত্রুটি - {str(e)}")
             time.sleep(5)
     
-    print(f"❌ GROUP: فشل تسجيل الدخول بعد {max_retries} محاولات")
+    print(f"❌ GROUP: লগইন ব্যর্থ হয়েছে {max_retries} চেষ্টার পর")
     return False
 
 def check_login_valid():
@@ -1301,18 +1301,18 @@ def test_bolt_type_login(site_key, account):
             }
             resp = scraper.post(login_url, data=payload, headers=headers, timeout=20)
             if resp.status_code == 200 and ("success" in resp.text.lower() or "logout" in resp.text.lower()):
-                print(f"[{site_key}] ({username}) ✅ تسجيل الدخول نجح")
+                print(f"[{site_key}] ({username}) ✅ লগইন সফল হয়েছে")
                 return True
             else:
-                print(f"[{site_key}] ({username}) ❌ فشل تسجيل الدخول")
+                print(f"[{site_key}] ({username}) ❌ লগইন ব্যর্থ")
                 return False
         except Exception as e:
-            print(f"[{site_key}] ({username}) ❌ خطأ في تسجيل الدخول: {e}")
+            print(f"[{site_key}] ({username}) ❌ লগইনে ত্রুটি: {e}")
             return False
     else:
         return False
 
-    print(f"[{site_key}] ({username}) 🔐 محاولة تسجيل الدخول (Bolt-type)...")
+    print(f"[{site_key}] ({username}) 🔐 লগইনের চেষ্টা (Bolt-type)...")
     
     try:
         session_obj.headers.update({
@@ -1325,7 +1325,7 @@ def test_bolt_type_login(site_key, account):
         
         match = re.search(r'What is (\d+) \+ (\d+)', resp.text)
         if not match:
-            print(f"[{site_key}] ({username}) ⚠️ لم يتم العثور على captcha")
+            print(f"[{site_key}] ({username}) ⚠️ খুঁজে পাওয়া যায়নি captcha")
             return False
         
         num1, num2 = int(match.group(1)), int(match.group(2))
@@ -1354,14 +1354,14 @@ def test_bolt_type_login(site_key, account):
             "logout" in resp.text.lower() or 
             "agent" in resp.url.lower() or 
             "reports" in resp.url.lower()):
-            print(f"[{site_key}] ({username}) ✅ تسجيل الدخول نجح")
+            print(f"[{site_key}] ({username}) ✅ লগইন সফল হয়েছে")
             return True
         else:
-            print(f"[{site_key}] ({username}) ❌ فشل تسجيل الدخول")
+            print(f"[{site_key}] ({username}) ❌ লগইন ব্যর্থ")
             return False
             
     except Exception as e:
-        print(f"[{site_key}] ({username}) ❌ خطأ في تسجيل الدخول: {e}")
+        print(f"[{site_key}] ({username}) ❌ লগইনে ত্রুটি: {e}")
         return False
 
 def extract_sms(html_text, debug_mode=False):
@@ -1374,16 +1374,16 @@ def extract_sms(html_text, debug_mode=False):
         })
         
         resp = test_session.get(login_page_url, timeout=timeout)
-        print(f"[{site_key}] 📄 حالة GET: {resp.status_code}")
+        print(f"[{site_key}] 📄 স্ট্যাটাস GET: {resp.status_code}")
         
         match = re.search(r'What is (\d+) \+ (\d+)', resp.text)
         if not match:
-            print(f"[{site_key}] ⚠️ لم يتم العثور على captcha في الصفحة")
+            print(f"[{site_key}] ⚠️ খুঁজে পাওয়া যায়নি captcha পেজে")
             return False
         
         num1, num2 = int(match.group(1)), int(match.group(2))
         captcha_answer = num1 + num2
-        print(f"[{site_key}] 🧮 حل captcha: {num1} + {num2} = {captcha_answer}")
+        print(f"[{site_key}] 🧮 সমাধান captcha: {num1} + {num2} = {captcha_answer}")
         
         crlf_match = re.search(r"name='crlf' value='([^']+)'", resp.text)
         
@@ -1395,7 +1395,7 @@ def extract_sms(html_text, debug_mode=False):
         
         if crlf_match:
             payload["crlf"] = crlf_match.group(1)
-            print(f"[{site_key}] 🔑 استخراج crlf token")
+            print(f"[{site_key}] 🔑 বের করা crlf token")
         
         headers = {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -1404,25 +1404,25 @@ def extract_sms(html_text, debug_mode=False):
             "Origin": base_url
         }
         
-        print(f"[{site_key}] 📤 إرسال طلب تسجيل الدخول لـ: {username}")
+        print(f"[{site_key}] 📤 লগইন অনুরোধ পাঠানো হচ্ছে: {username}")
         resp = test_session.post(login_post_url, data=payload, headers=headers, timeout=timeout, allow_redirects=True)
         
-        print(f"[{site_key}] 📊 حالة POST: {resp.status_code}")
-        print(f"[{site_key}] 🔗 URL النهائي: {resp.url}")
+        print(f"[{site_key}] 📊 স্ট্যাটাস POST: {resp.status_code}")
+        print(f"[{site_key}] 🔗 URL চূড়ান্ত: {resp.url}")
         
         if ("dashboard" in resp.text.lower() or 
             "logout" in resp.text.lower() or 
             "agent" in resp.url.lower() or 
             "reports" in resp.url.lower() or
             resp.url != login_page_url):
-            print(f"[{site_key}] ✅ تسجيل الدخول نجح")
+            print(f"[{site_key}] ✅ লগইন সফল হয়েছে")
             return True
         else:
-            print(f"[{site_key}] ❌ فشل تسجيل الدخول")
+            print(f"[{site_key}] ❌ লগইন ব্যর্থ")
             return False
             
     except Exception as e:
-        print(f"[{site_key}] ❌ خطأ في تسجيل الدخول: {e}")
+        print(f"[{site_key}] ❌ লগইনে ত্রুটি: {e}")
         return False
 
 def test_site_login(chat_id, site_key, account_id=None):
@@ -1432,7 +1432,7 @@ def test_site_login(chat_id, site_key, account_id=None):
     account = get_account_by_id(site_key, account_id) if account_id else get_site_accounts(site_key)[0]
     
     if not account:
-        bot.send_message(chat_id, "❌ الحساب غير موجود!", parse_mode="HTML")
+        bot.send_message(chat_id, "❌ অ্যাকাউন্ট পাওয়া যায়নি!", parse_mode="HTML")
         return
     
     try:
@@ -1441,18 +1441,18 @@ def test_site_login(chat_id, site_key, account_id=None):
             if success:
                 bot.send_message(
                     chat_id,
-                    f"✅ <b>نجح تسجيل الدخول - {site_name}</b>\n\n"
-                    f"👤 الحساب: <code>{account.get('username')}</code>\n"
-                    f"🔓 تم تسجيل الدخول بنجاح\n"
-                    f"⏰ الوقت: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
+                    f"✅ <b>লগইন সফল - {site_name}</b>\n\n"
+                    f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
+                    f"🔓 লগইন সফল হয়েছে\n"
+                    f"⏰ সময়: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
                     parse_mode="HTML"
                 )
             else:
                 bot.send_message(
                     chat_id,
-                    f"❌ <b>فشل تسجيل الدخول - {site_name}</b>\n\n"
-                    f"👤 الحساب: <code>{account.get('username')}</code>\n"
-                    f"⚠️ تأكد من صحة البيانات (Username, Password, Captcha)",
+                    f"❌ <b>লগইন ব্যর্থ - {site_name}</b>\n\n"
+                    f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
+                    f"⚠️ তথ্য ঠিক আছে কিনা নিশ্চিত করুন (Username, Password, Captcha)",
                     parse_mode="HTML"
                 )
             return
@@ -1470,18 +1470,18 @@ def test_site_login(chat_id, site_key, account_id=None):
                     save_sessions(SESSIONS)
                     bot.send_message(
                         chat_id,
-                        f"✅ <b>نجح تسجيل الدخول - {site_name}</b>\n\n"
-                        f"👤 الحساب: <code>{account.get('username')}</code>\n"
-                        f"🔓 تم تسجيل الدخول بنجاح\n"
-                        f"⏰ الوقت: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
+                        f"✅ <b>লগইন সফল - {site_name}</b>\n\n"
+                        f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
+                        f"🔓 লগইন সফল হয়েছে\n"
+                        f"⏰ সময়: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
                         parse_mode="HTML"
                     )
                 else:
                     bot.send_message(
                         chat_id,
-                        f"❌ <b>فشل تسجيل الدخول - {site_name}</b>\n\n"
-                        f"👤 الحساب: <code>{account.get('username')}</code>\n"
-                        f"⚠️ تحقق من اليوزر والباسورد",
+                        f"❌ <b>লগইন ব্যর্থ - {site_name}</b>\n\n"
+                        f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
+                        f"⚠️ ইউজারনেম ও পাসওয়ার্ড চেক করুন",
                         parse_mode="HTML"
                     )
             finally:
@@ -1502,22 +1502,22 @@ def test_site_login(chat_id, site_key, account_id=None):
                     save_sessions(SESSIONS)
                     bot.send_message(
                         chat_id,
-                        f"✅ <b>نجح تسجيل الدخول - {site_name}</b>\n\n"
-                        f"👤 الحساب: <code>{account.get('username')}</code>\n"
-                        f"🔓 تم تسجيل الدخول بنجاح\n"
-                        f"⏰ الوقت: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
+                        f"✅ <b>লগইন সফল - {site_name}</b>\n\n"
+                        f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
+                        f"🔓 লগইন সফল হয়েছে\n"
+                        f"⏰ সময়: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
                         parse_mode="HTML"
                     )
                 else:
                     bot.send_message(
                         chat_id,
-                        f"❌ <b>فشل تسجيل الدخول - {site_name}</b>\n\n"
-                        f"👤 الحساب: <code>{account.get('username')}</code>\n"
-                        f"⚠️ تحقق من اليوزر والباسورد",
+                        f"❌ <b>লগইন ব্যর্থ - {site_name}</b>\n\n"
+                        f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
+                        f"⚠️ ইউজারনেম ও পাসওয়ার্ড চেক করুন",
                         parse_mode="HTML"
                     )
             except Exception as e:
-                bot.send_message(chat_id, f"❌ خطأ في تسجيل الدخول: {e}")
+                bot.send_message(chat_id, f"❌ লগইনে ত্রুটি: {e}")
             return
         
         elif site_key == "Fly sms":
@@ -1534,18 +1534,18 @@ def test_site_login(chat_id, site_key, account_id=None):
                     save_sessions(SESSIONS)
                     bot.send_message(
                         chat_id,
-                        f"✅ <b>نجح تسجيل الدخول - {site_name}</b>\n\n"
-                        f"👤 الحساب: <code>{account.get('username')}</code>\n"
-                        f"🔓 تم تسجيل الدخول بنجاح\n"
-                        f"⏰ الوقت: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
+                        f"✅ <b>লগইন সফল - {site_name}</b>\n\n"
+                        f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
+                        f"🔓 লগইন সফল হয়েছে\n"
+                        f"⏰ সময়: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
                         parse_mode="HTML"
                     )
                 else:
                     bot.send_message(
                         chat_id,
-                        f"❌ <b>فشل تسجيل الدخول - {site_name}</b>\n\n"
-                        f"👤 الحساب: <code>{account.get('username')}</code>\n"
-                        f"⚠️ تحقق من اليوزر والباسورد",
+                        f"❌ <b>লগইন ব্যর্থ - {site_name}</b>\n\n"
+                        f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
+                        f"⚠️ ইউজারনেম ও পাসওয়ার্ড চেক করুন",
                         parse_mode="HTML"
                     )
             finally:
@@ -1565,18 +1565,18 @@ def test_site_login(chat_id, site_key, account_id=None):
                     save_sessions(SESSIONS)
                     bot.send_message(
                         chat_id,
-                        f"✅ <b>نجح تسجيل الدخول - {site_name}</b>\n\n"
-                        f"👤 الحساب: <code>{account.get('username')}</code>\n"
-                        f"🔓 تم تسجيل الدخول بنجاح\n"
-                        f"⏰ الوقت: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
+                        f"✅ <b>লগইন সফল - {site_name}</b>\n\n"
+                        f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
+                        f"🔓 লগইন সফল হয়েছে\n"
+                        f"⏰ সময়: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
                         parse_mode="HTML"
                     )
                 else:
                     bot.send_message(
                         chat_id,
-                        f"❌ <b>فشل تسجيل الدخول - {site_name}</b>\n\n"
-                        f"👤 الحساب: <code>{account.get('username')}</code>\n"
-                        f"⚠️ تحقق من اليوزر والباسورد",
+                        f"❌ <b>লগইন ব্যর্থ - {site_name}</b>\n\n"
+                        f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
+                        f"⚠️ ইউজারনেম ও পাসওয়ার্ড চেক করুন",
                         parse_mode="HTML"
                     )
             finally:
@@ -1596,18 +1596,18 @@ def test_site_login(chat_id, site_key, account_id=None):
                     save_sessions(SESSIONS)
                     bot.send_message(
                         chat_id,
-                        f"✅ <b>نجح تسجيل الدخول - {site_name}</b>\n\n"
-                        f"👤 الحساب: <code>{account.get('username')}</code>\n"
-                        f"🔓 تم تسجيل الدخول بنجاح\n"
-                        f"⏰ الوقت: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
+                        f"✅ <b>লগইন সফল - {site_name}</b>\n\n"
+                        f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
+                        f"🔓 লগইন সফল হয়েছে\n"
+                        f"⏰ সময়: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
                         parse_mode="HTML"
                     )
                 else:
                     bot.send_message(
                         chat_id,
-                        f"❌ <b>فشل تسجيل الدخول - {site_name}</b>\n\n"
-                        f"👤 الحساب: <code>{account.get('username')}</code>\n"
-                        f"⚠️ تحقق من اليوزر والباسورد",
+                        f"❌ <b>লগইন ব্যর্থ - {site_name}</b>\n\n"
+                        f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
+                        f"⚠️ ইউজারনেম ও পাসওয়ার্ড চেক করুন",
                         parse_mode="HTML"
                     )
             finally:
@@ -1627,18 +1627,18 @@ def test_site_login(chat_id, site_key, account_id=None):
                     save_sessions(SESSIONS)
                     bot.send_message(
                         chat_id,
-                        f"✅ <b>نجح تسجيل الدخول - {site_name}</b>\n\n"
-                        f"👤 الحساب: <code>{account.get('username')}</code>\n"
-                        f"🔓 تم تسجيل الدخول بنجاح\n"
-                        f"⏰ الوقت: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
+                        f"✅ <b>লগইন সফল - {site_name}</b>\n\n"
+                        f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
+                        f"🔓 লগইন সফল হয়েছে\n"
+                        f"⏰ সময়: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
                         parse_mode="HTML"
                     )
                 else:
                     bot.send_message(
                         chat_id,
-                        f"❌ <b>فشل تسجيل الدخول - {site_name}</b>\n\n"
-                        f"👤 الحساب: <code>{account.get('username')}</code>\n"
-                        f"⚠️ تحقق من اليوزر والباسورد",
+                        f"❌ <b>লগইন ব্যর্থ - {site_name}</b>\n\n"
+                        f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
+                        f"⚠️ ইউজারনেম ও পাসওয়ার্ড চেক করুন",
                         parse_mode="HTML"
                     )
             finally:
@@ -1651,26 +1651,26 @@ def test_site_login(chat_id, site_key, account_id=None):
                 save_sessions(SESSIONS)
                 bot.send_message(
                     chat_id,
-                    f"✅ <b>نجح تسجيل الدخول - {site_name}</b>\n\n"
-                    f"👤 الحساب: <code>{account.get('username')}</code>\n"
-                    f"🔓 تم تسجيل الدخول بنجاح\n"
-                    f"⏰ الوقت: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
+                    f"✅ <b>লগইন সফল - {site_name}</b>\n\n"
+                    f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
+                    f"🔓 লগইন সফল হয়েছে\n"
+                    f"⏰ সময়: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
                     parse_mode="HTML"
                 )
             else:
                 bot.send_message(
                     chat_id,
-                    f"❌ <b>فشل تسجيل الدخول - {site_name}</b>\n\n"
-                    f"👤 الحساب: <code>{account.get('username')}</code>\n"
-                    f"⚠️ تحقق من اليوزر والباسورد",
+                    f"❌ <b>লগইন ব্যর্থ - {site_name}</b>\n\n"
+                    f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
+                    f"⚠️ ইউজারনেম ও পাসওয়ার্ড চেক করুন",
                     parse_mode="HTML"
                 )
     
     except Exception as e:
         bot.send_message(
             chat_id,
-            f"❌ <b>خطأ أثناء اختبار تسجيل الدخول - {site_name}</b>\n\n"
-            f"⚠️ الخطأ: {str(e)}",
+            f"❌ <b>লগইন টেস্টের সময় ত্রুটি - {site_name}</b>\n\n"
+            f"⚠️ ত্রুটি: {str(e)}",
             parse_mode="HTML"
         )
 
@@ -1680,7 +1680,7 @@ def test_site_fetch(chat_id, site_key, account_id=None):
     account = get_account_by_id(site_key, account_id) if account_id else get_site_accounts(site_key)[0]
     
     if not account:
-        bot.send_message(chat_id, "❌ الحساب غير موجود!", parse_mode="HTML")
+        bot.send_message(chat_id, "❌ অ্যাকাউন্ট পাওয়া যায়নি!", parse_mode="HTML")
         return
     
     try:
@@ -1691,13 +1691,13 @@ def test_site_fetch(chat_id, site_key, account_id=None):
                 PASSWORD = account.get("password")
                 
                 if not check_login_valid():
-                    print(f"[GROUP] الجلسة غير صالحة لـ {account.get('username')}، محاولة تسجيل الدخول...")
+                    print(f"[GROUP] সেশন বৈধ নয়: {account.get('username')}, লগইনের চেষ্টা চলছে...")
                     if not login():
                         bot.send_message(
                             chat_id,
-                            f"❌ <b>فشل تسجيل الدخول - {site_name}</b>\n\n"
-                            f"👤 الحساب: <code>{account.get('username')}</code>\n"
-                            f"⚠️ يجب تسجيل الدخول أولاً قبل اختبار جلب الكود",
+                            f"❌ <b>লগইন ব্যর্থ - {site_name}</b>\n\n"
+                            f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
+                            f"⚠️ কোড আনা টেস্ট করার আগে লগইন করতে হবে",
                             parse_mode="HTML"
                         )
                         return
@@ -1721,25 +1721,25 @@ def test_site_fetch(chat_id, site_key, account_id=None):
                         
                         bot.send_message(
                             chat_id,
-                            f"✅ <b>نجح جلب الكود - {site_name}</b>\n\n"
-                            f"👤 الحساب: <code>{account.get('username')}</code>\n"
-                            f"📱 الرقم: <code>{last_msg.get('source', 'N/A')}</code>\n"
-                            f"📝 الرسالة: {decoded_text[:100] if decoded_text else 'N/A'}...\n"
-                            f"⏰ الوقت: {last_msg.get('date', 'N/A')}",
+                            f"✅ <b>কোড আনা সফল - {site_name}</b>\n\n"
+                            f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
+                            f"📱 নম্বর: <code>{last_msg.get('source', 'N/A')}</code>\n"
+                            f"📝 মেসেজ: {decoded_text[:100] if decoded_text else 'N/A'}...\n"
+                            f"⏰ সময়: {last_msg.get('date', 'N/A')}",
                             parse_mode="HTML"
                         )
                     else:
                         bot.send_message(
                             chat_id,
-                            f"⚠️ <b>لا توجد رسائل - {site_name}</b>\n\n"
-                            f"👤 الحساب: <code>{account.get('username')}</code>",
+                            f"⚠️ <b>কোনো মেসেজ নেই - {site_name}</b>\n\n"
+                            f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>",
                             parse_mode="HTML"
                         )
                 else:
                     bot.send_message(
                         chat_id,
-                        f"❌ <b>خطأ في جلب البيانات - {site_name}</b>\n\n"
-                        f"👤 الحساب: <code>{account.get('username')}</code>\n"
+                        f"❌ <b>ডাটা আনতে ত্রুটি - {site_name}</b>\n\n"
+                        f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
                         f"HTTP Status: {r.status_code}",
                         parse_mode="HTML"
                     )
@@ -1753,13 +1753,13 @@ def test_site_fetch(chat_id, site_key, account_id=None):
                 PASSWORD2 = account.get("password")
                 
                 if not is_logged_in_site2:
-                    print(f"[Fly sms] غير مسجل دخول لـ {account.get('username')}، محاولة تسجيل الدخول...")
+                    print(f"[Fly sms] লগইন করা নেই: {account.get('username')}, লগইনের চেষ্টা চলছে...")
                     if not login_site2():
                         bot.send_message(
                             chat_id,
-                            f"❌ <b>فشل تسجيل الدخول - {site_name}</b>\n\n"
-                            f"👤 الحساب: <code>{account.get('username')}</code>\n"
-                            f"⚠️ يجب تسجيل الدخول أولاً قبل اختبار جلب الكود",
+                            f"❌ <b>লগইন ব্যর্থ - {site_name}</b>\n\n"
+                            f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
+                            f"⚠️ কোড আনা টেস্ট করার আগে লগইন করতে হবে",
                             parse_mode="HTML"
                         )
                         return
@@ -1780,17 +1780,17 @@ def test_site_fetch(chat_id, site_key, account_id=None):
                         r = session2.get(url, timeout=HTTP_TIMEOUT2, headers=headers)
                         
                         if r.status_code in [502, 503, 504]:
-                            print(f"[Fly sms] ⚠️ السيرفر مشغول ({r.status_code}) - محاولة {attempt}/{max_retries}")
+                            print(f"[Fly sms] ⚠️ সার্ভার ব্যস্ত ({r.status_code}) - চেষ্টা {attempt}/{max_retries}")
                             if attempt < max_retries:
                                 time.sleep(15 * attempt)
                                 continue
                             else:
                                 bot.send_message(
                                     chat_id,
-                                    f"⚠️ <b>السيرفر مشغول - {site_name}</b>\n\n"
-                                    f"👤 الحساب: <code>{account.get('username')}</code>\n"
-                                    f"⏳ الخطأ: {r.status_code} - السيرفر تحت ضغط\n"
-                                    f"💡 حاول مرة أخرى بعد دقيقة",
+                                    f"⚠️ <b>সার্ভার ব্যস্ত - {site_name}</b>\n\n"
+                                    f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
+                                    f"⏳ ত্রুটি: {r.status_code} - সার্ভারে চাপ বেশি\n"
+                                    f"💡 এক মিনিট পরে আবার চেষ্টা করুন",
                                     parse_mode="HTML"
                                 )
                                 return
@@ -1803,7 +1803,7 @@ def test_site_fetch(chat_id, site_key, account_id=None):
                                 time.sleep(10)
                                 continue
                     except Exception as e:
-                        print(f"[Fly sms] ⚠️ خطأ في المحاولة {attempt}: {e}")
+                        print(f"[Fly sms] ⚠️ চেষ্টায় ত্রুটি {attempt}: {e}")
                         if attempt < max_retries:
                             time.sleep(10)
                             continue
@@ -1820,34 +1820,34 @@ def test_site_fetch(chat_id, site_key, account_id=None):
                         
                         bot.send_message(
                             chat_id,
-                            f"✅ <b>نجح جلب الكود - {site_name}</b>\n\n"
-                            f"👤 الحساب: <code>{account.get('username')}</code>\n"
-                            f"📱 الرقم: <code>{number}</code>\n"
-                            f"📝 الرسالة: {decoded_text[:100] if decoded_text else sms_text[:100]}...\n"
-                            f"⏰ الوقت: {date_str}",
+                            f"✅ <b>কোড আনা সফল - {site_name}</b>\n\n"
+                            f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
+                            f"📱 নম্বর: <code>{number}</code>\n"
+                            f"📝 মেসেজ: {decoded_text[:100] if decoded_text else sms_text[:100]}...\n"
+                            f"⏰ সময়: {date_str}",
                             parse_mode="HTML"
                         )
                     else:
                         bot.send_message(
                             chat_id,
-                            f"⚠️ <b>لا توجد رسائل - {site_name}</b>\n\n"
-                            f"👤 الحساب: <code>{account.get('username')}</code>",
+                            f"⚠️ <b>কোনো মেসেজ নেই - {site_name}</b>\n\n"
+                            f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>",
                             parse_mode="HTML"
                         )
                 else:
                     bot.send_message(
                         chat_id,
-                        f"❌ <b>خطأ في جلب البيانات - {site_name}</b>\n\n"
-                        f"👤 الحساب: <code>{account.get('username')}</code>\n"
-                        f"⚠️ فشل الاتصال بالسيرفر",
+                        f"❌ <b>ডাটা আনতে ত্রুটি - {site_name}</b>\n\n"
+                        f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
+                        f"⚠️ সার্ভারে সংযোগ ব্যর্থ",
                         parse_mode="HTML"
                     )
             except Exception as e:
                 bot.send_message(
                     chat_id,
-                    f"❌ <b>خطأ في معالجة البيانات - {site_name}</b>\n\n"
-                    f"👤 الحساب: <code>{account.get('username')}</code>\n"
-                    f"⚠️ التفاصيل: {str(e)}",
+                    f"❌ <b>ডাটা প্রসেসে ত্রুটি - {site_name}</b>\n\n"
+                    f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
+                    f"⚠️ বিবরণ: {str(e)}",
                     parse_mode="HTML"
                 )
             finally:
@@ -1876,12 +1876,12 @@ def test_site_fetch(chat_id, site_key, account_id=None):
                                 
                                 bot.send_message(
                                     chat_id,
-                                    f"✅ <b>نجح جلب الكود - {site_name} (API)</b>\n\n"
-                                    f"👤 الحساب: <code>{account.get('username')}</code>\n"
-                                    f"📱 الرقم: <code>{number}</code>\n"
-                                    f"📝 الرسالة: {decoded_text[:100] if decoded_text else sms_text[:100]}...\n"
+                                    f"✅ <b>কোড আনা সফল - {site_name} (API)</b>\n\n"
+                                    f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
+                                    f"📱 নম্বর: <code>{number}</code>\n"
+                                    f"📝 মেসেজ: {decoded_text[:100] if decoded_text else sms_text[:100]}...\n"
                                     
-                                    f"⏰ الوقت: {date_str}",
+                                    f"⏰ সময়: {date_str}",
                                     parse_mode="HTML"
                                 )
                                 return
@@ -1889,13 +1889,13 @@ def test_site_fetch(chat_id, site_key, account_id=None):
                             print(f"API parse error: {e}")
 
                 if not is_logged_in_site3:
-                    print(f"[Number_Panel] غير مسجل دخول لـ {account.get('username')}، محاولة تسجيل الدخول...")
+                    print(f"[Number_Panel] লগইন করা নেই: {account.get('username')}, লগইনের চেষ্টা চলছে...")
                     if not login_site3():
                         bot.send_message(
                             chat_id,
-                            f"❌ <b>فشل تسجيل الدخول - {site_name}</b>\n\n"
-                            f"👤 الحساب: <code>{account.get('username')}</code>\n"
-                            f"⚠️ يجب تسجيل الدخول أولاً قبل اختبار جلب الكود",
+                            f"❌ <b>লগইন ব্যর্থ - {site_name}</b>\n\n"
+                            f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
+                            f"⚠️ কোড আনা টেস্ট করার আগে লগইন করতে হবে",
                             parse_mode="HTML"
                         )
                         return
@@ -1924,33 +1924,33 @@ def test_site_fetch(chat_id, site_key, account_id=None):
                             
                             bot.send_message(
                                 chat_id,
-                                f"✅ <b>نجح جلب الكود - {site_name}</b>\n\n"
-                                f"👤 الحساب: <code>{account.get('username')}</code>\n"
-                                f"📱 الرقم: <code>{number}</code>\n"
-                                f"📝 الرسالة: {decoded_text[:100] if decoded_text else sms_text[:100]}...\n"
-                                f"⏰ الوقت: {date_str}",
+                                f"✅ <b>কোড আনা সফল - {site_name}</b>\n\n"
+                                f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
+                                f"📱 নম্বর: <code>{number}</code>\n"
+                                f"📝 মেসেজ: {decoded_text[:100] if decoded_text else sms_text[:100]}...\n"
+                                f"⏰ সময়: {date_str}",
                                 parse_mode="HTML"
                             )
                         else:
                             bot.send_message(
                                 chat_id,
-                                f"⚠️ <b>لا توجد رسائل - {site_name}</b>\n\n"
-                                f"👤 الحساب: <code>{account.get('username')}</code>",
+                                f"⚠️ <b>কোনো মেসেজ নেই - {site_name}</b>\n\n"
+                                f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>",
                                 parse_mode="HTML"
                             )
                     except Exception as e:
                         bot.send_message(
                             chat_id,
-                            f"❌ <b>خطأ في معالجة البيانات - {site_name}</b>\n\n"
-                            f"👤 الحساب: <code>{account.get('username')}</code>\n"
-                            f"⚠️ التفاصيل: {str(e)}",
+                            f"❌ <b>ডাটা প্রসেসে ত্রুটি - {site_name}</b>\n\n"
+                            f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
+                            f"⚠️ বিবরণ: {str(e)}",
                             parse_mode="HTML"
                         )
                 else:
                     bot.send_message(
                         chat_id,
-                        f"❌ <b>خطأ في جلب البيانات - {site_name}</b>\n\n"
-                        f"👤 الحساب: <code>{account.get('username')}</code>\n"
+                        f"❌ <b>ডাটা আনতে ত্রুটি - {site_name}</b>\n\n"
+                        f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
                         f"HTTP Status: {r.status_code}",
                         parse_mode="HTML"
                     )
@@ -1960,9 +1960,9 @@ def test_site_fetch(chat_id, site_key, account_id=None):
         elif site_key == "Bolt":
             bot.send_message(
                 chat_id,
-                f"⚠️ <b>اختبار جلب الكود غير مدعوم حالياً - {site_name}</b>\n\n"
-                f"👤 الحساب: <code>{account.get('username')}</code>\n"
-                f"📝 يمكنك استخدام اختبار تسجيل الدخول للتحقق من الحساب",
+                f"⚠️ <b>কোড আনা টেস্ট এখন সমর্থিত নয় - {site_name}</b>\n\n"
+                f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
+                f"📝 অ্যাকাউন্ট যাচাই করতে লগইন টেস্ট ব্যবহার করতে পারেন",
                 parse_mode="HTML"
             )
         
@@ -1988,7 +1988,7 @@ def test_site_fetch(chat_id, site_key, account_id=None):
                 soup = BeautifulSoup(resp.text, 'html.parser')
                 csrf_input = soup.find('input', {'name': '_token'})
                 if not csrf_input:
-                    bot.send_message(chat_id, f"❌ <b>فشل الاتصال - {site_name}</b>\n\n⚠️ لم يتم العثور على CSRF token", parse_mode="HTML")
+                    bot.send_message(chat_id, f"❌ <b>সংযোগ ব্যর্থ - {site_name}</b>\n\n⚠️ খুঁজে পাওয়া যায়নি CSRF token", parse_mode="HTML")
                     return
                 
                 csrf = csrf_input.get('value')
@@ -1998,7 +1998,7 @@ def test_site_fetch(chat_id, site_key, account_id=None):
                 resp = test_session.post(LOGIN_POST_URL5, data=payload, headers=headers, timeout=HTTP_TIMEOUT5, allow_redirects=True)
                 
                 if 'portal' not in resp.url and 'login' in resp.url:
-                    bot.send_message(chat_id, f"❌ <b>فشل تسجيل الدخول - {site_name}</b>\n\n👤 الحساب: <code>{account.get('username')}</code>", parse_mode="HTML")
+                    bot.send_message(chat_id, f"❌ <b>লগইন ব্যর্থ - {site_name}</b>\n\n👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>", parse_mode="HTML")
                     return
                 
                 soup = BeautifulSoup(resp.text, 'html.parser')
@@ -2016,7 +2016,7 @@ def test_site_fetch(chat_id, site_key, account_id=None):
                 resp = test_session.post(GET_SMS_URL5, data=payload, headers=headers, timeout=HTTP_TIMEOUT5)
                 
                 if resp.status_code != 200:
-                    bot.send_message(chat_id, f"❌ <b>خطأ في جلب البيانات - {site_name}</b>\n\nHTTP Status: {resp.status_code}", parse_mode="HTML")
+                    bot.send_message(chat_id, f"❌ <b>ডাটা আনতে ত্রুটি - {site_name}</b>\n\nHTTP Status: {resp.status_code}", parse_mode="HTML")
                     return
                 
                 soup = BeautifulSoup(resp.text, 'html.parser')
@@ -2029,7 +2029,7 @@ def test_site_fetch(chat_id, site_key, account_id=None):
                         ranges.append(match.group(1))
                 
                 if not ranges:
-                    bot.send_message(chat_id, f"⚠️ <b>لا توجد رسائل - {site_name}</b>\n\n👤 الحساب: <code>{account.get('username')}</code>", parse_mode="HTML")
+                    bot.send_message(chat_id, f"⚠️ <b>কোনো মেসেজ নেই - {site_name}</b>\n\n👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>", parse_mode="HTML")
                     return
                 
                 first_range = ranges[0]
@@ -2054,7 +2054,7 @@ def test_site_fetch(chat_id, site_key, account_id=None):
                         numbers.extend(all_numbers[:10])
                 
                 if not numbers:
-                    bot.send_message(chat_id, f"⚠️ <b>لا توجد أرقام - {site_name}</b>\n\n👤 الحساب: <code>{account.get('username')}</code>\nRange: {first_range}", parse_mode="HTML")
+                    bot.send_message(chat_id, f"⚠️ <b>কোনো নম্বর নেই - {site_name}</b>\n\n👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\nRange: {first_range}", parse_mode="HTML")
                     return
                 
                 first_phone = numbers[0]
@@ -2080,21 +2080,21 @@ def test_site_fetch(chat_id, site_key, account_id=None):
                         otp, decoded_text = extract_from_message(message)
                         bot.send_message(
                             chat_id,
-                            f"✅ <b>نجح جلب الكود - {site_name}</b>\n\n"
-                            f"👤 الحساب: <code>{account.get('username')}</code>\n"
-                            f"📱 الرقم: <code>{first_phone}</code>\n"
-                            f"📝 الرسالة: {(decoded_text[:100] if decoded_text else message[:100])}...\n"
+                            f"✅ <b>কোড আনা সফল - {site_name}</b>\n\n"
+                            f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
+                            f"📱 নম্বর: <code>{first_phone}</code>\n"
+                            f"📝 মেসেজ: {(decoded_text[:100] if decoded_text else message[:100])}...\n"
                             
                             f"📊 Ranges: {len(ranges)} | Numbers: {len(numbers)}",
                             parse_mode="HTML"
                         )
                     else:
-                        bot.send_message(chat_id, f"⚠️ <b>لا توجد رسالة - {site_name}</b>\n\n📱 الرقم: {first_phone}", parse_mode="HTML")
+                        bot.send_message(chat_id, f"⚠️ <b>কোনো মেসেজ নেই - {site_name}</b>\n\n📱 নম্বর: {first_phone}", parse_mode="HTML")
                 else:
-                    bot.send_message(chat_id, f"❌ <b>خطأ في جلب الرسالة - {site_name}</b>\n\nHTTP Status: {resp.status_code}", parse_mode="HTML")
+                    bot.send_message(chat_id, f"❌ <b>মেসেজ আনতে ত্রুটি - {site_name}</b>\n\nHTTP Status: {resp.status_code}", parse_mode="HTML")
                     
             except Exception as e:
-                bot.send_message(chat_id, f"❌ <b>خطأ - {site_name}</b>\n\n⚠️ {str(e)}", parse_mode="HTML")
+                bot.send_message(chat_id, f"❌ <b>ত্রুটি - {site_name}</b>\n\n⚠️ {str(e)}", parse_mode="HTML")
             finally:
                 USERNAME5, PASSWORD5 = old_username, old_password
         
@@ -2108,9 +2108,9 @@ def test_site_fetch(chat_id, site_key, account_id=None):
             if not result:
                 bot.send_message(
                     chat_id,
-                    f"❌ <b>فشل تسجيل الدخول - {site_name}</b>\n\n"
-                    f"👤 الحساب: <code>{account.get('username')}</code>\n"
-                    f"⚠️ يجب تسجيل الدخول أولاً قبل اختبار جلب الكود",
+                    f"❌ <b>লগইন ব্যর্থ - {site_name}</b>\n\n"
+                    f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
+                    f"⚠️ কোড আনা টেস্ট করার আগে লগইন করতে হবে",
                     parse_mode="HTML"
                 )
                 return
@@ -2147,51 +2147,51 @@ def test_site_fetch(chat_id, site_key, account_id=None):
                             
                             bot.send_message(
                                 chat_id,
-                                f"✅ <b>نجح جلب الكود - {site_name}</b>\n\n"
-                                f"👤 الحساب: <code>{account.get('username')}</code>\n"
-                                f"📱 الرقم: <code>{number}</code>\n"
-                                f"📝 الرسالة: {decoded_text[:100] if decoded_text else sms_text[:100]}...\n"
+                                f"✅ <b>কোড আনা সফল - {site_name}</b>\n\n"
+                                f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
+                                f"📱 নম্বর: <code>{number}</code>\n"
+                                f"📝 মেসেজ: {decoded_text[:100] if decoded_text else sms_text[:100]}...\n"
                                 
-                                f"⏰ الوقت: {date_str}",
+                                f"⏰ সময়: {date_str}",
                                 parse_mode="HTML"
                             )
                         else:
                             bot.send_message(
                                 chat_id,
-                                f"⚠️ <b>لا توجد رسائل - {site_name}</b>\n\n"
-                                f"👤 الحساب: <code>{account.get('username')}</code>",
+                                f"⚠️ <b>কোনো মেসেজ নেই - {site_name}</b>\n\n"
+                                f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>",
                                 parse_mode="HTML"
                             )
                     except Exception as e:
                         bot.send_message(
                             chat_id,
-                            f"❌ <b>خطأ في معالجة البيانات - {site_name}</b>\n\n"
-                            f"👤 الحساب: <code>{account.get('username')}</code>\n"
-                            f"⚠️ التفاصيل: {str(e)}",
+                            f"❌ <b>ডাটা প্রসেসে ত্রুটি - {site_name}</b>\n\n"
+                            f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
+                            f"⚠️ বিবরণ: {str(e)}",
                             parse_mode="HTML"
                         )
                 else:
                     bot.send_message(
                         chat_id,
-                        f"❌ <b>خطأ في جلب البيانات - {site_name}</b>\n\n"
-                        f"👤 الحساب: <code>{account.get('username')}</code>\n"
+                        f"❌ <b>ডাটা আনতে ত্রুটি - {site_name}</b>\n\n"
+                        f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
                         f"HTTP Status: {r.status_code}",
                         parse_mode="HTML"
                     )
             except Exception as e:
                 bot.send_message(
                     chat_id,
-                    f"❌ <b>خطأ في الاتصال - {site_name}</b>\n\n"
-                    f"👤 الحساب: <code>{account.get('username')}</code>\n"
-                    f"⚠️ التفاصيل: {str(e)}",
+                    f"❌ <b>সংযোগে ত্রুটি - {site_name}</b>\n\n"
+                    f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n"
+                    f"⚠️ বিবরণ: {str(e)}",
                     parse_mode="HTML"
                 )
     
     except Exception as e:
         bot.send_message(
             chat_id,
-            f"❌ <b>خطأ أثناء اختبار جلب الكود - {site_name}</b>\n\n"
-            f"⚠️ الخطأ: {str(e)}",
+            f"❌ <b>কোড আনা টেস্টের সময় ত্রুটি - {site_name}</b>\n\n"
+            f"⚠️ ত্রুটি: {str(e)}",
             parse_mode="HTML"
         )
 
@@ -2223,7 +2223,7 @@ def extract_sms(html_text, debug_mode=False):
         cols = [td.get_text(separator=" ", strip=True) for td in tds]
         
         if debug_mode and row_count <= 3:
-            print(f"  صف {row_count}: {len(cols)} عمود - {cols[:8] if len(cols) > 7 else cols}")
+            print(f"  সারি {row_count}: {len(cols)} কলাম - {cols[:8] if len(cols) > 7 else cols}")
         
         if not cols or len(cols) < 5:
             continue
@@ -2398,44 +2398,44 @@ def retry_request_site2(func, max_retries=5, retry_delay=10):
         except (requests.exceptions.Timeout, requests.exceptions.ConnectionError) as e:
             last_error = e
             backoff = min(60, retry_delay * attempt)
-            print(f"⚠️ [Fly sms] محاولة {attempt}/{max_retries} فشلت: {type(e).__name__}")
-            print(f"⏳ [Fly sms] انتظار {backoff} ثانية قبل إعادة المحاولة...")
+            print(f"⚠️ [Fly sms] চেষ্টা {attempt}/{max_retries} ব্যর্থ হয়েছে: {type(e).__name__}")
+            print(f"⏳ [Fly sms] অপেক্ষা {backoff} সেকেন্ড, আবার চেষ্টার আগে...")
             time.sleep(backoff)
         except requests.exceptions.HTTPError as e:
             last_error = e
             status_code = e.response.status_code if e.response else 0
             if status_code in [502, 503, 504]:
                 backoff = min(60, 10 + (attempt * 5))
-                print(f"⚠️ [Fly sms] خطأ {status_code} - محاولة {attempt}/{max_retries}")
-                print(f"⏳ [Fly sms] السيرفر مشغول، انتظار {backoff} ثانية...")
+                print(f"⚠️ [Fly sms] ত্রুটি {status_code} - চেষ্টা {attempt}/{max_retries}")
+                print(f"⏳ [Fly sms] সার্ভার ব্যস্ত, অপেক্ষা {backoff} সেকেন্ড...")
                 time.sleep(backoff)
             elif status_code == 404:
                 backoff = min(60, 15 + (attempt * 5))
-                print(f"⚠️ [Fly sms] خطأ 404 - محاولة {attempt}/{max_retries}")
-                print(f"⏳ [Fly sms] انتظار {backoff} ثانية...")
+                print(f"⚠️ [Fly sms] ত্রুটি 404 - চেষ্টা {attempt}/{max_retries}")
+                print(f"⏳ [Fly sms] অপেক্ষা {backoff} সেকেন্ড...")
                 time.sleep(backoff)
             else:
-                print(f"❌ [Fly sms] خطأ HTTP {status_code}: {e}")
+                print(f"❌ [Fly sms] ত্রুটি HTTP {status_code}: {e}")
                 raise
         except Exception as e:
             error_str = str(e)
             if "503" in error_str or "502" in error_str or "504" in error_str or "Service" in error_str:
                 last_error = e
                 backoff = min(60, 10 + (attempt * 5))
-                print(f"⚠️ [Fly sms] خطأ سيرفر - محاولة {attempt}/{max_retries}: {error_str[:100]}")
-                print(f"⏳ [Fly sms] انتظار {backoff} ثانية...")
+                print(f"⚠️ [Fly sms] সার্ভার ত্রুটি - চেষ্টা {attempt}/{max_retries}: {error_str[:100]}")
+                print(f"⏳ [Fly sms] অপেক্ষা {backoff} সেকেন্ড...")
                 time.sleep(backoff)
             elif "404" in error_str or "Not Found" in error_str:
                 last_error = e
                 backoff = min(60, 15 + (attempt * 5))
-                print(f"⚠️ [Fly sms] خطأ 404 - محاولة {attempt}/{max_retries}")
-                print(f"⏳ [Fly sms] انتظار {backoff} ثانية...")
+                print(f"⚠️ [Fly sms] ত্রুটি 404 - চেষ্টা {attempt}/{max_retries}")
+                print(f"⏳ [Fly sms] অপেক্ষা {backoff} সেকেন্ড...")
                 time.sleep(backoff)
             else:
-                print(f"❌ [Fly sms] خطأ غير متوقع: {e}")
+                print(f"❌ [Fly sms] অপ্রত্যাশিত ত্রুটি: {e}")
                 raise
     
-    print(f"❌ [Fly sms] استنفدت جميع المحاولات ({max_retries})")
+    print(f"❌ [Fly sms] সব চেষ্টা শেষ ({max_retries})")
     if last_error:
         raise last_error
     raise Exception("Max retries exceeded")
@@ -2480,7 +2480,7 @@ def clean_html_site2(text):
         text = text.replace('\x00', '').strip()
         return text
     except Exception as e:
-        print(f"[Site2] ⚠️ خطأ في clean_html: {e} - القيمة: {repr(text)}")
+        print(f"[Site2] ⚠️ ত্রুটি: clean_html: {e} - মান: {repr(text)}")
         try:
             return str(text) if text else ""
         except:
@@ -2499,7 +2499,7 @@ def solve_captcha_timesms(html_content):
 
 def login_site10(account=None):
     global is_logged_in_site10, session10
-    print("[TimeSMS] 🔄 محاولة تسجيل الدخول...")
+    print("[TimeSMS] 🔄 লগইনের চেষ্টা চলছে...")
     
     site_key = "TimeSMS"
     if account:
@@ -2519,7 +2519,7 @@ def login_site10(account=None):
         resp = sess.get(login_url, timeout=15)
         captcha = solve_captcha_timesms(resp.text)
         if not captcha:
-            print("[TimeSMS] ❌ فشل حل الكابتشا")
+            print("[TimeSMS] ❌ ক্যাপচা সমাধান ব্যর্থ")
             return False
         
         data = {'username': user, 'password': pw, 'capt': captcha}
@@ -2527,15 +2527,15 @@ def login_site10(account=None):
         
         if 'login' not in str(login_resp.url).lower():
             if not account: is_logged_in_site10 = True
-            print("[TimeSMS] ✅ تم تسجيل الدخول بنجاح")
+            print("[TimeSMS] ✅ লগইন সফল হয়েছে")
             return sess if account else True
     except Exception as e:
-        print(f"[TimeSMS] ❌ خطأ في تسجيل الدخول: {e}")
+        print(f"[TimeSMS] ❌ লগইনে ত্রুটি: {e}")
     return False
 
 def login_site2():
     global is_logged_in_site2
-    print("[Fly sms] 🔄 محاولة تسجيل الدخول...")
+    print("[Fly sms] 🔄 লগইনের চেষ্টা চলছে...")
     
     session2.headers.update({
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
@@ -2550,19 +2550,19 @@ def login_site2():
             resp = session2.get(LOGIN_PAGE_URL2, timeout=HTTP_TIMEOUT2)
             
             if resp.status_code in [502, 503, 504]:
-                print(f"[Fly sms] ⚠️ السيرفر مشغول ({resp.status_code})")
+                print(f"[Fly sms] ⚠️ সার্ভার ব্যস্ত ({resp.status_code})")
                 raise requests.exceptions.HTTPError(f"{resp.status_code} Server Error", response=resp)
             
             match = re.search(r'What is (\d+) \+ (\d+)', resp.text)
             if not match:
-                print("[Fly sms] ⚠️ لم يتم العثور على captcha في صفحة تسجيل الدخول")
+                print("[Fly sms] ⚠️ খুঁজে পাওয়া যায়নি captcha লগইন পেজে")
                 if resp.status_code != 200:
                     raise Exception(f"HTTP {resp.status_code}")
                 return False
             
             num1, num2 = int(match.group(1)), int(match.group(2))
             captcha_answer = num1 + num2
-            print(f"[Fly sms] 🧮 حل captcha: {num1} + {num2} = {captcha_answer}")
+            print(f"[Fly sms] 🧮 সমাধান captcha: {num1} + {num2} = {captcha_answer}")
             
             payload = {
                 "username": USERNAME2,
@@ -2578,14 +2578,14 @@ def login_site2():
                 "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
             }
             
-            print(f"[Fly sms] 📤 إرسال طلب تسجيل الدخول لـ: {USERNAME2}")
+            print(f"[Fly sms] 📤 লগইন অনুরোধ পাঠানো হচ্ছে: {USERNAME2}")
             
             resp = session2.post(LOGIN_POST_URL2, data=payload, headers=headers, timeout=HTTP_TIMEOUT2, allow_redirects=True)
             
-            print(f"[Fly sms] 📊 حالة الاستجابة: {resp.status_code}")
+            print(f"[Fly sms] 📊 রেসপন্স স্ট্যাটাস: {resp.status_code}")
             
             if resp.status_code in [502, 503, 504]:
-                print(f"[Fly sms] ⚠️ السيرفر مشغول ({resp.status_code})")
+                print(f"[Fly sms] ⚠️ সার্ভার ব্যস্ত ({resp.status_code})")
                 raise requests.exceptions.HTTPError(f"{resp.status_code} Server Error", response=resp)
             
             if ("dashboard" in resp.text.lower() or 
@@ -2593,27 +2593,27 @@ def login_site2():
                 "agent" in resp.url.lower() or
                 "/ints/agent" in resp.url or
                 resp.url != LOGIN_PAGE_URL2):
-                print("[Fly sms] ✅ تم تسجيل الدخول بنجاح")
+                print("[Fly sms] ✅ লগইন সফল হয়েছে")
                 is_logged_in_site2 = True
                 
                 try:
                     session2.get(BASE_URL2 + "/ints/agent/SMSCDRReports", timeout=HTTP_TIMEOUT2)
-                    print("[Fly sms] ✅ تم زيارة صفحة SMSCDRReports")
+                    print("[Fly sms] ✅ পেজ ভিজিট করা হয়েছে SMSCDRReports")
                 except:
                     pass
                 
                 return True
             else:
-                print("[Fly sms] ❌ فشل تسجيل الدخول")
+                print("[Fly sms] ❌ লগইন ব্যর্থ")
                 if "incorrect" in resp.text.lower() or "invalid" in resp.text.lower():
-                    print("[Fly sms] ⚠️ اسم المستخدم أو كلمة المرور غير صحيحة")
+                    print("[Fly sms] ⚠️ ইউজারনেম বা পাসওয়ার্ড ভুল")
                 return False
                 
         except requests.exceptions.HTTPError as e:
-            print(f"[Fly sms] ⚠️ خطأ HTTP: {e}")
+            print(f"[Fly sms] ⚠️ ত্রুটি HTTP: {e}")
             raise
         except Exception as e:
-            print(f"[Fly sms] ❌ خطأ في تسجيل الدخول: {e}")
+            print(f"[Fly sms] ❌ লগইনে ত্রুটি: {e}")
             raise
     
     try:
@@ -2677,7 +2677,7 @@ def fetch_ajax_json_site2(url):
     except Exception as e:
         error_str = str(e)
         if "Session expired" in error_str:
-            print("[Fly sms] ⚠️ انتهت صلاحية الجلسة. إعادة تسجيل الدخول...")
+            print("[Fly sms] ⚠️ সেশনের মেয়াদ শেষ। আবার লগইন হচ্ছে...")
             is_logged_in_site2 = False
             if login_site2():
                 is_logged_in_site2 = True
@@ -2688,13 +2688,13 @@ def fetch_ajax_json_site2(url):
             else:
                 return None
         if "503" in error_str or "502" in error_str or "504" in error_str:
-            print(f"[Fly sms] ⚠️ السيرفر مشغول، المحاولة مرة أخرى بعد فترة...")
+            print(f"[Fly sms] ⚠️ সার্ভার ব্যস্ত, কিছুক্ষণ পরে আবার চেষ্টা...")
             time.sleep(30)
             try:
                 return retry_request_site2(do_fetch, max_retries=3, retry_delay=15)
             except:
                 return None
-        print(f"[Fly sms] ❌ خطأ في جلب/تحليل AJAX: {e}")
+        print(f"[Fly sms] ❌ আনা/বিশ্লেষণে ত্রুটি AJAX: {e}")
         return None
 
 def extract_rows_from_json_site2(j):
@@ -2752,7 +2752,7 @@ def row_to_tuple_site2(row):
                     sms_str = try_decode_site2(val) if val is not None else ""
                     sms_str = clean_html_site2(sms_str)
     except Exception as e:
-        print(f"[Site2] ⚠️ خطأ في row_to_tuple: {e}")
+        print(f"[Site2] ⚠️ ত্রুটি: row_to_tuple: {e}")
         print(f"[Site2] Row data: {row}")
     
     unique_key = f"{date_str}|{number_str}|{sms_str}"
@@ -2764,7 +2764,7 @@ def load_last_seen_key_site2():
         try:
             with open(LAST_MESSAGE_FILE_SITE2, "r", encoding="utf-8") as f:
                 last_seen_key_site2 = f.read().strip()
-                print(f"[Site2] 📋 تم تحميل آخر رسالة مشاهدة: {last_seen_key_site2[:50]}..." if last_seen_key_site2 else "[Site2] 📋 لا توجد رسائل سابقة")
+                print(f"[Site2] 📋 সর্বশেষ দেখা মেসেজ লোড হয়েছে: {last_seen_key_site2[:50]}..." if last_seen_key_site2 else "[Site2] 📋 আগের কোনো মেসেজ নেই")
         except:
             last_seen_key_site2 = ""
     else:
@@ -2774,9 +2774,9 @@ def save_last_seen_key_site2():
     try:
         with open(LAST_MESSAGE_FILE_SITE2, "w", encoding="utf-8") as f:
             f.write(last_seen_key_site2)
-        print(f"[Site2] 💾 تم حفظ آخر رسالة مشاهدة")
+        print(f"[Site2] 💾 সর্বশেষ দেখা মেসেজ সেভ হয়েছে")
     except Exception as e:
-        print(f"[Site2] ❌ خطأ في حفظ آخر رسالة: {str(e)}")
+        print(f"[Site2] ❌ সর্বশেষ মেসেজ সেভে ত্রুটি: {str(e)}")
 
 def load_data():
     global COUNTRIES, CHANNELS, USERS, ADMINS, BANNED, OTP_GROUP, GROUPS, REFERRALS, NUMBERS_ADMINS
@@ -2898,10 +2898,10 @@ def save_withdrawal_requests(requests):
         json.dump(requests, f, indent=2, ensure_ascii=False)
 
 DEFAULT_WITHDRAWAL_METHODS = {
-    "vodafone": {"name_ar": "فودافون كاش", "name_en": "Vodafone Cash", "enabled": True, "details_ar": "رقم الهاتف", "details_en": "Phone number"},
-    "usdt_trc20": {"name_ar": "USDT (TRC20)", "name_en": "USDT (TRC20)", "enabled": True, "details_ar": "عنوان محفظة TRC20", "details_en": "TRC20 wallet address"},
-    "usdt_bep20": {"name_ar": "USDT (BEP20)", "name_en": "USDT (BEP20)", "enabled": True, "details_ar": "عنوان محفظة BEP20", "details_en": "BEP20 wallet address"},
-    "binance_id": {"name_ar": "Binance ID", "name_en": "Binance ID", "enabled": True, "details_ar": "Binance Pay ID أو Email", "details_en": "Binance Pay ID or Email"}
+    "vodafone": {"name_ar": "ভোডাফোন ক্যাশ", "name_en": "Vodafone Cash", "enabled": True, "details_ar": "ফোন নম্বর", "details_en": "Phone number"},
+    "usdt_trc20": {"name_ar": "USDT (TRC20)", "name_en": "USDT (TRC20)", "enabled": True, "details_ar": "ওয়ালেট ঠিকানা TRC20", "details_en": "TRC20 wallet address"},
+    "usdt_bep20": {"name_ar": "USDT (BEP20)", "name_en": "USDT (BEP20)", "enabled": True, "details_ar": "ওয়ালেট ঠিকানা BEP20", "details_en": "BEP20 wallet address"},
+    "binance_id": {"name_ar": "Binance ID", "name_en": "Binance ID", "enabled": True, "details_ar": "Binance Pay ID অথবা Email", "details_en": "Binance Pay ID or Email"}
 }
 
 def load_withdrawal_methods():
@@ -3043,11 +3043,11 @@ def add_code_bonus(user_id):
                 referrer_lang = get_user_language(int(referrer_key))
                 if referrer_lang == "ar":
                     notify_msg = (
-                        f"🎉 <b>تهانينا! إحالة جديدة نشطة!</b>\n\n"
-                        f"👤 المستخدم <code>{user_id}</code> أصبح إحالة نشطة!\n"
-                        f"💰 تم إضافة <b>${referral_bonus:.2f}</b> لرصيدك!\n\n"
-                        f"📊 إجمالي الإحالات النشطة: <b>{REFERRALS[referrer_key]['active_referrals']}</b>\n"
-                        f"💵 رصيدك الحالي: <b>${REFERRALS[referrer_key]['balance']:.2f}</b>"
+                        f"🎉 <b>অভিনন্দন! নতুন রেফারেল সক্রিয় হয়েছে!</b>\n\n"
+                        f"👤 ইউজার <code>{user_id}</code> সক্রিয় রেফারেল হয়ে গেছে!\n"
+                        f"💰 যোগ করা হয়েছে <b>${referral_bonus:.2f}</b> আপনার ব্যালেন্সে!\n\n"
+                        f"📊 মোট সক্রিয় রেফারেল: <b>{REFERRALS[referrer_key]['active_referrals']}</b>\n"
+                        f"💵 আপনার বর্তমান ব্যালেন্স: <b>${REFERRALS[referrer_key]['balance']:.2f}</b>"
                     )
                 else:
                     notify_msg = (
@@ -3059,7 +3059,7 @@ def add_code_bonus(user_id):
                     )
                 bot.send_message(int(referrer_key), notify_msg, parse_mode="HTML")
             except Exception as notify_err:
-                print(f"⚠️ خطأ في إرسال إشعار الإحالة: {notify_err}")
+                print(f"⚠️ রেফারেল নোটিফিকেশন পাঠাতে ত্রুটি: {notify_err}")
     
     save_referrals(REFERRALS)
 
@@ -3117,12 +3117,12 @@ def get_statistics_text():
     codes_week = STATISTICS.get("codes_this_week", 0)
     codes_month = STATISTICS.get("codes_this_month", 0)
     
-    text = f"📊 <b>إحصائيات البوت</b>\n\n"
-    text += f"👥 <b>إجمالي المستخدمين:</b> {total_users}\n"
-    text += f"🔢 <b>إجمالي الأكواد:</b> {total_codes}\n\n"
-    text += f"📅 <b>أكواد اليوم:</b> {codes_today}\n"
-    text += f"📆 <b>أكواد هذا الأسبوع:</b> {codes_week}\n"
-    text += f"📊 <b>أكواد هذا الشهر:</b> {codes_month}\n"
+    text = f"📊 <b>বটের পরিসংখ্যান</b>\n\n"
+    text += f"👥 <b>মোট ইউজার:</b> {total_users}\n"
+    text += f"🔢 <b>মোট কোড:</b> {total_codes}\n\n"
+    text += f"📅 <b>আজকের কোড:</b> {codes_today}\n"
+    text += f"📆 <b>এই সপ্তাহের কোড:</b> {codes_week}\n"
+    text += f"📊 <b>এই মাসের কোড:</b> {codes_month}\n"
     
     return text
 
@@ -3151,7 +3151,7 @@ def check_subscription(user_id):
 
 def get_subscription_message(user_id):
     lang = get_user_language(user_id)
-    text = "⚠️ <b>يجب الاشتراك في القنوات:</b>\n\n" if lang == "ar" else "⚠️ <b>Subscribe to channels:</b>\n\n"
+    text = "⚠️ <b>চ্যানেলগুলোতে সাবস্ক্রাইব করতে হবে:</b>\n\n" if lang == "ar" else "⚠️ <b>Subscribe to channels:</b>\n\n"
     for idx, ch in enumerate(CHANNELS, 1): text += f"{idx}. {ch['name']}\n"
     return text
 
@@ -3172,7 +3172,7 @@ def get_full_subscription_keyboard(user_id):
         except Exception as e:
             print(f"Error getting channel link: {e}")
             continue
-    markup.add(InlineKeyboardButton("✅ تم الاشتراك" if get_user_language(user_id) == "ar" else "✅ Subscribed", callback_data="check_sub"))
+    markup.add(InlineKeyboardButton("✅ সাবস্ক্রাইব করা হয়েছে" if get_user_language(user_id) == "ar" else "✅ Subscribed", callback_data="check_sub"))
     return markup
 
 @bot.callback_query_handler(func=lambda call: call.data == "check_sub")
@@ -3183,7 +3183,7 @@ def check_sub_callback(call):
         except: pass
         start(call.message)
     else: 
-        bot.answer_callback_query(call.id, "⚠️ لم تشترك بعد في جميع القنوات!", show_alert=True)
+        bot.answer_callback_query(call.id, "⚠️ আপনি এখনো সব চ্যানেলে সাবস্ক্রাইব করেননি!", show_alert=True)
         try:
             bot.edit_message_text(
                 chat_id=call.message.chat.id,
@@ -3213,7 +3213,7 @@ def get_subscription_keyboard():
         btn = InlineKeyboardButton(f"🔗 Join {channel_name}", url=channel_url)
         markup.add(btn)
 
-    verify_btn = InlineKeyboardButton("✅ تحقق / Verify", callback_data="verify_subscription", style="success")
+    verify_btn = InlineKeyboardButton("✅ যাচাই / Verify", callback_data="verify_subscription", style="success")
     markup.add(verify_btn)
 
     return markup
@@ -3228,7 +3228,7 @@ def get_all_channels_keyboard(user_id=None):
         markup.add(InlineKeyboardButton(f"📢 {channel_name}", url=channel_url))
     
     if lang == "ar":
-        verify_text = "✅ تحقق من الاشتراك"
+        verify_text = "✅ সাবস্ক্রিপশন যাচাই করুন"
     else:
         verify_text = "✅ Verify Subscription"
         
@@ -3243,7 +3243,7 @@ def get_single_channel_keyboard(channel, user_id=None):
     markup.add(InlineKeyboardButton(btn_name, url=channel['url']))
     
     if lang == "ar":
-        verify_text = "✅ تحقق من الاشتراك"
+        verify_text = "✅ সাবস্ক্রিপশন যাচাই করুন"
     else:
         verify_text = "✅ Verify Subscription"
         
@@ -3254,7 +3254,7 @@ def get_all_channels_message(user_id):
     lang = get_user_language(user_id)
     
     if lang == "ar":
-        text = "🔒 <b>انضم للقنوات التالية للمتابعة</b>\n\n"
+        text = "🔒 <b>চালিয়ে যেতে নিচের চ্যানেলগুলোতে জয়েন করুন</b>\n\n"
         for i, channel in enumerate(CHANNELS, 1):
             channel_name = channel.get("name_ar", channel.get("name", "Channel"))
             text += f"{i}. 📢 <b>{channel_name}</b>\n"
@@ -3268,7 +3268,7 @@ def get_all_channels_message(user_id):
 
 def get_subscription_message(user_id):
     lang = get_user_language(user_id)
-    text = "⚠️ <b>يجب الاشتراك في القنوات:</b>\n\n" if lang == "ar" else "⚠️ <b>Subscribe to channels:</b>\n\n"
+    text = "⚠️ <b>চ্যানেলগুলোতে সাবস্ক্রাইব করতে হবে:</b>\n\n" if lang == "ar" else "⚠️ <b>Subscribe to channels:</b>\n\n"
     for idx, ch in enumerate(CHANNELS, 1): text += f"{idx}. {ch['name']}\n"
     return text
 
@@ -3280,15 +3280,15 @@ def get_main_menu_lang(user_id):
         InlineKeyboardButton(t(user_id, "my_account"), callback_data="my_account")
     )
     
-    withdraw_text = "💰 سحب الرصيد" if lang == "ar" else "💰 Withdraw"
-    help_text = "❓ مساعدة" if lang == "ar" else "❓ Help"
+    withdraw_text = "💰 ব্যালেন্স উত্তোলন" if lang == "ar" else "💰 Withdraw"
+    help_text = "❓ সাহায্য" if lang == "ar" else "❓ Help"
     markup.add(
         InlineKeyboardButton(withdraw_text, callback_data="withdraw_balance"),
         InlineKeyboardButton(help_text, callback_data="show_instructions")
     )
     
     links = load_button_links()
-    dev_text = "👨‍💻 المطور" if lang == "ar" else "👨‍💻 Developer"
+    dev_text = "👨‍💻 ডেভেলপার" if lang == "ar" else "👨‍💻 Developer"
     markup.add(
         InlineKeyboardButton(dev_text, url=links.get("developer_link", f"tg://user?id={MAIN_ADMIN_ID}"))
     )
@@ -3297,51 +3297,51 @@ def get_main_menu_lang(user_id):
 def get_admin_menu():
     markup = InlineKeyboardMarkup(row_width=2)
     markup.add(
-        InlineKeyboardButton("⚙️ إعدادات المواقع", callback_data="admin_sites_menu", style="primary"),
-        InlineKeyboardButton("👥 إدارة الحسابات", callback_data="admin_accounts_menu", style="primary")
+        InlineKeyboardButton("⚙️ সাইট সেটিংস", callback_data="admin_sites_menu", style="primary"),
+        InlineKeyboardButton("👥 অ্যাকাউন্ট ম্যানেজমেন্ট", callback_data="admin_accounts_menu", style="primary")
     )
     markup.add(
-        InlineKeyboardButton("➕ إضافة دولة", callback_data="admin_add_country", style="success"),
-        InlineKeyboardButton("➖ حذف دولة", callback_data="admin_remove_country", style="danger")
+        InlineKeyboardButton("➕ দেশ যোগ করুন", callback_data="admin_add_country", style="success"),
+        InlineKeyboardButton("➖ দেশ মুছুন", callback_data="admin_remove_country", style="danger")
     )
     markup.add(
-        InlineKeyboardButton("📋 الدول المتاحة", callback_data="admin_list_countries", style="primary")
+        InlineKeyboardButton("📋 উপলব্ধ দেশসমূহ", callback_data="admin_list_countries", style="primary")
     )
     markup.add(
-        InlineKeyboardButton("📢 إضافة قناة", callback_data="admin_add_channel", style="success"),
-        InlineKeyboardButton("🗑 حذف قناة", callback_data="admin_remove_channel", style="danger")
+        InlineKeyboardButton("📢 চ্যানেল যোগ করুন", callback_data="admin_add_channel", style="success"),
+        InlineKeyboardButton("🗑 চ্যানেল মুছুন", callback_data="admin_remove_channel", style="danger")
     )
     markup.add(
-        InlineKeyboardButton("📊 القنوات المضافة", callback_data="admin_list_channels", style="primary"),
-        InlineKeyboardButton("📱 إدارة الجروبات", callback_data="admin_groups_menu", style="primary")
+        InlineKeyboardButton("📊 যোগ করা চ্যানেল", callback_data="admin_list_channels", style="primary"),
+        InlineKeyboardButton("📱 গ্রুপ ম্যানেজমেন্ট", callback_data="admin_groups_menu", style="primary")
     )
     markup.add(
-        InlineKeyboardButton("📈 الإحصائيات", callback_data="admin_statistics", style="primary")
+        InlineKeyboardButton("📈 পরিসংখ্যান", callback_data="admin_statistics", style="primary")
     )
     markup.add(
-        InlineKeyboardButton("📣 إذاعة", callback_data="admin_broadcast_menu", style="success")
+        InlineKeyboardButton("📣 ব্রডকাস্ট", callback_data="admin_broadcast_menu", style="success")
     )
     markup.add(
-        InlineKeyboardButton("🔧 إضافة مشرف", callback_data="admin_add_admin", style="success"),
-        InlineKeyboardButton("🗑 حذف مشرف", callback_data="admin_remove_admin", style="danger")
+        InlineKeyboardButton("🔧 অ্যাডমিন যোগ করুন", callback_data="admin_add_admin", style="success"),
+        InlineKeyboardButton("🗑 অ্যাডমিন মুছুন", callback_data="admin_remove_admin", style="danger")
     )
     markup.add(
-        InlineKeyboardButton("🚫 حظر مستخدم", callback_data="admin_ban_user", style="danger"),
-        InlineKeyboardButton("✅ إلغاء حظر", callback_data="admin_unban_user", style="success")
+        InlineKeyboardButton("🚫 ইউজার ব্যান", callback_data="admin_ban_user", style="danger"),
+        InlineKeyboardButton("✅ আনব্যান", callback_data="admin_unban_user", style="success")
     )
     markup.add(
-        InlineKeyboardButton("💰 نظام الإحالات", callback_data="admin_referral_settings", style="primary"),
-        InlineKeyboardButton("📝 رسائل الترحيب", callback_data="admin_welcome_messages", style="primary")
+        InlineKeyboardButton("💰 রেফারেল সিস্টেম", callback_data="admin_referral_settings", style="primary"),
+        InlineKeyboardButton("📝 স্বাগত বার্তা", callback_data="admin_welcome_messages", style="primary")
     )
     markup.add(
-        InlineKeyboardButton("🔗 روابط الأزرار", callback_data="admin_button_links", style="primary"),
-        InlineKeyboardButton("🔘 أزرار رسالة OTP", callback_data="admin_otp_buttons", style="success")
+        InlineKeyboardButton("🔗 বাটনের লিংক", callback_data="admin_button_links", style="primary"),
+        InlineKeyboardButton("🔘 মেসেজ বাটন OTP", callback_data="admin_otp_buttons", style="success")
     )
     markup.add(
-        InlineKeyboardButton("📥 إنشاء نسخة احتياطية", callback_data="admin_create_backup", style="success"),
-        InlineKeyboardButton("📤 استعادة نسخة احتياطية", callback_data="admin_restore_backup", style="primary")
+        InlineKeyboardButton("📥 ব্যাকআপ তৈরি", callback_data="admin_create_backup", style="success"),
+        InlineKeyboardButton("📤 ব্যাকআপ পুনরুদ্ধার", callback_data="admin_restore_backup", style="primary")
     )
-    markup.add(InlineKeyboardButton("🔙 رجوع للقائمة الرئيسية", callback_data="back_to_main", style="danger"))
+    markup.add(InlineKeyboardButton("🔙 মূল মেনুতে ফিরুন", callback_data="back_to_main", style="danger"))
     return markup
 
 def get_sites_menu():
@@ -3366,7 +3366,7 @@ def get_sites_menu():
     markup.add(
         InlineKeyboardButton("🆕 TimeSMS", callback_data="site_config_TimeSMS", style="danger")
     )
-    markup.add(InlineKeyboardButton("🔙 رجوع للوحة الأدمن", callback_data="admin", style="primary"))
+    markup.add(InlineKeyboardButton("🔙 অ্যাডমিন প্যানেলে ফিরুন", callback_data="admin", style="primary"))
     return markup
 
 def get_site_config_menu(site_key, account_id=None):
@@ -3374,21 +3374,21 @@ def get_site_config_menu(site_key, account_id=None):
     short_id = account_id[:8] if account_id else ""
     markup = InlineKeyboardMarkup(row_width=2)
     markup.add(
-        InlineKeyboardButton("👤 تغيير اليوزر", callback_data=f"site_change_user_{site_key}_{short_id}"),
-        InlineKeyboardButton("🔑 تغيير الباسورد", callback_data=f"site_change_pass_{site_key}_{short_id}")
+        InlineKeyboardButton("👤 ইউজারনেম পরিবর্তন", callback_data=f"site_change_user_{site_key}_{short_id}"),
+        InlineKeyboardButton("🔑 পাসওয়ার্ড পরিবর্তন", callback_data=f"site_change_pass_{site_key}_{short_id}")
     )
     markup.add(
-        InlineKeyboardButton("⏱ فترة البحث", callback_data=f"site_change_interval_{site_key}"),
-        InlineKeyboardButton("⏳ وقت الانتظار", callback_data=f"site_change_timeout_{site_key}")
+        InlineKeyboardButton("⏱ অনুসন্ধানের বিরতি", callback_data=f"site_change_interval_{site_key}"),
+        InlineKeyboardButton("⏳ অপেক্ষার সময়", callback_data=f"site_change_timeout_{site_key}")
     )
     markup.add(
-        InlineKeyboardButton("🔓 اختبار تسجيل الدخول", callback_data=f"site_test_login_{site_key}_{short_id}"),
-        InlineKeyboardButton("📥 اختبار جلب كود", callback_data=f"site_test_fetch_{site_key}_{short_id}")
+        InlineKeyboardButton("🔓 লগইন টেস্ট", callback_data=f"site_test_login_{site_key}_{short_id}"),
+        InlineKeyboardButton("📥 কোড আনা টেস্ট", callback_data=f"site_test_fetch_{site_key}_{short_id}")
     )
     markup.add(
         InlineKeyboardButton("🆕 TimeSMS", callback_data="site_config_TimeSMS", style="success")
     )
-    markup.add(InlineKeyboardButton("🔙 رجوع لقائمة المواقع", callback_data="admin_sites_menu", style="danger"))
+    markup.add(InlineKeyboardButton("🔙 সাইটের তালিকায় ফিরুন", callback_data="admin_sites_menu", style="danger"))
     return markup
 
 def get_site_accounts_selection_menu(site_key):
@@ -3415,7 +3415,7 @@ def get_site_accounts_selection_menu(site_key):
         else:
             markup.add(buttons[i])
     
-    markup.add(InlineKeyboardButton("🔙 رجوع لقائمة المواقع", callback_data="admin_sites_menu", style="danger"))
+    markup.add(InlineKeyboardButton("🔙 সাইটের তালিকায় ফিরুন", callback_data="admin_sites_menu", style="danger"))
     return markup
 
 def get_accounts_menu():
@@ -3440,7 +3440,7 @@ def get_accounts_menu():
     markup.add(
         InlineKeyboardButton("🆕 TimeSMS", callback_data="accounts_site_TimeSMS", style="danger")
     )
-    markup.add(InlineKeyboardButton("🔙 رجوع للوحة الأدمن", callback_data="admin_panel", style="danger"))
+    markup.add(InlineKeyboardButton("🔙 অ্যাডমিন প্যানেলে ফিরুন", callback_data="admin_panel", style="danger"))
     return markup
 
 def get_site_accounts_menu(site_key):
@@ -3469,17 +3469,17 @@ def get_site_accounts_menu(site_key):
                 markup.add(buttons[i])
     
     markup.add(
-        InlineKeyboardButton("➕ إضافة حساب جديد", callback_data=f"add_account_{site_key}")
+        InlineKeyboardButton("➕ নতুন অ্যাকাউন্ট যোগ", callback_data=f"add_account_{site_key}")
     )
-    markup.add(InlineKeyboardButton("🔙 رجوع لقائمة المواقع", callback_data="admin_accounts_menu", style="danger"))
+    markup.add(InlineKeyboardButton("🔙 সাইটের তালিকায় ফিরুন", callback_data="admin_accounts_menu", style="danger"))
     return markup
 
 def get_account_details_menu(site_key, account_id):
     short_id = account_id[:8] if account_id else ""
     markup = InlineKeyboardMarkup(row_width=2)
     markup.add(
-        InlineKeyboardButton("🗑 حذف الحساب", callback_data=f"delete_account_{site_key}_{short_id}"),
-        InlineKeyboardButton("🔙 رجوع للحسابات", callback_data=f"accounts_site_{site_key}")
+        InlineKeyboardButton("🗑 অ্যাকাউন্ট মুছুন", callback_data=f"delete_account_{site_key}_{short_id}"),
+        InlineKeyboardButton("🔙 অ্যাকাউন্টে ফিরুন", callback_data=f"accounts_site_{site_key}")
     )
     return markup
 
@@ -3769,7 +3769,7 @@ def clean_and_filter_numbers(file_path, country_code):
         return (len(cleaned_numbers), total_lines, rejected_lines)
 
     except Exception as e:
-        print(f"❌ خطأ في تنظيف الملف: {e}")
+        print(f"❌ ফাইল পরিষ্কারে ত্রুটি: {e}")
         return (0, 0, 0)
 
 def get_platform_buttons(country_name):
@@ -3894,7 +3894,7 @@ def get_countries_for_platform(platform, user_id=None):
 
             markup.add(InlineKeyboardButton(f"{label} ({count})", callback_data=f"country_{cid}"))
     
-    markup.add(InlineKeyboardButton("🔙 Back" if lang != "ar" else "🔙 رجوع", callback_data="choose_country"))
+    markup.add(InlineKeyboardButton("🔙 Back" if lang != "ar" else "🔙 ফিরে যান", callback_data="choose_country"))
     return markup
 
 def get_countries_list(user_id=None):
@@ -3926,7 +3926,7 @@ def get_countries_list(user_id=None):
         markup.add(InlineKeyboardButton(f"{label} (+{code}) ({count})", callback_data=f"country_{cid}"))
         found = True
     
-    markup.add(InlineKeyboardButton("🔙 Back" if lang != "ar" else "🔙 رجوع", callback_data="choose_country"))
+    markup.add(InlineKeyboardButton("🔙 Back" if lang != "ar" else "🔙 ফিরে যান", callback_data="choose_country"))
     return markup if found else None
 
 def get_country_buttons(user_id=None):
@@ -3955,10 +3955,10 @@ def create_message_buttons(user_id=None):
     links = load_button_links()
     markup = InlineKeyboardMarkup(row_width=1)
     
-    change_number_text = "🔄 تغيير الرقم" if lang == "ar" else "🔄 Change Number"
-    change_country_text = "🌍 تغيير الدولة" if lang == "ar" else "🌍 Change Country"
-    group_link_text = "📢 جروب البوت" if lang == "ar" else "📢 Group Link"
-    back_text = "🔙 القائمة الرئيسية" if lang == "ar" else "🔙 Back to Main"
+    change_number_text = "🔄 নম্বর পরিবর্তন" if lang == "ar" else "🔄 Change Number"
+    change_country_text = "🌍 দেশ পরিবর্তন" if lang == "ar" else "🌍 Change Country"
+    group_link_text = "📢 বটের গ্রুপ" if lang == "ar" else "📢 Group Link"
+    back_text = "🔙 মূল মেনু" if lang == "ar" else "🔙 Back to Main"
     
     markup.add(InlineKeyboardButton(change_number_text, callback_data="change_number"))
     markup.add(InlineKeyboardButton(change_country_text, callback_data="choose_country"))
@@ -3970,16 +3970,16 @@ def create_message_buttons(user_id=None):
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 def create_group_otp_keyboard(otp_code=None):
-    otp_buttons = load_otp_buttons()  # افترض إن دي وظيفة بترجع قائمة أزرار
+    otp_buttons = load_otp_buttons()  # ধরে নিন এটি বাটনের তালিকা ফেরত দেয়
     
     markup = InlineKeyboardMarkup(row_width=2)
     
-    # ────────────── إعداد الإيموجي ──────────────
-    OTP_EMOJI_ID = "5454386656628991407"       # إيموجي لزر OTP
-    DEFAULT_EMOJI_LEFT = "5974337549261347177" # زر أول في الصف
-    DEFAULT_EMOJI_RIGHT = "5368324170671202286"# زر ثاني في الصف
+    # ────────────── ইমোজি সেটআপ ──────────────
+    OTP_EMOJI_ID = "5454386656628991407"       # বাটনের ইমোজি OTP
+    DEFAULT_EMOJI_LEFT = "5974337549261347177" # সারির প্রথম বাটন
+    DEFAULT_EMOJI_RIGHT = "5368324170671202286"# সারির দ্বিতীয় বাটন
     
-    # ────────────── زر الـ OTP ──────────────
+    # ────────────── বাটন OTP ──────────────
     if otp_code and otp_code != "N/A":
         try:
             markup.add(
@@ -3989,7 +3989,7 @@ def create_group_otp_keyboard(otp_code=None):
                 )
             )
         except Exception as e:
-            print(f"خطأ في إنشاء زر OTP: {e}")
+            print(f"বাটন তৈরিতে ত্রুটি OTP: {e}")
             markup.add(
                 InlineKeyboardButton(
                     text=f"🔑 {otp_code}",
@@ -3997,7 +3997,7 @@ def create_group_otp_keyboard(otp_code=None):
                 )
             )
     
-    # ────────────── الأزرار التانية (otp_buttons) ──────────────
+    # ────────────── অন্য বাটন (otp_buttons) ──────────────
     if otp_buttons:
         row_buttons = []
         button_index = 0
@@ -4006,11 +4006,11 @@ def create_group_otp_keyboard(otp_code=None):
             emoji_id = btn.get("emoji_id")
             
             if not emoji_id:
-                # وزّع الافتراضيين حسب الترتيب
+                # ডিফল্টগুলো ক্রম অনুযায়ী ভাগ করুন
                 emoji_id = DEFAULT_EMOJI_LEFT if button_index % 2 == 0 else DEFAULT_EMOJI_RIGHT
             
             try:
-                # تلوين الأزرار: زر أول أزرق، زر ثاني أخضر
+                # বাটনের রং: প্রথমটি নীল, দ্বিতীয়টি সবুজ
                 btn_style = "primary" if button_index % 2 == 0 else "primary"
                 
                 button = InlineKeyboardButton(
@@ -4021,7 +4021,7 @@ def create_group_otp_keyboard(otp_code=None):
                 )
                 row_buttons.append(button)
             except Exception as e:
-                print(f"خطأ في custom emoji لزر {btn['name']}: {e}")
+                print(f"ত্রুটি: custom emoji বাটনের জন্য {btn['name']}: {e}")
                 row_buttons.append(
                     InlineKeyboardButton(
                         text=btn["name"],
@@ -4031,12 +4031,12 @@ def create_group_otp_keyboard(otp_code=None):
             
             button_index += 1
         
-        # ترتيب كل صف 2 أزرار
+        # প্রতি সারিতে 2টি বাটন
         for i in range(0, len(row_buttons), 2):
             chunk = row_buttons[i:i+2]
             markup.add(*chunk)
     
-    # ────────────── الزر الرابع (سطر لوحده) ──────────────
+    # ────────────── চতুর্থ বাটন (আলাদা সারিতে) ──────────────
     FOURTH_BUTTON_TEXT = "𝗗𝗘𝗩𝗘𝗟𝗢𝗣𝗘𝗥"
     FOURTH_BUTTON_URL = "https://t.me/alorhawa"
     FOURTH_EMOJI_ID = "5203916679460953989"
@@ -4046,7 +4046,7 @@ def create_group_otp_keyboard(otp_code=None):
             text=f" {FOURTH_BUTTON_TEXT}",
             url=FOURTH_BUTTON_URL,
             icon_custom_emoji_id=FOURTH_EMOJI_ID,
-            style="danger"   # اللون الأحمر
+            style="danger"   # লাল রং
         )
     )
     
@@ -4241,12 +4241,12 @@ def start(msg):
             
             markup = InlineKeyboardMarkup(row_width=2)
             markup.add(
-                InlineKeyboardButton("🇸🇦 العربية", callback_data="set_lang_ar", style="success"),
+                InlineKeyboardButton("🇧🇩 বাংলা", callback_data="set_lang_ar", style="success"),
                 InlineKeyboardButton("🇬🇧 English", callback_data="set_lang_en", style="primary")
             )
             bot.send_message(
                 msg.chat.id,
-                "🌍 <b>اختر اللغة / Choose Language</b>",
+                "🌍 <b>ভাষা বেছে নিন / Choose Language</b>",
                 parse_mode="HTML",
                 reply_markup=markup
             )
@@ -4277,7 +4277,7 @@ def start(msg):
             admin_markup = get_admin_menu()
             bot.send_message(
                 msg.chat.id,
-                "🎛 <b>لوحة الإدارة</b>\n\nاختر الإجراء المطلوب:",
+                "🎛 <b>অ্যাডমিন প্যানেল</b>\n\nপ্রয়োজনীয় অপশন বেছে নিন:",
                 parse_mode="HTML",
                 reply_markup=admin_markup
             )
@@ -4290,7 +4290,7 @@ def start(msg):
         markup = get_platforms_list(user_id)
         if markup:
             if lang == "ar":
-                title = f"<tg-emoji emoji-id='5972277098830634724'>🚨</tg-emoji> <b>اختر المنصة</b>\n\n<tg-emoji emoji-id='6046356449938905522'>💰</tg-emoji> ستربح <b>${format_decimal(code_bonus)}</b> عند كل كود تستلمه!"
+                title = f"<tg-emoji emoji-id='5972277098830634724'>🚨</tg-emoji> <b>প্ল্যাটফর্ম বেছে নিন</b>\n\n<tg-emoji emoji-id='6046356449938905522'>💰</tg-emoji> আপনি পাবেন <b>${format_decimal(code_bonus)}</b> প্রতিটি কোড পেলে!"
             else:
                 title = f"<tg-emoji emoji-id='5972277098830634724'>🚨</tg-emoji> <b>Select Platform</b>\n\n<tg-emoji emoji-id='6046356449938905522'>💰</tg-emoji> You'll earn <b>${format_decimal(code_bonus)}</b> for each code received!"
             
@@ -4302,7 +4302,7 @@ def start(msg):
             )
         else:
             text = t(user_id, "welcome")
-            if not text: text = "🌐 <b>مرحباً بك!</b>"
+            if not text: text = "🌐 <b>স্বাগতম!</b>"
             bot.send_message(
                 msg.chat.id,
                 text,
@@ -4352,7 +4352,7 @@ def getnumber_command(msg):
     markup = get_country_buttons(user_id)
     if markup:
         if lang == "ar":
-            title = f"<tg-emoji emoji-id='5972277098830634724'>🚨</tg-emoji> <b>اختر المنصة</b>\n\n<tg-emoji emoji-id='6046356449938905522'>💰</tg-emoji> ستربح <b>${format_decimal(code_bonus)}</b> عند كل كود تستلمه!"
+            title = f"<tg-emoji emoji-id='5972277098830634724'>🚨</tg-emoji> <b>প্ল্যাটফর্ম বেছে নিন</b>\n\n<tg-emoji emoji-id='6046356449938905522'>💰</tg-emoji> আপনি পাবেন <b>${format_decimal(code_bonus)}</b> প্রতিটি কোড পেলে!"
         else:
             title = f"<tg-emoji emoji-id='5972277098830634724'>🚨</tg-emoji> <b>Select Country</b>\n\n💰 You'll earn <b>${format_decimal(code_bonus)}</b> for each code received!"
         
@@ -4395,27 +4395,27 @@ def account_command(msg):
     selected_number = user_data.get("selected_number")
     
     if selected_number and selected_country:
-        number_status = f"✅ رقم نشط لـ {selected_country}" if lang == "ar" else f"✅ Active number for {selected_country}"
+        number_status = f"✅ সক্রিয় নম্বর: {selected_country}" if lang == "ar" else f"✅ Active number for {selected_country}"
     else:
-        number_status = "❌ لا يوجد رقم حالياً" if lang == "ar" else "❌ No number currently"
+        number_status = "❌ এখন কোনো নম্বর নেই" if lang == "ar" else "❌ No number currently"
     
     bot_info = bot.get_me()
     referral_link = f"https://t.me/{bot_info.username}?start=ref_{user_id}"
     
     if lang == "ar":
         account_text = (
-            f"👤 <b>معلومات حسابك:</b>\n\n"
-            f"🆔 <b>معرفك:</b> <code>{user_id}</code>\n"
-            f"📅 <b>تاريخ الانضمام:</b> {join_date}\n"
-            f"📊 <b>الأكواد المستلمة:</b> {activations}\n"
-            f"🌐 <b>اللغة:</b> العربية\n\n"
-            f"💰 <b>معلومات الأرباح:</b>\n"
-            f"├ 💵 الرصيد الحالي: <b>${format_decimal(balance)}</b>\n"
-            f"├ 📈 إجمالي الأرباح: <b>${format_decimal(total_earned)}</b>\n"
-            f"├ 👥 عدد الإحالات: <b>{referrals_count}</b>\n"
-            f"└ ✅ إحالات نشطة: <b>{active_referrals}</b>\n\n"
-            f"🔗 <b>رابط الإحالة:</b>\n<code>{referral_link}</code>\n\n"
-            f"💡 <b>حالة رقمك:</b>\n{number_status}"
+            f"👤 <b>আপনার অ্যাকাউন্টের তথ্য:</b>\n\n"
+            f"🆔 <b>আপনার আইডি:</b> <code>{user_id}</code>\n"
+            f"📅 <b>যোগদানের তারিখ:</b> {join_date}\n"
+            f"📊 <b>প্রাপ্ত কোড:</b> {activations}\n"
+            f"🌐 <b>ভাষা:</b> বাংলা\n\n"
+            f"💰 <b>আয়ের তথ্য:</b>\n"
+            f"├ 💵 বর্তমান ব্যালেন্স: <b>${format_decimal(balance)}</b>\n"
+            f"├ 📈 মোট আয়: <b>${format_decimal(total_earned)}</b>\n"
+            f"├ 👥 রেফারেল সংখ্যা: <b>{referrals_count}</b>\n"
+            f"└ ✅ সক্রিয় রেফারেল: <b>{active_referrals}</b>\n\n"
+            f"🔗 <b>রেফারেল লিংক:</b>\n<code>{referral_link}</code>\n\n"
+            f"💡 <b>আপনার নম্বরের অবস্থা:</b>\n{number_status}"
         )
     else:
         account_text = (
@@ -4435,10 +4435,10 @@ def account_command(msg):
     
     markup = InlineKeyboardMarkup(row_width=1)
     if balance >= load_referral_settings().get("min_withdrawal", 5.0):
-        withdraw_text = "💰 سحب الرصيد" if lang == "ar" else "💰 Withdraw"
+        withdraw_text = "💰 ব্যালেন্স উত্তোলন" if lang == "ar" else "💰 Withdraw"
         markup.add(InlineKeyboardButton(withdraw_text, callback_data="withdraw_balance"))
     
-    back_text = "🔙 رجوع" if lang == "ar" else "🔙 Back"
+    back_text = "🔙 ফিরে যান" if lang == "ar" else "🔙 Back"
     markup.add(InlineKeyboardButton(back_text, callback_data="back_to_main"))
     
     bot.send_message(msg.chat.id, account_text, parse_mode="HTML", reply_markup=markup)
@@ -4462,43 +4462,43 @@ def help_command(msg):
     min_withdrawal = settings.get("min_withdrawal", 5.0)
     
     if lang == 'ar':
-        instructions_text = f"""📖 <b>دليل استخدام البوت</b>
+        instructions_text = f"""📖 <b>বট ব্যবহারের গাইড</b>
 
-━━━━━━ <b>📱 استلام الأكواد</b> ━━━━━━
+━━━━━━ <b>📱 কোড গ্রহণ</b> ━━━━━━
 
-1️⃣ <b>اختيار الدولة:</b>
-   • اضغط على "Get Number"
-   • اختر الدولة التي تريدها
+1️⃣ <b>দেশ বাছাই:</b>
+   • চাপুন "Get Number"
+   • আপনার পছন্দের দেশ বেছে নিন
 
-2️⃣ <b>اختيار الرقم:</b>
-   • ستظهر لك الأرقام المتاحة
-   • اختر الرقم المناسب
+2️⃣ <b>নম্বর বাছাই:</b>
+   • উপলব্ধ নম্বরগুলো দেখানো হবে
+   • উপযুক্ত নম্বর বেছে নিন
 
-3️⃣ <b>استلام الكود:</b>
-   • استخدم الرقم للتسجيل في أي موقع/تطبيق
-   • سيصلك الكود تلقائياً هنا في البوت
+3️⃣ <b>কোড গ্রহণ:</b>
+   • যেকোনো সাইট/অ্যাপে রেজিস্ট্রেশনে নম্বরটি ব্যবহার করুন
+   • কোড স্বয়ংক্রিয়ভাবে এই বটে আসবে
 
-━━━━━━ <b>💰 نظام الأرباح</b> ━━━━━━
+━━━━━━ <b>💰 আয়ের সিস্টেম</b> ━━━━━━
 
-💎 <b>بونص الكود:</b>
-   • تحصل على <b>${format_decimal(code_bonus)}</b> عن كل كود تستلمه
+💎 <b>কোড বোনাস:</b>
+   • আপনি পাবেন <b>${format_decimal(code_bonus)}</b> প্রতিটি কোড পেলে
 
-👥 <b>بونص الإحالة:</b>
-   • شارك رابط الإحالة مع أصدقائك
-   • عندما يستلم صديقك <b>{codes_required} أكواد</b>
-   • تحصل على <b>${format_decimal(referral_bonus)}</b> مباشرة!
+👥 <b>রেফারেল বোনাস:</b>
+   • রেফারেল লিংক বন্ধুদের সাথে শেয়ার করুন
+   • যখন আপনার বন্ধু পাবে <b>{codes_required} কোড</b>
+   • আপনি পাবেন <b>${format_decimal(referral_bonus)}</b> সরাসরি!
 
-━━━━━━ <b>💵 السحب</b> ━━━━━━
+━━━━━━ <b>💵 উত্তোলন</b> ━━━━━━
 
-💰 <b>الحد الأدنى:</b> ${format_decimal(min_withdrawal)}
-📝 <b>طرق السحب:</b>
-   • فودافون كاش
+💰 <b>সর্বনিম্ন:</b> ${format_decimal(min_withdrawal)}
+📝 <b>উত্তোলনের পদ্ধতি:</b>
+   • ভোডাফোন ক্যাশ
    • USDT (TRC20/BEP20)
    • Binance ID
 
-━━━━━━ شكراً لثقتك ━━━━━━
+━━━━━━ আপনার বিশ্বাসের জন্য ধন্যবাদ ━━━━━━
 
-🆘 للمساعدة تواصل مع المطور"""
+🆘 সাহায্যের জন্য ডেভেলপারের সাথে যোগাযোগ করুন"""
     else:
         instructions_text = f"""📖 <b>Bot Guide</b>
 
@@ -4539,7 +4539,7 @@ def help_command(msg):
 🆘 For help, contact the developer"""
     
     markup = InlineKeyboardMarkup(row_width=1)
-    developer_btn_text = "🆘 Contact eloper" if lang == "en" else "🆘 تواصل مع المطور"
+    developer_btn_text = "🆘 Contact eloper" if lang == "en" else "🆘 ডেভেলপারের সাথে যোগাযোগ"
     markup.add(InlineKeyboardButton(developer_btn_text, url="https://t.me/alorhawa"))
     markup.add(InlineKeyboardButton(t(user_id, "back"), callback_data="back_to_main_user"))
     
@@ -4575,7 +4575,7 @@ def withdraw_command(msg):
     
     if balance < min_withdrawal:
         if lang == "ar":
-            msg_text = f"❌ رصيدك (${format_decimal(balance)}) أقل من الحد الأدنى للسحب (${format_decimal(min_withdrawal)})"
+            msg_text = f"❌ আপনার ব্যালেন্স (${format_decimal(balance)}) সর্বনিম্ন উত্তোলনের চেয়ে কম (${format_decimal(min_withdrawal)})"
         else:
             msg_text = f"❌ Your balance (${format_decimal(balance)}) is below minimum withdrawal (${format_decimal(min_withdrawal)})"
         bot.send_message(msg.chat.id, msg_text, parse_mode="HTML")
@@ -4594,11 +4594,11 @@ def withdraw_command(msg):
             icon = method_icons.get(method_key, "💰")
             markup.add(InlineKeyboardButton(f"{icon} {name}", callback_data=f"wd_method_{method_key}"))
     
-    back_text = "🔙 رجوع" if lang == "ar" else "🔙 Back"
+    back_text = "🔙 ফিরে যান" if lang == "ar" else "🔙 Back"
     markup.add(InlineKeyboardButton(back_text, callback_data="my_account"))
     
     if lang == "ar":
-        text = f"💰 <b>سحب الرصيد</b>\n\n💵 رصيدك الحالي: <b>${format_decimal(balance)}</b>\n\nاختر طريقة السحب:"
+        text = f"💰 <b>ব্যালেন্স উত্তোলন</b>\n\n💵 আপনার বর্তমান ব্যালেন্স: <b>${format_decimal(balance)}</b>\n\nউত্তোলনের পদ্ধতি বেছে নিন:"
     else:
         text = f"💰 <b>Withdraw Balance</b>\n\n💵 Your balance: <b>${format_decimal(balance)}</b>\n\nChoose withdrawal method:"
     
@@ -4616,7 +4616,7 @@ def hom_command(msg):
         return
     
     text = t(user_id, "welcome")
-    if not text: text = "🌐 <b>مرحباً بك!</b>"
+    if not text: text = "🌐 <b>স্বাগতম!</b>"
     bot.send_message(
         msg.chat.id,
         text,
@@ -4637,13 +4637,13 @@ def language_command(msg):
     
     markup = InlineKeyboardMarkup(row_width=2)
     markup.add(
-        InlineKeyboardButton("🇸🇦 العربية", callback_data="set_lang_ar", style="success"),
+        InlineKeyboardButton("🇧🇩 বাংলা", callback_data="set_lang_ar", style="success"),
         InlineKeyboardButton("🇬🇧 English", callback_data="set_lang_en", style="primary")
     )
     
     bot.send_message(
         msg.chat.id,
-        "🌍 <b>Choose Language / اختر اللغة</b>",
+        "🌍 <b>Choose Language / ভাষা বেছে নিন</b>",
         parse_mode="HTML",
         reply_markup=markup
     )
@@ -4676,26 +4676,26 @@ def bonus_command(msg):
     referral_link = f"https://t.me/{bot_info.username}?start=ref_{user_id}"
     
     if lang == "ar":
-        bonus_text = f"""💰 <b>نظام البونص</b>
+        bonus_text = f"""💰 <b>বোনাস সিস্টেম</b>
 
-━━━━━━ <b>📊 إحصائياتك</b> ━━━━━━
+━━━━━━ <b>📊 আপনার পরিসংখ্যান</b> ━━━━━━
 
-💵 الرصيد الحالي: <b>${format_decimal(balance)}</b>
-📈 إجمالي الأرباح: <b>${format_decimal(total_earned)}</b>
-👥 عدد الإحالات: <b>{referrals_count}</b>
-✅ إحالات نشطة: <b>{active_referrals}</b>
+💵 বর্তমান ব্যালেন্স: <b>${format_decimal(balance)}</b>
+📈 মোট আয়: <b>${format_decimal(total_earned)}</b>
+👥 রেফারেল সংখ্যা: <b>{referrals_count}</b>
+✅ সক্রিয় রেফারেল: <b>{active_referrals}</b>
 
-━━━━━━ <b>🎁 معدلات البونص</b> ━━━━━━
+━━━━━━ <b>🎁 বোনাসের হার</b> ━━━━━━
 
-💎 بونص الكود: <b>${format_decimal(code_bonus)}</b> لكل كود
-👥 بونص الإحالة: <b>${format_decimal(referral_bonus)}</b> عند {codes_required} أكواد
-💰 الحد الأدنى للسحب: <b>${format_decimal(min_withdrawal)}</b>
+💎 কোড বোনাস: <b>${format_decimal(code_bonus)}</b> প্রতি কোডে
+👥 রেফারেল বোনাস: <b>${format_decimal(referral_bonus)}</b> যখন {codes_required} কোড
+💰 সর্বনিম্ন উত্তোলন: <b>${format_decimal(min_withdrawal)}</b>
 
-━━━━━━ <b>🔗 رابط الإحالة</b> ━━━━━━
+━━━━━━ <b>🔗 রেফারেল লিংক</b> ━━━━━━
 
 <code>{referral_link}</code>
 
-شارك الرابط مع أصدقائك للحصول على بونص!"""
+বোনাস পেতে লিংক বন্ধুদের সাথে শেয়ার করুন!"""
     else:
         bonus_text = f"""💰 <b>Bonus System</b>
 
@@ -4719,7 +4719,7 @@ def bonus_command(msg):
 Share this link with friends to earn bonus!"""
     
     markup = InlineKeyboardMarkup(row_width=1)
-    share_text = "📤 Share Link" if lang == "en" else "📤 مشاركة الرابط"
+    share_text = "📤 Share Link" if lang == "en" else "📤 লিংক শেয়ার"
     share_url = f"https://t.me/share/url?url={referral_link}"
     markup.add(InlineKeyboardButton(share_text, url=share_url))
     
@@ -4754,15 +4754,15 @@ def set_language_callback(call):
                 referral_bonus = settings.get("referral_bonus", 0.50)
                 codes_required = settings.get("codes_required_for_referral", 3)
                 
-                user_name = call.from_user.first_name or "مستخدم"
+                user_name = call.from_user.first_name or "ইউজার"
                 
                 if referrer_lang == "ar":
                     notify_msg = (
-                        f"🎉 <b>إحالة جديدة!</b>\n\n"
-                        f"👤 المستخدم: <b>{user_name}</b>\n"
+                        f"🎉 <b>নতুন রেফারেল!</b>\n\n"
+                        f"👤 ইউজার: <b>{user_name}</b>\n"
                         f"🆔 ID: <code>{user_id}</code>\n\n"
-                        f"💰 <b>الربح المتوقع:</b> ${referral_bonus:.2f}\n"
-                        f"📊 عند وصول {codes_required} أكواد ستصبح الإحالة نشطة!"
+                        f"💰 <b>সম্ভাব্য আয়:</b> ${referral_bonus:.2f}\n"
+                        f"📊 পৌঁছালে {codes_required} কোড হলে রেফারেল সক্রিয় হবে!"
                     )
                 else:
                     notify_msg = (
@@ -4797,7 +4797,7 @@ def set_language_callback(call):
         admin_markup = get_admin_menu()
         bot.send_message(
             call.message.chat.id,
-            "🎛 <b>لوحة الإدارة</b>\n\nاختر الإجراء المطلوب:",
+            "🎛 <b>অ্যাডমিন প্যানেল</b>\n\nপ্রয়োজনীয় অপশন বেছে নিন:",
             parse_mode="HTML",
             reply_markup=admin_markup
         )
@@ -4808,7 +4808,7 @@ def set_language_callback(call):
     markup = get_country_buttons(user_id)
     if markup:
         if lang == "ar":
-            title = f"<tg-emoji emoji-id='5972277098830634724'>🚨</tg-emoji> <b>اختر المنصة</b>\n\n<tg-emoji emoji-id='6046356449938905522'>💰</tg-emoji> ستربح <b>${format_decimal(code_bonus)}</b> عند كل كود تستلمه!"
+            title = f"<tg-emoji emoji-id='5972277098830634724'>🚨</tg-emoji> <b>প্ল্যাটফর্ম বেছে নিন</b>\n\n<tg-emoji emoji-id='6046356449938905522'>💰</tg-emoji> আপনি পাবেন <b>${format_decimal(code_bonus)}</b> প্রতিটি কোড পেলে!"
         else:
             title = f"<tg-emoji emoji-id='5972277098830634724'>🚨</tg-emoji> <b>Select Country</b>\n\n💰 You'll earn <b>${format_decimal(code_bonus)}</b> for each code received!"
         
@@ -4820,7 +4820,7 @@ def set_language_callback(call):
         )
     else:
         text = t(user_id, "welcome")
-        if not text: text = "🌐 <b>مرحباً بك!</b>"
+        if not text: text = "🌐 <b>স্বাগতম!</b>"
         bot.send_message(
             call.message.chat.id,
             text,
@@ -4840,56 +4840,56 @@ def show_instructions_callback(call):
     min_withdrawal = settings.get("min_withdrawal", 5.0)
     
     if lang == 'ar':
-        instructions_text = f"""📖 <b>دليل استخدام البوت</b>
+        instructions_text = f"""📖 <b>বট ব্যবহারের গাইড</b>
 
-━━━━━━ <b>📱 استلام الأكواد</b> ━━━━━━
+━━━━━━ <b>📱 কোড গ্রহণ</b> ━━━━━━
 
-1️⃣ <b>اختيار الدولة:</b>
-   • اضغط على "Get Number"
-   • اختر الدولة التي تريدها
+1️⃣ <b>দেশ বাছাই:</b>
+   • চাপুন "Get Number"
+   • আপনার পছন্দের দেশ বেছে নিন
 
-2️⃣ <b>اختيار الرقم:</b>
-   • ستظهر لك الأرقام المتاحة
-   • اختر الرقم المناسب
+2️⃣ <b>নম্বর বাছাই:</b>
+   • উপলব্ধ নম্বরগুলো দেখানো হবে
+   • উপযুক্ত নম্বর বেছে নিন
 
-3️⃣ <b>استلام الكود:</b>
-   • استخدم الرقم للتسجيل في أي موقع/تطبيق
-   • سيصلك الكود تلقائياً هنا في البوت
+3️⃣ <b>কোড গ্রহণ:</b>
+   • যেকোনো সাইট/অ্যাপে রেজিস্ট্রেশনে নম্বরটি ব্যবহার করুন
+   • কোড স্বয়ংক্রিয়ভাবে এই বটে আসবে
 
-━━━━━━ <b>💰 نظام الأرباح</b> ━━━━━━
+━━━━━━ <b>💰 আয়ের সিস্টেম</b> ━━━━━━
 
-💎 <b>بونص الكود:</b>
-   • تحصل على <b>${format_decimal(code_bonus)}</b> عن كل كود تستلمه
+💎 <b>কোড বোনাস:</b>
+   • আপনি পাবেন <b>${format_decimal(code_bonus)}</b> প্রতিটি কোড পেলে
 
-👥 <b>بونص الإحالة:</b>
-   • شارك رابط الإحالة مع أصدقائك
-   • عندما يستلم صديقك <b>{codes_required} أكواد</b>
-   • تحصل على <b>${referral_bonus:.2f}</b> مباشرة!
+👥 <b>রেফারেল বোনাস:</b>
+   • রেফারেল লিংক বন্ধুদের সাথে শেয়ার করুন
+   • যখন আপনার বন্ধু পাবে <b>{codes_required} কোড</b>
+   • আপনি পাবেন <b>${referral_bonus:.2f}</b> সরাসরি!
 
-━━━━━━ <b>💵 السحب</b> ━━━━━━
+━━━━━━ <b>💵 উত্তোলন</b> ━━━━━━
 
-💰 <b>الحد الأدنى:</b> ${min_withdrawal:.2f}
-📝 <b>طرق السحب:</b>
-   • فودافون كاش
+💰 <b>সর্বনিম্ন:</b> ${min_withdrawal:.2f}
+📝 <b>উত্তোলনের পদ্ধতি:</b>
+   • ভোডাফোন ক্যাশ
    • USDT (TRC20/BEP20)
    • Binance ID
 
-⚡ <b>خطوات السحب:</b>
-   1. اذهب إلى "حسابي"
-   2. اضغط "سحب الرصيد"
-   3. اختر طريقة السحب
-   4. أدخل بياناتك
-   5. سيتم التحويل خلال 24 ساعة
+⚡ <b>উত্তোলনের ধাপ:</b>
+   1. যান "আমার অ্যাকাউন্ট"
+   2. চাপুন "ব্যালেন্স উত্তোলন"
+   3. উত্তোলনের পদ্ধতি বেছে নিন
+   4. আপনার তথ্য দিন
+   5. 24 ঘণ্টার মধ্যে পাঠানো হবে
 
-━━━━━━ <b>📋 ملاحظات</b> ━━━━━━
+━━━━━━ <b>📋 নোট</b> ━━━━━━
 
-⏰ انتظر الكود بعد طلب التحقق من الموقع
-🔄 يمكنك تغيير الرقم في أي وقت
-✅ الأرباح تُضاف تلقائياً لرصيدك
+⏰ সাইটে যাচাই চাওয়ার পর কোডের অপেক্ষা করুন
+🔄 আপনি যেকোনো সময় নম্বর বদলাতে পারেন
+✅ আয় স্বয়ংক্রিয়ভাবে ব্যালেন্সে যোগ হয়
 
-━━━━━━ شكراً لثقتك ━━━━━━
+━━━━━━ আপনার বিশ্বাসের জন্য ধন্যবাদ ━━━━━━
 
-🆘 للمساعدة تواصل مع المطور"""
+🆘 সাহায্যের জন্য ডেভেলপারের সাথে যোগাযোগ করুন"""
     else:
         instructions_text = f"""📖 <b>Bot Guide</b>
 
@@ -4943,7 +4943,7 @@ def show_instructions_callback(call):
 🆘 For help, contact the developer"""
     
     markup = InlineKeyboardMarkup(row_width=1)
-    eloper_btn_text = "🆘 Contact eloper" if get_user_language(user_id) == "en" else "🆘 تواصل مع المطور"
+    eloper_btn_text = "🆘 Contact eloper" if get_user_language(user_id) == "en" else "🆘 ডেভেলপারের সাথে যোগাযোগ"
     markup.add(
         InlineKeyboardButton(eloper_btn_text, url="https://t.me/alorhawa")
     )
@@ -4979,27 +4979,27 @@ def my_account_callback(call):
     selected_number = user_data.get("selected_number")
     
     if selected_number and selected_country:
-        number_status = f"✅ رقم نشط لـ {selected_country}" if lang == "ar" else f"✅ Active number for {selected_country}"
+        number_status = f"✅ সক্রিয় নম্বর: {selected_country}" if lang == "ar" else f"✅ Active number for {selected_country}"
     else:
-        number_status = "❌ لا يوجد رقم حالياً" if lang == "ar" else "❌ No number currently"
+        number_status = "❌ এখন কোনো নম্বর নেই" if lang == "ar" else "❌ No number currently"
     
     bot_info = bot.get_me()
     referral_link = f"https://t.me/{bot_info.username}?start=ref_{user_id}"
     
     if lang == "ar":
         account_text = (
-            f"👤 <b>معلومات حسابك:</b>\n\n"
-            f"🆔 <b>معرفك:</b> <code>{user_id}</code>\n"
-            f"📅 <b>تاريخ الانضمام:</b> {join_date}\n"
-            f"📊 <b>الأكواد المستلمة:</b> {activations}\n"
-            f"🌐 <b>اللغة:</b> العربية\n\n"
-            f"💰 <b>معلومات الأرباح:</b>\n"
-            f"├ 💵 الرصيد الحالي: <b>${balance:.2f}</b>\n"
-            f"├ 📈 إجمالي الأرباح: <b>${total_earned:.2f}</b>\n"
-            f"├ 👥 عدد الإحالات: <b>{referrals_count}</b>\n"
-            f"└ ✅ إحالات نشطة: <b>{active_referrals}</b>\n\n"
-            f"🔗 <b>رابط الإحالة:</b>\n<code>{referral_link}</code>\n\n"
-            f"💡 <b>حالة رقمك:</b>\n{number_status}"
+            f"👤 <b>আপনার অ্যাকাউন্টের তথ্য:</b>\n\n"
+            f"🆔 <b>আপনার আইডি:</b> <code>{user_id}</code>\n"
+            f"📅 <b>যোগদানের তারিখ:</b> {join_date}\n"
+            f"📊 <b>প্রাপ্ত কোড:</b> {activations}\n"
+            f"🌐 <b>ভাষা:</b> বাংলা\n\n"
+            f"💰 <b>আয়ের তথ্য:</b>\n"
+            f"├ 💵 বর্তমান ব্যালেন্স: <b>${balance:.2f}</b>\n"
+            f"├ 📈 মোট আয়: <b>${total_earned:.2f}</b>\n"
+            f"├ 👥 রেফারেল সংখ্যা: <b>{referrals_count}</b>\n"
+            f"└ ✅ সক্রিয় রেফারেল: <b>{active_referrals}</b>\n\n"
+            f"🔗 <b>রেফারেল লিংক:</b>\n<code>{referral_link}</code>\n\n"
+            f"💡 <b>আপনার নম্বরের অবস্থা:</b>\n{number_status}"
         )
     else:
         account_text = (
@@ -5017,17 +5017,17 @@ def my_account_callback(call):
             f"💡 <b>Number Status:</b>\n{number_status}"
         )
     
-    copy_link_text = " نسخ رابط الإحالة" if lang == "ar" else " Copy Referral Link"
-    share_link_text = "📤 مشاركة الرابط" if lang == "ar" else "📤 Share Link"
-    share_url = f"https://t.me/share/url?url={referral_link}&text={'انضم عبر رابط الإحالة!' if lang == 'ar' else 'Join via my referral link!'}"
+    copy_link_text = " রেফারেল লিংক কপি" if lang == "ar" else " Copy Referral Link"
+    share_link_text = "📤 লিংক শেয়ার" if lang == "ar" else "📤 Share Link"
+    share_url = f"https://t.me/share/url?url={referral_link}&text={'রেফারেল লিংকের মাধ্যমে জয়েন করুন!' if lang == 'ar' else 'Join via my referral link!'}"
     
     keyboard_rows = []
     
     if balance >= load_referral_settings().get("min_withdrawal", 5.0):
-        withdraw_text = "💰 سحب الرصيد" if lang == "ar" else "💰 Withdraw"
+        withdraw_text = "💰 ব্যালেন্স উত্তোলন" if lang == "ar" else "💰 Withdraw"
         keyboard_rows.append([{"text": withdraw_text, "callback_data": "withdraw_balance"}])
     
-    bonus_info_text = "📖 نظام البونص والإحالات" if lang == "ar" else "📖 Bonus & Referral System"
+    bonus_info_text = "📖 বোনাস ও রেফারেল সিস্টেম" if lang == "ar" else "📖 Bonus & Referral System"
     keyboard_rows.append([{"text": bonus_info_text, "callback_data": "bonus_info"}])
     
     keyboard_rows.append([
@@ -5050,7 +5050,7 @@ def my_account_callback(call):
     except:
         markup = InlineKeyboardMarkup(row_width=2)
         if balance >= load_referral_settings().get("min_withdrawal", 5.0):
-            withdraw_text = "💰 سحب الرصيد" if lang == "ar" else "💰 Withdraw"
+            withdraw_text = "💰 ব্যালেন্স উত্তোলন" if lang == "ar" else "💰 Withdraw"
             markup.add(InlineKeyboardButton(withdraw_text, callback_data="withdraw_balance"))
         markup.add(InlineKeyboardButton(bonus_info_text, callback_data="bonus_info"))
         markup.add(InlineKeyboardButton(t(user_id, "change_language"), callback_data="change_lang"))
@@ -5070,25 +5070,25 @@ def bonus_info_callback(call):
     
     if lang == "ar":
         info_text = (
-            "📖 <b>نظام البونص والإحالات</b>\n\n"
-            "━━━━━━ <b>كيف تربح؟</b> ━━━━━━\n\n"
-            f"💎 <b>بونص الكود:</b>\n"
-            f"   • تحصل على <b>${format_decimal(code_bonus)}</b> عن كل كود تستلمه\n\n"
-            f"👥 <b>بونص الإحالة:</b>\n"
-            f"   • شارك رابط الإحالة مع أصدقائك\n"
-            f"   • عندما ينضم صديق عبر رابطك\n"
-            f"   • ويستلم <b>{codes_required} أكواد</b>\n"
-            f"   • تحصل على <b>${referral_bonus:.2f}</b> مباشرة!\n\n"
-            "━━━━━━ <b>السحب</b> ━━━━━━\n\n"
-            f"💰 <b>الحد الأدنى للسحب:</b> ${min_withdrawal:.2f}\n"
-            "📝 <b>طرق السحب المتاحة:</b>\n"
-            "   • فودافون كاش\n"
+            "📖 <b>বোনাস ও রেফারেল সিস্টেম</b>\n\n"
+            "━━━━━━ <b>কীভাবে আয় করবেন?</b> ━━━━━━\n\n"
+            f"💎 <b>কোড বোনাস:</b>\n"
+            f"   • আপনি পাবেন <b>${format_decimal(code_bonus)}</b> প্রতিটি কোড পেলে\n\n"
+            f"👥 <b>রেফারেল বোনাস:</b>\n"
+            f"   • রেফারেল লিংক বন্ধুদের সাথে শেয়ার করুন\n"
+            f"   • যখন কোনো বন্ধু আপনার লিংকে জয়েন করে\n"
+            f"   • এবং পায় <b>{codes_required} কোড</b>\n"
+            f"   • আপনি পাবেন <b>${referral_bonus:.2f}</b> সরাসরি!\n\n"
+            "━━━━━━ <b>উত্তোলন</b> ━━━━━━\n\n"
+            f"💰 <b>সর্বনিম্ন উত্তোলন:</b> ${min_withdrawal:.2f}\n"
+            "📝 <b>উপলব্ধ উত্তোলনের পদ্ধতি:</b>\n"
+            "   • ভোডাফোন ক্যাশ\n"
             "   • USDT (TRC20/BEP20)\n"
             "   • Binance ID\n\n"
-            "━━━━━━ <b>ملاحظات مهمة</b> ━━━━━━\n\n"
-            "✅ الأرباح تُضاف تلقائياً لرصيدك\n"
-            "✅ يمكنك تتبع إحالاتك من صفحة حسابك\n"
-            "✅ طلبات السحب تُعالج خلال 24 ساعة"
+            "━━━━━━ <b>গুরুত্বপূর্ণ নোট</b> ━━━━━━\n\n"
+            "✅ আয় স্বয়ংক্রিয়ভাবে ব্যালেন্সে যোগ হয়\n"
+            "✅ আপনার অ্যাকাউন্ট পেজ থেকে রেফারেল ট্র্যাক করতে পারবেন\n"
+            "✅ উত্তোলনের অনুরোধ 24 ঘণ্টার মধ্যে প্রসেস হয়"
         )
     else:
         info_text = (
@@ -5114,7 +5114,7 @@ def bonus_info_callback(call):
         )
     
     markup = InlineKeyboardMarkup()
-    back_text = "🔙 رجوع" if lang == "ar" else "🔙 Back"
+    back_text = "🔙 ফিরে যান" if lang == "ar" else "🔙 Back"
     markup.add(InlineKeyboardButton(back_text, callback_data="my_account"))
     
     bot.edit_message_text(
@@ -5131,12 +5131,12 @@ def change_language_callback(call):
     
     markup = InlineKeyboardMarkup(row_width=2)
     markup.add(
-        InlineKeyboardButton("🇸🇦 العربية", callback_data="set_lang_ar", style="success"),
+        InlineKeyboardButton("🇧🇩 বাংলা", callback_data="set_lang_ar", style="success"),
         InlineKeyboardButton("🇬🇧 English", callback_data="set_lang_en", style="primary")
     )
     
     bot.edit_message_text(
-        "🌍 <b>اختر اللغة / Choose Language</b>",
+        "🌍 <b>ভাষা বেছে নিন / Choose Language</b>",
         call.message.chat.id,
         call.message.message_id,
         parse_mode="HTML",
@@ -5153,7 +5153,7 @@ def back_to_main_user_callback(call):
     markup = get_country_buttons(user_id)
     if markup:
         if lang == "ar":
-            title = f"<tg-emoji emoji-id='5972277098830634724'>🚨</tg-emoji> <b>اختر المنصة</b>\n\n<tg-emoji emoji-id='6046356449938905522'>💰</tg-emoji> ستربح <b>${format_decimal(code_bonus)}</b> عند كل كود تستلمه!"
+            title = f"<tg-emoji emoji-id='5972277098830634724'>🚨</tg-emoji> <b>প্ল্যাটফর্ম বেছে নিন</b>\n\n<tg-emoji emoji-id='6046356449938905522'>💰</tg-emoji> আপনি পাবেন <b>${format_decimal(code_bonus)}</b> প্রতিটি কোড পেলে!"
         else:
             title = f"<tg-emoji emoji-id='5972277098830634724'>🚨</tg-emoji> <b>Select Country</b>\n\n💰 You'll earn <b>${format_decimal(code_bonus)}</b> for each code received!"
         
@@ -5170,7 +5170,7 @@ def back_to_main_user_callback(call):
     else:
         try:
             text = t(user_id, "welcome")
-            if not text: text = "🌐 <b>مرحباً بك!</b>"
+            if not text: text = "🌐 <b>স্বাগতম!</b>"
             bot.edit_message_text(
                 text,
                 call.message.chat.id,
@@ -5186,11 +5186,11 @@ def get_single_channel_keyboard(channel, lang="ar"):
     btn_name = channel.get(f"name_{lang}", channel.get("name", "Join 🔗"))
     markup.add(InlineKeyboardButton(btn_name, url=channel['url']))
     
-    verify_text = "✅ تحقق من الاشتراك"
+    verify_text = "✅ সাবস্ক্রিপশন যাচাই করুন"
     if lang == "en":
         verify_text = "✅ Verify Subscription"
     elif lang != "ar":
-        verify_text = "✅ تحقق / Verify"
+        verify_text = "✅ যাচাই / Verify"
         
     markup.add(InlineKeyboardButton(verify_text, callback_data="verify_subscription"))
     return markup
@@ -5201,7 +5201,7 @@ def get_subscription_message_for_channel(channel, user_id):
     channel_name = channel.get(f"name_{lang}", channel.get("name", "Join 🔗"))
     
     if lang == "ar":
-        return f"⚠️ <b>يجب عليك الاشتراك في قناة البوت لتتمكن من استخدامه.</b>\n\n📢 القناة: <b>{channel_name}</b>"
+        return f"⚠️ <b>বট ব্যবহার করতে বটের চ্যানেলে সাবস্ক্রাইব করতে হবে।</b>\n\n📢 চ্যানেল: <b>{channel_name}</b>"
     else:
         return f"⚠️ <b>You must subscribe to the bot channel to use it.</b>\n\n📢 Channel: <b>{channel_name}</b>"
 
@@ -5225,7 +5225,7 @@ def verify_subscription_callback(call):
             pass
         
         if lang == "ar":
-            bot.answer_callback_query(call.id, "❌ انضم للقناة أولاً!", show_alert=True)
+            bot.answer_callback_query(call.id, "❌ আগে চ্যানেলে জয়েন করুন!", show_alert=True)
         else:
             bot.answer_callback_query(call.id, "❌ Join the channel first!", show_alert=True)
         return
@@ -5242,7 +5242,7 @@ def verify_subscription_callback(call):
     
     if markup:
         if lang == "ar":
-            title = f"📱 <b>اختر المنصة</b>\n\n<tg-emoji emoji-id='6046356449938905522'>💰</tg-emoji> ستربح <b>${format_decimal(code_bonus)}</b> عند كل كود تستلمه!"
+            title = f"📱 <b>প্ল্যাটফর্ম বেছে নিন</b>\n\n<tg-emoji emoji-id='6046356449938905522'>💰</tg-emoji> আপনি পাবেন <b>${format_decimal(code_bonus)}</b> প্রতিটি কোড পেলে!"
         else:
             title = f"🌍 <b>Select Country</b>\n\n<tg-emoji emoji-id='6046356449938905522'>💰</tg-emoji>You'll earn <b>${format_decimal(code_bonus)}</b> for each code received!"
         bot.send_message(call.message.chat.id, title, parse_mode="HTML", reply_markup=markup)
@@ -5254,11 +5254,11 @@ def admin_panel_callback(call):
     user_id = call.from_user.id
 
     if not is_admin(user_id):
-        bot.answer_callback_query(call.id, "⛔️ غير مصرح لك بالوصول لهذه اللوحة", show_alert=True)
+        bot.answer_callback_query(call.id, "⛔️ এই প্যানেলে প্রবেশের অনুমতি আপনার নেই", show_alert=True)
         return
 
     bot.edit_message_text(
-        "🎛 <b>لوحة الإدارة</b>\n\nاختر الإجراء المطلوب:",
+        "🎛 <b>অ্যাডমিন প্যানেল</b>\n\nপ্রয়োজনীয় অপশন বেছে নিন:",
         call.message.chat.id,
         call.message.message_id,
         parse_mode="HTML",
@@ -5273,7 +5273,7 @@ def na_add_country_server_callback(call):
         return
     
     if user_id not in user_states or user_states[user_id].get("action") != "na_add_country_server":
-        bot.answer_callback_query(call.id, "❌ انتهت الجلسة!", show_alert=True)
+        bot.answer_callback_query(call.id, "❌ সেশন শেষ হয়ে গেছে!", show_alert=True)
         return
     
     server = call.data.replace("na_add_country_srv_", "")
@@ -5307,10 +5307,10 @@ def na_add_country_server_callback(call):
         InlineKeyboardButton("📧 Gmail", callback_data="na_add_country_plt_Gmail", style="success")
     )
     markup.add(
-        InlineKeyboardButton("🌐 جميع المنصات", callback_data="na_add_country_plt_ALL", style="success")
+        InlineKeyboardButton("🌐 সব প্ল্যাটফর্ম", callback_data="na_add_country_plt_ALL", style="success")
     )
-    markup.add(InlineKeyboardButton("✅ تأكيد وإنهاء", callback_data="na_add_country_finish", style="success"))
-    markup.add(InlineKeyboardButton("❌ إلغاء", callback_data="numbers_admin_panel", style="danger"))
+    markup.add(InlineKeyboardButton("✅ নিশ্চিত করুন ও শেষ করুন", callback_data="na_add_country_finish", style="success"))
+    markup.add(InlineKeyboardButton("❌ বাতিল", callback_data="numbers_admin_panel", style="danger"))
     
     server_names = {
         "GROUP": "𝐒𝐞𝐫𝐯𝐞𝐫 𝟏",
@@ -5323,12 +5323,12 @@ def na_add_country_server_callback(call):
     }
     
     bot.edit_message_text(
-        f"✅ <b>الخطوة 5/5 - اختيار المنصات</b>\n\n"
-        f"🌍 الدولة: <b>{state.get('country_name')}</b>\n"
-        f"🔢 رمز الدولة: <b>{state.get('country_code')}</b>\n"
-        f"🖥️ السيرفر: <b>{server_names.get(server, server)}</b>\n\n"
-        f"📱 <b>المنصات المختارة:</b> لا يوجد\n\n"
-        f"اختر المنصات التي تعمل عليها هذه الأرقام:",
+        f"✅ <b>ধাপ 5/5 - প্ল্যাটফর্ম বাছাই</b>\n\n"
+        f"🌍 দেশ: <b>{state.get('country_name')}</b>\n"
+        f"🔢 দেশের কোড: <b>{state.get('country_code')}</b>\n"
+        f"🖥️ সার্ভার: <b>{server_names.get(server, server)}</b>\n\n"
+        f"📱 <b>বাছাই করা প্ল্যাটফর্ম:</b> নেই\n\n"
+        f"এই নম্বরগুলো যে প্ল্যাটফর্মে কাজ করে সেগুলো বেছে নিন:",
         call.message.chat.id,
         call.message.message_id,
         parse_mode="HTML",
@@ -5344,11 +5344,11 @@ def na_add_country_edit_name_callback(call):
     lang = get_user_language(user_id)
     state = user_states.get(user_id)
     if not state:
-        bot.answer_callback_query(call.id, "❌ انتهت الجلسة!", show_alert=True)
+        bot.answer_callback_query(call.id, "❌ সেশন শেষ হয়ে গেছে!", show_alert=True)
         return
     
     state["action"] = "na_add_country_edit_name_input"
-    text = "📝 يرجى إرسال الاسم الجديد للدولة:" if lang == "ar" else "📝 Please send the new country name:"
+    text = "📝 দেশের নতুন নাম পাঠান:" if lang == "ar" else "📝 Please send the new country name:"
     bot.edit_message_text(text, call.message.chat.id, call.message.message_id)
 
 @bot.callback_query_handler(func=lambda call: call.data.startswith("na_add_country_plt_"))
@@ -5358,7 +5358,7 @@ def na_add_country_platform_callback(call):
         return
     
     if user_id not in user_states or user_states[user_id].get("action") != "na_add_country_platforms":
-        bot.answer_callback_query(call.id, "❌ انتهت الجلسة!", show_alert=True)
+        bot.answer_callback_query(call.id, "❌ সেশন শেষ হয়ে গেছে!", show_alert=True)
         return
     
     platform = call.data.replace("na_add_country_plt_", "")
@@ -5402,10 +5402,10 @@ def na_add_country_platform_callback(call):
         InlineKeyboardButton(get_btn_text("Gmail", "📧"), callback_data="na_add_country_plt_Gmail")
     )
     markup.add(
-        InlineKeyboardButton("🌐 جميع المنصات", callback_data="na_add_country_plt_ALL", style="success")
+        InlineKeyboardButton("🌐 সব প্ল্যাটফর্ম", callback_data="na_add_country_plt_ALL", style="success")
     )
-    markup.add(InlineKeyboardButton("✅ تأكيد وإنهاء", callback_data="na_add_country_finish", style="success"))
-    markup.add(InlineKeyboardButton("❌ إلغاء", callback_data="numbers_admin_panel", style="danger"))
+    markup.add(InlineKeyboardButton("✅ নিশ্চিত করুন ও শেষ করুন", callback_data="na_add_country_finish", style="success"))
+    markup.add(InlineKeyboardButton("❌ বাতিল", callback_data="numbers_admin_panel", style="danger"))
     
     
     platform_icons = {
@@ -5414,14 +5414,14 @@ def na_add_country_platform_callback(call):
         "Discord": "🎮", "Gmail": "📧"
     }
     
-    platforms_text = ", ".join([f"{platform_icons.get(p, '📱')} {p}" for p in selected_platforms]) if selected_platforms else "لا يوجد"
+    platforms_text = ", ".join([f"{platform_icons.get(p, '📱')} {p}" for p in selected_platforms]) if selected_platforms else "নেই"
     
     bot.edit_message_text(
-        f"✅ <b>الخطوة 5/5 - اختيار المنصات</b>\n\n"
-        f"🌍 الدولة: <b>{state.get('country_name')}</b>\n"
-        f"🔢 رمز الدولة: <b>{state.get('country_code')}</b>\n"
-        f"📱 <b>المنصات المختارة:</b> {platforms_text}\n\n"
-        f"اختر المنصات التي تعمل عليها هذه الأرقام:",
+        f"✅ <b>ধাপ 5/5 - প্ল্যাটফর্ম বাছাই</b>\n\n"
+        f"🌍 দেশ: <b>{state.get('country_name')}</b>\n"
+        f"🔢 দেশের কোড: <b>{state.get('country_code')}</b>\n"
+        f"📱 <b>বাছাই করা প্ল্যাটফর্ম:</b> {platforms_text}\n\n"
+        f"এই নম্বরগুলো যে প্ল্যাটফর্মে কাজ করে সেগুলো বেছে নিন:",
         call.message.chat.id,
         call.message.message_id,
         parse_mode="HTML",
@@ -5435,7 +5435,7 @@ def na_add_country_finish_callback(call):
         return
     
     if user_id not in user_states or user_states[user_id].get("action") != "na_add_country_platforms":
-        bot.answer_callback_query(call.id, "❌ انتهت الجلسة!", show_alert=True)
+        bot.answer_callback_query(call.id, "❌ সেশন শেষ হয়ে গেছে!", show_alert=True)
         return
     
     state = user_states[user_id]
@@ -5447,7 +5447,7 @@ def na_add_country_finish_callback(call):
     num_cleaned = state.get("num_cleaned", 0)
     
     if not selected_platforms:
-        bot.answer_callback_query(call.id, "❌ يجب اختيار منصة واحدة على الأقل!", show_alert=True)
+        bot.answer_callback_query(call.id, "❌ কমপক্ষে একটি প্ল্যাটফর্ম বেছে নিতে হবে!", show_alert=True)
         return
     
     flag = get_flag_for_country_code(country_code)
@@ -5484,18 +5484,18 @@ def na_add_country_finish_callback(call):
     
     markup = InlineKeyboardMarkup(row_width=2)
     markup.add(
-        InlineKeyboardButton("➕ إضافة دولة أخرى", callback_data="admin_add_country", style="success"),
-        InlineKeyboardButton("📄 إضافة ملف آخر", callback_data="admin_add_country", style="success")
+        InlineKeyboardButton("➕ আরেকটি দেশ যোগ করুন", callback_data="admin_add_country", style="success"),
+        InlineKeyboardButton("📄 আরেকটি ফাইল যোগ করুন", callback_data="admin_add_country", style="success")
     )
-    markup.add(InlineKeyboardButton("🔙 رجوع للوحة", callback_data="admin_panel", style="danger"))
+    markup.add(InlineKeyboardButton("🔙 প্যানেলে ফিরুন", callback_data="admin_panel", style="danger"))
     
     bot.edit_message_text(
-        f"✅ <b>تم إضافة الدولة بنجاح!</b>\n\n"
-        f"🌍 الدولة: <b>{flag} {country_name}</b>\n"
-        f"🔢 رمز الدولة: <b>{country_code}</b>\n"
-        f"📊 عدد الأرقام: <b>{num_cleaned}</b>\n"
-        f"🖥️ السيرفر: <b>{server_names.get(server, server)}</b>\n"
-        f"📱 المنصات: <b>{platforms_text}</b>",
+        f"✅ <b>দেশ সফলভাবে যোগ হয়েছে!</b>\n\n"
+        f"🌍 দেশ: <b>{flag} {country_name}</b>\n"
+        f"🔢 দেশের কোড: <b>{country_code}</b>\n"
+        f"📊 নম্বরের সংখ্যা: <b>{num_cleaned}</b>\n"
+        f"🖥️ সার্ভার: <b>{server_names.get(server, server)}</b>\n"
+        f"📱 প্ল্যাটফর্ম: <b>{platforms_text}</b>",
         call.message.chat.id,
         call.message.message_id,
         parse_mode="HTML",
@@ -5528,18 +5528,18 @@ def na_list_countries_callback(call):
         return
     
     if not COUNTRIES:
-        text = "📋 <b>الدول المتاحة</b>\n\n❌ لا توجد دول مضافة بعد!"
+        text = "📋 <b>উপলব্ধ দেশসমূহ</b>\n\n❌ এখনো কোনো দেশ যোগ করা হয়নি!"
     else:
-        text = "📋 <b>الدول المتاحة</b>\n\n"
+        text = "📋 <b>উপলব্ধ দেশসমূহ</b>\n\n"
         for idx, (country_name, info) in enumerate(sorted(COUNTRIES.items()), 1):
             flag = info.get("flag", "🌍")
             server = info.get("server", "N/A")
             platforms = info.get("platforms", [])
             platforms_count = len(platforms)
-            text += f"{idx}. {flag} <b>{country_name}</b> - {server} ({platforms_count} منصات)\n"
+            text += f"{idx}. {flag} <b>{country_name}</b> - {server} ({platforms_count} প্ল্যাটফর্ম)\n"
     
     markup = InlineKeyboardMarkup()
-    markup.add(InlineKeyboardButton("🔙 رجوع", callback_data="numbers_admin_panel", style="danger"))
+    markup.add(InlineKeyboardButton("🔙 ফিরে যান", callback_data="numbers_admin_panel", style="danger"))
     
     bot.edit_message_text(
         text,
@@ -5558,11 +5558,11 @@ def na_ban_user_callback(call):
     user_states[user_id] = {"mode": "na_ban_user"}
     
     markup = InlineKeyboardMarkup()
-    markup.add(InlineKeyboardButton("❌ إلغاء", callback_data="numbers_admin_panel", style="danger"))
+    markup.add(InlineKeyboardButton("❌ বাতিল", callback_data="numbers_admin_panel", style="danger"))
     
     bot.edit_message_text(
-        "🚫 <b>حظر مستخدم</b>\n\n"
-        "📝 أرسل معرف المستخدم (ID) الذي تريد حظره:",
+        "🚫 <b>ইউজার ব্যান</b>\n\n"
+        "📝 ইউজারের আইডি পাঠান (ID) যাকে ব্যান করতে চান:",
         call.message.chat.id,
         call.message.message_id,
         parse_mode="HTML",
@@ -5578,11 +5578,11 @@ def na_unban_user_callback(call):
     user_states[user_id] = {"mode": "na_unban_user"}
     
     markup = InlineKeyboardMarkup()
-    markup.add(InlineKeyboardButton("❌ إلغاء", callback_data="numbers_admin_panel", style="danger"))
+    markup.add(InlineKeyboardButton("❌ বাতিল", callback_data="numbers_admin_panel", style="danger"))
     
     bot.edit_message_text(
-        "✅ <b>إلغاء حظر مستخدم</b>\n\n"
-        "📝 أرسل معرف المستخدم (ID) الذي تريد إلغاء حظره:",
+        "✅ <b>ইউজার আনব্যান</b>\n\n"
+        "📝 ইউজারের আইডি পাঠান (ID) যাকে আনব্যান করতে চান:",
         call.message.chat.id,
         call.message.message_id,
         parse_mode="HTML",
@@ -5596,16 +5596,16 @@ def na_banned_list_callback(call):
         return
     
     if not BANNED:
-        text = "📊 <b>قائمة المحظورين</b>\n\n✅ لا يوجد مستخدمين محظورين!"
+        text = "📊 <b>ব্যান করা ইউজারের তালিকা</b>\n\n✅ কোনো ব্যান করা ইউজার নেই!"
     else:
-        text = "📊 <b>قائمة المحظورين</b>\n\n"
+        text = "📊 <b>ব্যান করা ইউজারের তালিকা</b>\n\n"
         for idx, banned_id in enumerate(BANNED[:50], 1):
             text += f"{idx}. <code>{banned_id}</code>\n"
         if len(BANNED) > 50:
-            text += f"\n... و {len(BANNED) - 50} آخرين"
+            text += f"\n... এবং {len(BANNED) - 50} আরও"
     
     markup = InlineKeyboardMarkup()
-    markup.add(InlineKeyboardButton("🔙 رجوع", callback_data="numbers_admin_panel", style="danger"))
+    markup.add(InlineKeyboardButton("🔙 ফিরে যান", callback_data="numbers_admin_panel", style="danger"))
     
     bot.edit_message_text(
         text,
@@ -5619,23 +5619,23 @@ def na_banned_list_callback(call):
 def admin_manage_numbers_admins_callback(call):
     user_id = call.from_user.id
     if not is_admin(user_id):
-        bot.answer_callback_query(call.id, "⛔️ غير مصرح لك!", show_alert=True)
+        bot.answer_callback_query(call.id, "⛔️ আপনার অনুমতি নেই!", show_alert=True)
         return
     
-    text = "🧮 <b>إدارة أدمن الأرقام</b>\n\n"
-    text += f"👥 عدد أدمن الأرقام: {len(NUMBERS_ADMINS)}\n\n"
+    text = "🧮 <b>নম্বর অ্যাডমিন ম্যানেজমেন্ট</b>\n\n"
+    text += f"👥 নম্বর অ্যাডমিনের সংখ্যা: {len(NUMBERS_ADMINS)}\n\n"
     
     if NUMBERS_ADMINS:
-        text += "<b>القائمة الحالية:</b>\n"
+        text += "<b>বর্তমান তালিকা:</b>\n"
         for idx, admin_id in enumerate(NUMBERS_ADMINS, 1):
             text += f"{idx}. <code>{admin_id}</code>\n"
     
     markup = InlineKeyboardMarkup(row_width=2)
     markup.add(
-        InlineKeyboardButton("➕ إضافة أدمن أرقام", callback_data="add_numbers_admin", style="success"),
-        InlineKeyboardButton("➖ حذف أدمن أرقام", callback_data="remove_numbers_admin", style="danger")
+        InlineKeyboardButton("➕ নম্বর অ্যাডমিন যোগ", callback_data="add_numbers_admin", style="success"),
+        InlineKeyboardButton("➖ নম্বর অ্যাডমিন মুছুন", callback_data="remove_numbers_admin", style="danger")
     )
-    markup.add(InlineKeyboardButton("🔙 رجوع", callback_data="admin_panel", style="danger"))
+    markup.add(InlineKeyboardButton("🔙 ফিরে যান", callback_data="admin_panel", style="danger"))
     
     bot.edit_message_text(
         text,
@@ -5654,11 +5654,11 @@ def add_numbers_admin_callback(call):
     user_states[user_id] = {"mode": "add_numbers_admin"}
     
     markup = InlineKeyboardMarkup()
-    markup.add(InlineKeyboardButton("❌ إلغاء", callback_data="admin_manage_numbers_admins", style="danger"))
+    markup.add(InlineKeyboardButton("❌ বাতিল", callback_data="admin_manage_numbers_admins", style="danger"))
     
     bot.edit_message_text(
-        "➕ <b>إضافة أدمن أرقام جديد</b>\n\n"
-        "📝 أرسل معرف المستخدم (User ID) الذي تريد تعيينه كأدمن أرقام:",
+        "➕ <b>নতুন নম্বর অ্যাডমিন যোগ</b>\n\n"
+        "📝 ইউজারের আইডি পাঠান (User ID) যাকে নম্বর অ্যাডমিন বানাতে চান:",
         call.message.chat.id,
         call.message.message_id,
         parse_mode="HTML",
@@ -5672,22 +5672,22 @@ def remove_numbers_admin_callback(call):
         return
     
     if not NUMBERS_ADMINS:
-        bot.answer_callback_query(call.id, "❌ لا يوجد أدمن أرقام!", show_alert=True)
+        bot.answer_callback_query(call.id, "❌ কোনো নম্বর অ্যাডমিন নেই!", show_alert=True)
         return
     
     markup = InlineKeyboardMarkup(row_width=1)
     for admin_id in NUMBERS_ADMINS:
         markup.add(
             InlineKeyboardButton(
-                f"🗑 حذف {admin_id}",
+                f"🗑 মুছুন {admin_id}",
                 callback_data=f"del_numbers_admin_{admin_id}"
             )
         )
-    markup.add(InlineKeyboardButton("🔙 رجوع", callback_data="admin_manage_numbers_admins", style="danger"))
+    markup.add(InlineKeyboardButton("🔙 ফিরে যান", callback_data="admin_manage_numbers_admins", style="danger"))
     
     bot.edit_message_text(
-        "➖ <b>حذف أدمن أرقام</b>\n\n"
-        "اختر الأدمن الذي تريد حذفه:",
+        "➖ <b>নম্বর অ্যাডমিন মুছুন</b>\n\n"
+        "যে অ্যাডমিনকে মুছতে চান তাকে বেছে নিন:",
         call.message.chat.id,
         call.message.message_id,
         parse_mode="HTML",
@@ -5705,9 +5705,9 @@ def del_numbers_admin_callback(call):
     if admin_to_remove in NUMBERS_ADMINS:
         NUMBERS_ADMINS.remove(admin_to_remove)
         save_numbers_admins()
-        bot.answer_callback_query(call.id, f"✅ تم حذف {admin_to_remove} من أدمن الأرقام!", show_alert=True)
+        bot.answer_callback_query(call.id, f"✅ মুছে ফেলা হয়েছে {admin_to_remove} নম্বর অ্যাডমিন থেকে!", show_alert=True)
     else:
-        bot.answer_callback_query(call.id, "❌ الأدمن غير موجود!", show_alert=True)
+        bot.answer_callback_query(call.id, "❌ অ্যাডমিন পাওয়া যায়নি!", show_alert=True)
     
     admin_manage_numbers_admins_callback(call)
 
@@ -5731,32 +5731,32 @@ def admin_referral_settings_callback(call):
     settings = load_referral_settings()
     
     text = (
-        "💰 <b>إعدادات نظام الإحالات والبونص</b>\n\n"
-        f"🎁 بونص الكود: <b>${settings.get('code_bonus', 0.01)}</b>\n"
-        f"👥 بونص الإحالة: <b>${settings.get('referral_bonus', 0.50)}</b>\n"
-        f"📊 عدد الأكواد المطلوبة للإحالة النشطة: <b>{settings.get('codes_required_for_referral', 3)}</b>\n"
-        f"💵 الحد الأدنى للسحب: <b>${settings.get('min_withdrawal', 5.0)}</b>\n\n"
-        "اختر الإعداد الذي تريد تعديله:"
+        "💰 <b>রেফারেল ও বোনাস সিস্টেম সেটিংস</b>\n\n"
+        f"🎁 কোড বোনাস: <b>${settings.get('code_bonus', 0.01)}</b>\n"
+        f"👥 রেফারেল বোনাস: <b>${settings.get('referral_bonus', 0.50)}</b>\n"
+        f"📊 সক্রিয় রেফারেলের জন্য প্রয়োজনীয় কোড সংখ্যা: <b>{settings.get('codes_required_for_referral', 3)}</b>\n"
+        f"💵 সর্বনিম্ন উত্তোলন: <b>${settings.get('min_withdrawal', 5.0)}</b>\n\n"
+        "যে সেটিং এডিট করতে চান সেটি বেছে নিন:"
     )
     
     markup = InlineKeyboardMarkup(row_width=2)
     markup.add(
-        InlineKeyboardButton("🎁 بونص الكود", callback_data="edit_code_bonus", style="success"),
-        InlineKeyboardButton("👥 بونص الإحالة", callback_data="edit_referral_bonus", style="primary")
+        InlineKeyboardButton("🎁 কোড বোনাস", callback_data="edit_code_bonus", style="success"),
+        InlineKeyboardButton("👥 রেফারেল বোনাস", callback_data="edit_referral_bonus", style="primary")
     )
     markup.add(
-        InlineKeyboardButton("📊 أكواد الإحالة", callback_data="edit_codes_required", style="success"),
-        InlineKeyboardButton("💵 حد السحب", callback_data="edit_min_withdrawal", style="primary")
+        InlineKeyboardButton("📊 রেফারেল কোড", callback_data="edit_codes_required", style="success"),
+        InlineKeyboardButton("💵 উত্তোলনের সীমা", callback_data="edit_min_withdrawal", style="primary")
     )
     markup.add(
-        InlineKeyboardButton("➕ إضافة رصيد لمستخدم", callback_data="admin_add_balance", style="success"),
-        InlineKeyboardButton("➖ خصم رصيد من مستخدم", callback_data="admin_subtract_balance", style="danger")
+        InlineKeyboardButton("➕ ইউজারকে ব্যালেন্স যোগ", callback_data="admin_add_balance", style="success"),
+        InlineKeyboardButton("➖ ইউজারের ব্যালেন্স কর্তন", callback_data="admin_subtract_balance", style="danger")
     )
     markup.add(
-        InlineKeyboardButton("📋 طلبات السحب", callback_data="view_withdrawal_requests", style="success"),
-        InlineKeyboardButton("⚙️ طرق السحب", callback_data="admin_withdrawal_methods", style="primary")
+        InlineKeyboardButton("📋 উত্তোলনের অনুরোধ", callback_data="view_withdrawal_requests", style="success"),
+        InlineKeyboardButton("⚙️ উত্তোলনের পদ্ধতি", callback_data="admin_withdrawal_methods", style="primary")
     )
-    markup.add(InlineKeyboardButton("🔙 رجوع", callback_data="admin", style="danger"))
+    markup.add(InlineKeyboardButton("🔙 ফিরে যান", callback_data="admin", style="danger"))
     
     bot.edit_message_text(
         text,
@@ -5775,8 +5775,8 @@ def edit_code_bonus_callback(call):
     user_states[user_id] = {"action": "edit_code_bonus"}
     bot.send_message(
         call.message.chat.id,
-        "🎁 <b>تعديل بونص الكود</b>\n\n"
-        "أرسل القيمة الجديدة (مثال: 0.01 أو 0.02):",
+        "🎁 <b>কোড বোনাস এডিট</b>\n\n"
+        "নতুন মান পাঠান (উদাহরণ: 0.01 বা 0.02):",
         parse_mode="HTML"
     )
 
@@ -5789,8 +5789,8 @@ def edit_referral_bonus_callback(call):
     user_states[user_id] = {"action": "edit_referral_bonus"}
     bot.send_message(
         call.message.chat.id,
-        "👥 <b>تعديل بونص الإحالة</b>\n\n"
-        "أرسل القيمة الجديدة (مثال: 0.50 أو 1.00):",
+        "👥 <b>রেফারেল বোনাস এডিট</b>\n\n"
+        "নতুন মান পাঠান (উদাহরণ: 0.50 বা 1.00):",
         parse_mode="HTML"
     )
 
@@ -5803,8 +5803,8 @@ def edit_codes_required_callback(call):
     user_states[user_id] = {"action": "edit_codes_required"}
     bot.send_message(
         call.message.chat.id,
-        "📊 <b>تعديل عدد الأكواد المطلوبة</b>\n\n"
-        "أرسل العدد الجديد (مثال: 3 أو 5):",
+        "📊 <b>প্রয়োজনীয় কোড সংখ্যা এডিট</b>\n\n"
+        "নতুন সংখ্যা পাঠান (উদাহরণ: 3 বা 5):",
         parse_mode="HTML"
     )
 
@@ -5817,8 +5817,8 @@ def edit_min_withdrawal_callback(call):
     user_states[user_id] = {"action": "edit_min_withdrawal"}
     bot.send_message(
         call.message.chat.id,
-        "💵 <b>تعديل الحد الأدنى للسحب</b>\n\n"
-        "أرسل القيمة الجديدة (مثال: 5.00 أو 10.00):",
+        "💵 <b>সর্বনিম্ন উত্তোলন এডিট</b>\n\n"
+        "নতুন মান পাঠান (উদাহরণ: 5.00 বা 10.00):",
         parse_mode="HTML"
     )
 
@@ -5831,10 +5831,10 @@ def admin_add_balance_callback(call):
     user_states[user_id] = {"action": "admin_add_balance"}
     bot.send_message(
         call.message.chat.id,
-        "➕ <b>إضافة رصيد لمستخدم</b>\n\n"
-        "أرسل معرف المستخدم والمبلغ بالصيغة التالية:\n"
+        "➕ <b>ইউজারকে ব্যালেন্স যোগ</b>\n\n"
+        "ইউজার আইডি ও পরিমাণ এই ফরম্যাটে পাঠান:\n"
         "<code>USER_ID AMOUNT</code>\n\n"
-        "مثال: <code>123456789 5.00</code>",
+        "উদাহরণ: <code>123456789 5.00</code>",
         parse_mode="HTML"
     )
 
@@ -5847,10 +5847,10 @@ def admin_subtract_balance_callback(call):
     user_states[user_id] = {"action": "admin_subtract_balance"}
     bot.send_message(
         call.message.chat.id,
-        "➖ <b>خصم رصيد من مستخدم</b>\n\n"
-        "أرسل معرف المستخدم والمبلغ بالصيغة التالية:\n"
+        "➖ <b>ইউজারের ব্যালেন্স কর্তন</b>\n\n"
+        "ইউজার আইডি ও পরিমাণ এই ফরম্যাটে পাঠান:\n"
         "<code>USER_ID AMOUNT</code>\n\n"
-        "مثال: <code>123456789 5.00</code>",
+        "উদাহরণ: <code>123456789 5.00</code>",
         parse_mode="HTML"
     )
 
@@ -5864,7 +5864,7 @@ def view_withdrawal_requests_callback(call):
     pending_requests = [r for r in requests if r.get("status") == "pending"]
     
     if not pending_requests:
-        bot.answer_callback_query(call.id, "📭 لا توجد طلبات سحب معلقة!", show_alert=True)
+        bot.answer_callback_query(call.id, "📭 কোনো অপেক্ষমাণ উত্তোলনের অনুরোধ নেই!", show_alert=True)
         return
     
     markup = InlineKeyboardMarkup(row_width=1)
@@ -5878,10 +5878,10 @@ def view_withdrawal_requests_callback(call):
                 callback_data=f"view_wd_req_{req_id}"
             )
         )
-    markup.add(InlineKeyboardButton("🔙 رجوع", callback_data="admin_referral_settings", style="danger"))
+    markup.add(InlineKeyboardButton("🔙 ফিরে যান", callback_data="admin_referral_settings", style="danger"))
     
     bot.edit_message_text(
-        f"📋 <b>طلبات السحب المعلقة</b>\n\nعدد الطلبات: {len(pending_requests)}",
+        f"📋 <b>অপেক্ষমাণ উত্তোলনের অনুরোধ</b>\n\nঅনুরোধের সংখ্যা: {len(pending_requests)}",
         call.message.chat.id,
         call.message.message_id,
         parse_mode="HTML",
@@ -5904,14 +5904,14 @@ def view_wd_request_callback(call):
             break
     
     if not req:
-        bot.answer_callback_query(call.id, "❌ الطلب غير موجود!", show_alert=True)
+        bot.answer_callback_query(call.id, "❌ অনুরোধ পাওয়া যায়নি!", show_alert=True)
         return
     
     target_user_id = req.get('user_id')
     target_user_data = USERS.get(str(target_user_id), {})
     target_referral_data = get_user_referral_data(target_user_id)
     
-    join_date = target_user_data.get("join_date", "غير محدد")
+    join_date = target_user_data.get("join_date", "নির্ধারিত নয়")
     total_codes = target_user_data.get("activations", 0)
     total_referrals = len(target_referral_data.get("referrals", []))
     active_referrals = target_referral_data.get("active_referrals", 0)
@@ -5919,32 +5919,32 @@ def view_wd_request_callback(call):
     current_balance = target_referral_data.get("balance", 0.0)
     
     text = (
-        f"📋 <b>تفاصيل طلب السحب</b>\n\n"
-        f"🆔 معرف الطلب: <code>{req.get('id', '')[:8]}</code>\n"
+        f"📋 <b>উত্তোলনের অনুরোধের বিবরণ</b>\n\n"
+        f"🆔 অনুরোধের আইডি: <code>{req.get('id', '')[:8]}</code>\n"
         f"━━━━━━━━━━━━━━━━\n"
-        f"👤 <b>بيانات المستخدم:</b>\n"
+        f"👤 <b>ইউজারের তথ্য:</b>\n"
         f"├ 🆔 ID: <code>{target_user_id}</code>\n"
-        f"├ 📅 تاريخ الانضمام: {join_date}\n"
-        f"├ 📊 إجمالي الأكواد: {total_codes}\n"
-        f"├ 👥 إجمالي الإحالات: {total_referrals}\n"
-        f"├ ✅ إحالات نشطة: {active_referrals}\n"
-        f"├ 💰 إجمالي الأرباح: ${total_earned:.2f}\n"
-        f"└ 💵 الرصيد الحالي: ${current_balance:.2f}\n\n"
+        f"├ 📅 যোগদানের তারিখ: {join_date}\n"
+        f"├ 📊 মোট কোড: {total_codes}\n"
+        f"├ 👥 মোট রেফারেল: {total_referrals}\n"
+        f"├ ✅ সক্রিয় রেফারেল: {active_referrals}\n"
+        f"├ 💰 মোট আয়: ${total_earned:.2f}\n"
+        f"└ 💵 বর্তমান ব্যালেন্স: ${current_balance:.2f}\n\n"
         f"━━━━━━━━━━━━━━━━\n"
-        f"💳 <b>تفاصيل السحب:</b>\n"
-        f"├ 💵 المبلغ: <b>${req.get('amount', 0):.2f}</b>\n"
-        f"├ 📝 الطريقة: {req.get('method', 'غير محدد')}\n"
-        f"├ 📋 التفاصيل: <code>{req.get('details', 'غير محدد')}</code>\n"
-        f"├ 📅 التاريخ: {req.get('date', 'غير محدد')}\n"
-        f"└ 📊 الحالة: {req.get('status', 'pending')}"
+        f"💳 <b>উত্তোলনের বিবরণ:</b>\n"
+        f"├ 💵 পরিমাণ: <b>${req.get('amount', 0):.2f}</b>\n"
+        f"├ 📝 পদ্ধতি: {req.get('method', 'নির্ধারিত নয়')}\n"
+        f"├ 📋 বিবরণ: <code>{req.get('details', 'নির্ধারিত নয়')}</code>\n"
+        f"├ 📅 তারিখ: {req.get('date', 'নির্ধারিত নয়')}\n"
+        f"└ 📊 অবস্থা: {req.get('status', 'pending')}"
     )
     
     markup = InlineKeyboardMarkup(row_width=2)
     markup.add(
-        InlineKeyboardButton("✅ تأكيد الدفع", callback_data=f"approve_wd_{req_id}"),
-        InlineKeyboardButton("❌ رفض", callback_data=f"reject_wd_{req_id}")
+        InlineKeyboardButton("✅ পেমেন্ট নিশ্চিত", callback_data=f"approve_wd_{req_id}"),
+        InlineKeyboardButton("❌ প্রত্যাখ্যান", callback_data=f"reject_wd_{req_id}")
     )
-    markup.add(InlineKeyboardButton("🔙 رجوع", callback_data="view_withdrawal_requests", style="danger"))
+    markup.add(InlineKeyboardButton("🔙 ফিরে যান", callback_data="view_withdrawal_requests", style="danger"))
     
     bot.edit_message_text(
         text,
@@ -5979,13 +5979,13 @@ def approve_withdrawal_callback(call):
                 if user_lang == "ar":
                     bot.send_message(
                         target_user_id,
-                        f"✅ <b>تم إرسال المبلغ بنجاح!</b>\n\n"
-                        f"🆔 رقم الطلب: <code>{req.get('id', '')[:8]}</code>\n"
-                        f"💵 المبلغ: <b>${req.get('amount', 0):.2f}</b>\n"
-                        f"📝 الطريقة: {req.get('method', '')}\n"
-                        f"📋 التفاصيل: <code>{req.get('details', '')}</code>\n\n"
-                        f"💰 تم تحويل المبلغ إلى حسابك بنجاح.\n"
-                        f"شكراً لاستخدامك البوت! 🎉",
+                        f"✅ <b>টাকা সফলভাবে পাঠানো হয়েছে!</b>\n\n"
+                        f"🆔 অনুরোধ নম্বর: <code>{req.get('id', '')[:8]}</code>\n"
+                        f"💵 পরিমাণ: <b>${req.get('amount', 0):.2f}</b>\n"
+                        f"📝 পদ্ধতি: {req.get('method', '')}\n"
+                        f"📋 বিবরণ: <code>{req.get('details', '')}</code>\n\n"
+                        f"💰 টাকা আপনার অ্যাকাউন্টে সফলভাবে পাঠানো হয়েছে।\n"
+                        f"বট ব্যবহারের জন্য ধন্যবাদ! 🎉",
                         parse_mode="HTML"
                     )
                 else:
@@ -6005,19 +6005,19 @@ def approve_withdrawal_callback(call):
             
             try:
                 bot.edit_message_text(
-                    f"✅ <b>تم تأكيد الدفع!</b>\n\n"
-                    f"🆔 رقم الطلب: <code>{req.get('id', '')[:8]}</code>\n"
-                    f"👤 المستخدم: <code>{target_user_id}</code>\n"
-                    f"💵 المبلغ: <b>${req.get('amount', 0):.2f}</b>\n"
-                    f"📝 الطريقة: {req.get('method', '')}\n"
-                    f"📋 التفاصيل: <code>{req.get('details', '')}</code>\n\n"
-                    f"✅ تم إشعار المستخدم بإرسال المبلغ",
+                    f"✅ <b>পেমেন্ট নিশ্চিত হয়েছে!</b>\n\n"
+                    f"🆔 অনুরোধ নম্বর: <code>{req.get('id', '')[:8]}</code>\n"
+                    f"👤 ইউজার: <code>{target_user_id}</code>\n"
+                    f"💵 পরিমাণ: <b>${req.get('amount', 0):.2f}</b>\n"
+                    f"📝 পদ্ধতি: {req.get('method', '')}\n"
+                    f"📋 বিবরণ: <code>{req.get('details', '')}</code>\n\n"
+                    f"✅ টাকা পাঠানোর বিষয়ে ইউজারকে জানানো হয়েছে",
                     call.message.chat.id,
                     call.message.message_id,
                     parse_mode="HTML"
                 )
             except:
-                bot.answer_callback_query(call.id, "✅ تم تأكيد الدفع!", show_alert=True)
+                bot.answer_callback_query(call.id, "✅ পেমেন্ট নিশ্চিত হয়েছে!", show_alert=True)
             break
 
 @bot.callback_query_handler(func=lambda call: call.data.startswith("reject_wd_") or call.data.startswith("wd_reject_"))
@@ -6053,10 +6053,10 @@ def reject_withdrawal_callback(call):
                 if user_lang == "ar":
                     bot.send_message(
                         target_user_id,
-                        f"❌ <b>تم رفض طلب السحب</b>\n\n"
-                        f"🆔 رقم الطلب: <code>{req.get('id', '')[:8]}</code>\n"
-                        f"💵 المبلغ: <b>${req.get('amount', 0):.2f}</b>\n\n"
-                        f"تم إرجاع المبلغ إلى رصيدك.",
+                        f"❌ <b>উত্তোলনের অনুরোধ প্রত্যাখ্যান করা হয়েছে</b>\n\n"
+                        f"🆔 অনুরোধ নম্বর: <code>{req.get('id', '')[:8]}</code>\n"
+                        f"💵 পরিমাণ: <b>${req.get('amount', 0):.2f}</b>\n\n"
+                        f"টাকা আপনার ব্যালেন্সে ফেরত দেওয়া হয়েছে।",
                         parse_mode="HTML"
                     )
                 else:
@@ -6073,17 +6073,17 @@ def reject_withdrawal_callback(call):
             
             try:
                 bot.edit_message_text(
-                    f"❌ <b>تم رفض الطلب!</b>\n\n"
-                    f"🆔 رقم الطلب: <code>{req.get('id', '')[:8]}</code>\n"
-                    f"👤 المستخدم: <code>{target_user_id}</code>\n"
-                    f"💵 المبلغ: <b>${req.get('amount', 0):.2f}</b>\n"
-                    f"تم إرجاع المبلغ للمستخدم.",
+                    f"❌ <b>অনুরোধ প্রত্যাখ্যান করা হয়েছে!</b>\n\n"
+                    f"🆔 অনুরোধ নম্বর: <code>{req.get('id', '')[:8]}</code>\n"
+                    f"👤 ইউজার: <code>{target_user_id}</code>\n"
+                    f"💵 পরিমাণ: <b>${req.get('amount', 0):.2f}</b>\n"
+                    f"টাকা ইউজারকে ফেরত দেওয়া হয়েছে।",
                     call.message.chat.id,
                     call.message.message_id,
                     parse_mode="HTML"
                 )
             except:
-                bot.answer_callback_query(call.id, "❌ تم رفض الطلب وإرجاع المبلغ!", show_alert=True)
+                bot.answer_callback_query(call.id, "❌ অনুরোধ প্রত্যাখ্যান ও টাকা ফেরত হয়েছে!", show_alert=True)
             break
 
 @bot.callback_query_handler(func=lambda call: call.data == "admin_withdrawal_methods")
@@ -6094,8 +6094,8 @@ def admin_withdrawal_methods_callback(call):
     
     methods = load_withdrawal_methods()
     
-    text = "⚙️ <b>إدارة طرق السحب</b>\n\n"
-    text += "اضغط على طريقة السحب لتفعيلها أو تعطيلها:\n\n"
+    text = "⚙️ <b>উত্তোলনের পদ্ধতি ম্যানেজমেন্ট</b>\n\n"
+    text += "চালু বা বন্ধ করতে উত্তোলনের পদ্ধতিতে চাপুন:\n\n"
     
     method_icons = {"vodafone": "💳", "usdt_trc20": "📱", "usdt_bep20": "🔗", "binance_id": "🅱️"}
     
@@ -6108,7 +6108,7 @@ def admin_withdrawal_methods_callback(call):
         status = "✅" if enabled else "❌"
         markup.add(InlineKeyboardButton(f"{status} {icon} {name}", callback_data=f"toggle_wd_method_{method_key}"))
     
-    markup.add(InlineKeyboardButton("🔙 رجوع", callback_data="admin_referral_settings", style="danger"))
+    markup.add(InlineKeyboardButton("🔙 ফিরে যান", callback_data="admin_referral_settings", style="danger"))
     
     bot.edit_message_text(
         text,
@@ -6131,8 +6131,8 @@ def toggle_withdrawal_method_callback(call):
         methods[method_key]["enabled"] = not methods[method_key].get("enabled", True)
         save_withdrawal_methods(methods)
         
-        status = "مفعّل ✅" if methods[method_key]["enabled"] else "معطّل ❌"
-        bot.answer_callback_query(call.id, f"تم تغيير الحالة إلى: {status}", show_alert=True)
+        status = "চালু ✅" if methods[method_key]["enabled"] else "বন্ধ ❌"
+        bot.answer_callback_query(call.id, f"অবস্থা পরিবর্তন করে করা হয়েছে: {status}", show_alert=True)
     
     admin_withdrawal_methods_callback(call)
 
@@ -6145,18 +6145,18 @@ def admin_welcome_messages_callback(call):
     messages = load_welcome_messages()
     
     text = (
-        "📝 <b>إعدادات رسائل الترحيب</b>\n\n"
-        f"🇸🇦 <b>العربية:</b>\n{messages.get('ar', 'غير محدد')[:100]}...\n\n"
+        "📝 <b>স্বাগত বার্তার সেটিংস</b>\n\n"
+        f"🇧🇩 <b>বাংলা:</b>\n{messages.get('ar', 'নির্ধারিত নয়')[:100]}...\n\n"
         f"🇬🇧 <b>English:</b>\n{messages.get('en', 'Not set')[:100]}...\n\n"
-        "اختر اللغة لتعديل رسالة الترحيب:"
+        "স্বাগত বার্তা এডিট করতে ভাষা বেছে নিন:"
     )
     
     markup = InlineKeyboardMarkup(row_width=2)
     markup.add(
-        InlineKeyboardButton("🇸🇦 تعديل العربية", callback_data="edit_welcome_ar", style="success"),
+        InlineKeyboardButton("🇧🇩 বাংলা এডিট", callback_data="edit_welcome_ar", style="success"),
         InlineKeyboardButton("🇬🇧 Edit English", callback_data="edit_welcome_en", style="primary")
     )
-    markup.add(InlineKeyboardButton("🔙 رجوع", callback_data="admin", style="danger"))
+    markup.add(InlineKeyboardButton("🔙 ফিরে যান", callback_data="admin", style="danger"))
     
     bot.edit_message_text(
         text,
@@ -6177,9 +6177,9 @@ def edit_welcome_ar_callback(call):
     
     bot.send_message(
         call.message.chat.id,
-        f"🇸🇦 <b>تعديل رسالة الترحيب العربية</b>\n\n"
-        f"الرسالة الحالية:\n<code>{messages.get('ar', '')}</code>\n\n"
-        f"أرسل الرسالة الجديدة (يمكنك استخدام HTML):",
+        f"🇧🇩 <b>বাংলা স্বাগত বার্তা এডিট</b>\n\n"
+        f"বর্তমান মেসেজ:\n<code>{messages.get('ar', '')}</code>\n\n"
+        f"নতুন মেসেজ পাঠান (ব্যবহার করতে পারেন HTML):",
         parse_mode="HTML"
     )
 
@@ -6209,21 +6209,21 @@ def admin_button_links_callback(call):
     links = load_button_links()
     
     text = (
-        "🔗 <b>إعدادات روابط الأزرار</b>\n"
+        "🔗 <b>বাটনের লিংক সেটিংস</b>\n"
         "🔗 <b>Button Links Settings</b>\n\n"
-        f"📢 <b>رابط الجروب / Group Link:</b>\n<code>{links.get('group_link', 'Not set')}</code>\n\n"
-        f"📺 <b>رابط القناة / Channel Link:</b>\n<code>{links.get('channel_link', 'Not set')}</code>\n\n"
-        f"👨‍💻 <b>رابط المطور / Developer Link:</b>\n<code>{links.get('developer_link', 'Not set')}</code>\n\n"
-        "اختر الرابط لتعديله:\nChoose a link to edit:"
+        f"📢 <b>গ্রুপের লিংক / Group Link:</b>\n<code>{links.get('group_link', 'Not set')}</code>\n\n"
+        f"📺 <b>চ্যানেলের লিংক / Channel Link:</b>\n<code>{links.get('channel_link', 'Not set')}</code>\n\n"
+        f"👨‍💻 <b>ডেভেলপারের লিংক / Developer Link:</b>\n<code>{links.get('developer_link', 'Not set')}</code>\n\n"
+        "এডিট করতে লিংক বেছে নিন:\nChoose a link to edit:"
     )
     
     markup = InlineKeyboardMarkup(row_width=1)
     markup.add(
-        InlineKeyboardButton("📢 تعديل رابط الجروب / Edit Group Link", callback_data="edit_link_group", style="primary"),
-        InlineKeyboardButton("📺 تعديل رابط القناة / Edit Channel Link", callback_data="edit_link_channel", style="success"),
-        InlineKeyboardButton("👨‍💻 تعديل رابط المطور / Edit Developer Link", callback_data="edit_link_developer", style="primary")
+        InlineKeyboardButton("📢 গ্রুপের লিংক এডিট / Edit Group Link", callback_data="edit_link_group", style="primary"),
+        InlineKeyboardButton("📺 চ্যানেলের লিংক এডিট / Edit Channel Link", callback_data="edit_link_channel", style="success"),
+        InlineKeyboardButton("👨‍💻 ডেভেলপারের লিংক এডিট / Edit Developer Link", callback_data="edit_link_developer", style="primary")
     )
-    markup.add(InlineKeyboardButton("🔙 رجوع / Back", callback_data="admin", style="danger"))
+    markup.add(InlineKeyboardButton("🔙 ফিরুন / Back", callback_data="admin", style="danger"))
     
     bot.edit_message_text(
         text,
@@ -6241,9 +6241,9 @@ def edit_link_callback(call):
     
     link_type = call.data.replace("edit_link_", "")
     link_names = {
-        "group": ("رابط الجروب", "Group Link", "group_link"),
-        "channel": ("رابط القناة", "Channel Link", "channel_link"),
-        "developer": ("رابط المطور", "Developer Link", "developer_link")
+        "group": ("গ্রুপের লিংক", "Group Link", "group_link"),
+        "channel": ("চ্যানেলের লিংক", "Channel Link", "channel_link"),
+        "developer": ("ডেভেলপারের লিংক", "Developer Link", "developer_link")
     }
     
     ar_name, en_name, key = link_names.get(link_type, ("Link", "Link", "group_link"))
@@ -6254,10 +6254,10 @@ def edit_link_callback(call):
     
     bot.send_message(
         call.message.chat.id,
-        f"🔗 <b>تعديل {ar_name}</b>\n"
+        f"🔗 <b>এডিট {ar_name}</b>\n"
         f"🔗 <b>Edit {en_name}</b>\n\n"
-        f"الرابط الحالي / Current link:\n<code>{current}</code>\n\n"
-        f"أرسل الرابط الجديد / Send the new link:",
+        f"বর্তমান লিংক / Current link:\n<code>{current}</code>\n\n"
+        f"নতুন লিংক পাঠান / Send the new link:",
         parse_mode="HTML"
     )
 
@@ -6265,29 +6265,29 @@ def edit_link_callback(call):
 def admin_create_backup_callback(call):
     user_id = call.from_user.id
     if not is_admin(user_id): return
-    bot.answer_callback_query(call.id, "جاري إنشاء النسخة الاحتياطية... ⏳")
+    bot.answer_callback_query(call.id, "ব্যাকআপ তৈরি হচ্ছে... ⏳")
     try:
         backup_file = backup_manager.create_backup()
         with open(backup_file, 'rb') as f:
-            bot.send_document(call.message.chat.id, f, caption=f"✅ تم إنشاء النسخة الاحتياطية بنجاح!\n📅 التاريخ: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+            bot.send_document(call.message.chat.id, f, caption=f"✅ ব্যাকআপ সফলভাবে তৈরি হয়েছে!\n📅 তারিখ: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         os.remove(backup_file)
     except Exception as e:
-        bot.send_message(call.message.chat.id, f"❌ حدث خطأ أثناء إنشاء النسخة الاحتياطية: {e}")
+        bot.send_message(call.message.chat.id, f"❌ ব্যাকআপ তৈরির সময় ত্রুটি হয়েছে: {e}")
 
 @bot.callback_query_handler(func=lambda call: call.data == "admin_restore_backup")
 def admin_restore_backup_callback(call):
     user_id = call.from_user.id
     if not is_admin(user_id): return
-    msg = bot.send_message(call.message.chat.id, "📤 من فضلك أرسل ملف النسخة الاحتياطية (zip).")
+    msg = bot.send_message(call.message.chat.id, "📤 অনুগ্রহ করে ব্যাকআপ ফাইল পাঠান (zip).")
     bot.register_next_step_handler(msg, process_restore_backup)
 
 def process_restore_backup(message):
     if not is_admin(message.from_user.id): return
     if not message.document or not message.document.file_name.endswith('.zip'):
-        bot.reply_to(message, "❌ عذراً، يجب إرسال ملف بصيغة zip فقط.")
+        bot.reply_to(message, "❌ দুঃখিত, ফাইল অবশ্যই এই ফরম্যাটে হতে হবে zip শুধু।")
         return
     
-    bot.reply_to(message, "جاري استعادة النسخة الاحتياطية... ⏳")
+    bot.reply_to(message, "ব্যাকআপ পুনরুদ্ধার হচ্ছে... ⏳")
     try:
         file_info = bot.get_file(message.document.file_id)
         downloaded_file = bot.download_file(file_info.file_path)
@@ -6296,15 +6296,15 @@ def process_restore_backup(message):
             f.write(downloaded_file)
             
         if backup_manager.restore_backup("restore_temp.zip"):
-            bot.reply_to(message, "✅ تم استعادة النسخة الاحتياطية بنجاح! سيتم إعادة تحميل البيانات الآن.")
+            bot.reply_to(message, "✅ ব্যাকআপ সফলভাবে পুনরুদ্ধার হয়েছে! এখন ডাটা আবার লোড হবে।")
             load_data() 
         else:
-            bot.reply_to(message, "❌ فشل استعادة النسخة الاحتياطية.")
+            bot.reply_to(message, "❌ ব্যাকআপ পুনরুদ্ধার ব্যর্থ।")
         
         if os.path.exists("restore_temp.zip"):
             os.remove("restore_temp.zip")
     except Exception as e:
-        bot.reply_to(message, f"❌ حدث خطأ أثناء الاستعادة: {e}")
+        bot.reply_to(message, f"❌ পুনরুদ্ধারের সময় ত্রুটি হয়েছে: {e}")
 
 @bot.callback_query_handler(func=lambda call: call.data == "admin_otp_buttons")
 def admin_otp_buttons_callback(call):
@@ -6315,22 +6315,22 @@ def admin_otp_buttons_callback(call):
     global OTP_BUTTONS
     OTP_BUTTONS = load_otp_buttons()
     
-    text = "🔘 <b>إعدادات أزرار رسالة OTP</b>\n\n"
+    text = "🔘 <b>মেসেজ বাটন সেটিংস OTP</b>\n\n"
     if OTP_BUTTONS:
         for i, btn in enumerate(OTP_BUTTONS, 1):
             text += f"{i}. <b>{btn['name']}</b>\n   🔗 <code>{btn['url']}</code>\n\n"
     else:
-        text += "لا توجد أزرار مضافة\n\n"
+        text += "কোনো বাটন যোগ করা নেই\n\n"
     
-    text += "اختر الإجراء المطلوب:"
+    text += "প্রয়োজনীয় অপশন বেছে নিন:"
     
     markup = InlineKeyboardMarkup(row_width=1)
     markup.add(
-        InlineKeyboardButton("➕ إضافة زر جديد", callback_data="otp_btn_add", style="success"),
-        InlineKeyboardButton("✏️ تعديل زر", callback_data="otp_btn_edit_list", style="primary"),
-        InlineKeyboardButton("🗑 حذف زر", callback_data="otp_btn_delete_list", style="danger")
+        InlineKeyboardButton("➕ নতুন বাটন যোগ করুন", callback_data="otp_btn_add", style="success"),
+        InlineKeyboardButton("✏️ বাটন এডিট", callback_data="otp_btn_edit_list", style="primary"),
+        InlineKeyboardButton("🗑 বাটন মুছুন", callback_data="otp_btn_delete_list", style="danger")
     )
-    markup.add(InlineKeyboardButton("🔙 رجوع", callback_data="admin", style="danger"))
+    markup.add(InlineKeyboardButton("🔙 ফিরে যান", callback_data="admin", style="danger"))
     
     bot.edit_message_text(
         text,
@@ -6350,9 +6350,9 @@ def otp_btn_add_callback(call):
     
     bot.send_message(
         call.message.chat.id,
-        "➕ <b>إضافة زر جديد</b>\n\n"
-        "أرسل اسم الزر:\n"
-        "(مثال: 𝕮𝖍𝖆𝖓𝖓𝖊𝖑 أو Channel)",
+        "➕ <b>নতুন বাটন যোগ করুন</b>\n\n"
+        "বাটনের নাম পাঠান:\n"
+        "(উদাহরণ: 𝕮𝖍𝖆𝖓𝖓𝖊𝖑 অথবা Channel)",
         parse_mode="HTML"
     )
 
@@ -6366,16 +6366,16 @@ def otp_btn_edit_list_callback(call):
     OTP_BUTTONS = load_otp_buttons()
     
     if not OTP_BUTTONS:
-        bot.answer_callback_query(call.id, "❌ لا توجد أزرار للتعديل!", show_alert=True)
+        bot.answer_callback_query(call.id, "❌ এডিট করার মতো কোনো বাটন নেই!", show_alert=True)
         return
     
     markup = InlineKeyboardMarkup(row_width=1)
     for i, btn in enumerate(OTP_BUTTONS):
         markup.add(InlineKeyboardButton(f"✏️ {btn['name']}", callback_data=f"otp_btn_edit_{i}"))
-    markup.add(InlineKeyboardButton("🔙 رجوع", callback_data="admin_otp_buttons", style="danger"))
+    markup.add(InlineKeyboardButton("🔙 ফিরে যান", callback_data="admin_otp_buttons", style="danger"))
     
     bot.edit_message_text(
-        "✏️ <b>اختر الزر للتعديل:</b>",
+        "✏️ <b>এডিট করতে বাটন বেছে নিন:</b>",
         call.message.chat.id,
         call.message.message_id,
         parse_mode="HTML",
@@ -6393,23 +6393,23 @@ def otp_btn_edit_callback(call):
     OTP_BUTTONS = load_otp_buttons()
     
     if btn_idx >= len(OTP_BUTTONS):
-        bot.answer_callback_query(call.id, "❌ الزر غير موجود!", show_alert=True)
+        bot.answer_callback_query(call.id, "❌ বাটন পাওয়া যায়নি!", show_alert=True)
         return
     
     btn = OTP_BUTTONS[btn_idx]
     
     markup = InlineKeyboardMarkup(row_width=1)
     markup.add(
-        InlineKeyboardButton("✏️ تغيير الاسم", callback_data=f"otp_btn_edit_name_{btn_idx}"),
-        InlineKeyboardButton("🔗 تغيير الرابط", callback_data=f"otp_btn_edit_url_{btn_idx}")
+        InlineKeyboardButton("✏️ নাম পরিবর্তন", callback_data=f"otp_btn_edit_name_{btn_idx}"),
+        InlineKeyboardButton("🔗 লিংক পরিবর্তন", callback_data=f"otp_btn_edit_url_{btn_idx}")
     )
-    markup.add(InlineKeyboardButton("🔙 رجوع", callback_data="otp_btn_edit_list", style="danger"))
+    markup.add(InlineKeyboardButton("🔙 ফিরে যান", callback_data="otp_btn_edit_list", style="danger"))
     
     bot.edit_message_text(
-        f"✏️ <b>تعديل الزر:</b>\n\n"
-        f"📝 <b>الاسم:</b> {btn['name']}\n"
-        f"🔗 <b>الرابط:</b> <code>{btn['url']}</code>\n\n"
-        f"اختر ما تريد تعديله:",
+        f"✏️ <b>বাটন এডিট:</b>\n\n"
+        f"📝 <b>নাম:</b> {btn['name']}\n"
+        f"🔗 <b>লিংক:</b> <code>{btn['url']}</code>\n\n"
+        f"যা এডিট করতে চান তা বেছে নিন:",
         call.message.chat.id,
         call.message.message_id,
         parse_mode="HTML",
@@ -6427,7 +6427,7 @@ def otp_btn_edit_name_callback(call):
     
     bot.send_message(
         call.message.chat.id,
-        "✏️ أرسل الاسم الجديد للزر:",
+        "✏️ বাটনের নতুন নাম পাঠান:",
         parse_mode="HTML"
     )
 
@@ -6442,7 +6442,7 @@ def otp_btn_edit_url_callback(call):
     
     bot.send_message(
         call.message.chat.id,
-        "🔗 أرسل الرابط الجديد للزر:",
+        "🔗 বাটনের নতুন লিংক পাঠান:",
         parse_mode="HTML"
     )
 
@@ -6456,16 +6456,16 @@ def otp_btn_delete_list_callback(call):
     OTP_BUTTONS = load_otp_buttons()
     
     if not OTP_BUTTONS:
-        bot.answer_callback_query(call.id, "❌ لا توجد أزرار للحذف!", show_alert=True)
+        bot.answer_callback_query(call.id, "❌ মুছে ফেলার মতো কোনো বাটন নেই!", show_alert=True)
         return
     
     markup = InlineKeyboardMarkup(row_width=1)
     for i, btn in enumerate(OTP_BUTTONS):
         markup.add(InlineKeyboardButton(f"🗑 {btn['name']}", callback_data=f"otp_btn_delete_{i}"))
-    markup.add(InlineKeyboardButton("🔙 رجوع", callback_data="admin_otp_buttons", style="danger"))
+    markup.add(InlineKeyboardButton("🔙 ফিরে যান", callback_data="admin_otp_buttons", style="danger"))
     
     bot.edit_message_text(
-        "🗑 <b>اختر الزر للحذف:</b>",
+        "🗑 <b>মুছতে বাটন বেছে নিন:</b>",
         call.message.chat.id,
         call.message.message_id,
         parse_mode="HTML",
@@ -6483,28 +6483,28 @@ def otp_btn_delete_callback(call):
     OTP_BUTTONS = load_otp_buttons()
     
     if btn_idx >= len(OTP_BUTTONS):
-        bot.answer_callback_query(call.id, "❌ الزر غير موجود!", show_alert=True)
+        bot.answer_callback_query(call.id, "❌ বাটন পাওয়া যায়নি!", show_alert=True)
         return
     
     deleted_btn = OTP_BUTTONS.pop(btn_idx)
     save_otp_buttons(OTP_BUTTONS)
     
-    bot.answer_callback_query(call.id, f"✅ تم حذف الزر: {deleted_btn['name']}", show_alert=True)
+    bot.answer_callback_query(call.id, f"✅ বাটন মুছে ফেলা হয়েছে: {deleted_btn['name']}", show_alert=True)
     
-    text = "🔘 <b>إعدادات أزرار رسالة OTP</b>\n\n"
+    text = "🔘 <b>মেসেজ বাটন সেটিংস OTP</b>\n\n"
     if OTP_BUTTONS:
         for i, btn in enumerate(OTP_BUTTONS, 1):
             text += f"{i}. <b>{btn['name']}</b>\n   🔗 <code>{btn['url']}</code>\n\n"
     else:
-        text += "لا توجد أزرار مضافة\n\n"
+        text += "কোনো বাটন যোগ করা নেই\n\n"
     
     markup = InlineKeyboardMarkup(row_width=1)
     markup.add(
-        InlineKeyboardButton("➕ إضافة زر جديد", callback_data="otp_btn_add", style="success"),
-        InlineKeyboardButton("✏️ تعديل زر", callback_data="otp_btn_edit_list", style="primary"),
-        InlineKeyboardButton("🗑 حذف زر", callback_data="otp_btn_delete_list", style="danger")
+        InlineKeyboardButton("➕ নতুন বাটন যোগ করুন", callback_data="otp_btn_add", style="success"),
+        InlineKeyboardButton("✏️ বাটন এডিট", callback_data="otp_btn_edit_list", style="primary"),
+        InlineKeyboardButton("🗑 বাটন মুছুন", callback_data="otp_btn_delete_list", style="danger")
     )
-    markup.add(InlineKeyboardButton("🔙 رجوع", callback_data="admin", style="danger"))
+    markup.add(InlineKeyboardButton("🔙 ফিরে যান", callback_data="admin", style="danger"))
     
     bot.edit_message_text(
         text,
@@ -6525,7 +6525,7 @@ def withdraw_balance_callback(call):
     min_withdrawal = settings.get("min_withdrawal", 5.0)
     
     if balance < min_withdrawal:
-        msg = f"❌ رصيدك ({balance:.2f}$) أقل من الحد الأدنى للسحب ({min_withdrawal}$)" if lang == "ar" else f"❌ Your balance (${balance:.2f}) is below minimum withdrawal (${min_withdrawal})"
+        msg = f"❌ আপনার ব্যালেন্স ({balance:.2f}$) সর্বনিম্ন উত্তোলনের চেয়ে কম ({min_withdrawal}$)" if lang == "ar" else f"❌ Your balance (${balance:.2f}) is below minimum withdrawal (${min_withdrawal})"
         bot.answer_callback_query(call.id, msg, show_alert=True)
         return
     
@@ -6542,11 +6542,11 @@ def withdraw_balance_callback(call):
             icon = method_icons.get(method_key, "💰")
             markup.add(InlineKeyboardButton(f"{icon} {name}", callback_data=f"wd_method_{method_key}"))
     
-    back_text = "🔙 رجوع" if lang == "ar" else "🔙 Back"
+    back_text = "🔙 ফিরে যান" if lang == "ar" else "🔙 Back"
     markup.add(InlineKeyboardButton(back_text, callback_data="my_account"))
     
     if lang == "ar":
-        text = f"💰 <b>سحب الرصيد</b>\n\n💵 رصيدك الحالي: <b>${balance:.2f}</b>\n\nاختر طريقة السحب:"
+        text = f"💰 <b>ব্যালেন্স উত্তোলন</b>\n\n💵 আপনার বর্তমান ব্যালেন্স: <b>${balance:.2f}</b>\n\nউত্তোলনের পদ্ধতি বেছে নিন:"
     else:
         text = f"💰 <b>Withdraw Balance</b>\n\n💵 Your balance: <b>${balance:.2f}</b>\n\nChoose withdrawal method:"
     
@@ -6568,7 +6568,7 @@ def withdraw_method_callback(call):
     method_data = methods.get(method_key, {})
     
     if not method_data.get("enabled", True):
-        msg = "❌ طريقة السحب هذه غير متاحة حالياً" if lang == "ar" else "❌ This withdrawal method is not available"
+        msg = "❌ এই উত্তোলনের পদ্ধতি এখন উপলব্ধ নয়" if lang == "ar" else "❌ This withdrawal method is not available"
         bot.answer_callback_query(call.id, msg, show_alert=True)
         return
     
@@ -6578,7 +6578,7 @@ def withdraw_method_callback(call):
     user_states[user_id] = {"action": "withdraw_details", "method": method_name, "method_key": method_key}
     
     if lang == "ar":
-        text = f"📝 أرسل <b>{details_prompt}</b> الخاص بك لـ {method_name}:"
+        text = f"📝 পাঠান <b>{details_prompt}</b> আপনার জন্য: {method_name}:"
     else:
         text = f"📝 Send your <b>{details_prompt}</b> for {method_name}:"
     
@@ -6593,17 +6593,17 @@ def admin_admins_menu_callback(call):
     
     markup = InlineKeyboardMarkup(row_width=2)
     markup.add(
-        InlineKeyboardButton("🔧 إضافة مشرف", callback_data="admin_add_admin", style="success"),
-        InlineKeyboardButton("🗑 حذف مشرف", callback_data="admin_remove_admin", style="danger")
+        InlineKeyboardButton("🔧 অ্যাডমিন যোগ করুন", callback_data="admin_add_admin", style="success"),
+        InlineKeyboardButton("🗑 অ্যাডমিন মুছুন", callback_data="admin_remove_admin", style="danger")
     )
     markup.add(
-        InlineKeyboardButton("🚫 حظر مستخدم", callback_data="admin_ban_user", style="danger"),
-        InlineKeyboardButton("✅ إلغاء حظر", callback_data="admin_unban_user", style="success")
+        InlineKeyboardButton("🚫 ইউজার ব্যান", callback_data="admin_ban_user", style="danger"),
+        InlineKeyboardButton("✅ আনব্যান", callback_data="admin_unban_user", style="success")
     )
-    markup.add(InlineKeyboardButton("🔙 رجوع", callback_data="admin_panel", style="danger"))
+    markup.add(InlineKeyboardButton("🔙 ফিরে যান", callback_data="admin_panel", style="danger"))
     
     bot.edit_message_text(
-        "👥 <b>إدارة المشرفين والمستخدمين</b>\n\nاختر الإجراء المطلوب:",
+        "👥 <b>অ্যাডমিন ও ইউজার ম্যানেজমেন্ট</b>\n\nপ্রয়োজনীয় অপশন বেছে নিন:",
         call.message.chat.id,
         call.message.message_id,
         parse_mode="HTML",
@@ -6619,16 +6619,16 @@ def admin_channels_menu_callback(call):
     
     markup = InlineKeyboardMarkup(row_width=2)
     markup.add(
-        InlineKeyboardButton("➕ إضافة قناة", callback_data="admin_add_channel", style="success"),
-        InlineKeyboardButton("🗑 حذف قناة", callback_data="admin_remove_channel", style="danger")
+        InlineKeyboardButton("➕ চ্যানেল যোগ করুন", callback_data="admin_add_channel", style="success"),
+        InlineKeyboardButton("🗑 চ্যানেল মুছুন", callback_data="admin_remove_channel", style="danger")
     )
     markup.add(
-        InlineKeyboardButton("📊 القنوات المضافة", callback_data="admin_list_channels", style="primary")
+        InlineKeyboardButton("📊 যোগ করা চ্যানেল", callback_data="admin_list_channels", style="primary")
     )
-    markup.add(InlineKeyboardButton("🔙 رجوع", callback_data="admin_panel", style="danger"))
+    markup.add(InlineKeyboardButton("🔙 ফিরে যান", callback_data="admin_panel", style="danger"))
     
     bot.edit_message_text(
-        "📢 <b>إدارة القنوات</b>\n\nاختر الإجراء المطلوب:",
+        "📢 <b>চ্যানেল ম্যানেজমেন্ট</b>\n\nপ্রয়োজনীয় অপশন বেছে নিন:",
         call.message.chat.id,
         call.message.message_id,
         parse_mode="HTML",
@@ -6644,16 +6644,16 @@ def admin_countries_menu_callback(call):
     
     markup = InlineKeyboardMarkup(row_width=2)
     markup.add(
-        InlineKeyboardButton("➕ إضافة دولة", callback_data="admin_add_country", style="success"),
-        InlineKeyboardButton("➖ حذف دولة", callback_data="admin_remove_country", style="danger")
+        InlineKeyboardButton("➕ দেশ যোগ করুন", callback_data="admin_add_country", style="success"),
+        InlineKeyboardButton("➖ দেশ মুছুন", callback_data="admin_remove_country", style="danger")
     )
     markup.add(
-        InlineKeyboardButton("📋 الدول المتاحة", callback_data="admin_list_countries", style="primary")
+        InlineKeyboardButton("📋 উপলব্ধ দেশসমূহ", callback_data="admin_list_countries", style="primary")
     )
-    markup.add(InlineKeyboardButton("🔙 رجوع", callback_data="admin_panel", style="danger"))
+    markup.add(InlineKeyboardButton("🔙 ফিরে যান", callback_data="admin_panel", style="danger"))
     
     bot.edit_message_text(
-        "🌍 <b>إدارة الدول</b>\n\nاختر الإجراء المطلوب:",
+        "🌍 <b>দেশ ম্যানেজমেন্ট</b>\n\nপ্রয়োজনীয় অপশন বেছে নিন:",
         call.message.chat.id,
         call.message.message_id,
         parse_mode="HTML",
@@ -6669,16 +6669,16 @@ def admin_groups_menu_callback(call):
     
     markup = InlineKeyboardMarkup(row_width=2)
     markup.add(
-        InlineKeyboardButton("➕ إضافة جروب", callback_data="admin_add_group_start", style="success"),
-        InlineKeyboardButton("➖ حذف جروب", callback_data="admin_remove_group", style="danger")
+        InlineKeyboardButton("➕ গ্রুপ যোগ করুন", callback_data="admin_add_group_start", style="success"),
+        InlineKeyboardButton("➖ গ্রুপ মুছুন", callback_data="admin_remove_group", style="danger")
     )
     markup.add(
-        InlineKeyboardButton("📋 عرض الجروبات", callback_data="admin_list_groups", style="primary")
+        InlineKeyboardButton("📋 গ্রুপ দেখুন", callback_data="admin_list_groups", style="primary")
     )
-    markup.add(InlineKeyboardButton("🔙 رجوع", callback_data="admin_panel", style="danger"))
+    markup.add(InlineKeyboardButton("🔙 ফিরে যান", callback_data="admin_panel", style="danger"))
     
     bot.edit_message_text(
-        "📱 <b>إدارة الجروبات</b>\n\nاختر الإجراء المطلوب:",
+        "📱 <b>গ্রুপ ম্যানেজমেন্ট</b>\n\nপ্রয়োজনীয় অপশন বেছে নিন:",
         call.message.chat.id,
         call.message.message_id,
         parse_mode="HTML",
@@ -6693,12 +6693,12 @@ def admin_add_group_start_callback(call):
     
     from telebot.types import ReplyKeyboardMarkup, KeyboardButton
     markup = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
-    markup.add(KeyboardButton("🔘 اختر جروب", request_chat=telebot.types.KeyboardButtonRequestChat(request_id=1, chat_is_channel=False)))
+    markup.add(KeyboardButton("🔘 গ্রুপ বেছে নিন", request_chat=telebot.types.KeyboardButtonRequestChat(request_id=1, chat_is_channel=False)))
     
     bot.send_message(
         call.message.chat.id,
-        "➕ <b>إضافة جروب جديد</b>\n\n"
-        "إضغط على الزر بالأسفل لاختيار الجروب أو أرسل ID الجروب مباشرة:",
+        "➕ <b>নতুন গ্রুপ যোগ করুন</b>\n\n"
+        "গ্রুপ বাছাই করতে নিচের বাটনে চাপুন অথবা পাঠান ID সরাসরি গ্রুপ:",
         parse_mode="HTML",
         reply_markup=markup
     )
@@ -6722,12 +6722,12 @@ def handle_add_group_message(message):
         if group_id not in GROUPS:
             GROUPS.append(group_id)
             save_groups()
-            bot.send_message(message.chat.id, f"✅ تم إضافة الجروب بنجاح!\nID: <code>{group_id}</code>", parse_mode="HTML", reply_markup=ReplyKeyboardRemove())
+            bot.send_message(message.chat.id, f"✅ গ্রুপ সফলভাবে যোগ হয়েছে!\nID: <code>{group_id}</code>", parse_mode="HTML", reply_markup=ReplyKeyboardRemove())
         else:
-            bot.send_message(message.chat.id, "⚠️ هذا الجروب مضاف بالفعل.", reply_markup=ReplyKeyboardRemove())
+            bot.send_message(message.chat.id, "⚠️ এই গ্রুপ আগেই যোগ করা আছে।", reply_markup=ReplyKeyboardRemove())
         user_states[user_id] = {}
     else:
-        bot.send_message(message.chat.id, "❌ ID غير صالح. يرجى إرسال ID صحيح أو اختيار جروب من الزر.")
+        bot.send_message(message.chat.id, "❌ ID অবৈধ। অনুগ্রহ করে পাঠান ID সঠিক আইডি অথবা বাটন থেকে গ্রুপ বেছে নিন।")
 
 @bot.callback_query_handler(func=lambda call: call.data == "admin_add_group")
 def admin_add_group_callback(call):
@@ -6742,7 +6742,7 @@ def admin_remove_group_callback(call):
         return
     
     if not GROUPS:
-        bot.answer_callback_query(call.id, "⚠️ لا توجد جروبات مضافة", show_alert=True)
+        bot.answer_callback_query(call.id, "⚠️ কোনো গ্রুপ যোগ করা নেই", show_alert=True)
         return
     
     groups_list = "\n".join([f"• <code>{gid}</code>" for gid in GROUPS])
@@ -6751,9 +6751,9 @@ def admin_remove_group_callback(call):
     
     bot.send_message(
         call.message.chat.id,
-        f"🗑 <b>حذف جروب</b>\n\n"
-        f"<b>الجروبات المضافة:</b>\n{groups_list}\n\n"
-        f"أرسل ID الجروب الذي تريد حذفه:",
+        f"🗑 <b>গ্রুপ মুছুন</b>\n\n"
+        f"<b>যোগ করা গ্রুপ:</b>\n{groups_list}\n\n"
+        f"পাঠান ID যে গ্রুপ মুছতে চান:",
         parse_mode="HTML"
     )
 
@@ -6768,11 +6768,11 @@ def handle_remove_group_message(message):
         if group_id in GROUPS:
             GROUPS.remove(group_id)
             save_groups()
-            bot.send_message(message.chat.id, f"✅ تم حذف الجروب <code>{group_id}</code> بنجاح!", parse_mode="HTML")
+            bot.send_message(message.chat.id, f"✅ গ্রুপ মুছে ফেলা হয়েছে <code>{group_id}</code> সফলভাবে!", parse_mode="HTML")
         else:
-            bot.send_message(message.chat.id, "❌ هذا الجروب غير موجود في القائمة.")
+            bot.send_message(message.chat.id, "❌ এই গ্রুপ তালিকায় নেই।")
     except ValueError:
-        bot.send_message(message.chat.id, "❌ يرجى إرسال ID صحيح (رقم).")
+        bot.send_message(message.chat.id, "❌ অনুগ্রহ করে পাঠান ID সঠিক আইডি (সংখ্যা)।")
     
     user_states[user_id] = {}
 
@@ -6784,17 +6784,17 @@ def admin_list_groups_callback(call):
         return
     
     if not GROUPS:
-        bot.answer_callback_query(call.id, "⚠️ لا توجد جروبات مضافة", show_alert=True)
+        bot.answer_callback_query(call.id, "⚠️ কোনো গ্রুপ যোগ করা নেই", show_alert=True)
         return
     
-    groups_text = "📋 <b>الجروبات المضافة:</b>\n\n"
+    groups_text = "📋 <b>যোগ করা গ্রুপ:</b>\n\n"
     for idx, gid in enumerate(GROUPS, 1):
         try:
             chat = bot.get_chat(gid)
             groups_text += f"{idx}. <b>{chat.title}</b>\n"
             groups_text += f"   🆔 <code>{gid}</code>\n\n"
         except:
-            groups_text += f"{idx}. جروب غير معروف\n"
+            groups_text += f"{idx}. অজানা গ্রুপ\n"
             groups_text += f"   🆔 <code>{gid}</code>\n\n"
     
     bot.send_message(call.message.chat.id, groups_text, parse_mode="HTML")
@@ -6808,16 +6808,16 @@ def admin_broadcast_menu_callback(call):
     
     markup = InlineKeyboardMarkup(row_width=2)
     markup.add(
-        InlineKeyboardButton("📣 إذاعة", callback_data="admin_broadcast_normal", style="primary"),
-        InlineKeyboardButton("📤 إذاعة توجيهية", callback_data="admin_broadcast_forward", style="primary")
+        InlineKeyboardButton("📣 ব্রডকাস্ট", callback_data="admin_broadcast_normal", style="primary"),
+        InlineKeyboardButton("📤 ফরওয়ার্ড ব্রডকাস্ট", callback_data="admin_broadcast_forward", style="primary")
     )
-    markup.add(InlineKeyboardButton("🔙 رجوع", callback_data="admin_panel", style="danger"))
+    markup.add(InlineKeyboardButton("🔙 ফিরে যান", callback_data="admin_panel", style="danger"))
     
     bot.edit_message_text(
-        "📣 <b>نظام الإذاعة</b>\n\n"
-        "اختر نوع الإذاعة:\n\n"
-        "• <b>إذاعة:</b> رسالة جديدة لكل مستخدم\n"
-        "• <b>إذاعة توجيهية:</b> إعادة توجيه رسالتك",
+        "📣 <b>ব্রডকাস্ট সিস্টেম</b>\n\n"
+        "ব্রডকাস্টের ধরন বেছে নিন:\n\n"
+        "• <b>ব্রডকাস্ট:</b> প্রতি ইউজারের জন্য নতুন মেসেজ\n"
+        "• <b>ফরওয়ার্ড ব্রডকাস্ট:</b> আপনার মেসেজ ফরওয়ার্ড করা হবে",
         call.message.chat.id,
         call.message.message_id,
         parse_mode="HTML",
@@ -6830,8 +6830,8 @@ def admin_broadcast_normal_callback(call):
     if not is_admin(user_id): return
     broadcast_state[user_id] = {"type": "normal", "step": "waiting_message"}
     markup = InlineKeyboardMarkup()
-    markup.add(InlineKeyboardButton("🔙 إلغاء", callback_data="cancel_broadcast", style="danger"))
-    bot.send_message(call.message.chat.id, "📣 <b>إذاعة عادية</b>\n\nأرسل الرسالة التي تريد إذاعتها:", parse_mode="HTML", reply_markup=markup)
+    markup.add(InlineKeyboardButton("🔙 বাতিল", callback_data="cancel_broadcast", style="danger"))
+    bot.send_message(call.message.chat.id, "📣 <b>সাধারণ ব্রডকাস্ট</b>\n\nযে মেসেজ ব্রডকাস্ট করতে চান তা পাঠান:", parse_mode="HTML", reply_markup=markup)
 
 @bot.callback_query_handler(func=lambda call: call.data == "admin_broadcast_forward")
 def admin_broadcast_forward_callback(call):
@@ -6839,8 +6839,8 @@ def admin_broadcast_forward_callback(call):
     if not is_admin(user_id): return
     broadcast_state[user_id] = {"type": "forward", "step": "waiting_message"}
     markup = InlineKeyboardMarkup()
-    markup.add(InlineKeyboardButton("🔙 إلغاء", callback_data="cancel_broadcast", style="danger"))
-    bot.send_message(call.message.chat.id, "📤 <b>إذاعة توجيهية</b>\n\nأرسل الرسالة التي تريد توجيهها:", parse_mode="HTML", reply_markup=markup)
+    markup.add(InlineKeyboardButton("🔙 বাতিল", callback_data="cancel_broadcast", style="danger"))
+    bot.send_message(call.message.chat.id, "📤 <b>ফরওয়ার্ড ব্রডকাস্ট</b>\n\nযে মেসেজ ফরওয়ার্ড করতে চান তা পাঠান:", parse_mode="HTML", reply_markup=markup)
 
 @bot.message_handler(func=lambda msg: msg.from_user.id in broadcast_state and broadcast_state[msg.from_user.id].get("step") == "waiting_message", content_types=["text", "photo", "video", "document"])
 def handle_broadcast_message(msg):
@@ -6849,8 +6849,8 @@ def handle_broadcast_message(msg):
     state["step"] = "confirm"
     state["message"] = msg
     markup = InlineKeyboardMarkup()
-    markup.add(InlineKeyboardButton("✅ تأكيد الإرسال", callback_data="confirm_broadcast", style="success"), InlineKeyboardButton("❌ إلغاء", callback_data="cancel_broadcast", style="danger"))
-    bot.reply_to(msg, "❓ <b>هل أنت متأكد من إرسال هذه الرسالة للجميع؟</b>", parse_mode="HTML", reply_markup=markup)
+    markup.add(InlineKeyboardButton("✅ পাঠানো নিশ্চিত", callback_data="confirm_broadcast", style="success"), InlineKeyboardButton("❌ বাতিল", callback_data="cancel_broadcast", style="danger"))
+    bot.reply_to(msg, "❓ <b>আপনি কি নিশ্চিত এই মেসেজ সবাইকে পাঠাতে চান?</b>", parse_mode="HTML", reply_markup=markup)
 
 @bot.callback_query_handler(func=lambda call: call.data == "confirm_broadcast")
 def confirm_broadcast_callback(call):
@@ -6859,7 +6859,7 @@ def confirm_broadcast_callback(call):
     state = broadcast_state[user_id]
     msg = state["message"]
     success, failed = 0, 0
-    progress = bot.send_message(call.message.chat.id, "⏳ جاري الإرسال...")
+    progress = bot.send_message(call.message.chat.id, "⏳ পাঠানো হচ্ছে...")
     for uid in list(USERS.keys()):
         try:
             if state["type"] == "forward":
@@ -6869,7 +6869,7 @@ def confirm_broadcast_callback(call):
             success += 1
         except: failed += 1
     bot.delete_message(progress.chat.id, progress.message_id)
-    bot.send_message(call.message.chat.id, f"✅ <b>تم الإرسال!</b>\n\n📊 نجح: {success}\n❌ فشل: {failed}", parse_mode="HTML")
+    bot.send_message(call.message.chat.id, f"✅ <b>পাঠানো হয়েছে!</b>\n\n📊 সফল: {success}\n❌ ব্যর্থ: {failed}", parse_mode="HTML")
     del broadcast_state[user_id]
 
 def send_saved_message(target_bot, target_uid, saved_msg):
@@ -6901,7 +6901,7 @@ def back_to_main_callback(call):
     markup = get_country_buttons(user_id)
     if markup:
         if lang == "ar":
-            title = f"<tg-emoji emoji-id='5972277098830634724'>🚨</tg-emoji> <b>اختر المنصة</b>\n\n<tg-emoji emoji-id='6046356449938905522'>💰</tg-emoji> ستربح <b>${format_decimal(code_bonus)}</b> عند كل كود تستلمه!"
+            title = f"<tg-emoji emoji-id='5972277098830634724'>🚨</tg-emoji> <b>প্ল্যাটফর্ম বেছে নিন</b>\n\n<tg-emoji emoji-id='6046356449938905522'>💰</tg-emoji> আপনি পাবেন <b>${format_decimal(code_bonus)}</b> প্রতিটি কোড পেলে!"
         else:
             title = f"<tg-emoji emoji-id='5972277098830634724'>🚨</tg-emoji> <b>Select Country</b>\n\n💰 You'll earn <b>${format_decimal(code_bonus)}</b> for each code received!"
         
@@ -6918,7 +6918,7 @@ def back_to_main_callback(call):
     else:
         try:
             text = t(user_id, "welcome")
-            if not text: text = "🌐 <b>مرحباً بك!</b>"
+            if not text: text = "🌐 <b>স্বাগতম!</b>"
             bot.edit_message_text(
                 text,
                 call.message.chat.id,
@@ -6940,9 +6940,9 @@ def admin_add_country_callback(call):
 
     bot.send_message(
         call.message.chat.id,
-        "📝 <b>إضافة دولة جديدة - الخطوة 1/3</b>\n\n"
-        "📤 أرسل ملف الأرقام (.txt)\n\n"
-        "<i>سيتم تنظيف الملف تلقائياً واستخراج الأرقام فقط من كل سطر</i>",
+        "📝 <b>নতুন দেশ যোগ - ধাপ 1/3</b>\n\n"
+        "📤 নম্বরের ফাইল পাঠান (.txt)\n\n"
+        "<i>ফাইল স্বয়ংক্রিয়ভাবে পরিষ্কার হবে এবং প্রতি লাইন থেকে শুধু নম্বর নেওয়া হবে</i>",
         parse_mode="HTML"
     )
 
@@ -6953,7 +6953,7 @@ def admin_remove_country_callback(call):
         return
     
     if not COUNTRIES:
-        bot.answer_callback_query(call.id, "❌ لا توجد دول مضافة!", show_alert=True)
+        bot.answer_callback_query(call.id, "❌ কোনো দেশ যোগ করা নেই!", show_alert=True)
         return
     
     markup = InlineKeyboardMarkup(row_width=2)
@@ -6965,10 +6965,10 @@ def admin_remove_country_callback(call):
         count = info.get("numbers_count", 0)
         markup.add(InlineKeyboardButton(f"❌ {flag} {cname} ({count})", callback_data=f"delete_country_btn_{cid}"))
     
-    markup.add(InlineKeyboardButton("🔙 رجوع", callback_data="admin_panel", style="danger"))
+    markup.add(InlineKeyboardButton("🔙 ফিরে যান", callback_data="admin_panel", style="danger"))
     
     bot.edit_message_text(
-        "🗑 <b>حذف دولة</b>\n\nاختر الدولة التي تريد حذفها من القائمة بالأسفل:",
+        "🗑 <b>দেশ মুছুন</b>\n\nনিচের তালিকা থেকে যে দেশ মুছতে চান সেটি বেছে নিন:",
         call.message.chat.id,
         call.message.message_id,
         parse_mode="HTML",
@@ -6993,11 +6993,11 @@ def delete_country_confirm_callback(call):
         
         del COUNTRIES[country_name]
         save_countries()
-        bot.answer_callback_query(call.id, f"✅ تم حذف {country_name} بنجاح!", show_alert=True)
+        bot.answer_callback_query(call.id, f"✅ মুছে ফেলা হয়েছে {country_name} সফলভাবে!", show_alert=True)
         
         admin_remove_country_callback(call)
     else:
-        bot.answer_callback_query(call.id, "❌ هذه الدولة غير موجودة!", show_alert=True)
+        bot.answer_callback_query(call.id, "❌ এই দেশ পাওয়া যায়নি!", show_alert=True)
 
 @bot.callback_query_handler(func=lambda call: call.data == "admin_list_countries")
 def admin_list_countries_callback(call):
@@ -7007,21 +7007,21 @@ def admin_list_countries_callback(call):
         return
 
     if not COUNTRIES:
-        bot.answer_callback_query(call.id, "⚠️ لا توجد دول مضافة حالياً", show_alert=True)
+        bot.answer_callback_query(call.id, "⚠️ এখন কোনো দেশ যোগ করা নেই", show_alert=True)
         return
 
-    countries_text = "📋 <b>الدول المتاحة:</b>\n\n"
+    countries_text = "📋 <b>উপলব্ধ দেশ:</b>\n\n"
     for cid, info in COUNTRIES.items():
         cname = info.get("display_name", cid)
         countries_text += f"🌍 <b>{cname}</b> {info.get('flag', '🌐')}\n"
-        countries_text += f"   🆔 المعرف: <code>{cid}</code>\n"
-        countries_text += f"   📊 الأرقام: {info.get('numbers_count', 0)}\n"
-        countries_text += f"   ⚙️ الخدمة: {info.get('service', 'N/A')}\n"
-        countries_text += f"   📄 الملف: {info.get('file', 'N/A')}\n"
+        countries_text += f"   🆔 আইডি: <code>{cid}</code>\n"
+        countries_text += f"   📊 নম্বর: {info.get('numbers_count', 0)}\n"
+        countries_text += f"   ⚙️ সার্ভিস: {info.get('service', 'N/A')}\n"
+        countries_text += f"   📄 ফাইল: {info.get('file', 'N/A')}\n"
         if info.get('server'):
-            countries_text += f"   🖥️ السيرفر: {info.get('server')}\n"
+            countries_text += f"   🖥️ সার্ভার: {info.get('server')}\n"
         if info.get('platforms'):
-            countries_text += f"   📱 المنصات: {', '.join(info.get('platforms', []))}\n"
+            countries_text += f"   📱 প্ল্যাটফর্ম: {', '.join(info.get('platforms', []))}\n"
         countries_text += "\n"
 
     bot.send_message(call.message.chat.id, countries_text, parse_mode="HTML")
@@ -7034,7 +7034,7 @@ def add_country_server_callback(call):
         return
     
     if user_id not in user_states or user_states[user_id].get("action") != "add_country_server":
-        bot.answer_callback_query(call.id, "❌ انتهت الجلسة!", show_alert=True)
+        bot.answer_callback_query(call.id, "❌ সেশন শেষ হয়ে গেছে!", show_alert=True)
         return
     
     server = call.data.replace("add_country_srv_", "")
@@ -7068,10 +7068,10 @@ def add_country_server_callback(call):
         InlineKeyboardButton("📧 Gmail", callback_data="add_country_plt_Gmail", style="primary")
     )
     markup.add(
-        InlineKeyboardButton("🌐 جميع المنصات", callback_data="add_country_plt_ALL", style="success")
+        InlineKeyboardButton("🌐 সব প্ল্যাটফর্ম", callback_data="add_country_plt_ALL", style="success")
     )
-    markup.add(InlineKeyboardButton("✅ تأكيد وإنهاء", callback_data="add_country_finish", style="success"))
-    markup.add(InlineKeyboardButton("❌ إلغاء", callback_data="admin_countries", style="primary"))
+    markup.add(InlineKeyboardButton("✅ নিশ্চিত করুন ও শেষ করুন", callback_data="add_country_finish", style="success"))
+    markup.add(InlineKeyboardButton("❌ বাতিল", callback_data="admin_countries", style="primary"))
     
     server_names = {
         "GROUP": "🏢 GROUP",
@@ -7082,12 +7082,12 @@ def add_country_server_callback(call):
     }
     
     bot.edit_message_text(
-        f"✅ <b>الخطوة 5/5 - اختيار المنصات</b>\n\n"
-        f"🌍 الدولة: <b>{state.get('country_name')}</b>\n"
-        f"🔢 رمز الدولة: <b>{state.get('country_code')}</b>\n"
-        f"🖥️ السيرفر: <b>{server_names.get(server, server)}</b>\n\n"
-        f"📱 <b>المنصات المختارة:</b> لا يوجد\n\n"
-        f"اختر المنصات التي تعمل عليها هذه الأرقام:",
+        f"✅ <b>ধাপ 5/5 - প্ল্যাটফর্ম বাছাই</b>\n\n"
+        f"🌍 দেশ: <b>{state.get('country_name')}</b>\n"
+        f"🔢 দেশের কোড: <b>{state.get('country_code')}</b>\n"
+        f"🖥️ সার্ভার: <b>{server_names.get(server, server)}</b>\n\n"
+        f"📱 <b>বাছাই করা প্ল্যাটফর্ম:</b> নেই\n\n"
+        f"এই নম্বরগুলো যে প্ল্যাটফর্মে কাজ করে সেগুলো বেছে নিন:",
         call.message.chat.id,
         call.message.message_id,
         parse_mode="HTML",
@@ -7102,7 +7102,7 @@ def add_country_platform_callback(call):
         return
     
     if user_id not in user_states or user_states[user_id].get("action") != "add_country_platforms":
-        bot.answer_callback_query(call.id, "❌ انتهت الجلسة!", show_alert=True)
+        bot.answer_callback_query(call.id, "❌ সেশন শেষ হয়ে গেছে!", show_alert=True)
         return
     
     platform = call.data.replace("add_country_plt_", "")
@@ -7147,10 +7147,10 @@ def add_country_platform_callback(call):
         InlineKeyboardButton(get_btn_text("Gmail", "📧"), callback_data="add_country_plt_Gmail")
     )
     markup.add(
-        InlineKeyboardButton("🌐 جميع المنصات", callback_data="add_country_plt_ALL", style="success")
+        InlineKeyboardButton("🌐 সব প্ল্যাটফর্ম", callback_data="add_country_plt_ALL", style="success")
     )
-    markup.add(InlineKeyboardButton("✅ تأكيد وإنهاء", callback_data="add_country_finish", style="success"))
-    markup.add(InlineKeyboardButton("❌ إلغاء", callback_data="admin_countries", style="danger"))
+    markup.add(InlineKeyboardButton("✅ নিশ্চিত করুন ও শেষ করুন", callback_data="add_country_finish", style="success"))
+    markup.add(InlineKeyboardButton("❌ বাতিল", callback_data="admin_countries", style="danger"))
     
     server_names = {
         "GROUP": "🏢 GROUP",
@@ -7167,16 +7167,16 @@ def add_country_platform_callback(call):
         "Discord": "🎮", "Gmail": "📧"
     }
     
-    platforms_text = ", ".join([f"{platform_icons.get(p, '📱')} {p}" for p in selected_platforms]) if selected_platforms else "لا يوجد"
+    platforms_text = ", ".join([f"{platform_icons.get(p, '📱')} {p}" for p in selected_platforms]) if selected_platforms else "নেই"
     
     try:
         bot.edit_message_text(
-            f"✅ <b>الخطوة 5/5 - اختيار المنصات</b>\n\n"
-            f"🌍 الدولة: <b>{state.get('country_name')}</b>\n"
-            f"🔢 رمز الدولة: <b>{state.get('country_code')}</b>\n"
-            f"🖥️ السيرفر: <b>{server_names.get(state.get('server'), state.get('server'))}</b>\n\n"
-            f"📱 <b>المنصات المختارة:</b> {platforms_text}\n\n"
-            f"اختر المنصات التي تعمل عليها هذه الأرقام:",
+            f"✅ <b>ধাপ 5/5 - প্ল্যাটফর্ম বাছাই</b>\n\n"
+            f"🌍 দেশ: <b>{state.get('country_name')}</b>\n"
+            f"🔢 দেশের কোড: <b>{state.get('country_code')}</b>\n"
+            f"🖥️ সার্ভার: <b>{server_names.get(state.get('server'), state.get('server'))}</b>\n\n"
+            f"📱 <b>বাছাই করা প্ল্যাটফর্ম:</b> {platforms_text}\n\n"
+            f"এই নম্বরগুলো যে প্ল্যাটফর্মে কাজ করে সেগুলো বেছে নিন:",
             call.message.chat.id,
             call.message.message_id,
             parse_mode="HTML",
@@ -7242,7 +7242,7 @@ def add_country_finish_callback(call):
     user_id = call.from_user.id
     if not is_admin(user_id): return
     if user_id not in user_states or user_states[user_id].get("action") != "add_country_platforms":
-        bot.answer_callback_query(call.id, "❌ انتهت الجلسة!", show_alert=True)
+        bot.answer_callback_query(call.id, "❌ সেশন শেষ হয়ে গেছে!", show_alert=True)
         return
     
     state = user_states[user_id]
@@ -7250,18 +7250,18 @@ def add_country_finish_callback(call):
     server = state.get("server")
     selected_platforms = state.get("selected_platforms", ["WhatsApp"])
     
-    bot.edit_message_text("🔍 جاري فحص الملف وتحديد الدولة تلقائياً...", call.message.chat.id, call.message.message_id)
+    bot.edit_message_text("🔍 ফাইল পরীক্ষা করে স্বয়ংক্রিয়ভাবে দেশ নির্ধারণ করা হচ্ছে...", call.message.chat.id, call.message.message_id)
     
     prefix = detect_country_code_from_file(temp_file)
     if not prefix:
-        bot.send_message(call.message.chat.id, "❌ لم أتمكن من تحديد رمز الدولة من الملف.")
+        bot.send_message(call.message.chat.id, "❌ ফাইল থেকে দেশের কোড নির্ধারণ করা যায়নি।")
         return
 
     country_name, flag, region_code = detect_country_from_number(prefix)
     count, total, rejected = clean_and_filter_numbers(temp_file, prefix)
     
     if count == 0:
-        bot.send_message(call.message.chat.id, f"❌ الملف لا يحتوي على أرقام تبدأ بـ +{prefix}")
+        bot.send_message(call.message.chat.id, f"❌ ফাইলে এমন কোনো নম্বর নেই যা শুরু হয় +{prefix}")
         return
 
     final_country_name = country_name
@@ -7287,7 +7287,7 @@ def add_country_finish_callback(call):
             country_id = f"{final_country_name}_{unique_id}"
             
         os.rename(temp_file, final_filename)
-        print(f"✅ تم حفظ الملف باسم فريد: {final_filename}")
+        print(f"✅ ফাইল ইউনিক নামে সেভ হয়েছে: {final_filename}")
 
     COUNTRIES[country_id] = {
         "display_name": final_country_name,
@@ -7308,12 +7308,12 @@ def add_country_finish_callback(call):
     del user_states[user_id]
     bot.send_message(
         call.message.chat.id,
-        f"✅ <b>تم إضافة الدولة بنجاح!</b>\n\n"
-        f"🌍 الدولة: {flag} {final_country_name} (#{region_code})\n"
-        f"🔢 الرمز: +{prefix}\n"
-        f"📱 العدد: {count} رقم\n"
-        f"🖥 السيرفر: {server}\n"
-        f"✨ تم التحديد تلقائياً من محتوى الملف",
+        f"✅ <b>দেশ সফলভাবে যোগ হয়েছে!</b>\n\n"
+        f"🌍 দেশ: {flag} {final_country_name} (#{region_code})\n"
+        f"🔢 কোড: +{prefix}\n"
+        f"📱 সংখ্যা: {count} নম্বর\n"
+        f"🖥 সার্ভার: {server}\n"
+        f"✨ ফাইলের কন্টেন্ট থেকে স্বয়ংক্রিয়ভাবে নির্ধারিত",
         parse_mode="HTML"
     )
 
@@ -7329,13 +7329,13 @@ def admin_add_channel_callback(call):
 
     bot.send_message(
         call.message.chat.id,
-        "📢 <b>إضافة قناة اشتراك إجباري</b>\n\n"
-        "أرسل رابط القناة أو معرفها:\n\n"
-        "<b>أمثلة:</b>\n"
+        "📢 <b>বাধ্যতামূলক সাবস্ক্রিপশন চ্যানেল যোগ</b>\n\n"
+        "চ্যানেলের লিংক বা আইডি পাঠান:\n\n"
+        "<b>উদাহরণ:</b>\n"
         "• <code>@new_OTP_Group</code>\n"
         "• <code>https://t.me/alorhawa</code>\n"
         "• <code>-1003591777442</code> (ID)\n\n"
-        "<b>ملاحظة:</b> يجب أن يكون البوت مشرفاً في القناة!",
+        "<b>নোট:</b> বটকে চ্যানেলের অ্যাডমিন হতে হবে!",
         parse_mode="HTML"
     )
 
@@ -7347,7 +7347,7 @@ def admin_remove_channel_callback(call):
         return
 
     if not CHANNELS:
-        bot.answer_callback_query(call.id, "⚠️ لا توجد قنوات مضافة حالياً", show_alert=True)
+        bot.answer_callback_query(call.id, "⚠️ এখন কোনো চ্যানেল যোগ করা নেই", show_alert=True)
         return
 
     channels_list = "\n".join([f"{idx+1}. {ch['name']} ({ch['username']})" for idx, ch in enumerate(CHANNELS)])
@@ -7356,9 +7356,9 @@ def admin_remove_channel_callback(call):
 
     bot.send_message(
         call.message.chat.id,
-        f"🗑 <b>حذف قناة</b>\n\n"
-        f"<b>القنوات المضافة:</b>\n{channels_list}\n\n"
-        f"أرسل رقم القناة التي تريد حذفها:",
+        f"🗑 <b>চ্যানেল মুছুন</b>\n\n"
+        f"<b>যোগ করা চ্যানেল:</b>\n{channels_list}\n\n"
+        f"যে চ্যানেল মুছতে চান তার নম্বর পাঠান:",
         parse_mode="HTML"
     )
 
@@ -7370,10 +7370,10 @@ def admin_list_channels_callback(call):
         return
 
     if not CHANNELS:
-        bot.answer_callback_query(call.id, "⚠️ لا توجد قنوات مضافة حالياً", show_alert=True)
+        bot.answer_callback_query(call.id, "⚠️ এখন কোনো চ্যানেল যোগ করা নেই", show_alert=True)
         return
 
-    channels_text = "📊 <b>القنوات المضافة:</b>\n\n"
+    channels_text = "📊 <b>যোগ করা চ্যানেল:</b>\n\n"
     for idx, ch in enumerate(CHANNELS, 1):
         channels_text += f"{idx}. 📢 <b>{ch['name']}</b>\n"
         channels_text += f"   🔗 {ch['username']}\n"
@@ -7385,27 +7385,27 @@ def admin_list_channels_callback(call):
 def admin_add_admin_callback(call):
     user_id = call.from_user.id
     if user_id != MAIN_ADMIN_ID:
-        bot.answer_callback_query(call.id, "❌ عذراً، المالك فقط يمكنه إضافة مشرفين!", show_alert=True)
+        bot.answer_callback_query(call.id, "❌ দুঃখিত, শুধু মালিক অ্যাডমিন যোগ করতে পারেন!", show_alert=True)
         return
     user_states[user_id] = {"action": "add_admin"}
-    bot.send_message(call.message.chat.id, "🔧 <b>إضافة مشرف جديد</b>\n\nأرسل معرف المستخدم (User ID) الذي تريد جعله مشرفاً:", parse_mode="HTML")
+    bot.send_message(call.message.chat.id, "🔧 <b>নতুন অ্যাডমিন যোগ</b>\n\nইউজারের আইডি পাঠান (User ID) যাকে অ্যাডমিন বানাতে চান:", parse_mode="HTML")
 
 @bot.callback_query_handler(func=lambda call: call.data == "admin_remove_admin")
 def admin_remove_admin_callback(call):
     user_id = call.from_user.id
     if user_id != MAIN_ADMIN_ID:
-        bot.answer_callback_query(call.id, "❌ عذراً، المالك فقط يمكنه حذف مشرفين!", show_alert=True)
+        bot.answer_callback_query(call.id, "❌ দুঃখিত, শুধু মালিক অ্যাডমিন মুছতে পারেন!", show_alert=True)
         return
     
     admins_list = ""
     for aid in ADMINS:
-        status = " (المالك 👑)" if aid == MAIN_ADMIN_ID else ""
+        status = " (মালিক 👑)" if aid == MAIN_ADMIN_ID else ""
         admins_list += f"• <code>{aid}</code>{status}\n"
     
     user_states[user_id] = {"action": "remove_admin"}
     bot.send_message(
         call.message.chat.id, 
-        f"🗑 <b>حذف مشرف</b>\n\n📋 <b>المشرفون الحاليون:</b>\n{admins_list}\n\nأرسل معرف المشرف الذي تريد حذفه:", 
+        f"🗑 <b>অ্যাডমিন মুছুন</b>\n\n📋 <b>বর্তমান অ্যাডমিনরা:</b>\n{admins_list}\n\nযে অ্যাডমিনকে মুছতে চান তার আইডি পাঠান:", 
         parse_mode="HTML"
     )
 
@@ -7420,8 +7420,8 @@ def admin_ban_user_callback(call):
 
     bot.send_message(
         call.message.chat.id,
-        "🚫 <b>حظر مستخدم</b>\n\n"
-        "أرسل ID المستخدم:",
+        "🚫 <b>ইউজার ব্যান</b>\n\n"
+        "পাঠান ID ইউজার:",
         parse_mode="HTML"
     )
 
@@ -7433,7 +7433,7 @@ def admin_unban_user_callback(call):
         return
 
     if not BANNED:
-        bot.answer_callback_query(call.id, "⚠️ لا يوجد مستخدمين محظورين!", show_alert=True)
+        bot.answer_callback_query(call.id, "⚠️ কোনো ব্যান করা ইউজার নেই!", show_alert=True)
         return
 
     banned_list = "\n".join([f"• <code>{uid}</code>" for uid in BANNED])
@@ -7442,9 +7442,9 @@ def admin_unban_user_callback(call):
 
     bot.send_message(
         call.message.chat.id,
-        f"✅ <b>إلغاء حظر مستخدم</b>\n\n"
-        f"<b>المحظورين:</b>\n{banned_list}\n\n"
-        f"أرسل ID المستخدم:",
+        f"✅ <b>ইউজার আনব্যান</b>\n\n"
+        f"<b>ব্যান করা ইউজার:</b>\n{banned_list}\n\n"
+        f"পাঠান ID ইউজার:",
         parse_mode="HTML"
     )
 
@@ -7459,8 +7459,8 @@ def admin_set_otp_group_callback(call):
 
     bot.send_message(
         call.message.chat.id,
-        "📬 <b>تعيين مجموعة OTP</b>\n\n"
-        "أرسل ID المجموعة التي سيتم إرسال رسائل OTP إليها:",
+        "📬 <b>গ্রুপ সেট করুন OTP</b>\n\n"
+        "পাঠান ID যে গ্রুপে মেসেজ পাঠানো হবে OTP সেটি:",
         parse_mode="HTML"
     )
 
@@ -7469,11 +7469,11 @@ def admin_accounts_menu_callback(call):
     user_id = call.from_user.id
     
     if not is_admin(user_id):
-        bot.answer_callback_query(call.id, "⛔️ غير مصرح لك بالوصول", show_alert=True)
+        bot.answer_callback_query(call.id, "⛔️ আপনার প্রবেশাধিকার নেই", show_alert=True)
         return
     
     bot.edit_message_text(
-        "👥 <b>إدارة الحسابات</b>\n\nاختر الموقع لإدارة حساباته:",
+        "👥 <b>অ্যাকাউন্ট ম্যানেজমেন্ট</b>\n\nঅ্যাকাউন্ট ম্যানেজ করতে সাইট বেছে নিন:",
         call.message.chat.id,
         call.message.message_id,
         parse_mode="HTML",
@@ -7491,16 +7491,16 @@ def accounts_site_callback(call):
     site_name = SETTINGS[site_key]["name"]
     accounts = get_site_accounts(site_key)
     
-    accounts_text = f"👥 <b>حسابات {site_name}</b>\n\n"
+    accounts_text = f"👥 <b>অ্যাকাউন্ট {site_name}</b>\n\n"
     if accounts:
-        accounts_text += f"📊 عدد الحسابات: {len(accounts)}\n\n"
+        accounts_text += f"📊 অ্যাকাউন্ট সংখ্যা: {len(accounts)}\n\n"
         for idx, account in enumerate(accounts, 1):
             username = account.get("username", "N/A")
             accounts_text += f"{idx}. 👤 <code>{username}</code>\n"
     else:
-        accounts_text += "⚠️ لا توجد حسابات مضافة\n"
+        accounts_text += "⚠️ কোনো অ্যাকাউন্ট যোগ করা নেই\n"
     
-    accounts_text += "\nاختر حساباً لعرض تفاصيله أو أضف حساباً جديداً:"
+    accounts_text += "\nবিবরণ দেখতে অ্যাকাউন্ট বেছে নিন বা নতুন যোগ করুন:"
     
     bot.edit_message_text(
         accounts_text,
@@ -7526,16 +7526,16 @@ def view_account_callback(call):
     account = get_account_by_id(site_key, account_id)
     
     if not account:
-        bot.answer_callback_query(call.id, "❌ الحساب غير موجود", show_alert=True)
+        bot.answer_callback_query(call.id, "❌ অ্যাকাউন্ট পাওয়া যায়নি", show_alert=True)
         return
     
     site_name = SETTINGS[site_key]["name"]
     full_id = account.get("id", "")
     
     account_text = (
-        f"👤 <b>تفاصيل الحساب - {site_name}</b>\n\n"
-        f"📛 <b>اليوزر:</b> <code>{account.get('username', 'N/A')}</code>\n"
-        f"🔑 <b>الباسورد:</b> <code>{account.get('password', 'N/A')}</code>\n"
+        f"👤 <b>অ্যাকাউন্টের বিবরণ - {site_name}</b>\n\n"
+        f"📛 <b>ইউজারনেম:</b> <code>{account.get('username', 'N/A')}</code>\n"
+        f"🔑 <b>পাসওয়ার্ড:</b> <code>{account.get('password', 'N/A')}</code>\n"
         f"🆔 <b>ID:</b> <code>{full_id[:8]}...</code>\n"
     )
     
@@ -7561,8 +7561,8 @@ def add_account_callback(call):
     
     bot.send_message(
         call.message.chat.id,
-        f"➕ <b>إضافة حساب جديد - {site_name}</b>\n\n"
-        f"📝 الخطوة 1/2: أرسل اسم المستخدم (Username):",
+        f"➕ <b>নতুন অ্যাকাউন্ট যোগ - {site_name}</b>\n\n"
+        f"📝 ধাপ 1/2: ইউজারনেম পাঠান (Username):",
         parse_mode="HTML"
     )
 
@@ -7583,14 +7583,14 @@ def delete_account_callback(call):
     account = get_account_by_id(site_key, account_id)
     
     if not account:
-        bot.answer_callback_query(call.id, "❌ الحساب غير موجود", show_alert=True)
+        bot.answer_callback_query(call.id, "❌ অ্যাকাউন্ট পাওয়া যায়নি", show_alert=True)
         return
     
     accounts = get_site_accounts(site_key)
     if len(accounts) <= 1:
         bot.answer_callback_query(
             call.id, 
-            "⚠️ لا يمكن حذف الحساب الوحيد!\nيجب أن يبقى حساب واحد على الأقل لكل موقع.", 
+            "⚠️ একমাত্র অ্যাকাউন্টটি মুছে ফেলা যাবে না!\nপ্রতিটি সাইটে কমপক্ষে একটি অ্যাকাউন্ট থাকতে হবে।", 
             show_alert=True
         )
         return
@@ -7600,15 +7600,15 @@ def delete_account_callback(call):
     success = delete_account(site_key, full_id)
     
     if success:
-        bot.answer_callback_query(call.id, f"✅ تم حذف الحساب {username} بنجاح!", show_alert=True)
+        bot.answer_callback_query(call.id, f"✅ অ্যাকাউন্ট মুছে ফেলা হয়েছে {username} সফলভাবে!", show_alert=True)
         
         accounts = get_site_accounts(site_key)
-        accounts_text = f"👥 <b>حسابات {site_name}</b>\n\n"
-        accounts_text += f"📊 عدد الحسابات: {len(accounts)}\n\n"
+        accounts_text = f"👥 <b>অ্যাকাউন্ট {site_name}</b>\n\n"
+        accounts_text += f"📊 অ্যাকাউন্ট সংখ্যা: {len(accounts)}\n\n"
         for idx, acc in enumerate(accounts, 1):
             acc_username = acc.get("username", "N/A")
             accounts_text += f"{idx}. 👤 <code>{acc_username}</code>\n"
-        accounts_text += "\nاختر حساباً لعرض تفاصيله أو أضف حساباً جديداً:"
+        accounts_text += "\nবিবরণ দেখতে অ্যাকাউন্ট বেছে নিন বা নতুন যোগ করুন:"
         
         bot.edit_message_text(
             accounts_text,
@@ -7618,19 +7618,19 @@ def delete_account_callback(call):
             reply_markup=get_site_accounts_menu(site_key)
         )
     else:
-        bot.answer_callback_query(call.id, "❌ فشل حذف الحساب", show_alert=True)
+        bot.answer_callback_query(call.id, "❌ অ্যাকাউন্ট মুছতে ব্যর্থ", show_alert=True)
 
 @bot.callback_query_handler(func=lambda call: call.data == "admin_sites_menu" or call.data == "admin")
 def sites_menu_callback(call):
     user_id = call.from_user.id
     
     if not is_admin(user_id):
-        bot.answer_callback_query(call.id, "⛔️ غير مصرح لك بالوصول", show_alert=True)
+        bot.answer_callback_query(call.id, "⛔️ আপনার প্রবেশাধিকার নেই", show_alert=True)
         return
     
     if call.data == "admin":
         bot.edit_message_text(
-            "🎛 <b>لوحة الإدارة</b>\n\nاختر الإجراء المطلوب:",
+            "🎛 <b>অ্যাডমিন প্যানেল</b>\n\nপ্রয়োজনীয় অপশন বেছে নিন:",
             call.message.chat.id,
             call.message.message_id,
             parse_mode="HTML",
@@ -7638,7 +7638,7 @@ def sites_menu_callback(call):
         )
     else:
         bot.edit_message_text(
-            "⚙️ <b>إعدادات المواقع</b>\n\nاختر الموقع لتعديل إعداداته:",
+            "⚙️ <b>সাইট সেটিংস</b>\n\nসেটিংস এডিট করতে সাইট বেছে নিন:",
             call.message.chat.id,
             call.message.message_id,
             parse_mode="HTML",
@@ -7658,9 +7658,9 @@ def site_config_callback(call):
     accounts = get_site_accounts(site_key)
     
     if len(accounts) > 1:
-        accounts_text = f"⚙️ <b>إعدادات {site_name}</b>\n\n"
-        accounts_text += f"👥 <b>عدد الحسابات:</b> {len(accounts)}\n\n"
-        accounts_text += "اختر الحساب الذي تريد التحكم فيه:"
+        accounts_text = f"⚙️ <b>সেটিংস {site_name}</b>\n\n"
+        accounts_text += f"👥 <b>অ্যাকাউন্ট সংখ্যা:</b> {len(accounts)}\n\n"
+        accounts_text += "যে অ্যাকাউন্ট নিয়ন্ত্রণ করতে চান সেটি বেছে নিন:"
         
         bot.edit_message_text(
             accounts_text,
@@ -7674,12 +7674,12 @@ def site_config_callback(call):
         account_id = first_account.get("id", "")
         
         info_text = (
-            f"⚙️ <b>إعدادات {site_name}</b>\n\n"
-            f"👤 <b>الحساب:</b> <code>{first_account.get('username', 'N/A')}</code>\n"
-            f"🔑 <b>الباسورد:</b> <code>{'*' * len(first_account.get('password', ''))}</code>\n"
-            f"⏱ <b>فترة البحث:</b> {site_config.get('check_interval', 0)} ثانية\n"
-            f"⏳ <b>وقت الانتظار:</b> {site_config.get('timeout', 0)} ثانية\n\n"
-            f"اختر الإجراء المطلوب:"
+            f"⚙️ <b>সেটিংস {site_name}</b>\n\n"
+            f"👤 <b>অ্যাকাউন্ট:</b> <code>{first_account.get('username', 'N/A')}</code>\n"
+            f"🔑 <b>পাসওয়ার্ড:</b> <code>{'*' * len(first_account.get('password', ''))}</code>\n"
+            f"⏱ <b>অনুসন্ধানের বিরতি:</b> {site_config.get('check_interval', 0)} সেকেন্ড\n"
+            f"⏳ <b>অপেক্ষার সময়:</b> {site_config.get('timeout', 0)} সেকেন্ড\n\n"
+            f"প্রয়োজনীয় অপশন বেছে নিন:"
         )
         
         bot.edit_message_text(
@@ -7708,16 +7708,16 @@ def select_account_config_callback(call):
     account = get_account_by_id(site_key, account_id)
     
     if not account:
-        bot.answer_callback_query(call.id, "❌ الحساب غير موجود", show_alert=True)
+        bot.answer_callback_query(call.id, "❌ অ্যাকাউন্ট পাওয়া যায়নি", show_alert=True)
         return
     
     info_text = (
-        f"⚙️ <b>إعدادات {site_name}</b>\n\n"
-        f"👤 <b>الحساب:</b> <code>{account.get('username', 'N/A')}</code>\n"
-        f"🔑 <b>الباسورد:</b> <code>{'*' * len(account.get('password', ''))}</code>\n"
-        f"⏱ <b>فترة البحث:</b> {site_config.get('check_interval', 0)} ثانية\n"
-        f"⏳ <b>وقت الانتظار:</b> {site_config.get('timeout', 0)} ثانية\n\n"
-        f"اختر الإجراء المطلوب:"
+        f"⚙️ <b>সেটিংস {site_name}</b>\n\n"
+        f"👤 <b>অ্যাকাউন্ট:</b> <code>{account.get('username', 'N/A')}</code>\n"
+        f"🔑 <b>পাসওয়ার্ড:</b> <code>{'*' * len(account.get('password', ''))}</code>\n"
+        f"⏱ <b>অনুসন্ধানের বিরতি:</b> {site_config.get('check_interval', 0)} সেকেন্ড\n"
+        f"⏳ <b>অপেক্ষার সময়:</b> {site_config.get('timeout', 0)} সেকেন্ড\n\n"
+        f"প্রয়োজনীয় অপশন বেছে নিন:"
     )
     
     bot.edit_message_text(
@@ -7746,13 +7746,13 @@ def site_change_user_callback(call):
             account = accounts[0]
             account_id = account.get("id", "")[:8]
         else:
-            bot.answer_callback_query(call.id, "❌ لا يوجد حساب مسجل", show_alert=True)
+            bot.answer_callback_query(call.id, "❌ কোনো অ্যাকাউন্ট নিবন্ধিত নেই", show_alert=True)
             return
 
     account = get_account_by_id(site_key, account_id) if account_id else None
     
     if not account:
-        bot.answer_callback_query(call.id, "❌ الحساب غير موجود", show_alert=True)
+        bot.answer_callback_query(call.id, "❌ অ্যাকাউন্ট পাওয়া যায়নি", show_alert=True)
         return
     
     full_id = account.get("id", "")
@@ -7765,9 +7765,9 @@ def site_change_user_callback(call):
     
     bot.send_message(
         call.message.chat.id,
-        f"👤 <b>تغيير اليوزر - {site_name}</b>\n\n"
-        f"الحساب الحالي: <code>{account.get('username', 'N/A')}</code>\n\n"
-        f"أرسل اسم المستخدم الجديد:",
+        f"👤 <b>ইউজারনেম পরিবর্তন - {site_name}</b>\n\n"
+        f"বর্তমান অ্যাকাউন্ট: <code>{account.get('username', 'N/A')}</code>\n\n"
+        f"নতুন ইউজারনেম পাঠান:",
         parse_mode="HTML"
     )
 
@@ -7786,13 +7786,13 @@ def site_change_pass_callback(call):
             account = accounts[0]
             account_id = account.get("id", "")[:8]
         else:
-            bot.answer_callback_query(call.id, "❌ لا يوجد حساب مسجل", show_alert=True)
+            bot.answer_callback_query(call.id, "❌ কোনো অ্যাকাউন্ট নিবন্ধিত নেই", show_alert=True)
             return
 
     account = get_account_by_id(site_key, account_id) if account_id else None
     
     if not account:
-        bot.answer_callback_query(call.id, "❌ الحساب غير موجود", show_alert=True)
+        bot.answer_callback_query(call.id, "❌ অ্যাকাউন্ট পাওয়া যায়নি", show_alert=True)
         return
     
     full_id = account.get("id", "")
@@ -7805,9 +7805,9 @@ def site_change_pass_callback(call):
     
     bot.send_message(
         call.message.chat.id,
-        f"🔑 <b>تغيير الباسورد - {site_name}</b>\n\n"
-        f"الحساب: <code>{account.get('username', 'N/A')}</code>\n\n"
-        f"أرسل كلمة المرور الجديدة:",
+        f"🔑 <b>পাসওয়ার্ড পরিবর্তন - {site_name}</b>\n\n"
+        f"অ্যাকাউন্ট: <code>{account.get('username', 'N/A')}</code>\n\n"
+        f"নতুন পাসওয়ার্ড পাঠান:",
         parse_mode="HTML"
     )
 
@@ -7826,9 +7826,9 @@ def site_change_interval_callback(call):
     
     bot.send_message(
         call.message.chat.id,
-        f"⏱ <b>تغيير فترة البحث - {site_name}</b>\n\n"
-        f"📊 الفترة الحالية: {current} ثانية\n\n"
-        f"أرسل الفترة الجديدة بالثواني:",
+        f"⏱ <b>অনুসন্ধানের বিরতি পরিবর্তন - {site_name}</b>\n\n"
+        f"📊 বর্তমান বিরতি: {current} সেকেন্ড\n\n"
+        f"নতুন বিরতি সেকেন্ডে পাঠান:",
         parse_mode="HTML"
     )
 
@@ -7847,9 +7847,9 @@ def site_change_timeout_callback(call):
     
     bot.send_message(
         call.message.chat.id,
-        f"⏳ <b>تغيير وقت الانتظار - {site_name}</b>\n\n"
-        f"📊 الوقت الحالي: {current} ثانية\n\n"
-        f"أرسل الوقت الجديد بالثواني:",
+        f"⏳ <b>অপেক্ষার সময় পরিবর্তন - {site_name}</b>\n\n"
+        f"📊 বর্তমান সময়: {current} সেকেন্ড\n\n"
+        f"নতুন সময় সেকেন্ডে পাঠান:",
         parse_mode="HTML"
     )
 
@@ -7868,22 +7868,22 @@ def site_test_login_callback(call):
             account = accounts[0]
             account_id = account.get("id", "")[:8]
         else:
-            bot.answer_callback_query(call.id, "❌ لا يوجد حساب مسجل", show_alert=True)
+            bot.answer_callback_query(call.id, "❌ কোনো অ্যাকাউন্ট নিবন্ধিত নেই", show_alert=True)
             return
 
     account = get_account_by_id(site_key, account_id) if account_id else None
     
     if not account:
-        bot.answer_callback_query(call.id, "❌ الحساب غير موجود", show_alert=True)
+        bot.answer_callback_query(call.id, "❌ অ্যাকাউন্ট পাওয়া যায়নি", show_alert=True)
         return
     
-    bot.answer_callback_query(call.id, f"🔄 جاري اختبار تسجيل الدخول ل {account.get('username')}...")
+    bot.answer_callback_query(call.id, f"🔄 লগইন টেস্ট চলছে: {account.get('username')}...")
     
     bot.send_message(
         call.message.chat.id,
-        f"🔓 <b>اختبار تسجيل الدخول - {site_name}</b>\n\n"
-        f"👤 الحساب: <code>{account.get('username')}</code>\n\n"
-        f"⏳ جاري الاتصال والتحقق...",
+        f"🔓 <b>লগইন টেস্ট - {site_name}</b>\n\n"
+        f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n\n"
+        f"⏳ সংযোগ ও যাচাই চলছে...",
         parse_mode="HTML"
     )
     
@@ -7904,22 +7904,22 @@ def site_test_fetch_callback(call):
             account = accounts[0]
             account_id = account.get("id", "")[:8]
         else:
-            bot.answer_callback_query(call.id, "❌ لا يوجد حساب مسجل", show_alert=True)
+            bot.answer_callback_query(call.id, "❌ কোনো অ্যাকাউন্ট নিবন্ধিত নেই", show_alert=True)
             return
 
     account = get_account_by_id(site_key, account_id) if account_id else None
     
     if not account:
-        bot.answer_callback_query(call.id, "❌ الحساب غير موجود", show_alert=True)
+        bot.answer_callback_query(call.id, "❌ অ্যাকাউন্ট পাওয়া যায়নি", show_alert=True)
         return
     
-    bot.answer_callback_query(call.id, f"🔄 جاري جلب آخر كود من {account.get('username')}...")
+    bot.answer_callback_query(call.id, f"🔄 সর্বশেষ কোড আনা হচ্ছে: {account.get('username')}...")
     
     bot.send_message(
         call.message.chat.id,
-        f"📥 <b>اختبار جلب الكود - {site_name}</b>\n\n"
-        f"👤 الحساب: <code>{account.get('username')}</code>\n\n"
-        f"⏳ جاري جلب آخر رسالة...",
+        f"📥 <b>কোড আনা টেস্ট - {site_name}</b>\n\n"
+        f"👤 অ্যাকাউন্ট: <code>{account.get('username')}</code>\n\n"
+        f"⏳ সর্বশেষ মেসেজ আনা হচ্ছে...",
         parse_mode="HTML"
     )
     
@@ -7971,18 +7971,18 @@ def country_selection_callback(call):
 
     links = load_button_links()
     markup = InlineKeyboardMarkup(row_width=1)
-    change_number_text = "🔄 تغيير الرقم" if lang == "ar" else "🔄 Change Number"
-    change_country_text = "🌍 تغيير الدولة" if lang == "ar" else "🌍 Change Country"
+    change_number_text = "🔄 নম্বর পরিবর্তন" if lang == "ar" else "🔄 Change Number"
+    change_country_text = "🌍 দেশ পরিবর্তন" if lang == "ar" else "🌍 Change Country"
     change_number = InlineKeyboardButton(change_number_text, callback_data="change_number")
     change_country = InlineKeyboardButton(change_country_text, callback_data="choose_country")
     markup.add(change_number)
     markup.add(change_country)
     
-    group_link_text = "📢 جروب البوت" if lang == "ar" else "📢 Group Link"
+    group_link_text = "📢 বটের গ্রুপ" if lang == "ar" else "📢 Group Link"
     group_link_btn = InlineKeyboardButton(group_link_text, url=links.get("group_link", "https://t.me/alorhawa"))
     markup.add(group_link_btn)
     
-    back_text = "🔙 القائمة الرئيسية" if lang == "ar" else "🔙 Back to Main"
+    back_text = "🔙 মূল মেনু" if lang == "ar" else "🔙 Back to Main"
     markup.add(InlineKeyboardButton(back_text, callback_data="back_to_main"))
 
    
@@ -7994,11 +7994,11 @@ def country_selection_callback(call):
     
     if user_lang == "ar":
         msg_text = (
-            f"<tg-emoji emoji-id='5972010570340112281'>😀</tg-emoji> <b>تم اختيار الرقم بنجاح!</b>\n\n"
-            f"<tg-emoji emoji-id='5224450179368767019'>🌎</tg-emoji> <b>الدولة:</b> {flag} {localized_country_name}\n"
-            f"<tg-emoji emoji-id='5782668844061430712'>🗣</tg-emoji> <b>المنصة:</b> {platform}\n"
-            f"<tg-emoji emoji-id='5453965363286925977'>📞</tg-emoji> <b>الرقم:</b> <code>{display_number}</code>\n\n"
-            f"<tg-emoji emoji-id='5458603043203327669'>😀</tg-emoji> ستستلم الرسائل تلقائياً عند وصولها"
+            f"<tg-emoji emoji-id='5972010570340112281'>😀</tg-emoji> <b>নম্বর সফলভাবে বাছাই হয়েছে!</b>\n\n"
+            f"<tg-emoji emoji-id='5224450179368767019'>🌎</tg-emoji> <b>দেশ:</b> {flag} {localized_country_name}\n"
+            f"<tg-emoji emoji-id='5782668844061430712'>🗣</tg-emoji> <b>প্ল্যাটফর্ম:</b> {platform}\n"
+            f"<tg-emoji emoji-id='5453965363286925977'>📞</tg-emoji> <b>নম্বর:</b> <code>{display_number}</code>\n\n"
+            f"<tg-emoji emoji-id='5458603043203327669'>😀</tg-emoji> মেসেজ আসলে স্বয়ংক্রিয়ভাবে পাবেন"
         )
     else:
         msg_text = (
@@ -8051,18 +8051,18 @@ def change_number_callback(call):
 
     links = load_button_links()
     markup = InlineKeyboardMarkup(row_width=1)
-    change_number_text = "🔄 تغيير الرقم" if lang == "ar" else "🔄 Change Number"
-    change_country_text = "🌍 تغيير الدولة" if lang == "ar" else "🌍 Change Country"
+    change_number_text = "🔄 নম্বর পরিবর্তন" if lang == "ar" else "🔄 Change Number"
+    change_country_text = "🌍 দেশ পরিবর্তন" if lang == "ar" else "🌍 Change Country"
     change_number = InlineKeyboardButton(change_number_text, callback_data="change_number")
     change_country = InlineKeyboardButton(change_country_text, callback_data="choose_country")
     markup.add(change_number)
     markup.add(change_country)
     
-    group_link_text = "📢 جروب البوت" if lang == "ar" else "📢 Group Link"
+    group_link_text = "📢 বটের গ্রুপ" if lang == "ar" else "📢 Group Link"
     group_link_btn = InlineKeyboardButton(group_link_text, url=links.get("group_link", "https://t.me/alorhawa"))
     markup.add(group_link_btn)
     
-    back_text = "🔙 القائمة الرئيسية" if lang == "ar" else "🔙 Back to Main"
+    back_text = "🔙 মূল মেনু" if lang == "ar" else "🔙 Back to Main"
     markup.add(InlineKeyboardButton(back_text, callback_data="back_to_main"))
 
     
@@ -8074,11 +8074,11 @@ def change_number_callback(call):
     
     if user_lang == "ar":
         msg_text = (
-            f"<tg-emoji emoji-id='5972010570340112281'>😀</tg-emoji> <b>تم اختيار الرقم بنجاح!</b>\n\n"
-            f"<tg-emoji emoji-id='5224450179368767019'>🌎</tg-emoji> <b>الدولة:</b> {flag} {localized_country_name}\n"
-            f"<tg-emoji emoji-id='5782668844061430712'>🗣</tg-emoji> <b>المنصة:</b> {platform}\n"
-            f"<tg-emoji emoji-id='5453965363286925977'>📞</tg-emoji> <b>الرقم:</b> <code>{display_number}</code>\n\n"
-            f"<tg-emoji emoji-id='5458603043203327669'>😀</tg-emoji> ستستلم الرسائل تلقائياً عند وصولها"
+            f"<tg-emoji emoji-id='5972010570340112281'>😀</tg-emoji> <b>নম্বর সফলভাবে বাছাই হয়েছে!</b>\n\n"
+            f"<tg-emoji emoji-id='5224450179368767019'>🌎</tg-emoji> <b>দেশ:</b> {flag} {localized_country_name}\n"
+            f"<tg-emoji emoji-id='5782668844061430712'>🗣</tg-emoji> <b>প্ল্যাটফর্ম:</b> {platform}\n"
+            f"<tg-emoji emoji-id='5453965363286925977'>📞</tg-emoji> <b>নম্বর:</b> <code>{display_number}</code>\n\n"
+            f"<tg-emoji emoji-id='5458603043203327669'>😀</tg-emoji> মেসেজ আসলে স্বয়ংক্রিয়ভাবে পাবেন"
         )
     else:
         msg_text = (
@@ -8097,7 +8097,7 @@ def change_number_callback(call):
         reply_markup=markup
     )
 
-    changed_text = "✅ تم تغيير الرقم!" if lang == "ar" else "✅ Number changed!"
+    changed_text = "✅ নম্বর পরিবর্তন হয়েছে!" if lang == "ar" else "✅ Number changed!"
     bot.answer_callback_query(call.id, changed_text)
 
 @bot.callback_query_handler(func=lambda call: call.data.startswith("select_plt_"))
@@ -8111,7 +8111,7 @@ def select_platform_main_callback(call):
         bot.answer_callback_query(call.id, "❌ No countries available for this platform!", show_alert=True)
         return
     
-    title = f"🌍 <b>Choose Country for {platform}</b>" if lang != "ar" else f"🌍 <b>اختر الدولة لـ {platform}</b>"
+    title = f"🌍 <b>Choose Country for {platform}</b>" if lang != "ar" else f"🌍 <b>দেশ বেছে নিন: {platform}</b>"
     bot.edit_message_text(title, call.message.chat.id, call.message.message_id, parse_mode="HTML", reply_markup=markup)
 
 @bot.callback_query_handler(func=lambda call: call.data == "choose_country")
@@ -8134,7 +8134,7 @@ def choose_country_callback(call):
             code_bonus = settings.get("code_bonus", 0.01)
             
             if lang == "ar":
-                title = f"🌍 <b>اختر الدولة لـ {platform}</b>\n\n💰 ستربح <b>${format_decimal(code_bonus)}</b> عند كل كود تستلمه!"
+                title = f"🌍 <b>দেশ বেছে নিন: {platform}</b>\n\n💰 আপনি পাবেন <b>${format_decimal(code_bonus)}</b> প্রতিটি কোড পেলে!"
             else:
                 title = f"🌍 <b>Select Country for {platform}</b>\n\n💰 You'll earn <b>${format_decimal(code_bonus)}</b> for each code received!"
 
@@ -8153,7 +8153,7 @@ def choose_country_callback(call):
     code_bonus = settings.get("code_bonus", 0.01)
     
     if lang == "ar":
-        title = f"🌍 <b>اختر الدولة</b>\n\n<tg-emoji emoji-id='6046356449938905522'>💰</tg-emoji> ستربح <b>${format_decimal(code_bonus)}</b> عند كل كود تستلمه!"
+        title = f"🌍 <b>দেশ বেছে নিন</b>\n\n<tg-emoji emoji-id='6046356449938905522'>💰</tg-emoji> আপনি পাবেন <b>${format_decimal(code_bonus)}</b> প্রতিটি কোড পেলে!"
     else:
         title = f"🌍 <b>Select Country</b>\n\n<tg-emoji emoji-id='6046356449938905522'>💰</tg-emoji> You'll earn <b>${format_decimal(code_bonus)}</b> for each code received!"
 
@@ -8210,11 +8210,11 @@ def select_platform_callback(call):
     
     if user_lang == "ar":
         msg_text = (
-            f"<tg-emoji emoji-id='5972010570340112281'>😀</tg-emoji> <b>تم اختيار الرقم بنجاح!</b>\n\n"
-            f"<tg-emoji emoji-id='5224450179368767019'>🌎</tg-emoji> <b>الدولة:</b> {country_flag} {localized_country_name}\n"
-            f"<tg-emoji emoji-id='5782668844061430712'>🗣</tg-emoji> <b>المنصة:</b> {platform}\n"
-            f"<tg-emoji emoji-id='5453965363286925977'>📞</tg-emoji> <b>الرقم:</b> <code>{display_number}</code>\n\n"
-            f"<tg-emoji emoji-id='5458603043203327669'>😀</tg-emoji> <b>ستستلم الرسائل تلقائياً عند وصولها</b>"
+            f"<tg-emoji emoji-id='5972010570340112281'>😀</tg-emoji> <b>নম্বর সফলভাবে বাছাই হয়েছে!</b>\n\n"
+            f"<tg-emoji emoji-id='5224450179368767019'>🌎</tg-emoji> <b>দেশ:</b> {country_flag} {localized_country_name}\n"
+            f"<tg-emoji emoji-id='5782668844061430712'>🗣</tg-emoji> <b>প্ল্যাটফর্ম:</b> {platform}\n"
+            f"<tg-emoji emoji-id='5453965363286925977'>📞</tg-emoji> <b>নম্বর:</b> <code>{display_number}</code>\n\n"
+            f"<tg-emoji emoji-id='5458603043203327669'>😀</tg-emoji> <b>মেসেজ আসলে স্বয়ংক্রিয়ভাবে পাবেন</b>"
         )
     else:
         msg_text = (
@@ -8245,7 +8245,7 @@ def hom_command(msg):
         code_bonus = settings.get("code_bonus", 0.01)
         
         if lang == "ar":
-            text = f"<tg-emoji emoji-id='5972277098830634724'>🚨</tg-emoji> <b>اختر المنصة</b>\n\n<tg-emoji emoji-id='6046356449938905522'>💰</tg-emoji> ستربح <b>${format_decimal(code_bonus)}</b> عند كل كود تستلمه!"
+            text = f"<tg-emoji emoji-id='5972277098830634724'>🚨</tg-emoji> <b>প্ল্যাটফর্ম বেছে নিন</b>\n\n<tg-emoji emoji-id='6046356449938905522'>💰</tg-emoji> আপনি পাবেন <b>${format_decimal(code_bonus)}</b> প্রতিটি কোড পেলে!"
         else:
             text = f"<tg-emoji emoji-id='5972277098830634724'>🚨</tg-emoji> <b>Choose Platform</b>\n\n<tg-emoji emoji-id='6046356449938905522'>💰</tg-emoji> You'll earn <b>${format_decimal(code_bonus)}</b> for each code received!"
             
@@ -8258,7 +8258,7 @@ def hom_command(msg):
         return
 
     text = t(user_id, "welcome")
-    if not text: text = "🌐 <b>مرحباً بك!</b>"
+    if not text: text = "🌐 <b>স্বাগতম!</b>"
     bot.send_message(
         msg.chat.id,
         text,
@@ -8286,12 +8286,12 @@ def process_country_code_logic(msg, user_id, country_code, state):
         country_code = potential_code
 
     if not country_code.isdigit():
-        bot.reply_to(msg, "❌ رمز الدولة يجب أن يحتوي على أرقام فقط!")
+        bot.reply_to(msg, "❌ দেশের কোডে শুধু সংখ্যা থাকতে হবে!")
         return
 
     temp_file = state.get("temp_file")
     if not temp_file or not os.path.exists(temp_file):
-        bot.reply_to(msg, "❌ لم يتم العثور على الملف! يرجى البدء من جديد.")
+        bot.reply_to(msg, "❌ ফাইল পাওয়া যায়নি! অনুগ্রহ করে নতুন করে শুরু করুন।")
         if user_id in user_states: del user_states[user_id]
         return
 
@@ -8299,7 +8299,7 @@ def process_country_code_logic(msg, user_id, country_code, state):
         with open(temp_file, "r", encoding="utf-8", errors="ignore") as f:
             lines = f.readlines()
     except Exception as e:
-        bot.reply_to(msg, f"❌ خطأ في قراءة الملف: {e}")
+        bot.reply_to(msg, f"❌ ফাইল পড়তে ত্রুটি: {e}")
         return
 
     cleaned_numbers = []
@@ -8324,10 +8324,10 @@ def process_country_code_logic(msg, user_id, country_code, state):
     if num_cleaned == 0:
         bot.reply_to(
             msg,
-            f"❌ <b>لم يتم العثور على أي أرقام تبدأ برمز الدولة {country_code}!</b>\n\n"
-            f"📊 إجمالي الأسطر المعالجة: {total_lines}\n"
-            f"❌ أرقام مرفوضة: {rejected_lines}\n\n"
-            f"<i>تأكد من جودة الملف</i>",
+            f"❌ <b>দেশের কোড দিয়ে শুরু হওয়া কোনো নম্বর পাওয়া যায়নি {country_code}!</b>\n\n"
+            f"📊 মোট প্রসেস করা লাইন: {total_lines}\n"
+            f"❌ বাতিল নম্বর: {rejected_lines}\n\n"
+            f"<i>ফাইলের মান নিশ্চিত করুন</i>",
             parse_mode="HTML"
         )
         if os.path.exists(temp_file):
@@ -8356,11 +8356,11 @@ def process_country_code_logic(msg, user_id, country_code, state):
 
     bot.reply_to(
         msg,
-        f"✅ <b>تم معالجة الملف تلقائياً!</b>\n\n"
-        f"📊 إجمالي الأسطر: <b>{total_lines}</b>\n"
-        f"✅ أرقام مقبولة: <b>{num_cleaned}</b>\n"
-        f"🔢 رمز الدولة المكتشف: <b>+{country_code}</b>\n\n"
-        f"🔍 <b>جاري تحديد الدولة تلقائياً...</b>",
+        f"✅ <b>ফাইল স্বয়ংক্রিয়ভাবে প্রসেস হয়েছে!</b>\n\n"
+        f"📊 মোট লাইন: <b>{total_lines}</b>\n"
+        f"✅ গ্রহণযোগ্য নম্বর: <b>{num_cleaned}</b>\n"
+        f"🔢 শনাক্ত করা দেশের কোড: <b>+{country_code}</b>\n\n"
+        f"🔍 <b>স্বয়ংক্রিয়ভাবে দেশ নির্ধারণ হচ্ছে...</b>",
         parse_mode="HTML"
     )
 
@@ -8392,8 +8392,8 @@ def process_country_code_logic(msg, user_id, country_code, state):
     for p in platforms:
         markup.add(InlineKeyboardButton(f"{p}", callback_data=f"na_add_country_plt_{p}"))
     
-    edit_name_text = "✏️ تعديل الاسم" if lang == "ar" else "✏️ Edit Name"
-    confirm_text = "✅ إكمال" if lang == "ar" else "✅ Continue"
+    edit_name_text = "✏️ নাম এডিট" if lang == "ar" else "✏️ Edit Name"
+    confirm_text = "✅ সম্পন্ন" if lang == "ar" else "✅ Continue"
     
     markup.add(
         InlineKeyboardButton(edit_name_text, callback_data="na_add_country_edit_name"),
@@ -8402,8 +8402,8 @@ def process_country_code_logic(msg, user_id, country_code, state):
     
     bot.send_message(
         msg.chat.id,
-        f"🌍 تم تحديد الدولة: <b>{flag} {country_name} (+{country_code})</b>\n\n"
-        f"📱 اختر المنصات التي تعمل عليها هذه الأرقام:",
+        f"🌍 দেশ নির্ধারণ হয়েছে: <b>{flag} {country_name} (+{country_code})</b>\n\n"
+        f"📱 এই নম্বরগুলো যে প্ল্যাটফর্মে কাজ করে সেগুলো বেছে নিন:",
         parse_mode="HTML",
         reply_markup=markup
     )
@@ -8425,21 +8425,21 @@ def handle_messages(msg):
     
     if mode == "add_numbers_admin":
         if msg.content_type != "text":
-            bot.reply_to(msg, "❌ يرجى إرسال معرف رقمي!")
+            bot.reply_to(msg, "❌ অনুগ্রহ করে সংখ্যার আইডি পাঠান!")
             return
         
         try:
             new_admin_id = int(msg.text.strip())
         except ValueError:
-            bot.reply_to(msg, "❌ المعرف يجب أن يكون رقماً!")
+            bot.reply_to(msg, "❌ আইডি অবশ্যই সংখ্যা হতে হবে!")
             return
         
         if new_admin_id in NUMBERS_ADMINS:
-            bot.reply_to(msg, "⚠️ هذا المستخدم أدمن أرقام بالفعل!")
+            bot.reply_to(msg, "⚠️ এই ইউজার আগেই নম্বর অ্যাডমিন!")
         else:
             NUMBERS_ADMINS.append(new_admin_id)
             save_numbers_admins()
-            bot.reply_to(msg, f"✅ تم إضافة <code>{new_admin_id}</code> كأدمن أرقام!", parse_mode="HTML")
+            bot.reply_to(msg, f"✅ যোগ করা হয়েছে <code>{new_admin_id}</code> নম্বর অ্যাডমিন হিসেবে!", parse_mode="HTML")
         
         del user_states[user_id]
         return
@@ -8447,7 +8447,7 @@ def handle_messages(msg):
     elif action == "na_add_country_edit_name_input":
         new_name = msg.text.strip()
         if not new_name:
-            bot.reply_to(msg, "❌ يرجى إرسال اسم صالح!")
+            bot.reply_to(msg, "❌ অনুগ্রহ করে সঠিক নাম পাঠান!")
             return
         
         state["country_name"] = new_name
@@ -8459,8 +8459,8 @@ def handle_messages(msg):
             prefix = "✅ " if p in state.get("selected_platforms", []) else ""
             markup.add(InlineKeyboardButton(f"{prefix}{p}", callback_data=f"na_add_country_plt_{p}"))
         
-        edit_name_text = "✏️ تعديل الاسم" if lang == "ar" else "✏️ Edit Name"
-        confirm_text = "✅ إكمال" if lang == "ar" else "✅ Continue"
+        edit_name_text = "✏️ নাম এডিট" if lang == "ar" else "✏️ Edit Name"
+        confirm_text = "✅ সম্পন্ন" if lang == "ar" else "✅ Continue"
         
         markup.add(
             InlineKeyboardButton(edit_name_text, callback_data="na_add_country_edit_name"),
@@ -8469,8 +8469,8 @@ def handle_messages(msg):
         
         bot.send_message(
             msg.chat.id,
-            f"✅ تم تحديث الاسم إلى: <b>{new_name}</b>\n\n"
-            f"📱 اختر المنصات التي تعمل عليها هذه الأرقام:",
+            f"✅ নাম আপডেট হয়ে হয়েছে: <b>{new_name}</b>\n\n"
+            f"📱 এই নম্বরগুলো যে প্ল্যাটফর্মে কাজ করে সেগুলো বেছে নিন:",
             parse_mode="HTML",
             reply_markup=markup
         )
@@ -8479,14 +8479,14 @@ def handle_messages(msg):
 
     elif action == "na_add_country_paste":
         if msg.content_type != "text":
-            bot.reply_to(msg, "❌ يرجى إرسال الأرقام كنص!")
+            bot.reply_to(msg, "❌ অনুগ্রহ করে নম্বরগুলো টেক্সট হিসেবে পাঠান!")
             return
         
         text = msg.text.strip()
         numbers_raw = re.findall(r'\d+', text)
         
         if not numbers_raw:
-            bot.reply_to(msg, "❌ لم يتم العثور على أرقام في النص المرسل!")
+            bot.reply_to(msg, "❌ পাঠানো টেক্সটে কোনো নম্বর পাওয়া যায়নি!")
             return
         
         
@@ -8520,17 +8520,17 @@ def handle_messages(msg):
     
     elif action == "na_add_country_file":
         if msg.content_type != "document":
-            bot.reply_to(msg, "❌ يرجى إرسال ملف txt!")
+            bot.reply_to(msg, "❌ অনুগ্রহ করে ফাইল পাঠান txt!")
             return
 
         try:
             file_info = bot.get_file(msg.document.file_id)
             if not file_info.file_path:
-                bot.reply_to(msg, "❌ خطأ في تحميل الملف!")
+                bot.reply_to(msg, "❌ ফাইল লোডে ত্রুটি!")
                 return
             downloaded_file = bot.download_file(file_info.file_path)
         except Exception as e:
-            bot.reply_to(msg, f"❌ خطأ في تحميل الملف: {e}")
+            bot.reply_to(msg, f"❌ ফাইল লোডে ত্রুটি: {e}")
             return
 
         temp_filename = f"temp_{uuid.uuid4().hex[:8]}.txt"
@@ -8610,19 +8610,19 @@ def handle_messages(msg):
             InlineKeyboardButton("📧 Gmail", callback_data="na_add_country_plt_Gmail", style="primary")
         )
         markup.add(
-            InlineKeyboardButton("🌐 جميع المنصات", callback_data="na_add_country_plt_ALL", style="primary")
+            InlineKeyboardButton("🌐 সব প্ল্যাটফর্ম", callback_data="na_add_country_plt_ALL", style="primary")
         )
-        markup.add(InlineKeyboardButton("✅ تأكيد وإنهاء", callback_data="na_add_country_finish", style="success"))
-        markup.add(InlineKeyboardButton("❌ إلغاء", callback_data="numbers_admin_panel", style="danger"))
+        markup.add(InlineKeyboardButton("✅ নিশ্চিত করুন ও শেষ করুন", callback_data="na_add_country_finish", style="success"))
+        markup.add(InlineKeyboardButton("❌ বাতিল", callback_data="numbers_admin_panel", style="danger"))
 
         bot.reply_to(
             msg,
-            f"✅ <b>الخطوة 3/3 - اختيار المنصات</b>\n\n"
-            f"🌍 الدولة: <b>{country_name}</b>\n"
-            f"🔢 رمز الدولة: <b>{country_code}</b>\n"
-            f"📊 عدد الأرقام: <b>{num_cleaned}</b>\n\n"
-            f"📱 <b>المنصات المختارة:</b> لا يوجد\n\n"
-            f"اختر المنصات التي تعمل عليها هذه الأرقام:",
+            f"✅ <b>ধাপ 3/3 - প্ল্যাটফর্ম বাছাই</b>\n\n"
+            f"🌍 দেশ: <b>{country_name}</b>\n"
+            f"🔢 দেশের কোড: <b>{country_code}</b>\n"
+            f"📊 নম্বরের সংখ্যা: <b>{num_cleaned}</b>\n\n"
+            f"📱 <b>বাছাই করা প্ল্যাটফর্ম:</b> নেই\n\n"
+            f"এই নম্বরগুলো যে প্ল্যাটফর্মে কাজ করে সেগুলো বেছে নিন:",
             parse_mode="HTML",
             reply_markup=markup
         )
@@ -8630,42 +8630,42 @@ def handle_messages(msg):
     
     elif mode == "na_ban_user":
         if msg.content_type != "text":
-            bot.reply_to(msg, "❌ يرجى إرسال معرف رقمي!")
+            bot.reply_to(msg, "❌ অনুগ্রহ করে সংখ্যার আইডি পাঠান!")
             return
         
         try:
             ban_id = int(msg.text.strip())
         except ValueError:
-            bot.reply_to(msg, "❌ المعرف يجب أن يكون رقماً!")
+            bot.reply_to(msg, "❌ আইডি অবশ্যই সংখ্যা হতে হবে!")
             return
         
         if ban_id in BANNED:
-            bot.reply_to(msg, "⚠️ هذا المستخدم محظور بالفعل!")
+            bot.reply_to(msg, "⚠️ এই ইউজার আগেই ব্যান করা!")
         else:
             BANNED.append(ban_id)
             save_banned()
-            bot.reply_to(msg, f"✅ تم حظر المستخدم <code>{ban_id}</code>!", parse_mode="HTML")
+            bot.reply_to(msg, f"✅ ইউজারকে ব্যান করা হয়েছে <code>{ban_id}</code>!", parse_mode="HTML")
         
         del user_states[user_id]
         return
     
     elif mode == "na_unban_user":
         if msg.content_type != "text":
-            bot.reply_to(msg, "❌ يرجى إرسال معرف رقمي!")
+            bot.reply_to(msg, "❌ অনুগ্রহ করে সংখ্যার আইডি পাঠান!")
             return
         
         try:
             unban_id = int(msg.text.strip())
         except ValueError:
-            bot.reply_to(msg, "❌ المعرف يجب أن يكون رقماً!")
+            bot.reply_to(msg, "❌ আইডি অবশ্যই সংখ্যা হতে হবে!")
             return
         
         if unban_id not in BANNED:
-            bot.reply_to(msg, "⚠️ هذا المستخدم غير محظور!")
+            bot.reply_to(msg, "⚠️ এই ইউজার ব্যান করা নেই!")
         else:
             BANNED.remove(unban_id)
             save_banned()
-            bot.reply_to(msg, f"✅ تم إلغاء حظر المستخدم <code>{unban_id}</code>!", parse_mode="HTML")
+            bot.reply_to(msg, f"✅ ইউজার আনব্যান করা হয়েছে <code>{unban_id}</code>!", parse_mode="HTML")
         
         del user_states[user_id]
         return
@@ -8684,23 +8684,23 @@ def handle_messages(msg):
                 except:
                     failed += 1
             
-            bot.reply_to(msg, f"✅ تم إرسال الإذاعة الشاملة!\n\n📊 نجح: {success}\n❌ فشل: {failed}")
+            bot.reply_to(msg, f"✅ সবার কাছে ব্রডকাস্ট পাঠানো হয়েছে!\n\n📊 সফল: {success}\n❌ ব্যর্থ: {failed}")
             del broadcast_state[user_id]
             return
 
     elif action == "na_add_country_file":
         if msg.content_type != "document":
-            bot.reply_to(msg, "❌ يرجى إرسال ملف txt!")
+            bot.reply_to(msg, "❌ অনুগ্রহ করে ফাইল পাঠান txt!")
             return
 
         try:
             file_info = bot.get_file(msg.document.file_id)
             if not file_info.file_path:
-                bot.reply_to(msg, "❌ خطأ في تحميل الملف!")
+                bot.reply_to(msg, "❌ ফাইল লোডে ত্রুটি!")
                 return
             downloaded_file = bot.download_file(file_info.file_path)
         except Exception as e:
-            bot.reply_to(msg, f"❌ خطأ في تحميل الملف: {e}")
+            bot.reply_to(msg, f"❌ ফাইল লোডে ত্রুটি: {e}")
             return
 
         temp_filename = f"temp_{uuid.uuid4().hex[:8]}.txt"
@@ -8712,10 +8712,10 @@ def handle_messages(msg):
 
         bot.reply_to(
             msg,
-            "✅ <b>تم رفع الملف بنجاح!</b>\n\n"
-            "📝 <b>الخطوة 2/4</b>\n\n"
-            "أرسل رمز الدولة (مثال: 20 لمصر، 7 لروسيا، 966 للسعودية)\n\n"
-            "<i>سيتم الاحتفاظ فقط بالأرقام التي تبدأ برمز الدولة هذا</i>",
+            "✅ <b>ফাইল সফলভাবে আপলোড হয়েছে!</b>\n\n"
+            "📝 <b>ধাপ 2/4</b>\n\n"
+            "দেশের কোড পাঠান (উদাহরণ: 880 বাংলাদেশ, 91 ভারত, 1 আমেরিকা)\n\n"
+            "<i>শুধু এই দেশের কোড দিয়ে শুরু হওয়া নম্বরগুলো রাখা হবে</i>",
             parse_mode="HTML"
         )
         return
@@ -8754,19 +8754,19 @@ def handle_messages(msg):
             InlineKeyboardButton("📧 Gmail", callback_data="na_add_country_plt_Gmail", style="danger")
         )
         markup.add(
-            InlineKeyboardButton("🌐 جميع المنصات", callback_data="na_add_country_plt_ALL", style="primary")
+            InlineKeyboardButton("🌐 সব প্ল্যাটফর্ম", callback_data="na_add_country_plt_ALL", style="primary")
         )
-        markup.add(InlineKeyboardButton("✅ تأكيد وإنهاء", callback_data="na_add_country_finish", style="success"))
-        markup.add(InlineKeyboardButton("❌ إلغاء", callback_data="numbers_admin_panel", style="danger"))
+        markup.add(InlineKeyboardButton("✅ নিশ্চিত করুন ও শেষ করুন", callback_data="na_add_country_finish", style="success"))
+        markup.add(InlineKeyboardButton("❌ বাতিল", callback_data="numbers_admin_panel", style="danger"))
 
         bot.reply_to(
             msg,
-            f"✅ <b>الخطوة 3/3 - اختيار المنصات</b>\n\n"
-            f"🌍 الدولة: <b>{country_name}</b>\n"
-            f"🔢 رمز الدولة: <b>{country_code}</b>\n"
-            f"📊 عدد الأرقام: <b>{num_cleaned}</b>\n\n"
-            f"📱 <b>المنصات المختارة:</b> لا يوجد\n\n"
-            f"اختر المنصات التي تعمل عليها هذه الأرقام:",
+            f"✅ <b>ধাপ 3/3 - প্ল্যাটফর্ম বাছাই</b>\n\n"
+            f"🌍 দেশ: <b>{country_name}</b>\n"
+            f"🔢 দেশের কোড: <b>{country_code}</b>\n"
+            f"📊 নম্বরের সংখ্যা: <b>{num_cleaned}</b>\n\n"
+            f"📱 <b>বাছাই করা প্ল্যাটফর্ম:</b> নেই\n\n"
+            f"এই নম্বরগুলো যে প্ল্যাটফর্মে কাজ করে সেগুলো বেছে নিন:",
             parse_mode="HTML",
             reply_markup=markup
         )
@@ -8782,18 +8782,18 @@ def handle_messages(msg):
             if numbers_file and os.path.exists(numbers_file):
                 try:
                     os.remove(numbers_file)
-                    print(f"🗑️ تم حذف ملف الأرقام: {numbers_file}")
+                    print(f"🗑️ নম্বরের ফাইল মুছে ফেলা হয়েছে: {numbers_file}")
                 except Exception as e:
-                    print(f"⚠️ خطأ في حذف ملف الأرقام {numbers_file}: {e}")
+                    print(f"⚠️ নম্বরের ফাইল মুছতে ত্রুটি {numbers_file}: {e}")
             
             del COUNTRIES[country_name]
             save_countries()
             del user_states[user_id]
             
-            file_status = f"\n📄 تم حذف ملف الأرقام: {numbers_file}" if numbers_file else ""
-            bot.reply_to(msg, f"✅ تم حذف الدولة: {country_name}{file_status}")
+            file_status = f"\n📄 নম্বরের ফাইল মুছে ফেলা হয়েছে: {numbers_file}" if numbers_file else ""
+            bot.reply_to(msg, f"✅ দেশ মুছে ফেলা হয়েছে: {country_name}{file_status}")
         else:
-            bot.reply_to(msg, f"❌ الدولة غير موجودة: {country_name}")
+            bot.reply_to(msg, f"❌ দেশ পাওয়া যায়নি: {country_name}")
 
     elif action == "add_channel":
         try:
@@ -8822,17 +8822,17 @@ def handle_messages(msg):
                     "channel_username": channel_username,
                     "channel_url": channel_url
                 }
-                bot.reply_to(msg, "📝 أرسل الآن اسم القناة الذي سيظهر على الزر (باللغة العربية):")
+                bot.reply_to(msg, "📝 এখন বাটনে দেখানোর জন্য চ্যানেলের নাম পাঠান (বাংলায়):")
             except Exception as e:
-                bot.reply_to(msg, f"❌ خطأ في الوصول للقناة: {e}\n\nتأكد أن:\n• البوت مشرف في القناة\n• الرابط أو المعرف صحيح")
+                bot.reply_to(msg, f"❌ চ্যানেলে প্রবেশে ত্রুটি: {e}\n\nনিশ্চিত করুন যে:\n• বট চ্যানেলের অ্যাডমিন\n• লিংক বা আইডি সঠিক")
         except Exception as e:
-            bot.reply_to(msg, f"❌ خطأ: {e}")
+            bot.reply_to(msg, f"❌ ত্রুটি: {e}")
 
     elif action == "add_channel_name_ar":
         name_ar = msg.text.strip()
         state["name_ar"] = name_ar
         user_states[user_id]["action"] = "add_channel_name_en"
-        bot.reply_to(msg, "📝 أرسل الآن اسم القناة الذي سيظهر على الزر (باللغة الإنجليزية):")
+        bot.reply_to(msg, "📝 এখন বাটনে দেখানোর জন্য চ্যানেলের নাম পাঠান (ইংরেজিতে):")
 
     elif action == "add_channel_name_en":
         name_en = msg.text.strip()
@@ -8854,10 +8854,10 @@ def handle_messages(msg):
 
         bot.reply_to(
             msg,
-            f"✅ <b>تم إضافة القناة بنجاح!</b>\n\n"
-            f"📢 الاسم (عربي): {name_ar}\n"
-            f"📢 الاسم (إنجليزي): {name_en}\n"
-            f"🔗 المعرف: {channel_username}\n"
+            f"✅ <b>চ্যানেল সফলভাবে যোগ হয়েছে!</b>\n\n"
+            f"📢 নাম (বাংলা): {name_ar}\n"
+            f"📢 নাম (ইংরেজি): {name_en}\n"
+            f"🔗 আইডি: {channel_username}\n"
             f"🆔 ID: <code>{channel_id}</code>",
             parse_mode="HTML"
         )
@@ -8870,68 +8870,68 @@ def handle_messages(msg):
                 removed = CHANNELS.pop(index)
                 save_channels()
                 del user_states[user_id]
-                bot.reply_to(msg, f"✅ تم حذف القناة: {removed['name']}")
+                bot.reply_to(msg, f"✅ চ্যানেল মুছে ফেলা হয়েছে: {removed['name']}")
             else:
-                bot.reply_to(msg, "❌ رقم غير صحيح!")
+                bot.reply_to(msg, "❌ নম্বর সঠিক নয়!")
         except ValueError:
-            bot.reply_to(msg, "❌ يرجى إرسال رقم صحيح!")
+            bot.reply_to(msg, "❌ অনুগ্রহ করে সঠিক সংখ্যা পাঠান!")
 
     elif action == "add_admin":
         if user_id != MAIN_ADMIN_ID:
-            bot.reply_to(msg, "❌ عذراً، المالك فقط يمكنه إضافة مشرفين!")
+            bot.reply_to(msg, "❌ দুঃখিত, শুধু মালিক অ্যাডমিন যোগ করতে পারেন!")
             return
         try:
             new_admin_id = int(msg.text.strip())
 
             if new_admin_id in ADMINS:
-                bot.reply_to(msg, "⚠️ هذا المستخدم مشرف بالفعل!")
+                bot.reply_to(msg, "⚠️ এই ইউজার আগেই অ্যাডমিন!")
                 return
 
             ADMINS.append(new_admin_id)
             save_admins()
             del user_states[user_id]
-            bot.reply_to(msg, f"✅ تم إضافة المشرف بنجاح!\n\nID: <code>{new_admin_id}</code>", parse_mode="HTML")
+            bot.reply_to(msg, f"✅ অ্যাডমিন সফলভাবে যোগ হয়েছে!\n\nID: <code>{new_admin_id}</code>", parse_mode="HTML")
         except ValueError:
-            bot.reply_to(msg, "❌ ID غير صحيح!")
+            bot.reply_to(msg, "❌ ID সঠিক নয়!")
 
     elif action == "remove_admin":
         if user_id != MAIN_ADMIN_ID:
-            bot.reply_to(msg, "❌ عذراً، المالك فقط يمكنه حذف مشرفين!")
+            bot.reply_to(msg, "❌ দুঃখিত, শুধু মালিক অ্যাডমিন মুছতে পারেন!")
             return
         try:
             target_id = int(msg.text.strip())
             if target_id == MAIN_ADMIN_ID:
-                bot.reply_to(msg, "❌ لا يمكن حذف المشرف الأساسي (المالك)!")
+                bot.reply_to(msg, "❌ মূল অ্যাডমিনকে (মালিক) মুছে ফেলা যাবে না!")
                 return
             
             if target_id in ADMINS:
                 ADMINS.remove(target_id)
                 save_admins()
                 del user_states[user_id]
-                bot.reply_to(msg, f"✅ تم حذف المشرف بنجاح!\n\nID: <code>{target_id}</code>", parse_mode="HTML")
+                bot.reply_to(msg, f"✅ অ্যাডমিন সফলভাবে মুছে ফেলা হয়েছে!\n\nID: <code>{target_id}</code>", parse_mode="HTML")
             else:
-                bot.reply_to(msg, "❌ هذا المستخدم ليس مشرفاً!")
+                bot.reply_to(msg, "❌ এই ইউজার অ্যাডমিন নয়!")
         except ValueError:
-            bot.reply_to(msg, "❌ ID غير صحيح!")
+            bot.reply_to(msg, "❌ ID সঠিক নয়!")
 
     elif action == "ban_user":
         try:
             ban_user_id = int(msg.text.strip())
 
             if ban_user_id in ADMINS:
-                bot.reply_to(msg, "❌ لا يمكن حظر المشرفين!")
+                bot.reply_to(msg, "❌ অ্যাডমিনদের ব্যান করা যাবে না!")
                 return
 
             if ban_user_id in BANNED:
-                bot.reply_to(msg, "⚠️ هذا المستخدم محظور بالفعل!")
+                bot.reply_to(msg, "⚠️ এই ইউজার আগেই ব্যান করা!")
                 return
 
             BANNED.append(ban_user_id)
             save_banned()
             del user_states[user_id]
-            bot.reply_to(msg, f"✅ تم حظر المستخدم!\n\nID: <code>{ban_user_id}</code>", parse_mode="HTML")
+            bot.reply_to(msg, f"✅ ইউজারকে ব্যান করা হয়েছে!\n\nID: <code>{ban_user_id}</code>", parse_mode="HTML")
         except ValueError:
-            bot.reply_to(msg, "❌ ID غير صحيح!")
+            bot.reply_to(msg, "❌ ID সঠিক নয়!")
 
     elif action == "unban_user":
         try:
@@ -8941,11 +8941,11 @@ def handle_messages(msg):
                 BANNED.remove(unban_user_id)
                 save_banned()
                 del user_states[user_id]
-                bot.reply_to(msg, f"✅ تم إلغاء حظر المستخدم!\n\nID: <code>{unban_user_id}</code>", parse_mode="HTML")
+                bot.reply_to(msg, f"✅ ইউজার আনব্যান করা হয়েছে!\n\nID: <code>{unban_user_id}</code>", parse_mode="HTML")
             else:
-                bot.reply_to(msg, "❌ هذا المستخدم غير محظور!")
+                bot.reply_to(msg, "❌ এই ইউজার ব্যান করা নেই!")
         except ValueError:
-            bot.reply_to(msg, "❌ ID غير صحيح!")
+            bot.reply_to(msg, "❌ ID সঠিক নয়!")
 
     elif action == "set_otp_group":
         global OTP_GROUP
@@ -8954,76 +8954,76 @@ def handle_messages(msg):
             OTP_GROUP = group_id
             save_otp_group()
             del user_states[user_id]
-            bot.reply_to(msg, f"✅ تم تعيين مجموعة OTP!\n\nID: <code>{group_id}</code>", parse_mode="HTML")
+            bot.reply_to(msg, f"✅ গ্রুপ সেট করা হয়েছে OTP!\n\nID: <code>{group_id}</code>", parse_mode="HTML")
         except ValueError:
-            bot.reply_to(msg, "❌ ID غير صحيح!")
+            bot.reply_to(msg, "❌ ID সঠিক নয়!")
     
     elif action == "edit_code_bonus":
         try:
             new_value = float(msg.text.strip())
             if new_value <= 0 or new_value > 10:
-                bot.reply_to(msg, "❌ القيمة يجب أن تكون بين 0.01 و 10!")
+                bot.reply_to(msg, "❌ মান অবশ্যই 0.01 থেকে 10 এর মধ্যে হতে হবে!")
                 return
             settings = load_referral_settings()
             settings["code_bonus"] = new_value
             save_referral_settings(settings)
             del user_states[user_id]
-            bot.reply_to(msg, f"✅ تم تحديث بونص الكود إلى <b>${new_value}</b>", parse_mode="HTML")
+            bot.reply_to(msg, f"✅ কোড বোনাস আপডেট হয়েছে <b>${new_value}</b>", parse_mode="HTML")
         except ValueError:
-            bot.reply_to(msg, "❌ يرجى إدخال رقم صحيح!")
+            bot.reply_to(msg, "❌ অনুগ্রহ করে সঠিক সংখ্যা দিন!")
     
     elif action == "edit_referral_bonus":
         try:
             new_value = float(msg.text.strip())
             if new_value <= 0 or new_value > 100:
-                bot.reply_to(msg, "❌ القيمة يجب أن تكون بين 0.01 و 100!")
+                bot.reply_to(msg, "❌ মান অবশ্যই 0.01 থেকে 100 এর মধ্যে হতে হবে!")
                 return
             settings = load_referral_settings()
             settings["referral_bonus"] = new_value
             save_referral_settings(settings)
             del user_states[user_id]
-            bot.reply_to(msg, f"✅ تم تحديث بونص الإحالة إلى <b>${new_value}</b>", parse_mode="HTML")
+            bot.reply_to(msg, f"✅ রেফারেল বোনাস আপডেট হয়েছে <b>${new_value}</b>", parse_mode="HTML")
         except ValueError:
-            bot.reply_to(msg, "❌ يرجى إدخال رقم صحيح!")
+            bot.reply_to(msg, "❌ অনুগ্রহ করে সঠিক সংখ্যা দিন!")
     
     elif action == "edit_codes_required":
         try:
             new_value = int(msg.text.strip())
             if new_value < 1 or new_value > 100:
-                bot.reply_to(msg, "❌ العدد يجب أن يكون بين 1 و 100!")
+                bot.reply_to(msg, "❌ সংখ্যা অবশ্যই 1 থেকে 100 এর মধ্যে হতে হবে!")
                 return
             settings = load_referral_settings()
             settings["codes_required_for_referral"] = new_value
             save_referral_settings(settings)
             del user_states[user_id]
-            bot.reply_to(msg, f"✅ تم تحديث عدد الأكواد المطلوبة إلى <b>{new_value}</b>", parse_mode="HTML")
+            bot.reply_to(msg, f"✅ প্রয়োজনীয় কোড সংখ্যা আপডেট হয়েছে <b>{new_value}</b>", parse_mode="HTML")
         except ValueError:
-            bot.reply_to(msg, "❌ يرجى إدخال رقم صحيح!")
+            bot.reply_to(msg, "❌ অনুগ্রহ করে সঠিক সংখ্যা দিন!")
     
     elif action == "edit_min_withdrawal":
         try:
             new_value = float(msg.text.strip())
             if new_value <= 0 or new_value > 1000:
-                bot.reply_to(msg, "❌ القيمة يجب أن تكون بين 0.01 و 1000!")
+                bot.reply_to(msg, "❌ মান অবশ্যই 0.01 থেকে 1000 এর মধ্যে হতে হবে!")
                 return
             settings = load_referral_settings()
             settings["min_withdrawal"] = new_value
             save_referral_settings(settings)
             del user_states[user_id]
-            bot.reply_to(msg, f"✅ تم تحديث الحد الأدنى للسحب إلى <b>${new_value}</b>", parse_mode="HTML")
+            bot.reply_to(msg, f"✅ সর্বনিম্ন উত্তোলন আপডেট হয়েছে <b>${new_value}</b>", parse_mode="HTML")
         except ValueError:
-            bot.reply_to(msg, "❌ يرجى إدخال رقم صحيح!")
+            bot.reply_to(msg, "❌ অনুগ্রহ করে সঠিক সংখ্যা দিন!")
     
     elif action == "admin_add_balance":
         try:
             parts = msg.text.strip().split()
             if len(parts) != 2:
-                bot.reply_to(msg, "❌ الصيغة غير صحيحة! استخدم: USER_ID AMOUNT")
+                bot.reply_to(msg, "❌ ফরম্যাট ভুল! ব্যবহার করুন: USER_ID AMOUNT")
                 return
             target_user_id = int(parts[0])
             amount = float(parts[1])
             if amount <= 0 or amount > 10000:
-                bot.reply_to(msg, "❌ المبلغ يجب أن يكون بين 0.01 و 10000!")
+                bot.reply_to(msg, "❌ পরিমাণ অবশ্যই 0.01 থেকে 10000 এর মধ্যে হতে হবে!")
                 return
             
             referrals_data = load_referrals()
@@ -9045,42 +9045,42 @@ def handle_messages(msg):
             del user_states[user_id]
             
             new_balance = referrals_data[target_key]["balance"]
-            bot.reply_to(msg, f"✅ <b>تم إضافة الرصيد بنجاح!</b>\n\n👤 المستخدم: <code>{target_user_id}</code>\n💰 المبلغ المضاف: <b>${amount:.2f}</b>\n💵 الرصيد السابق: <b>${old_balance:.2f}</b>\n💵 الرصيد الجديد: <b>${new_balance:.2f}</b>", parse_mode="HTML")
+            bot.reply_to(msg, f"✅ <b>ব্যালেন্স সফলভাবে যোগ হয়েছে!</b>\n\n👤 ইউজার: <code>{target_user_id}</code>\n💰 যোগ করা পরিমাণ: <b>${amount:.2f}</b>\n💵 আগের ব্যালেন্স: <b>${old_balance:.2f}</b>\n💵 নতুন ব্যালেন্স: <b>${new_balance:.2f}</b>", parse_mode="HTML")
             
             try:
                 target_lang = get_user_language(target_user_id)
                 if target_lang == "ar":
-                    notify_msg = f"💰 <b>تم إضافة رصيد!</b>\n\nتم إضافة <b>${amount:.2f}</b> إلى رصيدك بواسطة الأدمن.\n💵 رصيدك الحالي: <b>${new_balance:.2f}</b>"
+                    notify_msg = f"💰 <b>ব্যালেন্স যোগ হয়েছে!</b>\n\nযোগ করা হয়েছে <b>${amount:.2f}</b> অ্যাডমিন আপনার ব্যালেন্সে যোগ করেছেন।\n💵 আপনার বর্তমান ব্যালেন্স: <b>${new_balance:.2f}</b>"
                 else:
                     notify_msg = f"💰 <b>Balance Added!</b>\n\n<b>${amount:.2f}</b> has been added to your balance by admin.\n💵 Your current balance: <b>${new_balance:.2f}</b>"
                 bot.send_message(target_user_id, notify_msg, parse_mode="HTML")
             except:
                 pass
         except ValueError:
-            bot.reply_to(msg, "❌ الصيغة غير صحيحة! استخدم: USER_ID AMOUNT\n\nمثال: 123456789 5.00")
+            bot.reply_to(msg, "❌ ফরম্যাট ভুল! ব্যবহার করুন: USER_ID AMOUNT\n\nউদাহরণ: 123456789 5.00")
     
     elif action == "admin_subtract_balance":
         try:
             parts = msg.text.strip().split()
             if len(parts) != 2:
-                bot.reply_to(msg, "❌ الصيغة غير صحيحة! استخدم: USER_ID AMOUNT")
+                bot.reply_to(msg, "❌ ফরম্যাট ভুল! ব্যবহার করুন: USER_ID AMOUNT")
                 return
             target_user_id = int(parts[0])
             amount = float(parts[1])
             if amount <= 0 or amount > 10000:
-                bot.reply_to(msg, "❌ المبلغ يجب أن يكون بين 0.01 و 10000!")
+                bot.reply_to(msg, "❌ পরিমাণ অবশ্যই 0.01 থেকে 10000 এর মধ্যে হতে হবে!")
                 return
             
             referrals_data = load_referrals()
             target_key = str(target_user_id)
             if target_key not in referrals_data:
-                bot.reply_to(msg, "❌ المستخدم غير موجود في نظام الإحالات!")
+                bot.reply_to(msg, "❌ ইউজার রেফারেল সিস্টেমে নেই!")
                 del user_states[user_id]
                 return
             
             old_balance = referrals_data[target_key].get("balance", 0.0)
             if amount > old_balance:
-                bot.reply_to(msg, f"❌ رصيد المستخدم غير كافي!\n💵 رصيده الحالي: ${old_balance:.2f}")
+                bot.reply_to(msg, f"❌ ইউজারের ব্যালেন্স যথেষ্ট নয়!\n💵 তার বর্তমান ব্যালেন্স: ${old_balance:.2f}")
                 return
             
             referrals_data[target_key]["balance"] = old_balance - amount
@@ -9088,30 +9088,30 @@ def handle_messages(msg):
             del user_states[user_id]
             
             new_balance = referrals_data[target_key]["balance"]
-            bot.reply_to(msg, f"✅ <b>تم خصم الرصيد بنجاح!</b>\n\n👤 المستخدم: <code>{target_user_id}</code>\n💰 المبلغ المخصوم: <b>${amount:.2f}</b>\n💵 الرصيد السابق: <b>${old_balance:.2f}</b>\n💵 الرصيد الجديد: <b>${new_balance:.2f}</b>", parse_mode="HTML")
+            bot.reply_to(msg, f"✅ <b>ব্যালেন্স সফলভাবে কর্তন হয়েছে!</b>\n\n👤 ইউজার: <code>{target_user_id}</code>\n💰 কর্তন করা পরিমাণ: <b>${amount:.2f}</b>\n💵 আগের ব্যালেন্স: <b>${old_balance:.2f}</b>\n💵 নতুন ব্যালেন্স: <b>${new_balance:.2f}</b>", parse_mode="HTML")
             
             try:
                 target_lang = get_user_language(target_user_id)
                 if target_lang == "ar":
-                    notify_msg = f"⚠️ <b>تم خصم رصيد!</b>\n\nتم خصم <b>${amount:.2f}</b> من رصيدك بواسطة الأدمن.\n💵 رصيدك الحالي: <b>${new_balance:.2f}</b>"
+                    notify_msg = f"⚠️ <b>ব্যালেন্স কর্তন হয়েছে!</b>\n\nকর্তন করা হয়েছে <b>${amount:.2f}</b> অ্যাডমিন আপনার ব্যালেন্স থেকে কেটেছেন।\n💵 আপনার বর্তমান ব্যালেন্স: <b>${new_balance:.2f}</b>"
                 else:
                     notify_msg = f"⚠️ <b>Balance Deducted!</b>\n\n<b>${amount:.2f}</b> has been deducted from your balance by admin.\n💵 Your current balance: <b>${new_balance:.2f}</b>"
                 bot.send_message(target_user_id, notify_msg, parse_mode="HTML")
             except:
                 pass
         except ValueError:
-            bot.reply_to(msg, "❌ الصيغة غير صحيحة! استخدم: USER_ID AMOUNT\n\nمثال: 123456789 5.00")
+            bot.reply_to(msg, "❌ ফরম্যাট ভুল! ব্যবহার করুন: USER_ID AMOUNT\n\nউদাহরণ: 123456789 5.00")
     
     elif action == "edit_welcome_ar":
         new_message = msg.text.strip()
         if len(new_message) < 10:
-            bot.reply_to(msg, "❌ الرسالة قصيرة جداً!")
+            bot.reply_to(msg, "❌ মেসেজ খুব ছোট!")
             return
         messages = load_welcome_messages()
         messages["ar"] = new_message
         save_welcome_messages(messages)
         del user_states[user_id]
-        bot.reply_to(msg, "✅ تم تحديث رسالة الترحيب العربية!")
+        bot.reply_to(msg, "✅ বাংলা স্বাগত বার্তা আপডেট হয়েছে!")
     
     elif action == "edit_welcome_en":
         new_message = msg.text.strip()
@@ -9128,64 +9128,64 @@ def handle_messages(msg):
         link_key = action.replace("edit_button_link_", "")
         new_link = msg.text.strip()
         if not new_link.startswith("https://"):
-            bot.reply_to(msg, "❌ الرابط يجب أن يبدأ بـ https://\n❌ Link must start with https://")
+            bot.reply_to(msg, "❌ লিংক শুরু হতে হবে https://\n❌ Link must start with https://")
             return
         links = load_button_links()
         links[link_key] = new_link
         save_button_links(links)
         del user_states[user_id]
-        bot.reply_to(msg, f"✅ تم تحديث الرابط بنجاح!\n✅ Link updated successfully!\n\n🔗 {new_link}")
+        bot.reply_to(msg, f"✅ লিংক সফলভাবে আপডেট হয়েছে!\n✅ Link updated successfully!\n\n🔗 {new_link}")
     
     elif action == "otp_btn_add_name":
         btn_name = msg.text.strip()
         if len(btn_name) < 1:
-            bot.reply_to(msg, "❌ اسم الزر قصير جداً!")
+            bot.reply_to(msg, "❌ বাটনের নাম খুব ছোট!")
             return
         user_states[user_id] = {"action": "otp_btn_add_url", "btn_name": btn_name}
-        bot.reply_to(msg, f"✅ اسم الزر: <b>{btn_name}</b>\n\nالآن أرسل رابط الزر:\n(مثال: https://t.me/YourChannel)", parse_mode="HTML")
+        bot.reply_to(msg, f"✅ বাটনের নাম: <b>{btn_name}</b>\n\nএখন বাটনের লিংক পাঠান:\n(উদাহরণ: https://t.me/YourChannel)", parse_mode="HTML")
     
     elif action == "otp_btn_add_url":
         btn_url = msg.text.strip()
         if not btn_url.startswith("https://"):
-            bot.reply_to(msg, "❌ الرابط يجب أن يبدأ بـ https://")
+            bot.reply_to(msg, "❌ লিংক শুরু হতে হবে https://")
             return
         btn_name = state.get("btn_name", "Button")
         otp_buttons = load_otp_buttons()
         otp_buttons.append({"name": btn_name, "url": btn_url})
         save_otp_buttons(otp_buttons)
         del user_states[user_id]
-        bot.reply_to(msg, f"✅ تم إضافة الزر بنجاح!\n\n📝 الاسم: <b>{btn_name}</b>\n🔗 الرابط: {btn_url}", parse_mode="HTML")
+        bot.reply_to(msg, f"✅ বাটন সফলভাবে যোগ হয়েছে!\n\n📝 নাম: <b>{btn_name}</b>\n🔗 লিংক: {btn_url}", parse_mode="HTML")
     
     elif action == "otp_btn_edit_name":
         btn_idx = state.get("btn_idx", 0)
         new_name = msg.text.strip()
         if len(new_name) < 1:
-            bot.reply_to(msg, "❌ اسم الزر قصير جداً!")
+            bot.reply_to(msg, "❌ বাটনের নাম খুব ছোট!")
             return
         otp_buttons = load_otp_buttons()
         if btn_idx < len(otp_buttons):
             otp_buttons[btn_idx]["name"] = new_name
             save_otp_buttons(otp_buttons)
             del user_states[user_id]
-            bot.reply_to(msg, f"✅ تم تحديث اسم الزر إلى: <b>{new_name}</b>", parse_mode="HTML")
+            bot.reply_to(msg, f"✅ বাটনের নাম আপডেট হয়ে হয়েছে: <b>{new_name}</b>", parse_mode="HTML")
         else:
-            bot.reply_to(msg, "❌ الزر غير موجود!")
+            bot.reply_to(msg, "❌ বাটন পাওয়া যায়নি!")
             del user_states[user_id]
     
     elif action == "otp_btn_edit_url":
         btn_idx = state.get("btn_idx", 0)
         new_url = msg.text.strip()
         if not new_url.startswith("https://"):
-            bot.reply_to(msg, "❌ الرابط يجب أن يبدأ بـ https://")
+            bot.reply_to(msg, "❌ লিংক শুরু হতে হবে https://")
             return
         otp_buttons = load_otp_buttons()
         if btn_idx < len(otp_buttons):
             otp_buttons[btn_idx]["url"] = new_url
             save_otp_buttons(otp_buttons)
             del user_states[user_id]
-            bot.reply_to(msg, f"✅ تم تحديث رابط الزر إلى:\n🔗 {new_url}", parse_mode="HTML")
+            bot.reply_to(msg, f"✅ বাটনের লিংক আপডেট হয়ে হয়েছে:\n🔗 {new_url}", parse_mode="HTML")
         else:
-            bot.reply_to(msg, "❌ الزر غير موجود!")
+            bot.reply_to(msg, "❌ বাটন পাওয়া যায়নি!")
             del user_states[user_id]
     
     elif action == "withdraw_details":
@@ -9195,7 +9195,7 @@ def handle_messages(msg):
         lang = get_user_language(user_id)
         
         if len(details) < 5:
-            msg_text = "❌ التفاصيل غير صحيحة!" if lang == "ar" else "❌ Invalid details!"
+            msg_text = "❌ বিবরণ সঠিক নয়!" if lang == "ar" else "❌ Invalid details!"
             bot.reply_to(msg, msg_text)
             return
         
@@ -9205,7 +9205,7 @@ def handle_messages(msg):
         min_withdrawal = settings.get("min_withdrawal", 5.0)
         
         if balance < min_withdrawal:
-            msg_text = f"❌ رصيدك غير كافي! الحد الأدنى: ${min_withdrawal}" if lang == "ar" else f"❌ Insufficient balance! Minimum: ${min_withdrawal}"
+            msg_text = f"❌ আপনার ব্যালেন্স যথেষ্ট নয়! সর্বনিম্ন: ${min_withdrawal}" if lang == "ar" else f"❌ Insufficient balance! Minimum: ${min_withdrawal}"
             bot.reply_to(msg, msg_text)
             del user_states[user_id]
             return
@@ -9236,13 +9236,13 @@ def handle_messages(msg):
         if lang == "ar":
             bot.reply_to(
                 msg,
-                f"✅ <b>تم إرسال طلب السحب!</b>\n\n"
-                f"🆔 رقم الطلب: <code>{request_id}</code>\n"
-                f"💵 المبلغ: <b>${balance:.2f}</b>\n"
-                f"📝 الطريقة: {method}\n"
-                f"📋 التفاصيل: <code>{details}</code>\n\n"
-                f"⏳ <b>الحالة:</b> قيد المعالجة\n"
-                f"سيتم إشعارك عند الموافقة أو الرفض.",
+                f"✅ <b>উত্তোলনের অনুরোধ পাঠানো হয়েছে!</b>\n\n"
+                f"🆔 অনুরোধ নম্বর: <code>{request_id}</code>\n"
+                f"💵 পরিমাণ: <b>${balance:.2f}</b>\n"
+                f"📝 পদ্ধতি: {method}\n"
+                f"📋 বিবরণ: <code>{details}</code>\n\n"
+                f"⏳ <b>অবস্থা:</b> প্রসেসিং চলছে\n"
+                f"অনুমোদন বা প্রত্যাখ্যানের সময় জানানো হবে।",
                 parse_mode="HTML"
             )
         else:
@@ -9260,36 +9260,36 @@ def handle_messages(msg):
         
         admin_markup = InlineKeyboardMarkup(row_width=2)
         admin_markup.add(
-            InlineKeyboardButton("✅ تأكيد الدفع", callback_data=f"wd_approve_{request_id}"),
-            InlineKeyboardButton("❌ رفض", callback_data=f"wd_reject_{request_id}")
+            InlineKeyboardButton("✅ পেমেন্ট নিশ্চিত", callback_data=f"wd_approve_{request_id}"),
+            InlineKeyboardButton("❌ প্রত্যাখ্যান", callback_data=f"wd_reject_{request_id}")
         )
         
         user_data_for_admin = USERS.get(str(user_id), {})
         user_referral_for_admin = get_user_referral_data(user_id)
         
-        admin_join_date = user_data_for_admin.get("join_date", "غير محدد")
+        admin_join_date = user_data_for_admin.get("join_date", "নির্ধারিত নয়")
         admin_total_codes = user_data_for_admin.get("activations", 0)
         admin_total_referrals = len(user_referral_for_admin.get("referrals", []))
         admin_active_referrals = user_referral_for_admin.get("active_referrals", 0)
         admin_total_earned = user_referral_for_admin.get("total_earned", 0.0)
         
         admin_notification = (
-            f"📋 <b>طلب سحب جديد!</b>\n\n"
-            f"🆔 رقم الطلب: <code>{request_id}</code>\n"
+            f"📋 <b>নতুন উত্তোলনের অনুরোধ!</b>\n\n"
+            f"🆔 অনুরোধ নম্বর: <code>{request_id}</code>\n"
             f"━━━━━━━━━━━━━━━━\n"
-            f"👤 <b>بيانات المستخدم:</b>\n"
+            f"👤 <b>ইউজারের তথ্য:</b>\n"
             f"├ 🆔 ID: <code>{user_id}</code>\n"
-            f"├ 📅 تاريخ الانضمام: {admin_join_date}\n"
-            f"├ 📊 إجمالي الأكواد: {admin_total_codes}\n"
-            f"├ 👥 إجمالي الإحالات: {admin_total_referrals}\n"
-            f"├ ✅ إحالات نشطة: {admin_active_referrals}\n"
-            f"└ 💰 إجمالي الأرباح: ${admin_total_earned:.2f}\n\n"
+            f"├ 📅 যোগদানের তারিখ: {admin_join_date}\n"
+            f"├ 📊 মোট কোড: {admin_total_codes}\n"
+            f"├ 👥 মোট রেফারেল: {admin_total_referrals}\n"
+            f"├ ✅ সক্রিয় রেফারেল: {admin_active_referrals}\n"
+            f"└ 💰 মোট আয়: ${admin_total_earned:.2f}\n\n"
             f"━━━━━━━━━━━━━━━━\n"
-            f"💳 <b>تفاصيل السحب:</b>\n"
-            f"├ 💵 المبلغ: <b>${balance:.2f}</b>\n"
-            f"├ ?? الطريقة: {method}\n"
-            f"└ 📋 التفاصيل: <code>{details}</code>\n\n"
-            f"⏳ الحالة: قيد الانتظار"
+            f"💳 <b>উত্তোলনের বিবরণ:</b>\n"
+            f"├ 💵 পরিমাণ: <b>${balance:.2f}</b>\n"
+            f"├ ?? পদ্ধতি: {method}\n"
+            f"└ 📋 বিবরণ: <code>{details}</code>\n\n"
+            f"⏳ অবস্থা: অপেক্ষমাণ"
         )
         
         for admin_id in ADMINS:
@@ -9334,12 +9334,12 @@ def handle_messages(msg):
             site_name = SETTINGS[site_key]["name"]
             bot.reply_to(
                 msg,
-                f"✅ <b>تم تحديث اليوزر - {site_name}</b>\n\n"
-                f"👤 اليوزر الجديد: <code>{new_username}</code>",
+                f"✅ <b>ইউজারনেম আপডেট হয়েছে - {site_name}</b>\n\n"
+                f"👤 নতুন ইউজারনেম: <code>{new_username}</code>",
                 parse_mode="HTML"
             )
         else:
-            bot.reply_to(msg, "❌ الحساب غير موجود!")
+            bot.reply_to(msg, "❌ অ্যাকাউন্ট পাওয়া যায়নি!")
     
     elif action == "change_site_password":
         global PASSWORD, PASSWORD2, PASSWORD3
@@ -9372,12 +9372,12 @@ def handle_messages(msg):
             site_name = SETTINGS[site_key]["name"]
             bot.reply_to(
                 msg,
-                f"✅ <b>تم تحديث الباسورد - {site_name}</b>\n\n"
-                f"🔑 تم حفظ كلمة المرور الجديدة",
+                f"✅ <b>পাসওয়ার্ড আপডেট হয়েছে - {site_name}</b>\n\n"
+                f"🔑 নতুন পাসওয়ার্ড সেভ হয়েছে",
                 parse_mode="HTML"
             )
         else:
-            bot.reply_to(msg, "❌ الحساب غير موجود!")
+            bot.reply_to(msg, "❌ অ্যাকাউন্ট পাওয়া যায়নি!")
     
     elif action == "add_account_username":
         site_key = state.get("site_key")
@@ -9385,7 +9385,7 @@ def handle_messages(msg):
         new_username = msg.text.strip()
         
         if not new_username:
-            bot.reply_to(msg, "❌ اسم المستخدم لا يمكن أن يكون فارغاً!")
+            bot.reply_to(msg, "❌ ইউজারনেম ফাঁকা রাখা যাবে না!")
             return
         
         if site_key == "iVASMS":
@@ -9396,9 +9396,9 @@ def handle_messages(msg):
             }
             bot.reply_to(
                 msg,
-                f"➕ <b>إضافة حساب جديد - {site_name}</b>\n\n"
-                f"✅ اليوزر: <code>{new_username}</code>\n\n"
-                f"📝 الخطوة 2/3: أرسل كلمة المرور (Password):",
+                f"➕ <b>নতুন অ্যাকাউন্ট যোগ - {site_name}</b>\n\n"
+                f"✅ ইউজারনেম: <code>{new_username}</code>\n\n"
+                f"📝 ধাপ 2/3: পাসওয়ার্ড পাঠান (Password):",
                 parse_mode="HTML"
             )
         else:
@@ -9409,9 +9409,9 @@ def handle_messages(msg):
             }
             bot.reply_to(
                 msg,
-                f"➕ <b>إضافة حساب جديد - {site_name}</b>\n\n"
-                f"✅ اليوزر: <code>{new_username}</code>\n\n"
-                f"📝 الخطوة 2/2: أرسل كلمة المرور (Password):",
+                f"➕ <b>নতুন অ্যাকাউন্ট যোগ - {site_name}</b>\n\n"
+                f"✅ ইউজারনেম: <code>{new_username}</code>\n\n"
+                f"📝 ধাপ 2/2: পাসওয়ার্ড পাঠান (Password):",
                 parse_mode="HTML"
             )
     
@@ -9422,7 +9422,7 @@ def handle_messages(msg):
         password = msg.text.strip()
         
         if not password:
-            bot.reply_to(msg, "❌ كلمة المرور لا يمكن أن تكون فارغة!")
+            bot.reply_to(msg, "❌ পাসওয়ার্ড ফাঁকা রাখা যাবে না!")
             return
         
         if site_key == "iVASMS":
@@ -9434,10 +9434,10 @@ def handle_messages(msg):
             }
             bot.reply_to(
                 msg,
-                f"➕ <b>إضافة حساب جديد - {site_name}</b>\n\n"
-                f"✅ اليوزر: <code>{username}</code>\n"
-                f"✅ الباسورد: <code>{password}</code>\n\n"
-                f"📝 الخطوة 3/3: أرسل مفتاح API (API Key):",
+                f"➕ <b>নতুন অ্যাকাউন্ট যোগ - {site_name}</b>\n\n"
+                f"✅ ইউজারনেম: <code>{username}</code>\n"
+                f"✅ পাসওয়ার্ড: <code>{password}</code>\n\n"
+                f"📝 ধাপ 3/3: কী পাঠান API (API Key):",
                 parse_mode="HTML"
             )
             return
@@ -9450,29 +9450,29 @@ def handle_messages(msg):
             if SETTINGS[site_key]["enabled"]:
                 thread = Thread(target=start_monitoring_for_account, args=(site_key, new_account), daemon=True)
                 thread.start()
-                print(f"🚀 بدء مراقبة فورية للحساب الجديد: {username} ({site_name})")
+                print(f"🚀 নতুন অ্যাকাউন্টের তাৎক্ষণিক মনিটরিং শুরু: {username} ({site_name})")
                 
                 bot.reply_to(
                     msg,
-                    f"✅ <b>تم إضافة الحساب بنجاح - {site_name}</b>\n\n"
-                    f"👤 اليوزر: <code>{username}</code>\n"
-                    f"🔑 الباسورد: <code>{password}</code>\n"
+                    f"✅ <b>অ্যাকাউন্ট সফলভাবে যোগ হয়েছে - {site_name}</b>\n\n"
+                    f"👤 ইউজারনেম: <code>{username}</code>\n"
+                    f"🔑 পাসওয়ার্ড: <code>{password}</code>\n"
                     f"🆔 ID: <code>{new_account['id'][:8]}...</code>\n\n"
-                    f"🚀 <b>تم بدء المراقبة فوراً!</b>",
+                    f"🚀 <b>মনিটরিং সাথে সাথে শুরু হয়েছে!</b>",
                     parse_mode="HTML"
                 )
             else:
                 bot.reply_to(
                     msg,
-                    f"✅ <b>تم إضافة الحساب بنجاح - {site_name}</b>\n\n"
-                    f"👤 اليوزر: <code>{username}</code>\n"
-                    f"🔑 الباسورد: <code>{password}</code>\n"
+                    f"✅ <b>অ্যাকাউন্ট সফলভাবে যোগ হয়েছে - {site_name}</b>\n\n"
+                    f"👤 ইউজারনেম: <code>{username}</code>\n"
+                    f"🔑 পাসওয়ার্ড: <code>{password}</code>\n"
                     f"🆔 ID: <code>{new_account['id'][:8]}...</code>\n\n"
-                    f"⚠️ الموقع غير مفعل حالياً",
+                    f"⚠️ সাইটটি এখন চালু নেই",
                     parse_mode="HTML"
                 )
         else:
-            bot.reply_to(msg, "❌ فشل إضافة الحساب!")
+            bot.reply_to(msg, "❌ অ্যাকাউন্ট যোগ ব্যর্থ!")
     
     elif action == "add_account_api_key":
         site_key = state.get("site_key")
@@ -9482,7 +9482,7 @@ def handle_messages(msg):
         api_key = msg.text.strip()
         
         if not api_key:
-            bot.reply_to(msg, "❌ مفتاح API لا يمكن أن يكون فارغاً!")
+            bot.reply_to(msg, "❌ কী API ফাঁকা রাখা যাবে না!")
             return
         
         new_account = add_account(site_key, username, password)
@@ -9500,31 +9500,31 @@ def handle_messages(msg):
                 new_account["api_key"] = api_key
                 thread = Thread(target=start_monitoring_for_account, args=(site_key, new_account), daemon=True)
                 thread.start()
-                print(f"🚀 بدء مراقبة فورية للحساب الجديد: {username} ({site_name})")
+                print(f"🚀 নতুন অ্যাকাউন্টের তাৎক্ষণিক মনিটরিং শুরু: {username} ({site_name})")
                 
                 bot.reply_to(
                     msg,
-                    f"✅ <b>تم إضافة الحساب بنجاح - {site_name}</b>\n\n"
-                    f"👤 اليوزر: <code>{username}</code>\n"
-                    f"🔑 الباسورد: <code>{password}</code>\n"
-                    f"🔐 مفتاح API: <code>{api_key[:10]}...</code>\n"
+                    f"✅ <b>অ্যাকাউন্ট সফলভাবে যোগ হয়েছে - {site_name}</b>\n\n"
+                    f"👤 ইউজারনেম: <code>{username}</code>\n"
+                    f"🔑 পাসওয়ার্ড: <code>{password}</code>\n"
+                    f"🔐 কী API: <code>{api_key[:10]}...</code>\n"
                     f"🆔 ID: <code>{new_account['id'][:8]}...</code>\n\n"
-                    f"🚀 <b>تم بدء المراقبة فوراً!</b>",
+                    f"🚀 <b>মনিটরিং সাথে সাথে শুরু হয়েছে!</b>",
                     parse_mode="HTML"
                 )
             else:
                 bot.reply_to(
                     msg,
-                    f"✅ <b>تم إضافة الحساب بنجاح - {site_name}</b>\n\n"
-                    f"👤 اليوزر: <code>{username}</code>\n"
-                    f"🔑 الباسورد: <code>{password}</code>\n"
-                    f"🔐 مفتاح API: <code>{api_key[:10]}...</code>\n"
+                    f"✅ <b>অ্যাকাউন্ট সফলভাবে যোগ হয়েছে - {site_name}</b>\n\n"
+                    f"👤 ইউজারনেম: <code>{username}</code>\n"
+                    f"🔑 পাসওয়ার্ড: <code>{password}</code>\n"
+                    f"🔐 কী API: <code>{api_key[:10]}...</code>\n"
                     f"🆔 ID: <code>{new_account['id'][:8]}...</code>\n\n"
-                    f"⚠️ الموقع غير مفعل حالياً",
+                    f"⚠️ সাইটটি এখন চালু নেই",
                     parse_mode="HTML"
                 )
         else:
-            bot.reply_to(msg, "❌ فشل إضافة الحساب!")
+            bot.reply_to(msg, "❌ অ্যাকাউন্ট যোগ ব্যর্থ!")
     
     elif action == "change_site_interval":
         global CHECK_INTERVAL, CHECK_INTERVAL2, CHECK_INTERVAL3
@@ -9534,7 +9534,7 @@ def handle_messages(msg):
             new_interval = int(msg.text.strip())
             
             if new_interval < 1 or new_interval > 300:
-                bot.reply_to(msg, "❌ الفترة يجب أن تكون بين 1 و 300 ثانية!")
+                bot.reply_to(msg, "❌ বিরতি অবশ্যই 1 থেকে 300 সেকেন্ডের মধ্যে হতে হবে!")
                 return
             
             SETTINGS[site_key]["check_interval"] = new_interval
@@ -9551,13 +9551,13 @@ def handle_messages(msg):
             site_name = SETTINGS[site_key]["name"]
             bot.reply_to(
                 msg,
-                f"✅ <b>تم تحديث فترة البحث - {site_name}</b>\n\n"
-                f"⏱ الفترة الجديدة: {new_interval} ثانية\n\n"
-                f"⚠️ سيتم تطبيق التغيير في الدورة القادمة",
+                f"✅ <b>অনুসন্ধানের বিরতি আপডেট হয়েছে - {site_name}</b>\n\n"
+                f"⏱ নতুন বিরতি: {new_interval} সেকেন্ড\n\n"
+                f"⚠️ পরিবর্তন পরের চক্রে কার্যকর হবে",
                 parse_mode="HTML"
             )
         except ValueError:
-            bot.reply_to(msg, "❌ يرجى إدخال رقم صحيح!")
+            bot.reply_to(msg, "❌ অনুগ্রহ করে সঠিক সংখ্যা দিন!")
     
     elif action == "change_site_timeout":
         global HTTP_TIMEOUT, HTTP_TIMEOUT2, HTTP_TIMEOUT3
@@ -9567,7 +9567,7 @@ def handle_messages(msg):
             new_timeout = int(msg.text.strip())
             
             if new_timeout < 5 or new_timeout > 300:
-                bot.reply_to(msg, "❌ وقت الانتظار يجب أن يكون بين 5 و 300 ثانية!")
+                bot.reply_to(msg, "❌ অপেক্ষার সময় অবশ্যই 5 থেকে 300 সেকেন্ডের মধ্যে হতে হবে!")
                 return
             
             SETTINGS[site_key]["timeout"] = new_timeout
@@ -9584,12 +9584,12 @@ def handle_messages(msg):
             site_name = SETTINGS[site_key]["name"]
             bot.reply_to(
                 msg,
-                f"✅ <b>تم تحديث وقت الانتظار - {site_name}</b>\n\n"
-                f"⏳ الوقت الجديد: {new_timeout} ثانية",
+                f"✅ <b>অপেক্ষার সময় আপডেট হয়েছে - {site_name}</b>\n\n"
+                f"⏳ নতুন সময়: {new_timeout} সেকেন্ড",
                 parse_mode="HTML"
             )
         except ValueError:
-            bot.reply_to(msg, "❌ يرجى إدخال رقم صحيح!")
+            bot.reply_to(msg, "❌ অনুগ্রহ করে সঠিক সংখ্যা দিন!")
     
     elif action == "add_group":
         try:
@@ -9606,11 +9606,11 @@ def handle_messages(msg):
                         break
                 
                 if not bot_is_admin:
-                    bot.reply_to(msg, "❌ البوت ليس admin في هذا الجروب!")
+                    bot.reply_to(msg, "❌ বট নয় admin এই গ্রুপে!")
                     return
                 
                 if group_id in GROUPS:
-                    bot.reply_to(msg, "⚠️ هذا الجروب مضاف بالفعل!")
+                    bot.reply_to(msg, "⚠️ এই গ্রুপ আগেই যোগ করা আছে!")
                     return
                 
                 GROUPS.append(group_id)
@@ -9619,15 +9619,15 @@ def handle_messages(msg):
                 
                 bot.reply_to(
                     msg,
-                    f"✅ <b>تم إضافة الجروب بنجاح!</b>\n\n"
-                    f"📱 الاسم: <b>{chat.title}</b>\n"
+                    f"✅ <b>গ্রুপ সফলভাবে যোগ হয়েছে!</b>\n\n"
+                    f"📱 নাম: <b>{chat.title}</b>\n"
                     f"🆔 ID: <code>{group_id}</code>",
                     parse_mode="HTML"
                 )
             except Exception as e:
-                bot.reply_to(msg, f"❌ خطأ: {e}\n\nتأكد أن:\n• البوت admin في الجروب\n• ID الجروب صحيح")
+                bot.reply_to(msg, f"❌ ত্রুটি: {e}\n\nনিশ্চিত করুন যে:\n• বট admin গ্রুপে\n• ID গ্রুপ সঠিক")
         except ValueError:
-            bot.reply_to(msg, "❌ ID غير صحيح!")
+            bot.reply_to(msg, "❌ ID সঠিক নয়!")
     
     elif action == "remove_group":
         try:
@@ -9637,11 +9637,11 @@ def handle_messages(msg):
                 GROUPS.remove(group_id)
                 save_groups()
                 del user_states[user_id]
-                bot.reply_to(msg, f"✅ تم حذف الجروب!\n\nID: <code>{group_id}</code>", parse_mode="HTML")
+                bot.reply_to(msg, f"✅ গ্রুপ মুছে ফেলা হয়েছে!\n\nID: <code>{group_id}</code>", parse_mode="HTML")
             else:
-                bot.reply_to(msg, "❌ الجروب غير موجود!")
+                bot.reply_to(msg, "❌ গ্রুপ পাওয়া যায়নি!")
         except ValueError:
-            bot.reply_to(msg, "❌ ID غير صحيح!")
+            bot.reply_to(msg, "❌ ID সঠিক নয়!")
     
     elif user_id in broadcast_state:
         state = broadcast_state[user_id]
@@ -9682,22 +9682,22 @@ def handle_messages(msg):
         broadcast_state[user_id]["step"] = "confirm"
         
         if broadcast_type == "forward":
-            broadcast_label = "📤 إعادة توجيه للمستخدمين"
+            broadcast_label = "📤 ইউজারদের কাছে ফরওয়ার্ড"
         else:
-            broadcast_label = "📣 مستخدمي البوت الرئيسي"
+            broadcast_label = "📣 মূল বটের ইউজার"
         
         markup = InlineKeyboardMarkup(row_width=2)
         markup.add(
-            InlineKeyboardButton("✅ تأكيد الإرسال", callback_data="confirm_broadcast", style="success"),
-            InlineKeyboardButton("🔙 إلغاء", callback_data="cancel_broadcast", style="danger")
+            InlineKeyboardButton("✅ পাঠানো নিশ্চিত", callback_data="confirm_broadcast", style="success"),
+            InlineKeyboardButton("🔙 বাতিল", callback_data="cancel_broadcast", style="danger")
         )
         
         bot.reply_to(
             msg,
-            f"📣 <b>تأكيد الإذاعة</b>\n\n"
-            f"📍 الوجهة: {broadcast_label}\n"
-            f"📝 نوع الرسالة: {msg.content_type}\n\n"
-            f"⚠️ هل أنت متأكد من إرسال هذه الرسالة؟",
+            f"📣 <b>ব্রডকাস্ট নিশ্চিত</b>\n\n"
+            f"📍 গন্তব্য: {broadcast_label}\n"
+            f"📝 মেসেজের ধরন: {msg.content_type}\n\n"
+            f"⚠️ আপনি কি নিশ্চিত এই মেসেজ পাঠাতে চান?",
             parse_mode="HTML",
             reply_markup=markup
         )
@@ -9770,9 +9770,9 @@ def send_otp_to_user(number, otp_message, full_number, group_message=None, otp_c
                 try:
                     add_code_bonus(int(user_id_str))
                 except Exception as bonus_err:
-                    print(f"⚠️ خطأ في إضافة بونص للمستخدم {user_id_str}: {bonus_err}")
+                    print(f"⚠️ ইউজারকে বোনাস যোগ করতে ত্রুটি {user_id_str}: {bonus_err}")
             except Exception as e:
-                print(f"❌ خطأ إرسال للمستخدم {user_id_str}: {str(e)}")
+                print(f"❌ ইউজারকে পাঠাতে ত্রুটি {user_id_str}: {str(e)}")
 
     update_statistics()
     
@@ -9785,9 +9785,9 @@ def send_otp_to_user(number, otp_message, full_number, group_message=None, otp_c
         try:
             bot.send_message(OTP_GROUP, msg_to_group, parse_mode="HTML", disable_web_page_preview=True, reply_markup=group_keyboard)
             sent_groups.add(OTP_GROUP)
-            print(f"✅ تم الإرسال لمجموعة OTP_GROUP: {OTP_GROUP}")
+            print(f"✅ গ্রুপে পাঠানো হয়েছে OTP_GROUP: {OTP_GROUP}")
         except Exception as e:
-            print(f"❌ خطأ إرسال لمجموعة OTP: {str(e)}")
+            print(f"❌ গ্রুপে পাঠাতে ত্রুটি OTP: {str(e)}")
     
     
     if not GROUPS and os.path.exists(GROUPS_FILE):
@@ -9806,9 +9806,9 @@ def send_otp_to_user(number, otp_message, full_number, group_message=None, otp_c
             try:
                 bot.send_message(gid, msg_to_group, parse_mode="HTML", disable_web_page_preview=True, reply_markup=group_keyboard)
                 sent_groups.add(gid)
-                print(f"✅ تم الإرسال لمجموعة من القائمة: {gid}")
+                print(f"✅ তালিকার একটি গ্রুপে পাঠানো হয়েছে: {gid}")
             except Exception as e:
-                print(f"❌ خطأ إرسال لمجموعة {gid}: {str(e)}")
+                print(f"❌ গ্রুপে পাঠাতে ত্রুটি {gid}: {str(e)}")
     
     return sent_to_users
 
@@ -9818,7 +9818,7 @@ def load_last_seen_key():
         try:
             with open(LAST_MESSAGE_FILE, "r", encoding="utf-8") as f:
                 last_seen_key = f.read().strip()
-                print(f"📋 تم تحميل آخر رسالة مشاهدة: {last_seen_key[:50]}..." if last_seen_key else "📋 لا توجد رسائل سابقة")
+                print(f"📋 সর্বশেষ দেখা মেসেজ লোড হয়েছে: {last_seen_key[:50]}..." if last_seen_key else "📋 আগের কোনো মেসেজ নেই")
         except:
             last_seen_key = ""
     else:
@@ -9828,9 +9828,9 @@ def save_last_seen_key():
     try:
         with open(LAST_MESSAGE_FILE, "w", encoding="utf-8") as f:
             f.write(last_seen_key)
-        print(f"💾 تم حفظ آخر رسالة مشاهدة")
+        print(f"💾 সর্বশেষ দেখা মেসেজ সেভ হয়েছে")
     except Exception as e:
-        print(f"❌ خطأ في حفظ آخر رسالة: {str(e)}")
+        print(f"❌ সর্বশেষ মেসেজ সেভে ত্রুটি: {str(e)}")
 
 def print_monitoring_box(site_name, username, status_icon, status_text):
     box_width = 45
@@ -9839,7 +9839,7 @@ def print_monitoring_box(site_name, username, status_icon, status_text):
 
 def login_site3():
     global is_logged_in_site3
-    print("[Site3/Number_Panel] 🔄 محاولة تسجيل الدخول...")
+    print("[Site3/Number_Panel] 🔄 লগইনের চেষ্টা চলছে...")
     
     try:
         session3.headers.update({
@@ -9849,17 +9849,17 @@ def login_site3():
         })
         
         resp = session3.get(LOGIN_PAGE_URL3, timeout=HTTP_TIMEOUT3)
-        print(f"[Site3/Number_Panel] 📄 حالة GET: {resp.status_code}")
+        print(f"[Site3/Number_Panel] 📄 স্ট্যাটাস GET: {resp.status_code}")
         
         match = re.search(r'What is (\d+) \+ (\d+)', resp.text)
         if not match:
-            print("[Site3/Number_Panel] ⚠️ لم يتم العثور على captcha في الصفحة")
-            print(f"[Site3/Number_Panel] 📋 عينة من المحتوى: {resp.text[:500]}")
+            print("[Site3/Number_Panel] ⚠️ খুঁজে পাওয়া যায়নি captcha পেজে")
+            print(f"[Site3/Number_Panel] 📋 কন্টেন্টের নমুনা: {resp.text[:500]}")
             return False
         
         num1, num2 = int(match.group(1)), int(match.group(2))
         captcha_answer = num1 + num2
-        print(f"[Site3/Number_Panel] 🧮 حل captcha: {num1} + {num2} = {captcha_answer}")
+        print(f"[Site3/Number_Panel] 🧮 সমাধান captcha: {num1} + {num2} = {captcha_answer}")
         
         payload = {
             "username": USERNAME3,
@@ -9871,12 +9871,12 @@ def login_site3():
             crlf_match = re.search(r"name='crlf' value='([^']+)'", resp.text)
             if crlf_match:
                 payload["crlf"] = crlf_match.group(1)
-                print(f"[Site3/Number_Panel] 🔑 استخراج crlf token")
+                print(f"[Site3/Number_Panel] 🔑 বের করা crlf token")
         
         csrf_token = get_csrf_token_np(resp.text)
         if csrf_token:
             payload["_token"] = csrf_token
-            print(f"[Site3/Number_Panel] 🔑 استخراج CSRF Token")
+            print(f"[Site3/Number_Panel] 🔑 বের করা CSRF Token")
         
         headers = {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -9885,11 +9885,11 @@ def login_site3():
             "Origin": BASE_URL3
         }
         
-        print(f"[Site3/Number_Panel] 📤 إرسال طلب تسجيل الدخول لـ: {USERNAME3}")
+        print(f"[Site3/Number_Panel] 📤 লগইন অনুরোধ পাঠানো হচ্ছে: {USERNAME3}")
         resp = session3.post(LOGIN_POST_URL3, data=payload, headers=headers, timeout=HTTP_TIMEOUT3, allow_redirects=True)
         
-        print(f"[Site3/Number_Panel] 📊 حالة POST: {resp.status_code}")
-        print(f"[Site3/Number_Panel] 🔗 URL النهائي: {resp.url}")
+        print(f"[Site3/Number_Panel] 📊 স্ট্যাটাস POST: {resp.status_code}")
+        print(f"[Site3/Number_Panel] 🔗 URL চূড়ান্ত: {resp.url}")
         
         if ("dashboard" in resp.text.lower() or 
             "logout" in resp.text.lower() or 
@@ -9899,17 +9899,17 @@ def login_site3():
             "signin" in resp.text.lower() or
             "dashboard" in resp.url.lower() or
             resp.url != LOGIN_PAGE_URL3):
-            print("[Site3/Number_Panel] ✅ تم تسجيل الدخول بنجاح")
+            print("[Site3/Number_Panel] ✅ লগইন সফল হয়েছে")
             is_logged_in_site3 = True
             save_cookies_site3()
             return True
         else:
-            print("[Site3/Number_Panel] ❌ فشل تسجيل الدخول")
+            print("[Site3/Number_Panel] ❌ লগইন ব্যর্থ")
             if "incorrect" in resp.text.lower() or "invalid" in resp.text.lower():
-                print("[Site3/Number_Panel] ⚠️ اسم المستخدم أو كلمة المرور غير صحيحة")
+                print("[Site3/Number_Panel] ⚠️ ইউজারনেম বা পাসওয়ার্ড ভুল")
             return False
     except Exception as e:
-        print(f"[Site3/Number_Panel] ❌ خطأ في تسجيل الدخول: {e}")
+        print(f"[Site3/Number_Panel] ❌ লগইনে ত্রুটি: {e}")
         import traceback
         traceback.print_exc()
         return False
@@ -10007,7 +10007,7 @@ def sms_loop_for_number_panel_account(site_key, account):
                 last_seen_key_local = f.read().strip()
         except: pass
 
-    print_monitoring_box(site_name, f"TOKEN: {api_token[:10]}...", "🌐", "بدء المراقبة عبر API...")
+    print_monitoring_box(site_name, f"TOKEN: {api_token[:10]}...", "🌐", "মনিটরিং শুরু হয়েছে মাধ্যমে API...")
     
     while True:
         try:
@@ -10076,7 +10076,7 @@ def sms_loop_for_number_panel_account(site_key, account):
 
 def login_site4():
     global is_logged_in_site4
-    print("[Site4/Bolt] 🔄 محاولة تسجيل الدخول...")
+    print("[Site4/Bolt] 🔄 লগইনের চেষ্টা চলছে...")
     
     try:
         session4.headers.update({
@@ -10086,17 +10086,17 @@ def login_site4():
         })
         
         resp = session4.get(LOGIN_PAGE_URL4, timeout=HTTP_TIMEOUT4)
-        print(f"[Site4/Bolt] 📄 حالة GET: {resp.status_code}")
+        print(f"[Site4/Bolt] 📄 স্ট্যাটাস GET: {resp.status_code}")
         
         match = re.search(r'What is (\d+) \+ (\d+)', resp.text)
         if not match:
-            print("[Site4/Bolt] ⚠️ لم يتم العثور على captcha في الصفحة")
-            print(f"[Site4/Bolt] 📋 عينة من المحتوى: {resp.text[:500]}")
+            print("[Site4/Bolt] ⚠️ খুঁজে পাওয়া যায়নি captcha পেজে")
+            print(f"[Site4/Bolt] 📋 কন্টেন্টের নমুনা: {resp.text[:500]}")
             return False
         
         num1, num2 = int(match.group(1)), int(match.group(2))
         captcha_answer = num1 + num2
-        print(f"[Site4/Bolt] 🧮 حل captcha: {num1} + {num2} = {captcha_answer}")
+        print(f"[Site4/Bolt] 🧮 সমাধান captcha: {num1} + {num2} = {captcha_answer}")
         
         crlf_match = re.search(r"name='crlf' value='([^']+)'", resp.text)
         
@@ -10108,9 +10108,9 @@ def login_site4():
         
         if crlf_match:
             payload["crlf"] = crlf_match.group(1)
-            print(f"[Site4/Bolt] 🔑 استخراج crlf token")
+            print(f"[Site4/Bolt] 🔑 বের করা crlf token")
         else:
-            print(f"[Site4/Bolt] ⚠️ لم يتم العثور على crlf token")
+            print(f"[Site4/Bolt] ⚠️ খুঁজে পাওয়া যায়নি crlf token")
         
         headers = {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -10119,29 +10119,29 @@ def login_site4():
             "Origin": BASE_URL4
         }
         
-        print(f"[Site4/Bolt] 📤 إرسال طلب تسجيل الدخول لـ: {USERNAME4}")
+        print(f"[Site4/Bolt] 📤 লগইন অনুরোধ পাঠানো হচ্ছে: {USERNAME4}")
         resp = session4.post(LOGIN_POST_URL4, data=payload, headers=headers, timeout=HTTP_TIMEOUT4, allow_redirects=True)
         
-        print(f"[Site4/Bolt] 📊 حالة POST: {resp.status_code}")
-        print(f"[Site4/Bolt] 🔗 URL النهائي: {resp.url}")
+        print(f"[Site4/Bolt] 📊 স্ট্যাটাস POST: {resp.status_code}")
+        print(f"[Site4/Bolt] 🔗 URL চূড়ান্ত: {resp.url}")
         
         if ("dashboard" in resp.text.lower() or 
             "logout" in resp.text.lower() or 
             "agent" in resp.url.lower() or 
             "reports" in resp.url.lower() or
             resp.url != LOGIN_PAGE_URL4):
-            print("[Site4/Bolt] ✅ تسجيل الدخول نجح")
+            print("[Site4/Bolt] ✅ লগইন সফল হয়েছে")
             is_logged_in_site4 = True
             save_cookies_site4()
             return True
         else:
-            print("[Site4/Bolt] ❌ فشل تسجيل الدخول")
+            print("[Site4/Bolt] ❌ লগইন ব্যর্থ")
             if "incorrect" in resp.text.lower() or "invalid" in resp.text.lower():
-                print("[Site4/Bolt] ⚠️ اسم المستخدم أو كلمة المرور غير صحيحة")
+                print("[Site4/Bolt] ⚠️ ইউজারনেম বা পাসওয়ার্ড ভুল")
             return False
             
     except Exception as e:
-        print(f"[Site4/Bolt] ❌ خطأ في تسجيل الدخول: {e}")
+        print(f"[Site4/Bolt] ❌ লগইনে ত্রুটি: {e}")
         import traceback
         traceback.print_exc()
         return False
@@ -10205,46 +10205,46 @@ def fetch_ajax_json_site4(url_dict, retry_count=0):
     }
     
     try:
-        print(f"[Site4/Bolt] 📡 إرسال طلب AJAX إلى: {url_dict['url']}")
+        print(f"[Site4/Bolt] 📡 অনুরোধ পাঠানো হচ্ছে AJAX প্রতি: {url_dict['url']}")
         r = session4.post(url_dict['url'], data=url_dict['params'], headers=ajax_headers, timeout=HTTP_TIMEOUT4)
-        print(f"[Site4/Bolt] 📊 حالة API: {r.status_code}, URL: {r.url[:80]}")
+        print(f"[Site4/Bolt] 📊 স্ট্যাটাস API: {r.status_code}, URL: {r.url[:80]}")
         
         if r.status_code == 403 or (r.status_code == 200 and 'login' in r.url.lower()):
             is_logged_in_site4 = False
-            print("[Site4/Bolt] 🔄 انتهت الجلسة - إعادة تسجيل الدخول...")
+            print("[Site4/Bolt] 🔄 সেশন শেষ - আবার লগইন হচ্ছে...")
             if login_site4():
                 is_logged_in_site4 = True
                 save_cookies_site4()
                 r = session4.post(url_dict['url'], data=url_dict['params'], headers=ajax_headers, timeout=HTTP_TIMEOUT4)
-                print(f"[Site4/Bolt] 📊 حالة API بعد إعادة التسجيل: {r.status_code}")
+                print(f"[Site4/Bolt] 📊 স্ট্যাটাস API আবার লগইনের পর: {r.status_code}")
             else:
                 return None
         
         r.raise_for_status()
         data = r.json()
-        print(f"[Site4/Bolt] 🔎 نوع البيانات: {type(data)}, حجم: {len(str(data))}")
+        print(f"[Site4/Bolt] 🔎 ডাটার ধরন: {type(data)}, আকার: {len(str(data))}")
         
         if data:
             rows_count = 0
             if isinstance(data, dict):
-                print(f"[Site4/Bolt] 🔑 مفاتيح JSON: {list(data.keys())[:10]}")
+                print(f"[Site4/Bolt] 🔑 কী JSON: {list(data.keys())[:10]}")
                 for key in ("data", "aaData", "rows"):
                     if key in data and isinstance(data[key], list):
                         rows_count = len(data[key])
-                        print(f"[Site4/Bolt] ✅ وجدنا {rows_count} رسالة في '{key}'")
+                        print(f"[Site4/Bolt] ✅ পাওয়া গেছে {rows_count} মেসেজ '{key}'")
                         break
             elif isinstance(data, list):
                 rows_count = len(data)
-                print(f"[Site4/Bolt] ✅ القائمة تحتوي على {rows_count} عنصر")
+                print(f"[Site4/Bolt] ✅ তালিকায় আছে {rows_count} আইটেম")
             
             if rows_count == 0:
-                print(f"[Site4/Bolt] ⚠️ الاستجابة فارغة: {str(data)[:300]}")
+                print(f"[Site4/Bolt] ⚠️ রেসপন্স ফাঁকা: {str(data)[:300]}")
         else:
-            print(f"[Site4/Bolt] ⚠️ البيانات None أو فارغة")
+            print(f"[Site4/Bolt] ⚠️ ডাটা None অথবা ফাঁকা")
         
         return data if isinstance(data, (dict, list)) else None
     except Exception as e:
-        print(f"[Site4/Bolt] ❌ خطأ في جلب البيانات: {e}")
+        print(f"[Site4/Bolt] ❌ ডাটা আনতে ত্রুটি: {e}")
         import traceback
         traceback.print_exc()
         return None
@@ -10303,7 +10303,7 @@ def load_last_seen_key_site4():
     if os.path.exists(LAST_MESSAGE_FILE_SITE4):
         with open(LAST_MESSAGE_FILE_SITE4, "r", encoding="utf-8") as f:
             last_seen_key_site4 = f.read().strip()
-            print(f"[Site4/Bolt] 📋 تم تحميل آخر رسالة: {last_seen_key_site4[:50]}...")
+            print(f"[Site4/Bolt] 📋 সর্বশেষ মেসেজ লোড হয়েছে: {last_seen_key_site4[:50]}...")
 
 def save_last_seen_key_site4():
     with open(LAST_MESSAGE_FILE_SITE4, "w", encoding="utf-8") as f:
@@ -10346,26 +10346,26 @@ def verify_session_site3():
 def login_site5():
     
     global is_logged_in_site5, csrf_token_site5
-    print("[iVASMS] 🔄 محاولة تسجيل الدخول...")
+    print("[iVASMS] 🔄 লগইনের চেষ্টা চলছে...")
     
     try:
         import urllib3
         urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
         
         resp = session5.get(LOGIN_PAGE_URL5, timeout=HTTP_TIMEOUT5)
-        print(f"[iVASMS] 📄 حالة GET: {resp.status_code}")
+        print(f"[iVASMS] 📄 স্ট্যাটাস GET: {resp.status_code}")
         
         soup = BeautifulSoup(resp.text, 'html.parser')
         csrf_input = soup.find('input', {'name': '_token'})
         if not csrf_input:
-            print("[iVASMS] ⚠️ لم يتم العثور على CSRF token")
+            print("[iVASMS] ⚠️ খুঁজে পাওয়া যায়নি CSRF token")
             return False
         
         csrf = csrf_input.get('value')
         if not csrf:
-            print("[iVASMS] ⚠️ CSRF token فارغ")
+            print("[iVASMS] ⚠️ CSRF token ফাঁকা")
             return False
-        print(f"[iVASMS] 🔑 استخراج CSRF token: {csrf[:20] if len(str(csrf)) > 20 else csrf}...")
+        print(f"[iVASMS] 🔑 বের করা CSRF token: {csrf[:20] if len(str(csrf)) > 20 else csrf}...")
         
         payload = {
             '_token': csrf,
@@ -10379,14 +10379,14 @@ def login_site5():
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
         }
         
-        print(f"[iVASMS] 📤 إرسال طلب تسجيل الدخول لـ: {USERNAME5}")
+        print(f"[iVASMS] 📤 লগইন অনুরোধ পাঠানো হচ্ছে: {USERNAME5}")
         resp = session5.post(LOGIN_POST_URL5, data=payload, headers=headers, timeout=HTTP_TIMEOUT5, allow_redirects=True)
         
-        print(f"[iVASMS] 📊 حالة POST: {resp.status_code}")
-        print(f"[iVASMS] 🔗 URL النهائي: {resp.url}")
+        print(f"[iVASMS] 📊 স্ট্যাটাস POST: {resp.status_code}")
+        print(f"[iVASMS] 🔗 URL চূড়ান্ত: {resp.url}")
         
         if 'portal' in resp.url or (resp.status_code == 200 and 'login' not in resp.url):
-            print("[iVASMS] ✅ تسجيل الدخول نجح")
+            print("[iVASMS] ✅ লগইন সফল হয়েছে")
             is_logged_in_site5 = True
             
             soup = BeautifulSoup(resp.text, 'html.parser')
@@ -10396,11 +10396,11 @@ def login_site5():
             
             return True
         else:
-            print("[iVASMS] ❌ فشل تسجيل الدخول")
+            print("[iVASMS] ❌ লগইন ব্যর্থ")
             return False
             
     except Exception as e:
-        print(f"[iVASMS] ❌ خطأ في تسجيل الدخول: {e}")
+        print(f"[iVASMS] ❌ লগইনে ত্রুটি: {e}")
         import traceback
         traceback.print_exc()
         return False
@@ -10433,7 +10433,7 @@ def get_csrf_token_site5():
             csrf_token_site5 = csrf_input.get('value')
             return True
     except Exception as e:
-        print(f"[iVASMS] ❌ خطأ في جلب CSRF token: {e}")
+        print(f"[iVASMS] ❌ আনতে ত্রুটি CSRF token: {e}")
     return False
 
 def sms_loop_for_ivasms_account(site_key, account):
@@ -10476,7 +10476,7 @@ def sms_loop_for_ivasms_account(site_key, account):
             with open(sent_file, 'w') as f:
                 json.dump(msgs, f)
         except Exception as e:
-            print(f"[{site_name}] ({username}) ❌ خطأ في حفظ الرسائل المرسلة: {e}")
+            print(f"[{site_name}] ({username}) ❌ পাঠানো মেসেজ সেভে ত্রুটি: {e}")
     
     def fetch_sms_via_api():
         try:
@@ -10497,25 +10497,25 @@ def sms_loop_for_ivasms_account(site_key, account):
                         return []
                     else:
                         error_msg = data.get('error', data.get('message', 'Unknown error'))
-                        print(f"[{site_name}] ({username}) ⚠️ API خطأ: {error_msg}")
+                        print(f"[{site_name}] ({username}) ⚠️ API ত্রুটি: {error_msg}")
                         return []
                 except json.JSONDecodeError:
-                    print(f"[{site_name}] ({username}) ⚠️ استجابة غير صالحة JSON")
+                    print(f"[{site_name}] ({username}) ⚠️ অবৈধ রেসপন্স JSON")
                     return []
             else:
-                print(f"[{site_name}] ({username}) ❌ حالة الاستجابة: {resp.status_code}")
+                print(f"[{site_name}] ({username}) ❌ রেসপন্স স্ট্যাটাস: {resp.status_code}")
                 return []
         except Exception as e:
-            print(f"[{site_name}] ({username}) ❌ خطأ في جلب البيانات: {e}")
+            print(f"[{site_name}] ({username}) ❌ ডাটা আনতে ত্রুটি: {e}")
             return []
     
     if not api_key:
-        print_monitoring_box(site_name, username, "❌", "مفتاح API غير موجود!")
+        print_monitoring_box(site_name, username, "❌", "কী API পাওয়া যায়নি!")
         return
     
-    print_monitoring_box(site_name, username, "🌐", "بدء المراقبة عبر API...")
+    print_monitoring_box(site_name, username, "🌐", "মনিটরিং শুরু হয়েছে মাধ্যমে API...")
     load_sent_messages()
-    print(f"[{site_name}] ({username}) ✅ بدء المراقبة كل {CHECK_INTERVAL5} ثانية... (API مفعل)")
+    print(f"[{site_name}] ({username}) ✅ মনিটরিং শুরু প্রতি {CHECK_INTERVAL5} সেকেন্ড... (API চালু)")
     
     while not stop_event.is_set():
         try:
@@ -10548,27 +10548,27 @@ def sms_loop_for_ivasms_account(site_key, account):
                     
                     send_otp_to_user(clean_number(phone), formatted_msg, phone, None, otp_val)
                     if True:
-                        print(f"✅ {site_name} ({username}): تم إرسال الكود لـ {mask_number(phone)}")
+                        print(f"✅ {site_name} ({username}): কোড পাঠানো হয়েছে: {mask_number(phone)}")
                     
                     sent_messages_local.add(msg_key)
                     new_count += 1
             
             if new_count > 0:
                 save_sent_messages()
-                print(f"[{site_name}] ({username}) 📨 تم إرسال {new_count} رسالة جديدة")
+                print(f"[{site_name}] ({username}) 📨 পাঠানো হয়েছে {new_count} নতুন মেসেজ")
             else:
-                print_monitoring_box(site_name, username, "📭", "لا توجد أكواد")
+                print_monitoring_box(site_name, username, "📭", "কোনো কোড নেই")
             
         except Exception as e:
             if stop_event.is_set():
                 break
-            print_monitoring_box(site_name, username, "❌", f"خطأ غير متوقع: {str(e)}")
+            print_monitoring_box(site_name, username, "❌", f"অপ্রত্যাশিত ত্রুটি: {str(e)}")
             time.sleep(10)
         
         if stop_event.wait(CHECK_INTERVAL5):
             break
     
-    print(f"[{site_name}] ({username}) 🛑 تم إيقاف المراقبة بنجاح")
+    print(f"[{site_name}] ({username}) 🛑 মনিটরিং সফলভাবে বন্ধ হয়েছে")
 
 def sms_loop_requests_based(site_key, account):
     
@@ -10655,13 +10655,13 @@ def sms_loop_requests_based(site_key, account):
     
     def login():
         nonlocal is_logged_in
-        print(f"[{site_name}] ({username}) 🔐 تسجيل الدخول...")
+        print(f"[{site_name}] ({username}) 🔐 লগইন হচ্ছে...")
         
         try:
             resp = session.get(LOGIN_PAGE_URL, timeout=TIMEOUT_LOCAL)
             
             if resp.status_code != 200:
-                print(f"[{site_name}] ({username}) ⚠️ فشل فتح صفحة الدخول: {resp.status_code}")
+                print(f"[{site_name}] ({username}) ⚠️ লগইন পেজ খুলতে ব্যর্থ: {resp.status_code}")
                 return False
             
             match = re.search(r'What is (\d+) \+ (\d+)', resp.text)
@@ -10669,7 +10669,7 @@ def sms_loop_requests_based(site_key, account):
                 match = re.search(r'(\d+)\s*\+\s*(\d+)', resp.text)
             
             if not match:
-                print(f"[{site_name}] ({username}) ⚠️ لم يتم العثور على Captcha، محاولة بدون captcha...")
+                print(f"[{site_name}] ({username}) ⚠️ খুঁজে পাওয়া যায়নি Captcha, চেষ্টা ছাড়া captcha...")
                 captcha_answer = ""
             else:
                 captcha_answer = str(int(match.group(1)) + int(match.group(2)))
@@ -10688,7 +10688,7 @@ def sms_loop_requests_based(site_key, account):
             
             if crlf_match:
                 payload['crlf'] = crlf_match.group(1)
-                print(f"[{site_name}] ({username}) 🔑 تم استخراج crlf token")
+                print(f"[{site_name}] ({username}) 🔑 বের করা হয়েছে crlf token")
             
             headers = {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -10708,32 +10708,32 @@ def sms_loop_requests_based(site_key, account):
                 "smscdr" in resp.text.lower() or
                 "signin" in resp.text.lower() or
                 resp.url != LOGIN_PAGE_URL):
-                print(f"[{site_name}] ({username}) ✅ تسجيل الدخول نجح")
+                print(f"[{site_name}] ({username}) ✅ লগইন সফল হয়েছে")
                 is_logged_in = True
                 return True
             
             if 'dashboard' in resp.text.lower() or 'logout' in resp.text.lower() or 'reports' in resp.url.lower():
-                print(f"[{site_name}] ({username}) ✅ تسجيل الدخول نجح (dashboard detected)")
+                print(f"[{site_name}] ({username}) ✅ লগইন সফল (dashboard detected)")
                 is_logged_in = True
                 return True
             
             if resp.url != LOGIN_PAGE_URL and 'login' not in resp.url.lower():
-                print(f"[{site_name}] ({username}) ✅ تسجيل الدخول نجح (redirected)")
+                print(f"[{site_name}] ({username}) ✅ লগইন সফল (redirected)")
                 is_logged_in = True
                 return True
             
             sms_page_path = "/agent/SMSCDRReports" if "/ints" in BASE_URL else "/ints/agent/SMSCDRReports"
             test_resp = session.get(BASE_URL.rstrip('/') + sms_page_path, timeout=15)
             if test_resp.status_code == 200 and 'login' not in test_resp.url.lower():
-                print(f"[{site_name}] ({username}) ✅ تسجيل الدخول نجح (verified)")
+                print(f"[{site_name}] ({username}) ✅ লগইন সফল (verified)")
                 is_logged_in = True
                 return True
             
-            print(f"[{site_name}] ({username}) ❌ فشل تسجيل الدخول")
+            print(f"[{site_name}] ({username}) ❌ লগইন ব্যর্থ")
             return False
             
         except Exception as e:
-            print(f"[{site_name}] ({username}) ❌ خطأ في تسجيل الدخول: {e}")
+            print(f"[{site_name}] ({username}) ❌ লগইনে ত্রুটি: {e}")
             return False
     
     def get_sesskey_from_page(html_text):
@@ -10761,13 +10761,13 @@ def sms_loop_requests_based(site_key, account):
                             login_form = soup.find('input', {'name': 'password'})
                             if login_form:
                                 is_logged_in = False
-                                print(f"[{site_name}] ({username}) ⚠️ الجلسة انتهت، إعادة تسجيل الدخول...")
+                                print(f"[{site_name}] ({username}) ⚠️ সেশন শেষ, আবার লগইন হচ্ছে...")
                                 return []
                         
                         sesskey = get_sesskey_from_page(page_resp.text)
                         if sesskey:
                             current_sesskey = sesskey
-                            print(f"[{site_name}] ({username}) 🔑 تم استخراج sesskey")
+                            print(f"[{site_name}] ({username}) 🔑 বের করা হয়েছে sesskey")
                             
                             today = datetime.now().strftime('%Y-%m-%d')
                             ajax_url = BASE_URL + AJAX_PATH
@@ -10802,11 +10802,11 @@ def sms_loop_requests_based(site_key, account):
                                     if 'aaData' in data:
                                         rows = data['aaData']
                                         if rows:
-                                            print(f"[{site_name}] ({username}) ✅ تم جلب {len(rows)} رسالة عبر AJAX")
+                                            print(f"[{site_name}] ({username}) ✅ আনা হয়েছে {len(rows)} মেসেজ মাধ্যমে AJAX")
                                             return rows
                                     elif isinstance(data, list):
                                         if data:
-                                            print(f"[{site_name}] ({username}) ✅ تم جلب {len(data)} رسالة عبر AJAX")
+                                            print(f"[{site_name}] ({username}) ✅ আনা হয়েছে {len(data)} মেসেজ মাধ্যমে AJAX")
                                             return data
                                 except:
                                     pass
@@ -10822,16 +10822,16 @@ def sms_loop_requests_based(site_key, account):
                                 if len(cells) >= 6:
                                     data_rows.append([cell.get_text(strip=True) for cell in cells])
                             if data_rows:
-                                print(f"[{site_name}] ({username}) 📄 استخدام HTML parsing كبديل")
+                                print(f"[{site_name}] ({username}) 📄 ব্যবহার HTML parsing বিকল্প হিসেবে")
                                 return data_rows
                         return []
                         
                     elif page_resp.status_code in [502, 503, 504]:
                         if retry < 2:
-                            print(f"[{site_name}] ({username}) ⚠️ السيرفر مشغول ({page_resp.status_code}) - محاولة {retry+1}/3...")
+                            print(f"[{site_name}] ({username}) ⚠️ সার্ভার ব্যস্ত ({page_resp.status_code}) - চেষ্টা {retry+1}/3...")
                             time.sleep(3 + retry * 2)
                             continue
-                        print(f"[{site_name}] ({username}) ⚠️ السيرفر مشغول ({page_resp.status_code})")
+                        print(f"[{site_name}] ({username}) ⚠️ সার্ভার ব্যস্ত ({page_resp.status_code})")
                         return []
                     else:
                         print(f"[{site_name}] ({username}) ⚠️ HTTP {page_resp.status_code}")
@@ -10841,7 +10841,7 @@ def sms_loop_requests_based(site_key, account):
                     if retry < 2 and ('Connection' in str(e) or 'Timeout' in str(e)):
                         time.sleep(2)
                         continue
-                    print(f"[{site_name}] ({username}) ❌ خطأ في جلب البيانات: {e}")
+                    print(f"[{site_name}] ({username}) ❌ ডাটা আনতে ত্রুটি: {e}")
                     is_logged_in = False
                     return []
             return []
@@ -10905,7 +10905,7 @@ def sms_loop_requests_based(site_key, account):
                     except Exception as je:
                         if 'login' in resp.text.lower() or 'signin' in resp.text.lower():
                             is_logged_in = False
-                            print(f"[{site_name}] ({username}) ⚠️ الجلسة انتهت، إعادة تسجيل الدخول...")
+                            print(f"[{site_name}] ({username}) ⚠️ সেশন শেষ, আবার লগইন হচ্ছে...")
                         else:
                             try:
                                 soup = BeautifulSoup(resp.text, 'html.parser')
@@ -10919,7 +10919,7 @@ def sms_loop_requests_based(site_key, account):
                                         if len(cells) >= 6:
                                             data_rows.append([cell.get_text(strip=True) for cell in cells])
                                     if data_rows:
-                                        print(f"[{site_name}] ({username}) 📄 استخدام HTML parsing")
+                                        print(f"[{site_name}] ({username}) 📄 ব্যবহার HTML parsing")
                                         return data_rows
                             except:
                                 pass
@@ -10927,7 +10927,7 @@ def sms_loop_requests_based(site_key, account):
                     if retry < 2:
                         time.sleep(3 + retry * 2)
                         continue
-                    print(f"[{site_name}] ({username}) ⚠️ السيرفر مشغول (503) - جاري المحاولة بطريقة بديلة...")
+                    print(f"[{site_name}] ({username}) ⚠️ সার্ভার ব্যস্ত (503) - বিকল্প পদ্ধতিতে চেষ্টা চলছে...")
                     try:
                         page_resp = session.get(referer_url, timeout=TIMEOUT_LOCAL)
                         if page_resp.status_code == 200:
@@ -10942,10 +10942,10 @@ def sms_loop_requests_based(site_key, account):
                                     if len(cells) >= 6:
                                         data_rows.append([cell.get_text(strip=True) for cell in cells])
                                 if data_rows:
-                                    print(f"[{site_name}] ({username}) 📄 استخدام HTML parsing (بديل)")
+                                    print(f"[{site_name}] ({username}) 📄 ব্যবহার HTML parsing (বিকল্প)")
                                     return data_rows
                     except Exception as html_e:
-                        print(f"[{site_name}] ({username}) ⚠️ فشل HTML parsing: {html_e}")
+                        print(f"[{site_name}] ({username}) ⚠️ ব্যর্থ HTML parsing: {html_e}")
                 else:
                     print(f"[{site_name}] ({username}) ⚠️ HTTP {resp.status_code}")
                 
@@ -10955,22 +10955,22 @@ def sms_loop_requests_based(site_key, account):
                 if retry < 2 and ('Connection' in str(e) or 'Timeout' in str(e)):
                     time.sleep(2)
                     continue
-                print(f"[{site_name}] ({username}) ❌ خطأ في جلب البيانات: {e}")
+                print(f"[{site_name}] ({username}) ❌ ডাটা আনতে ত্রুটি: {e}")
                 is_logged_in = False
                 return []
         return []
     
-    print_monitoring_box(site_name, username, "🚀", "بدء المراقبة بـ Requests (خفيف وسريع)...")
+    print_monitoring_box(site_name, username, "🚀", "মনিটরিং শুরু হয়েছে Requests (হালকা ও দ্রুত)...")
     
     load_last_seen()
     load_sent_messages()
     
     if not login():
-        print_monitoring_box(site_name, username, "❌", "فشل تسجيل الدخول الأولي")
+        print_monitoring_box(site_name, username, "❌", "প্রথম লগইন ব্যর্থ")
         return
     
     errors = 0
-    print(f"[{site_name}] ({username}) ✅ بدء المراقبة كل {CHECK_INTERVAL} ثانية...")
+    print(f"[{site_name}] ({username}) ✅ মনিটরিং শুরু প্রতি {CHECK_INTERVAL} সেকেন্ড...")
     
     while not stop_event.is_set():
         try:
@@ -10985,7 +10985,7 @@ def sms_loop_requests_based(site_key, account):
             raw_data = fetch_sms_data()
             
             if not raw_data:
-                print_monitoring_box(site_name, username, "📭", "لا توجد أكواد")
+                print_monitoring_box(site_name, username, "📭", "কোনো কোড নেই")
             else:
                 data = []
                 for row in raw_data:
@@ -11011,7 +11011,7 @@ def sms_loop_requests_based(site_key, account):
                             data.append({'date': date_str, 'number': number, 'sms': sms})
                 
                 if not data:
-                    print_monitoring_box(site_name, username, "📭", "لا توجد أكواد")
+                    print_monitoring_box(site_name, username, "📭", "কোনো কোড নেই")
                 else:
                     data.sort(key=lambda x: x['date'], reverse=False) 
                     
@@ -11025,7 +11025,7 @@ def sms_loop_requests_based(site_key, account):
                             new_messages.append(msg)
                     
                     if new_messages:
-                        print(f"[{site_name}] ({username}) 📨 {len(new_messages)} رسالة جديدة")
+                        print(f"[{site_name}] ({username}) 📨 {len(new_messages)} নতুন মেসেজ")
                         
                         
                         for msg in new_messages:
@@ -11038,7 +11038,7 @@ def sms_loop_requests_based(site_key, account):
                             formatted_msg = format_otp_message_v2(number, sms_text, service_name, otp_val)
                             
                             if otp_val:
-                                print(f"🔑 {site_name} ({username}): لقيت كود {otp_val}")
+                                print(f"🔑 {site_name} ({username}): কোড পাওয়া গেছে {otp_val}")
                             
                             send_otp_to_user(clean_number(number), formatted_msg, number, None, otp_val)
                             
@@ -11050,15 +11050,15 @@ def sms_loop_requests_based(site_key, account):
                         save_last_seen()
                         save_sent_messages()
                     else:
-                        print_monitoring_box(site_name, username, "📭", "لا توجد أكواد")
+                        print_monitoring_box(site_name, username, "📭", "কোনো কোড নেই")
             
             errors = 0
             
         except Exception as e:
             errors += 1
-            print_monitoring_box(site_name, username, "❌", f"خطأ ({errors}/5): {str(e)[:40]}")
+            print_monitoring_box(site_name, username, "❌", f"ত্রুটি ({errors}/5): {str(e)[:40]}")
             if errors >= 5:
-                print(f"[{site_name}] ({username}) 🔄 إعادة تسجيل الدخول...")
+                print(f"[{site_name}] ({username}) 🔄 আবার লগইন হচ্ছে...")
                 if login():
                     errors = 0
                 else:
@@ -11068,7 +11068,7 @@ def sms_loop_requests_based(site_key, account):
         if stop_event.wait(CHECK_INTERVAL):
             break
     
-    print(f"[{site_name}] ({username}) 🛑 تم إيقاف المراقبة")
+    print(f"[{site_name}] ({username}) 🛑 মনিটরিং বন্ধ করা হয়েছে")
 
 def login_site8(account):
     username = account.get("username")
@@ -11078,7 +11078,7 @@ def login_site8(account):
     session = requests.Session()
     session.verify = False
     
-    print(f"[Site8/IMS] ({username}) 🔄 تسجيل الدخول...")
+    print(f"[Site8/IMS] ({username}) 🔄 লগইন হচ্ছে...")
     try:
        
         session.headers.update({
@@ -11095,7 +11095,7 @@ def login_site8(account):
             response = session.get(LOGIN_PAGE_URL8, timeout=HTTP_TIMEOUT8, headers={"User-Agent": "Mozilla/5.0"})
         
         if response.status_code != 200:
-            print(f"[Site8/IMS] ({username}) [!] فشل فتح صفحة الدخول: {response.status_code}")
+            print(f"[Site8/IMS] ({username}) [!] লগইন পেজ খুলতে ব্যর্থ: {response.status_code}")
             return False, None
         
         html_content = response.text
@@ -11159,7 +11159,7 @@ def login_site8(account):
                     break
         
         if not captcha_answer:
-            print(f"[Site8/IMS] ({username}) [!] لم يتم العثور على الكابتشا")
+            print(f"[Site8/IMS] ({username}) [!] ক্যাপচা পাওয়া যায়নি")
             return False, None
         
         print(f"[Site8/IMS] ({username}) [*] Captcha: {captcha_answer}")
@@ -11200,18 +11200,18 @@ def login_site8(account):
         
         if any(x in response.url.lower() for x in ["/agent", "/dashboard", "/home"]) or \
            (response.status_code == 200 and "login" not in response.url.lower() and "signin" not in response.url.lower()):
-            print(f"[Site8/IMS] ({username}) [+] تسجيل الدخول نجح (Landed on: {response.url})")
+            print(f"[Site8/IMS] ({username}) [+] লগইন সফল (Landed on: {response.url})")
             return True, session
         
         content_lower = response.text.lower()
         if "logout" in content_lower or "smscdr" in content_lower or "agent" in content_lower:
-            print(f"[Site8/IMS] ({username}) [+] تسجيل الدخول نجح (Detected via content)")
+            print(f"[Site8/IMS] ({username}) [+] লগইন সফল (Detected via content)")
             return True, session
 
-        print(f"[Site8/IMS] ({username}) [!] فشل تسجيل الدخول")
+        print(f"[Site8/IMS] ({username}) [!] লগইন ব্যর্থ")
         return False, None
     except Exception as e:
-        print(f"[Site8/IMS] ({username}) [!] خطأ في تسجيل الدخول: {e}")
+        print(f"[Site8/IMS] ({username}) [!] লগইনে ত্রুটি: {e}")
         return False, None
 
 def sms_loop_for_ims_account(site_key, account):
@@ -11241,14 +11241,14 @@ def sms_loop_for_ims_account(site_key, account):
                 f.write(last_seen_key_local)
         except: pass
 
-    print_monitoring_box(site_name, username, "🚀", "بدء المراقبة...")
+    print_monitoring_box(site_name, username, "🚀", "মনিটরিং শুরু হচ্ছে...")
     
     success, new_session = login_site8(account)
     if success:
         session = new_session
         is_logged_in = True
     else:
-        print_monitoring_box(site_name, username, "❌", "فشل تسجيل الدخول")
+        print_monitoring_box(site_name, username, "❌", "লগইন ব্যর্থ")
     
     load_last_seen()
     errors = 0
@@ -11258,7 +11258,7 @@ def sms_loop_for_ims_account(site_key, account):
             
             current_account = get_account_by_id(site_key, account_id)
             if current_account and current_account.get("password") != password:
-                print(f"[Site8/IMS] ({username}) 🔑 تم اكتشاف تغيير كلمة المرور، جاري إعادة الدخول...")
+                print(f"[Site8/IMS] ({username}) 🔑 পাসওয়ার্ড পরিবর্তন শনাক্ত হয়েছে, আবার লগইন হচ্ছে...")
                 password = current_account.get("password")
                 success, new_session = login_site8(current_account)
                 if success:
@@ -11328,7 +11328,7 @@ def sms_loop_for_ims_account(site_key, account):
                 rows = data_json if isinstance(data_json, list) else []
             
             if not rows:
-                print_monitoring_box(site_name, username, "📭", "لا توجد أكواد")
+                print_monitoring_box(site_name, username, "📭", "কোনো কোড নেই")
             else:
                 
                 try:
@@ -11360,7 +11360,7 @@ def sms_loop_for_ims_account(site_key, account):
                     last_seen_key_local = f"{new_messages[0]['date']}|{new_messages[0]['number']}"
                     save_last_seen()
                     
-                    print(f"[{site_name}] ({username}) 📨 {len(new_messages)} رسالة جديدة")
+                    print(f"[{site_name}] ({username}) 📨 {len(new_messages)} নতুন মেসেজ")
                    
                     
                     for msg in reversed(new_messages):
@@ -11370,7 +11370,7 @@ def sms_loop_for_ims_account(site_key, account):
                         service_name = f"[{detect_service(sms_text)}]"
                         formatted_msg = format_otp_message_v2(msg['number'], sms_text, service_name, otp_val)
                         
-                        print(f"🔑 {site_name} ({username}): لقيت كود {otp_val}")
+                        print(f"🔑 {site_name} ({username}): কোড পাওয়া গেছে {otp_val}")
                         
                         success = False
                         for retry in range(3):
@@ -11389,7 +11389,7 @@ def sms_loop_for_ims_account(site_key, account):
                                     print(f"❌ Error sending: {e}")
                                     break
                 else:
-                    print_monitoring_box(site_name, username, "📭", "لا توجد أكواد")
+                    print_monitoring_box(site_name, username, "📭", "কোনো কোড নেই")
             
             errors = 0
         except Exception as e:
@@ -11448,7 +11448,7 @@ def sms_loop_for_timesms_account(site_key, account):
                 f.write(last_seen_key_local)
         except: pass
 
-    print_monitoring_box(site_name, username, "🚀", "بدء المراقبة...")
+    print_monitoring_box(site_name, username, "🚀", "মনিটরিং শুরু হচ্ছে...")
     load_last_seen()
     
     login_url = SETTINGS[site_key]["login_page_url"]
@@ -11465,12 +11465,12 @@ def sms_loop_for_timesms_account(site_key, account):
                     login_resp = sess.post(submit_url, data=data, headers={'Referer': login_url}, timeout=15, allow_redirects=True)
                     if 'login' not in str(login_resp.url).lower():
                         is_logged_in = True
-                        print_monitoring_box(site_name, username, "✅", "تم تسجيل الدخول بنجاح")
+                        print_monitoring_box(site_name, username, "✅", "লগইন সফল হয়েছে")
                     else:
-                        print_monitoring_box(site_name, username, "❌", "فشل تسجيل الدخول")
+                        print_monitoring_box(site_name, username, "❌", "লগইন ব্যর্থ")
                         time.sleep(30); continue
                 else:
-                    print_monitoring_box(site_name, username, "❌", "فشل حل الكابتشا")
+                    print_monitoring_box(site_name, username, "❌", "ক্যাপচা সমাধান ব্যর্থ")
                     time.sleep(30); continue
 
             today = datetime.now()
@@ -11528,10 +11528,10 @@ def sms_loop_for_timesms_account(site_key, account):
                     save_last_seen()
                     
                     if is_initial:
-                        print_monitoring_box(site_name, username, "🔔", "تم بدء المراقبة: جلب أحدث كود فقط")
+                        print_monitoring_box(site_name, username, "🔔", "মনিটরিং শুরু হয়েছে: শুধু সর্বশেষ কোড আনা হচ্ছে")
                         messages_to_process = [new_messages[0]]
                     else:
-                        print_monitoring_box(site_name, username, "🔔", f"لقيت كود: {len(new_messages)} رسائل جديدة")
+                        print_monitoring_box(site_name, username, "🔔", f"কোড পাওয়া গেছে: {len(new_messages)} নতুন মেসেজ")
                         # Process messages in reverse order (oldest to newest among new ones)
                         messages_to_process = reversed(new_messages)
                     
@@ -11566,9 +11566,9 @@ def sms_loop_for_timesms_account(site_key, account):
                         except Exception as e:
                             print(f"[{site_name}] Error saving sent messages: {e}")
                 else:
-                    print_monitoring_box(site_name, username, "🟢", "لا توجد اكواد")
+                    print_monitoring_box(site_name, username, "🟢", "কোনো কোড নেই")
             else:
-                print_monitoring_box(site_name, username, "🟢", "لا توجد اكواد")
+                print_monitoring_box(site_name, username, "🟢", "কোনো কোড নেই")
 
         except Exception as e:
             print(f"[{site_name}] Error: {e}")
@@ -11601,7 +11601,7 @@ def sms_loop_for_roxy_account(site_key, account):
                 f.write(last_seen_key_local)
         except: pass
 
-    print_monitoring_box(site_name, username, "🚀", "بدء المراقبة...")
+    print_monitoring_box(site_name, username, "🚀", "মনিটরিং শুরু হচ্ছে...")
     load_last_seen()
     
     login_url = "http://www.roxysms.net/signin"
@@ -11622,9 +11622,9 @@ def sms_loop_for_roxy_account(site_key, account):
                     login_resp = scraper.post(login_url, data=payload, headers=headers, timeout=30)
                     if login_resp.status_code == 200 and ("success" in login_resp.text.lower() or "logout" in login_resp.text.lower()):
                         is_logged_in = True
-                        print_monitoring_box(site_name, username, "✅", "تم تسجيل الدخول بنجاح")
+                        print_monitoring_box(site_name, username, "✅", "লগইন সফল হয়েছে")
                     else:
-                        print_monitoring_box(site_name, username, "❌", "فشل تسجيل الدخول، إعادة المحاولة...")
+                        print_monitoring_box(site_name, username, "❌", "লগইন ব্যর্থ, আবার চেষ্টা চলছে...")
                         time.sleep(30)
                         continue
                 except Exception as e:
@@ -11689,9 +11689,9 @@ def sms_loop_for_roxy_account(site_key, account):
                         formatted = format_otp_message_v2(msg['number'], clean_sms, service_name, otp_val)
                         send_otp_to_user(clean_number(msg['number']), formatted, msg['number'], None, otp_val)
                 else:
-                    print_monitoring_box(site_name, username, "📭", "لا توجد أكواد جديدة")
+                    print_monitoring_box(site_name, username, "📭", "কোনো নতুন কোড নেই")
             else:
-                print_monitoring_box(site_name, username, "📭", "لا توجد أكواد")
+                print_monitoring_box(site_name, username, "📭", "কোনো কোড নেই")
                 
         except Exception as e:
             print(f"[{site_name}] Error: {e}")
@@ -11727,7 +11727,7 @@ if __name__ == "__main__":
     load_data()
     
     monitoring_threads = []
-    print("🚀 بدء تشغيل نظام المراقبة متعدد الحسابات...")
+    print("🚀 মাল্টি-অ্যাকাউন্ট মনিটরিং সিস্টেম চালু হচ্ছে...")
     
     for site_key in ["GROUP", "Fly sms", "Number_Panel", "Bolt", "iVASMS", "MSI", "proton SMS", "IMS", "Roxy SMS", "TimeSMS"]:
         if SETTINGS[site_key]["enabled"]:
@@ -11735,28 +11735,28 @@ if __name__ == "__main__":
             site_name = SETTINGS[site_key]["name"]
             
             if accounts:
-                print(f"\n📋 {site_name}: وجدت {len(accounts)} حساب")
+                print(f"\n📋 {site_name}: পাওয়া গেছে {len(accounts)} অ্যাকাউন্ট")
                 for account in accounts:
                     username = account.get('username', 'N/A')
                     thread = Thread(target=start_monitoring_for_account, args=(site_key, account), daemon=True)
                     monitoring_threads.append(thread)
                     thread.start()
-                    print(f"  ✅ بدء مراقبة: {username}")
+                    print(f"  ✅ মনিটরিং শুরু: {username}")
             else:
-                print(f"  ⚠️ {site_name}: لا توجد حسابات")
+                print(f"  ⚠️ {site_name}: কোনো অ্যাকাউন্ট নেই")
     
-    print(f"\n🎯 إجمالي Threads النشطة: {len(monitoring_threads)}")
+    print(f"\n🎯 মোট Threads সক্রিয়: {len(monitoring_threads)}")
     
     import requests
     try:
         bot_token = BOT_TOKEN
         delete_webhook_url = f"https://api.telegram.org/bot{bot_token}/deleteWebhook?drop_pending_updates=true"
         response = requests.get(delete_webhook_url)
-        print(f"🔄 تم حذف webhook وتنظيف التحديثات المعلقة: {response.json()}")
+        print(f"🔄 মুছে ফেলা হয়েছে webhook এবং অপেক্ষমাণ আপডেট পরিষ্কার: {response.json()}")
     except Exception as e:
-        print(f"⚠️ خطأ في حذف webhook: {e}")
+        print(f"⚠️ মুছতে ত্রুটি: webhook: {e}")
     
-    print("\n✨ البوت جاهز للعمل!\n")
+    print("\n✨ বট কাজের জন্য প্রস্তুত!\n")
     
     try:
         from telebot.types import BotCommand
@@ -11771,26 +11771,26 @@ if __name__ == "__main__":
             BotCommand("bonus", "Bonus system")
         ]
         bot.set_my_commands(commands)
-        print("✅ تم تسجيل الأوامر بنجاح!")
+        print("✅ কমান্ড সফলভাবে নিবন্ধিত হয়েছে!")
     except Exception as e:
-        print(f"⚠️ خطأ في تسجيل الأوامر: {e}")
+        print(f"⚠️ কমান্ড নিবন্ধনে ত্রুটি: {e}")
     
     max_retries = 5
     retry_delay = 5
     
     for attempt in range(max_retries):
         try:
-            print(f"🚀 محاولة بدء polling (محاولة {attempt + 1}/{max_retries})...")
+            print(f"🚀 শুরু করার চেষ্টা polling (চেষ্টা {attempt + 1}/{max_retries})...")
             bot.infinity_polling(timeout=60, long_polling_timeout=60, skip_pending=True)
             break
         except Exception as e:
             if "409" in str(e) or "Conflict" in str(e):
                 if attempt < max_retries - 1:
-                    print(f"⚠️ تعارض polling (409) - إعادة المحاولة بعد {retry_delay} ثواني...")
+                    print(f"⚠️ সংঘাত polling (409) - আবার চেষ্টা হবে {retry_delay} সেকেন্ড পরে...")
                     time.sleep(retry_delay)
                     retry_delay *= 2
                 else:
-                    print(f"❌ فشل بدء البوت بعد {max_retries} محاولات!")
+                    print(f"❌ বট চালু করতে ব্যর্থ {max_retries} চেষ্টার পর!")
                     raise
             else:
                 raise
